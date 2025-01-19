@@ -74,7 +74,7 @@ export default function QuizPage() {
       // Dynamically create keyMap based on the number of options
       const keyMap: Record<string, number> = {};
       currentQ.options.forEach((_, idx) => {
-        keyMap[(idx + 1).toString()] = idx + 1;
+        keyMap[(idx+1).toString()] = idx;
       });
 
       const pressedKey = e.key;
