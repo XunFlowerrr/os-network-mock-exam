@@ -7,7 +7,7 @@
       "C. Translating IP addresses to MAC addresses",
       "D. Handling physical transmission errors on the medium"
     ],
-    "answer": "A",
+    "answer": 1,
     "explanation": "The transport layer creates a logical end-to-end communication channel between application processes on different hosts. Options B, C, and D are associated with lower layers (network layer for routing, ARP at the link layer for address translation, and physical layer for transmission errors)."
   },
   {
@@ -18,7 +18,7 @@
       "C. Physical signal modulation",
       "D. Routing across autonomous systems"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Error detection (via checksums) and flow control (managing the sender's rate to avoid overwhelming the receiver) are essential transport-layer functions. Address resolution is a link-layer function, signal modulation is physical-layer, and routing is handled by the network layer."
   },
   {
@@ -29,7 +29,7 @@
       "C. MAC addresses and IP addresses",
       "D. Sequence numbers only"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "The transport layer relies on both source/destination IP addresses and source/destination port numbers to identify the correct receiving socket. IP addresses alone are not sufficient; MAC addresses and sequence numbers are used for different purposes."
   },
   {
@@ -40,7 +40,7 @@
       "C. It provides best-effort, connectionless delivery",
       "D. It requires a three-way handshake for connection setup"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "UDP is a connectionless, best-effort transport protocol with minimal overhead. It does not guarantee in-order delivery, does not provide built-in congestion control, and does not use a three-way handshake (that is TCP's feature)."
   },
   {
@@ -51,7 +51,7 @@
       "C. It needs the largest possible sequence numbers",
       "D. It must ensure the order of segments is strictly preserved"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "UDP is often selected for applications that can handle some packet loss and want the lowest latency or overhead, such as streaming or real-time services. Options A and D describe TCP-like features, and option C is unrelated to protocol choice."
   },
   {
@@ -62,7 +62,7 @@
       "C. To reorder packets at the receiver",
       "D. To indicate a guaranteed delivery mechanism"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "The UDP checksum is used to detect bit-level errors in the segment. Flow control, reordering, and guaranteed delivery are features generally associated with TCP or other mechanisms."
   },
   {
@@ -73,7 +73,7 @@
       "C. Create a secure channel for data encryption",
       "D. Fragment larger packets into smaller ones"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "ACKs are sent by the receiver to inform the sender of successful reception. Encryption and fragmentation are unrelated to simple acknowledgment procedures."
   },
   {
@@ -84,7 +84,7 @@
       "C. The arrival of a different packet from a new stream",
       "D. A special signal from the transport layer"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "In stop-and-wait, if no ACK is received within the timeout period, the sender retransmits. ACK arrival would prevent retransmission, and the other options are not typical triggers."
   },
   {
@@ -95,7 +95,7 @@
       "C. Can send multiple packets before receiving acknowledgments",
       "D. Will never require a retransmission due to timeouts"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Go-Back-N is a pipelined protocol allowing multiple unacknowledged packets in flight. Stop-and-wait (option A) only allows one unacknowledged packet. Options B and D are incorrect for typical GBN design."
   },
   {
@@ -106,18 +106,18 @@
       "C. SR can individually acknowledge and buffer out-of-order packets",
       "D. SR uses negative acknowledgment (NAK) exclusively"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Selective Repeat allows the receiver to accept and buffer out-of-order packets, acknowledging each one individually. Go-Back-N retransmits all packets from the loss point onward."
   },
   {
     "question": "11. In TCP, the sequence number in the segment header represents:",
     "options": [
       "A. The number of retransmissions performed",
-      "B. The application’s port number",
+      "B. The application\u00e2\u20ac\u2122s port number",
       "C. The byte offset of the first data byte in the segment",
       "D. The total number of bytes remaining to be sent"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "TCP uses the sequence number to indicate the byte offset (relative to the initial sequence number) of the first data byte in that segment. Options A, B, and D do not correctly define TCP sequence numbers."
   },
   {
@@ -128,7 +128,7 @@
       "C. It decreases linearly for each duplicate ACK received",
       "D. It remains at 1 MSS throughout the connection"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "During slow start, TCP increases cwnd exponentially (doubling it each RTT) until a specified threshold is reached or a loss occurs. This rapid growth is known as the slow start phase."
   },
   {
@@ -139,24 +139,24 @@
       "C. Fast retransmit and fast recovery phases",
       "D. A reset of the connection"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "When TCP sees triple-duplicate ACKs, it performs a fast retransmit (resending the lost segment) and then enters fast recovery instead of dropping the cwnd to 1 as in a timeout-based loss."
   },
   {
     "question": "14. TCP flow control ensures that:",
     "options": [
       "A. The total number of active connections is minimized",
-      "B. A sender does not overwhelm the receiver’s buffer capacity",
+      "B. A sender does not overwhelm the receiver\u00e2\u20ac\u2122s buffer capacity",
       "C. The sender never changes its sending rate once a connection is established",
       "D. The network remains free of congestion"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Flow control is specifically to prevent the sender from sending data faster than the receiver can handle, using the receiver window (rwnd). Options A, C, and D address different aspects of traffic regulation."
   },
   {
-    "question": "15. In TCP’s three-way handshake, which control flag typically starts the connection setup?",
+    "question": "15. In TCP\u00e2\u20ac\u2122s three-way handshake, which control flag typically starts the connection setup?",
     "options": ["A. SYN", "B. ACK", "C. FIN", "D. RST"],
-    "answer": "A",
+    "answer": 1,
     "explanation": "A TCP connection starts with a SYN flag from the client to the server, prompting a SYN-ACK response from the server, followed by a final ACK from the client."
   },
   {
@@ -167,19 +167,19 @@
       "C. Too many sources sending large amounts of data simultaneously",
       "D. Flow control misconfiguration at the receiving application"
     ],
-    "answer": "A",
+    "answer": 1,
     "explanation": "Infinite buffering might add queuing delay but does not directly cause congestion collapse. Congestion arises from excessive traffic relative to network capacity. Flow control issues are local, not the main cause of widespread network congestion."
   },
   {
     "question": "17. Which statement about congestion control and flow control is correct?",
     "options": [
       "A. Both are synonyms for the same mechanism",
-      "B. Congestion control prevents a sender from overwhelming the receiver’s buffer",
+      "B. Congestion control prevents a sender from overwhelming the receiver\u00e2\u20ac\u2122s buffer",
       "C. Flow control aims to limit the overall load on the network",
-      "D. Flow control addresses the receiver’s capacity, while congestion control addresses the network’s capacity"
+      "D. Flow control addresses the receiver\u00e2\u20ac\u2122s capacity, while congestion control addresses the network\u00e2\u20ac\u2122s capacity"
     ],
-    "answer": "D",
-    "explanation": "Flow control keeps the sender from overwhelming the receiver’s buffer. Congestion control deals with limiting the total sending rate to avoid saturating the network."
+    "answer": 4,
+    "explanation": "Flow control keeps the sender from overwhelming the receiver\u00e2\u20ac\u2122s buffer. Congestion control deals with limiting the total sending rate to avoid saturating the network."
   },
   {
     "question": "18. A key motivation behind the switch to IPv6 was:",
@@ -189,18 +189,18 @@
       "C. To reduce packet overhead by eliminating all addresses",
       "D. To standardize on NAT as a mandatory feature"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "IPv4 addresses (32-bit) were running out, leading to the development of IPv6 with 128-bit addresses. IPv6 does not eliminate addresses, nor does it mandate NAT. Option A is incorrect; IPv6 headers are not smaller addresses but bigger addresses."
   },
   {
-    "question": "19. In the context of TCP’s AIMD (Additive Increase, Multiplicative Decrease) algorithm, how does the congestion window (cwnd) evolve when no loss is detected?",
+    "question": "19. In the context of TCP\u00e2\u20ac\u2122s AIMD (Additive Increase, Multiplicative Decrease) algorithm, how does the congestion window (cwnd) evolve when no loss is detected?",
     "options": [
       "A. It increases linearly",
       "B. It decreases linearly",
       "C. It remains constant",
       "D. It immediately doubles every RTT"
     ],
-    "answer": "A",
+    "answer": 1,
     "explanation": "In the congestion-avoidance phase, TCP uses additive increase (a linear increment). Option D describes slow start's exponential growth, not the AIMD congestion avoidance."
   },
   {
@@ -211,8 +211,8 @@
       "C. It is used to determine the correct destination IP address",
       "D. It is used to reorder segments arriving out of sequence"
     ],
-    "answer": "B",
-    "explanation": "The TCP checksum is used to detect bit errors in the segment’s header and data fields. Flow control is handled by rwnd, IP addresses are in the IP header, and reordering is done by sequence numbers but not by the checksum."
+    "answer": 2,
+    "explanation": "The TCP checksum is used to detect bit errors in the segment\u00e2\u20ac\u2122s header and data fields. Flow control is handled by rwnd, IP addresses are in the IP header, and reordering is done by sequence numbers but not by the checksum."
   },
   {
     "question": "21. In a scenario where multiple TCP flows share a single bottleneck link, TCP tends to share the link fairly because:",
@@ -222,7 +222,7 @@
       "C. The AIMD algorithm will reduce the sending rate upon loss, encouraging fairness",
       "D. Each sender is using a different port"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "AIMD gradually increases the sending rate until loss is detected, then cuts the window, preventing one flow from monopolizing the link. Equal RTT or different ports do not guarantee fairness alone."
   },
   {
@@ -233,18 +233,18 @@
       "C. It handles out-of-order data by buffering at the receiver",
       "D. It is a connectionless transport-layer protocol"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "UDP does not include a mechanism for reordering or buffering out-of-order segments. It is connectionless, uses port numbers for mux/demux, and has an optional checksum for error detection."
   },
   {
-    "question": "23. During TCP’s three-way handshake, if the client sends a SYN and receives no response from the server before timeout, the client typically:",
+    "question": "23. During TCP\u00e2\u20ac\u2122s three-way handshake, if the client sends a SYN and receives no response from the server before timeout, the client typically:",
     "options": [
       "A. Terminates the connection immediately",
       "B. Initiates slow start with cwnd = 2 MSS",
       "C. Retransmits the SYN",
       "D. Closes the port to any new connections"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "If a SYN is not acknowledged, the client resends the SYN after a timeout (exponential backoff). Terminating immediately is not standard behavior, nor does it jump to slow start with cwnd=2 without receiving an ACK."
   },
   {
@@ -255,7 +255,7 @@
       "C. Triple-duplicate ACKs and timeouts",
       "D. The source port number"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "When TCP experiences multiple duplicate ACKs or a timeout, it infers congestion or packet loss. The urgent pointer is for urgent data, rwnd is for flow control at the receiver, and port numbers are for addressing."
   },
   {
@@ -263,10 +263,10 @@
     "options": [
       "A. A repeated urgent pointer field",
       "B. Receiving at least three duplicate ACKs",
-      "C. A sudden drop in the receiver’s advertised window",
+      "C. A sudden drop in the receiver\u00e2\u20ac\u2122s advertised window",
       "D. A special bit in the IP header"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Fast retransmit is triggered by three (or more) duplicate ACKs for the same sequence number, signifying likely segment loss. The other options are unrelated to fast retransmit."
   },
   {
@@ -274,11 +274,11 @@
     "options": [
       "A. Ensuring the network as a whole is not overloaded",
       "B. Providing guaranteed in-order packet delivery",
-      "C. Preventing the receiver’s buffer from overflowing",
+      "C. Preventing the receiver\u00e2\u20ac\u2122s buffer from overflowing",
       "D. Utilizing the maximum possible throughput on every link"
     ],
-    "answer": "C",
-    "explanation": "Flow control is about matching the sender’s sending rate to the receiver’s capacity. Congestion control handles the network's capacity (A), while in-order delivery (B) is enforced by sequence numbers and buffers."
+    "answer": 3,
+    "explanation": "Flow control is about matching the sender\u00e2\u20ac\u2122s sending rate to the receiver\u00e2\u20ac\u2122s capacity. Congestion control handles the network's capacity (A), while in-order delivery (B) is enforced by sequence numbers and buffers."
   },
   {
     "question": "27. Which of the following describes the RST flag in TCP?",
@@ -288,7 +288,7 @@
       "C. It sets the congestion window to zero",
       "D. It is part of the three-way handshake"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "The RST flag forcibly resets a connection if something goes wrong. FIN is for graceful termination, and RST is not used in normal three-way handshakes."
   },
   {
@@ -299,18 +299,18 @@
       "C. Perform reliable retransmissions on each lost packet",
       "D. Trigger TCP congestion control if too many losses occur"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "UDP does not implement congestion control by default; it will keep sending even under congestion, resulting in dropped packets. Options A, C, and D are TCP behaviors."
   },
   {
-    "question": "29. In the context of TCP’s timeout, why is an adaptive timeout mechanism (using EstimatedRTT and DevRTT) important?",
+    "question": "29. In the context of TCP\u00e2\u20ac\u2122s timeout, why is an adaptive timeout mechanism (using EstimatedRTT and DevRTT) important?",
     "options": [
       "A. It ensures the TCP checksum is accurate",
       "B. It reduces the need for flow control",
       "C. It adapts to varying RTTs to avoid spurious or delayed retransmissions",
       "D. It blocks the application until all data is acknowledged"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "TCP's adaptive timeout, based on EstimatedRTT and DevRTT, helps it dynamically adjust to changes in network delay. This avoids spurious timeouts or overly long waiting, which hamper performance."
   },
   {
@@ -321,7 +321,7 @@
       "C. Any detected packet reordering",
       "D. A timeout event"
     ],
-    "answer": "D",
+    "answer": 4,
     "explanation": "TCP Tahoe sets cwnd to 1 MSS on a timeout event. For triple-duplicate ACK, TCP Tahoe also reduces cwnd drastically, but the key feature is that a timeout always forces slow start in Tahoe."
   },
   {
@@ -332,7 +332,7 @@
       "C. Retransmissions caused by packet timeouts",
       "D. Sufficient buffer space for every packet"
     ],
-    "answer": "D",
+    "answer": 4,
     "explanation": "Having sufficient buffer space alone does not cause congestion; in fact, insufficient or finite buffering can lead to drops. Large bandwidth-delay products can lead to many packets in flight, contributing to congestion if not managed, while retransmissions also add to the problem."
   },
   {
@@ -343,8 +343,8 @@
       "C. That the segment must be dropped immediately",
       "D. That the connection is being reset"
     ],
-    "answer": "B",
-    "explanation": "The urgent pointer in TCP flags the receiver to handle the segment’s data with higher priority. It does not signal slow start, dropping, or resetting the connection."
+    "answer": 2,
+    "explanation": "The urgent pointer in TCP flags the receiver to handle the segment\u00e2\u20ac\u2122s data with higher priority. It does not signal slow start, dropping, or resetting the connection."
   },
   {
     "question": "33. The main purpose of the TCP persist timer is to:",
@@ -354,8 +354,8 @@
       "C. Restart slow start after idle time",
       "D. Terminate connections that have run out of sequence numbers"
     ],
-    "answer": "A",
-    "explanation": "The persist timer triggers the sender to probe the receiver’s window size to prevent a deadlock when rwnd is zero. Other options are unrelated to the persist timer."
+    "answer": 1,
+    "explanation": "The persist timer triggers the sender to probe the receiver\u00e2\u20ac\u2122s window size to prevent a deadlock when rwnd is zero. Other options are unrelated to the persist timer."
   },
   {
     "question": "34. In a data center environment, load balancing is often performed at which layer?",
@@ -365,7 +365,7 @@
       "C. Transport layer (possibly with specialized middleboxes)",
       "D. Application layer only"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Load balancers can operate at the transport layer, managing TCP connections to distribute incoming traffic among servers. They can also have application-layer intelligence, but commonly appear as transport-layer middleboxes."
   },
   {
@@ -376,7 +376,7 @@
       "C. It replaces IP at the network layer",
       "D. It uses a three-way handshake identical to TCP"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "QUIC runs on top of UDP to achieve quick handshake and flexible congestion control. It does not replace IP (a network-layer protocol) and does provide congestion control features."
   },
   {
@@ -387,7 +387,7 @@
       "C. It aims for faster window growth after a loss, then slows near Wmax",
       "D. It does not react to timeouts at all"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "TCP CUBIC quickly ramps up cwnd after a loss until approaching the previous maximum window (Wmax), then more gently increases to avoid overshooting. Option B is normal congestion avoidance, not CUBIC."
   },
   {
@@ -398,7 +398,7 @@
       "C. It requires that network devices always reorder packets",
       "D. It mandates that routers perform NAT functions by default"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "The end-to-end argument says many functions, including reliability and error recovery, are best handled end-to-end by the hosts rather than by the network core. The other choices are incorrect interpretations."
   },
   {
@@ -409,7 +409,7 @@
       "C. Filter or block undesired traffic to protect internal networks",
       "D. Enforce VLAN tagging on frames"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Firewalls inspect transport- and network-layer fields to allow or block traffic. NAT addresses address translation, VLAN tagging is link-layer, and waveforms are physical-layer tasks."
   },
   {
@@ -420,19 +420,19 @@
       "C. Offloading specialized network functions (e.g., NAT, firewall) from end hosts",
       "D. Restricting all connections to a single transport protocol"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "A middlebox can perform specialized tasks like NAT or firewall filtering, reducing the burden on end systems. They are not meant to intentionally increase latency or force a single transport protocol."
   },
   {
     "question": "40. Which scenario best illustrates a scenario requiring flow control rather than congestion control?",
     "options": [
-      "A. The sender is sending too quickly, causing the receiver’s buffer to overflow",
+      "A. The sender is sending too quickly, causing the receiver\u00e2\u20ac\u2122s buffer to overflow",
       "B. Multiple TCP flows saturate a bottleneck link in the network core",
       "C. Packet losses occur due to limited router queue capacity",
       "D. The network has a high round-trip time and large bandwidth"
     ],
-    "answer": "A",
-    "explanation": "Flow control deals with preventing the sender from overwhelming the receiver’s buffer. Options B and C highlight congestion control in the network. Option D is about bandwidth-delay product considerations, not directly flow control."
+    "answer": 1,
+    "explanation": "Flow control deals with preventing the sender from overwhelming the receiver\u00e2\u20ac\u2122s buffer. Options B and C highlight congestion control in the network. Option D is about bandwidth-delay product considerations, not directly flow control."
   },
   {
     "question": "41. In the network layer, forwarding is best defined as:",
@@ -442,7 +442,7 @@
       "C. Translating MAC addresses to IP addresses",
       "D. Providing guaranteed delivery for segments"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Forwarding (data-plane action) moves the packet inside a router from input to output. Planning the route is routing (control plane). MAC-IP translation is link-layer/ARP, and guaranteed delivery is a transport concern."
   },
   {
@@ -453,18 +453,18 @@
       "C. The data plane handles routing algorithms, and the control plane moves packets at line speed",
       "D. They are synonymous terms used interchangeably"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "The data plane is responsible for packet-level forwarding inside the router, while the control plane runs routing protocols (or SDN logic) to build/maintain the forwarding tables."
   },
   {
-    "question": "43. In a router’s input port, the reason for queuing might be:",
+    "question": "43. In a router\u00e2\u20ac\u2122s input port, the reason for queuing might be:",
     "options": [
       "A. The switch fabric is overloaded or not ready to accept the packet",
       "B. The router has no routing table entries",
       "C. The router is in slow-start phase",
       "D. The router is performing NAT"
     ],
-    "answer": "A",
+    "answer": 1,
     "explanation": "If the switch fabric or the output port is congested, packets queue at the input. NAT is not specifically related to input queuing, nor are routing table entries or slow-start relevant at the input port level."
   },
   {
@@ -475,18 +475,18 @@
       "C. Bus-based switching",
       "D. Packet-based scheduling"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Bus-based switching uses a single shared bus. Memory-based switching uses CPU and memory, while crossbar is an interconnection network with multiple concurrent paths, and packet scheduling is a separate concept."
   },
   {
     "question": "45. Head-of-line (HOL) blocking occurs when:",
     "options": [
-      "A. A router’s output buffer is completely full",
+      "A. A router\u00e2\u20ac\u2122s output buffer is completely full",
       "B. A packet at the front of the input queue prevents others behind it from advancing",
       "C. The routing table is missing an entry for a destination",
       "D. A link experiences a physical-layer failure"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "HOL blocking arises in input-queued routers where the packet at the front of the queue is blocked, preventing others behind it from reaching the switch fabric. Full output buffers can cause output queuing but not HOL blocking specifically."
   },
   {
@@ -497,7 +497,7 @@
       "C. Fragmentation",
       "D. Multiplexing"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "IP fragmentation occurs when a large IP datagram is split into smaller fragments to fit the link MTU. Reassembly is done at the destination. Encapsulation is different, and multiplexing is typically at the transport layer."
   },
   {
@@ -508,7 +508,7 @@
       "C. Indicates the number of bytes in the IP payload",
       "D. Is used to track the fragmentation offset"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "TTL is reduced by one at every router hop, discarding the packet if TTL hits zero. This prevents infinite looping. It is not the byte count, nor does it track fragmentation offset."
   },
   {
@@ -519,7 +519,7 @@
       "C. That 192.168.0.15 is a link-local address only",
       "D. A direct broadcast address for the 192.168.0.0 network"
     ],
-    "answer": "A",
+    "answer": 1,
     "explanation": "/24 means the first 24 bits (255.255.255.0) is the network portion. 192.168.0.x is typical private IP range, but 192.168.0.15 is not a broadcast address. Option C is incorrect because link-local is usually 169.254.x.x."
   },
   {
@@ -530,19 +530,19 @@
       "C. Segregating networks into strictly Class A, B, or C",
       "D. Abolishing hierarchical IP addressing"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "CIDR uses variable-length subnet masks and notation a.b.c.d/x. It moves away from the strict classes (A, B, C) and supports hierarchies via address aggregation."
   },
   {
     "question": "50. Which of the following does DHCP not typically provide to the client?",
     "options": [
-      "A. The client’s IP address lease",
-      "B. The DNS server’s IP address",
+      "A. The client\u00e2\u20ac\u2122s IP address lease",
+      "B. The DNS server\u00e2\u20ac\u2122s IP address",
       "C. The MAC address of the default gateway",
       "D. The IP address of the default gateway"
     ],
-    "answer": "C",
-    "explanation": "DHCP can provide the client’s IP, DNS server, default gateway IP, etc. It does not provide the MAC address of the gateway; that can be obtained via ARP locally."
+    "answer": 3,
+    "explanation": "DHCP can provide the client\u00e2\u20ac\u2122s IP, DNS server, default gateway IP, etc. It does not provide the MAC address of the gateway; that can be obtained via ARP locally."
   },
   {
     "question": "51. What is the purpose of the NAT (Network Address Translation) table in a NAT router?",
@@ -552,8 +552,8 @@
       "C. To manage flow control for all LAN devices",
       "D. To function as a default gateway for all routers in the Internet"
     ],
-    "answer": "B",
-    "explanation": "A NAT table keeps track of private IP/port to public IP/port translations. It doesn’t store unreachable addresses or manage flow control, and it’s not the global default gateway."
+    "answer": 2,
+    "explanation": "A NAT table keeps track of private IP/port to public IP/port translations. It doesn\u00e2\u20ac\u2122t store unreachable addresses or manage flow control, and it\u00e2\u20ac\u2122s not the global default gateway."
   },
   {
     "question": "52. One common motivation to use NAT in home networks is:",
@@ -563,8 +563,8 @@
       "C. IPv4 address scarcity, allowing many private IP devices behind one public IP",
       "D. Guaranteeing in-order delivery of segments"
     ],
-    "answer": "C",
-    "explanation": "NAT lets multiple local hosts share a single public IP, mitigating IPv4 scarcity. The other options are unrelated or incorrect with respect to NAT’s function."
+    "answer": 3,
+    "explanation": "NAT lets multiple local hosts share a single public IP, mitigating IPv4 scarcity. The other options are unrelated or incorrect with respect to NAT\u00e2\u20ac\u2122s function."
   },
   {
     "question": "53. In IPv6, the extension headers replace or reorganize which IPv4 features?",
@@ -574,7 +574,7 @@
       "C. ARP for interface resolution",
       "D. Urgent pointers in the transport header"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "IPv6 extension headers handle optional features that were part of the IPv4 options field. MAC resolution is done by NDP (replacing ARP), not by IPv6 extension headers."
   },
   {
@@ -582,10 +582,10 @@
     "options": [
       "A. IPv6 addresses are used by the network, but a NAT device modifies them",
       "B. IPv6 datagrams are encapsulated as payload in an IPv4 datagram for transport over IPv4 networks",
-      "C. IPv4 addresses are replaced by IPv6 in the router’s ARP cache",
+      "C. IPv4 addresses are replaced by IPv6 in the router\u00e2\u20ac\u2122s ARP cache",
       "D. The router always fragments the IPv6 packets to fit IPv4"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Tunneling puts the entire IPv6 packet inside an IPv4 packet to traverse IPv4-only segments. NAT or fragmentation is distinct from typical tunneling behavior."
   },
   {
@@ -596,7 +596,7 @@
       "C. IPv6 was abandoned for a new standard in 2010",
       "D. IPv6 uses the same 32-bit addressing scheme but in decimal"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "IPv6 adoption is gradual, with many networks partially deployed. It was not abandoned, uses 128-bit addresses (not 32-bit decimal), and the global transition is still ongoing."
   },
   {
@@ -607,7 +607,7 @@
       "C. At the final receiving host",
       "D. At every router the datagram traverses"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "IP fragments are reassembled by the destination host to avoid repeated re-fragmentation or partial reassembly at each router. Thus, the final host is responsible for reassembly."
   },
   {
@@ -618,29 +618,29 @@
       "C. It enables route aggregation, reducing the size of routing tables",
       "D. It prevents the creation of subnets smaller than /24"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "CIDR enables hierarchical structure so ISPs can advertise aggregated routes, greatly reducing the global routing table size. It does not prevent smaller subnets or ignore hierarchy."
   },
   {
-    "question": "58. In the data plane, a router’s main function is:",
+    "question": "58. In the data plane, a router\u00e2\u20ac\u2122s main function is:",
     "options": [
       "A. Running dynamic routing protocols to build global topology",
       "B. Examining incoming packets and forwarding them based on the forwarding table",
       "C. Managing application-layer encryption keys",
       "D. Performing DNS lookups for client hosts"
     ],
-    "answer": "B",
-    "explanation": "Data-plane functionality deals with forwarding packets using the router’s forwarding table. The other tasks (routing protocols, encryption, DNS) are outside the typical data-plane forwarding function."
+    "answer": 2,
+    "explanation": "Data-plane functionality deals with forwarding packets using the router\u00e2\u20ac\u2122s forwarding table. The other tasks (routing protocols, encryption, DNS) are outside the typical data-plane forwarding function."
   },
   {
     "question": "59. In a router architecture, the high-speed switching fabric connects:",
     "options": [
       "A. The transport layer to the network layer",
       "B. Input ports to output ports internally",
-      "C. The router’s CPU directly to the Internet",
+      "C. The router\u00e2\u20ac\u2122s CPU directly to the Internet",
       "D. MAC addresses to IP addresses"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "The switching fabric is the internal router component that transfers packets from input ports to output ports. It does not handle MAC-IP mappings or external CPU connections in that sense."
   },
   {
@@ -651,7 +651,7 @@
       "C. Scheduling (deciding which queued packet to send next)",
       "D. Sending frames over the link-layer protocol"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Updating the routing table is a control-plane function typically handled by the routing processor. Output ports handle buffering, scheduling, and link-layer transmission tasks."
   },
   {
@@ -662,7 +662,7 @@
       "C. Dropping the earliest arrived packet in the queue",
       "D. Dropping a random packet in the queue to avoid bias"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Tail drop discards the newly arriving packet when the buffer has no free space. Early-arrived or random packet drops are different policies (drop-front, random early detection, etc.)."
   },
   {
@@ -673,19 +673,19 @@
       "C. Dropping all lower-priority packets on arrival",
       "D. Serving all packets from the highest priority class until empty"
     ],
-    "answer": "B",
-    "explanation": "Round Robin rotates between traffic classes, sending one packet from each class’s queue in sequence if available. The other options describe different scheduling or dropping behaviors."
+    "answer": 2,
+    "explanation": "Round Robin rotates between traffic classes, sending one packet from each class\u00e2\u20ac\u2122s queue in sequence if available. The other options describe different scheduling or dropping behaviors."
   },
   {
     "question": "63. In Weighted Fair Queuing (WFQ), each traffic class is assigned a weight. This means:",
     "options": [
       "A. All classes get exactly the same throughput",
-      "B. Classes with higher weights get a larger share of the outgoing link’s bandwidth",
+      "B. Classes with higher weights get a larger share of the outgoing link\u00e2\u20ac\u2122s bandwidth",
       "C. Lower-weighted classes are completely starved of bandwidth",
       "D. Queue management is disabled"
     ],
-    "answer": "B",
-    "explanation": "Weighted Fair Queuing allocates bandwidth proportionally to the configured weights. It doesn’t starve lower-weight classes entirely, unless weights are set extremely low."
+    "answer": 2,
+    "explanation": "Weighted Fair Queuing allocates bandwidth proportionally to the configured weights. It doesn\u00e2\u20ac\u2122t starve lower-weight classes entirely, unless weights are set extremely low."
   },
   {
     "question": "64. A key motivation for software-defined networking (SDN) is to:",
@@ -695,8 +695,8 @@
       "C. Separate the control plane (global routing decisions) from the data plane (per-packet forwarding)",
       "D. Use 32-bit IP addressing with strict classful rules"
     ],
-    "answer": "C",
-    "explanation": "SDN’s main idea is to have a (logically) centralized control plane controlling distributed data-plane devices. This does not remove all middleboxes or revert to classful IP addressing."
+    "answer": 3,
+    "explanation": "SDN\u00e2\u20ac\u2122s main idea is to have a (logically) centralized control plane controlling distributed data-plane devices. This does not remove all middleboxes or revert to classful IP addressing."
   },
   {
     "question": "65. The OpenFlow abstraction of match plus action implies that:",
@@ -706,7 +706,7 @@
       "C. TCP acknowledges are used to define new flows",
       "D. The control plane only uses BGP for routing decisions"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "OpenFlow extends beyond destination-based forwarding: any set of header fields can be matched, and the action can be forward, drop, modify, etc. It does not rely solely on destination IP or BGP."
   },
   {
@@ -717,7 +717,7 @@
       "C. The MAC address of the switch CPU",
       "D. The queue length at the output port"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Generalized forwarding can match any fields in the link (Ethernet), network (IP), or transport (TCP/UDP) headers, not just the destination prefix or internal CPU MAC addresses."
   },
   {
@@ -728,7 +728,7 @@
       "C. Replaces DNS lookups with direct IP access",
       "D. Always enforces guaranteed delivery"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "RFC 3234 defines a middlebox as any intermediary device providing functions beyond standard IP forwarding. That can include NAT, firewall, proxy, load balancer, etc."
   },
   {
@@ -739,29 +739,29 @@
       "C. Caching and content adaptation",
       "D. Physical layer encoding of bits"
     ],
-    "answer": "D",
+    "answer": 4,
     "explanation": "Middleboxes operate at or above the network layer, providing NAT, firewalling, or caching. Physical layer bit encoding is not a middlebox function but a link-layer/physical-layer concern."
   },
   {
     "question": "69. One of the criticisms of NAT from a pure architectural standpoint is that it:",
     "options": [
-      "A. Doesn’t work for any IPv4 traffic",
+      "A. Doesn\u00e2\u20ac\u2122t work for any IPv4 traffic",
       "B. Violates the end-to-end principle by modifying port/address information in transit",
       "C. Provides universal addressability for all hosts inside the NAT",
       "D. Increases the size of IP headers"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "NAT changes source IP/port in transit, breaking the end-to-end principle that the network layer should be transparent to endpoints. NAT does work for IPv4, does not provide universal addressability, and does not typically enlarge IP headers."
   },
   {
-    "question": "70. Which best describes an IP router’s longest prefix matching?",
+    "question": "70. Which best describes an IP router\u00e2\u20ac\u2122s longest prefix matching?",
     "options": [
       "A. It searches for the route with the smallest possible netmask",
       "B. It picks the matching route with the highest prefix length (most specific) for the destination",
       "C. It discards the packet if multiple routes match",
       "D. It performs a random pick among all matching routes"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Longest prefix matching chooses the most specific route. If multiple prefixes match a destination, the route with the greatest prefix length is used, not a random choice or a smaller netmask."
   },
   {
@@ -770,9 +770,9 @@
       "A. They all have the same output port",
       "B. They have distinct input ports but share the same link",
       "C. They do not attempt to use the same input or output port at the same time",
-      "D. They exceed the router’s maximum throughput"
+      "D. They exceed the router\u00e2\u20ac\u2122s maximum throughput"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Crossbar allows parallel transfers as long as no two flows contend for the same input or output in that timeslot. If they share the same output, they must be serialized."
   },
   {
@@ -783,7 +783,7 @@
       "C. Each router interface has the same IP address",
       "D. Hosts never use default gateways"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Routers often connect to multiple networks, having multiple interfaces with distinct addresses. Hosts usually have fewer interfaces (wired, wireless). Routers do have IP addresses on each interface, and hosts can have default gateways."
   },
   {
@@ -794,18 +794,18 @@
       "C. It complicates reassembly at intermediate routers",
       "D. It can reduce overall efficiency and lead to performance overhead"
     ],
-    "answer": "D",
-    "explanation": "Fragmentation requires extra processing, overhead, and can cause issues if fragments are lost. IPv4 can handle fragments, but reassembly is done at endpoints. There’s no duplication of data, just overhead in headers."
+    "answer": 4,
+    "explanation": "Fragmentation requires extra processing, overhead, and can cause issues if fragments are lost. IPv4 can handle fragments, but reassembly is done at endpoints. There\u00e2\u20ac\u2122s no duplication of data, just overhead in headers."
   },
   {
     "question": "74. When an organization changes ISPs, which feature of hierarchical addressing allows simpler reconfiguration of addresses?",
     "options": [
-      "A. NAT ensures the internal subnet doesn’t have to be renumbered externally",
+      "A. NAT ensures the internal subnet doesn\u00e2\u20ac\u2122t have to be renumbered externally",
       "B. DNS caching makes all addresses permanent",
       "C. BGP prevents any route updates from being propagated",
       "D. Using classful addressing like Class A or Class B"
     ],
-    "answer": "A",
+    "answer": 1,
     "explanation": "NAT decouples internal private addresses from a single public address block, simplifying changes when changing ISPs. BGP route updates do propagate changes, and classful addressing is outdated."
   },
   {
@@ -816,7 +816,7 @@
       "C. Prohibits extension headers",
       "D. Only supports manual IP configuration"
     ],
-    "answer": "A",
+    "answer": 1,
     "explanation": "IPv6 does not include a header checksum to simplify processing. While addresses are bigger, the header format is also changed (not identical), extension headers are allowed, and it supports auto-configuration (SLAAC)."
   },
   {
@@ -827,8 +827,8 @@
       "C. Routers can only forward based on destination IP addresses",
       "D. The controller is physically attached to every router port"
     ],
-    "answer": "B",
-    "explanation": "SDN centralizes the control logic in one (or a cluster of) controller(s). The routers/switches run simpler data-plane functions and rely on the controller for consistent global decisions. Option A is the opposite of SDN’s approach."
+    "answer": 2,
+    "explanation": "SDN centralizes the control logic in one (or a cluster of) controller(s). The routers/switches run simpler data-plane functions and rely on the controller for consistent global decisions. Option A is the opposite of SDN\u00e2\u20ac\u2122s approach."
   },
   {
     "question": "77. Why do some middleboxes, like NAT or firewall, break the end-to-end principle?",
@@ -838,7 +838,7 @@
       "C. They never store any connection-related information",
       "D. They strictly implement a transparent bridging function"
     ],
-    "answer": "A",
+    "answer": 1,
     "explanation": "Middleboxes often modify or inspect transport-layer headers, maintaining state, thus violating pure end-to-end transparency. The other options do not typically break the end-to-end argument."
   },
   {
@@ -849,18 +849,18 @@
       "C. Delivery reliability, bounded delay, or bandwidth",
       "D. Source port usage"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Best-effort means no guaranteed delivery reliability, timing constraints, or bandwidth. The network still does forward packets using routing tables, but with no performance guarantees."
   },
   {
-    "question": "79. Which best describes a firewall’s typical position in a corporate network?",
+    "question": "79. Which best describes a firewall\u00e2\u20ac\u2122s typical position in a corporate network?",
     "options": [
       "A. Placed at every router interface inside the core to authenticate each packet",
       "B. Operating on the end hosts only",
       "C. Located at the network perimeter to filter incoming/outgoing traffic",
       "D. Eliminated entirely in favor of NAT"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "A firewall typically resides at the boundary between the internal corporate network and external networks, filtering traffic in and out. It is not necessarily placed at every router interface or replaced by NAT."
   },
   {
@@ -871,7 +871,7 @@
       "C. The network is in slow start",
       "D. The link layer is using error correction"
     ],
-    "answer": "A",
+    "answer": 1,
     "explanation": "When a switch does not find a matching rule in the flow table, it can forward the packet (or a copy) to the controller for instructions. Options B, C, and D are unrelated triggers."
   }
 ]

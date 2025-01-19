@@ -7,7 +7,7 @@
       "C. A program in execution that includes code, data, and stack segments",
       "D. A single thread of execution that shares no memory with others"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "A process is a program in execution with code, data, stack, and potentially a heap. A is just a program on disk, B is incomplete, and D is misleading because processes can have multiple threads."
   },
   {
@@ -18,13 +18,13 @@
       "C. I/O status information",
       "D. Virtual memory translation tables for all processes"
     ],
-    "answer": "D",
+    "answer": 4,
     "explanation": "A PCB does not store the full translation tables for all processes, only information relevant to its own process. A, B, and C are part of the PCB."
   },
   {
     "question": "Which of the following states does not appear in the typical process state diagram?",
     "options": ["A. New", "B. Ready", "C. Running", "D. Swapped"],
-    "answer": "D",
+    "answer": 4,
     "explanation": "The classic diagram includes New, Ready, Running, Waiting, and Terminated. 'Swapped' is not part of the standard five-state model."
   },
   {
@@ -35,7 +35,7 @@
       "C. A single instruction executed on the CPU",
       "D. The static code that resides in secondary storage"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "In a time-shared OS, 'process' typically means a user program or task that can be preempted to share CPU time. The other choices do not accurately represent a process in such systems."
   },
   {
@@ -46,7 +46,7 @@
       "C. To handle all I/O-bound processes in the system",
       "D. To swap processes out of and into memory"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "The long-term (job) scheduler decides which processes enter the ready queue, controlling the degree of multiprogramming. A is the short-term scheduler, C is not specific to scheduling, and D is medium-term scheduling."
   },
   {
@@ -57,7 +57,7 @@
       "C. Context-switch time",
       "D. Interrupt service routine overhead"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Context-switch time is the overhead of saving the old process state and loading the new process state. The other options refer to different types of overhead or routines."
   },
   {
@@ -68,7 +68,7 @@
       "C. Is in a deadlocked state",
       "D. Is actively running but invisible to the user"
     ],
-    "answer": "A",
+    "answer": 1,
     "explanation": "A zombie process has finished execution but remains in the process table, awaiting the parent to read its exit status. The other options describe different states."
   },
   {
@@ -79,18 +79,18 @@
       "C. The child has finished execution and called exit()",
       "D. The parent is exiting and the system does not allow child to continue"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "If the child has already finished and called exit(), there is no need for the parent to terminate it. The other choices are valid reasons to terminate a child."
   },
   {
     "question": "Two processes are said to be cooperating if:",
     "options": [
       "A. They perform the same function",
-      "B. They share data and can affect each other’s execution",
+      "B. They share data and can affect each other\u00e2\u20ac\u2122s execution",
       "C. They both run only in user mode",
       "D. Their program counters move in lockstep"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Cooperating processes affect each other and often share data or resources. The other statements do not define cooperation."
   },
   {
@@ -101,7 +101,7 @@
       "C. No synchronization because the consumer never outpaces the producer",
       "D. A physically separate computer for each process"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Producer-Consumer involves sharing a buffer and requires IPC (shared memory or message passing) plus synchronization to coordinate production and consumption."
   },
   {
@@ -112,7 +112,7 @@
       "C. The unbounded buffer requires busy waiting, the bounded buffer does not",
       "D. In the unbounded buffer, only one producer can exist"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "The bounded buffer has a fixed capacity, whereas the unbounded buffer can grow indefinitely. The other statements do not correctly characterize the difference."
   },
   {
@@ -120,11 +120,11 @@
     "options": [
       "A. send(message)",
       "B. receive(message)",
-      "C. Direct memory access to another process’s data",
+      "C. Direct memory access to another process\u00e2\u20ac\u2122s data",
       "D. Blocking or non-blocking modes of send and receive"
     ],
-    "answer": "C",
-    "explanation": "Message passing does not allow direct access to another process’s memory. The others (send, receive, blocking/non-blocking) are standard message-passing operations."
+    "answer": 3,
+    "explanation": "Message passing does not allow direct access to another process\u00e2\u20ac\u2122s memory. The others (send, receive, blocking/non-blocking) are standard message-passing operations."
   },
   {
     "question": "With direct communication, processes must name each other explicitly. This implies:",
@@ -134,18 +134,18 @@
       "C. A link is established only if they share a mailbox",
       "D. Communication is always asynchronous"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Direct communication typically allows exactly one link per process pair. Multiple links and mailboxes refer to indirect communication."
   },
   {
     "question": "In indirect communication, messages are sent to and received from:",
     "options": [
       "A. Specific processes",
-      "B. The network card’s buffer",
+      "B. The network card\u00e2\u20ac\u2122s buffer",
       "C. Mailboxes or ports",
-      "D. The CPU’s registers"
+      "D. The CPU\u00e2\u20ac\u2122s registers"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Indirect communication uses mailboxes (ports) as the destination or source of messages. Direct communication addresses specific processes."
   },
   {
@@ -156,7 +156,7 @@
       "C. Must store the message in CPU registers",
       "D. Can specify an optional timeout"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "A blocking (synchronous) send blocks the sender until the receiver or system acknowledges receipt. Non-blocking would allow immediate continuation."
   },
   {
@@ -167,7 +167,7 @@
       "C. Unbounded capacity",
       "D. Negative capacity"
     ],
-    "answer": "D",
+    "answer": 4,
     "explanation": "There is no concept of 'negative capacity' in standard message-passing. Zero, bounded, and unbounded are the common queue capacities."
   },
   {
@@ -178,7 +178,7 @@
       "C. RPCs require that processes share the same memory space",
       "D. RPCs cannot use stubs for parameter marshalling"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "RPC abstracts the network so remote calls appear local. Processes do not need shared memory, and stubs are used to handle parameter marshalling."
   },
   {
@@ -189,7 +189,7 @@
       "C. Network socket",
       "D. Message queue"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Ordinary (anonymous) pipes generally require a parent-child relationship. Named pipes do not have this requirement."
   },
   {
@@ -200,7 +200,7 @@
       "C. Named pipes are limited to one writer and one reader",
       "D. Ordinary pipes cannot transfer data between processes"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Named pipes can be used by any processes (no parent-child restriction) and can be bidirectional. Ordinary pipes are unidirectional by default."
   },
   {
@@ -211,7 +211,7 @@
       "C. Medium-term scheduler",
       "D. Swapper"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "The short-term scheduler is the CPU scheduler. Long-term is the job scheduler, and medium-term manages swapping."
   },
   {
@@ -222,7 +222,7 @@
       "C. Swapping processes between main memory and disk",
       "D. Handling interrupts"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Medium-term scheduling swaps processes in and out of memory. Long-term scheduling adds new jobs, and short-term scheduling selects the next process to run."
   },
   {
@@ -233,7 +233,7 @@
       "C. It never voluntarily yields the CPU",
       "D. It runs only in kernel mode"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "I/O-bound processes spend more time on I/O than CPU. A is CPU-bound, and the others are unrelated to the I/O-bound definition."
   },
   {
@@ -244,7 +244,7 @@
       "C. Terminate the current process immediately",
       "D. Switch from user mode to kernel mode"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "fork() duplicates the calling process. exec() replaces the process image, exit() terminates, and switching modes is a general system call function."
   },
   {
@@ -255,7 +255,7 @@
       "C. The parent process is put into the ready state",
       "D. The parent and child continue to run concurrently"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "wait() makes the parent block until the child finishes, returning the child's exit status. The other statements are incorrect or incomplete."
   },
   {
@@ -266,7 +266,7 @@
       "C. A process updates a file, causing another process to crash",
       "D. The OS reboots"
     ],
-    "answer": "A",
+    "answer": 1,
     "explanation": "Cascading termination kills children if their parent terminates (depending on the OS). The other scenarios are unrelated."
   },
   {
@@ -277,7 +277,7 @@
       "C. They share a region of memory they can read/write directly",
       "D. They cannot run on the same machine"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Shared memory allows direct read/write in a shared region. Message passing involves send/receive operations."
   },
   {
@@ -288,7 +288,7 @@
       "C. BUFFER_SIZE - 1",
       "D. Unlimited"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "The algorithm uses BUFFER_SIZE-1 elements to avoid confusion between full and empty states."
   },
   {
@@ -299,8 +299,8 @@
       "C. An interrupt routine within the kernel",
       "D. A memory address used for local variables"
     ],
-    "answer": "B",
-    "explanation": "A thread is a unit of CPU utilization that shares the process’s resources (code, data, files) with other threads."
+    "answer": 2,
+    "explanation": "A thread is a unit of CPU utilization that shares the process\u00e2\u20ac\u2122s resources (code, data, files) with other threads."
   },
   {
     "question": "Which of the following is not typically an advantage of using multiple threads within a single process?",
@@ -310,7 +310,7 @@
       "C. Simpler code organization for concurrent tasks",
       "D. Guaranteed improvement in memory usage"
     ],
-    "answer": "D",
+    "answer": 4,
     "explanation": "Multithreading does not guarantee lower memory usage. A, B, and C are recognized benefits of multithreading."
   },
   {
@@ -321,7 +321,7 @@
       "C. The system has multiple CPUs",
       "D. No processes are waiting"
     ],
-    "answer": "A",
+    "answer": 1,
     "explanation": "Concurrency on a single core occurs via context switching. Parallelism (B) requires multiple cores or CPUs."
   },
   {
@@ -332,7 +332,7 @@
       "C. Economy",
       "D. Automatic data consistency without synchronization"
     ],
-    "answer": "D",
+    "answer": 4,
     "explanation": "Threads can introduce data consistency challenges requiring synchronization. A, B, C are typical benefits."
   },
   {
@@ -343,7 +343,7 @@
       "C. Multiple threads each have distinct data structures",
       "D. There is no need for synchronization"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Data parallelism involves splitting the same data across threads. A is task parallelism."
   },
   {
@@ -354,7 +354,7 @@
       "C. User-level threads are managed by a user-space library and often cheaper to create",
       "D. Kernel-level threads are invisible to the operating system"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "User-level threads are handled by libraries in user space, typically making creation/switching faster. Kernel-level threads are scheduled by the OS."
   },
   {
@@ -365,7 +365,7 @@
       "C. Multiple user threads are mapped to a single kernel thread",
       "D. No thread is visible to the kernel at all"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Many-to-one maps many user-level threads onto one kernel thread. A is one-to-one."
   },
   {
@@ -376,7 +376,7 @@
       "C. One user-level thread is mapped to multiple kernel threads",
       "D. Threads are not used at all"
     ],
-    "answer": "A",
+    "answer": 1,
     "explanation": "One-to-one means each user thread has a corresponding kernel thread. B is many-to-one."
   },
   {
@@ -387,7 +387,7 @@
       "C. Does not allow parallel execution on multicore systems",
       "D. Is only supported by Windows XP"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Many-to-many lets multiple user threads map to multiple kernel threads, enabling parallel execution if enough kernel threads exist."
   },
   {
@@ -398,7 +398,7 @@
       "C. Is a variation of many-to-many that allows binding a user thread to a kernel thread",
       "D. Only works on single-core systems"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "The two-level model extends many-to-many by allowing some user threads to bind to specific kernel threads."
   },
   {
@@ -409,7 +409,7 @@
       "C. An API to create, manage, and synchronize threads",
       "D. A dedicated hardware scheduling queue"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "A thread library is a software interface for creating and managing threads. Hardware concurrency and scheduling queues are OS/hardware features."
   },
   {
@@ -420,7 +420,7 @@
       "C. A hardware-based thread package in multicore CPUs",
       "D. A library that only runs on Mac OS X"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Pthreads (POSIX threads) is a standard (IEEE 1003.1c) API for threads, commonly used on UNIX-like systems."
   },
   {
@@ -431,7 +431,7 @@
       "C. The overhead of creating threads on demand is reduced",
       "D. Only one thread runs at a time"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Thread pools reduce the cost of creating and destroying threads by keeping a pool of ready threads. The other options are incorrect or opposite."
   },
   {
@@ -442,7 +442,7 @@
       "C. Thread creation/management is done by compilers or runtime libraries",
       "D. It is only used for single-threaded applications"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Implicit threading shifts thread management from the programmer to compilers or runtime systems. A is explicit threading."
   },
   {
@@ -453,7 +453,7 @@
       "C. An API supporting shared-memory multiprocessing via compiler directives",
       "D. A message-passing library for distributed systems"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "OpenMP uses compiler directives for parallel shared-memory programming. The other options are incorrect or unrelated."
   },
   {
@@ -464,7 +464,7 @@
       "C. Apple for macOS and iOS concurrency",
       "D. IBM mainframe systems"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "GCD is an Apple technology introduced for macOS and iOS to manage concurrency through dispatch queues."
   },
   {
@@ -475,7 +475,7 @@
       "C. Ignore threads and replicate the entire process state",
       "D. Immediately call exec() to avoid complexities"
     ],
-    "answer": "D",
+    "answer": 4,
     "explanation": "Many recommend calling exec() promptly after fork() in a multithreaded program to avoid synchronization hazards."
   },
   {
@@ -486,7 +486,7 @@
       "C. Delivering the signal only to the thread that caused it",
       "D. Any of the above, depending on the implementation"
     ],
-    "answer": "D",
+    "answer": 4,
     "explanation": "Different operating systems and signal types can deliver signals in various ways: to one thread, all threads, or a designated manager thread."
   },
   {
@@ -497,7 +497,7 @@
       "C. A thread switches from user mode to kernel mode",
       "D. Two threads merge into one"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Thread cancellation is terminating a thread prematurely. The other statements describe different or nonexistent operations."
   },
   {
@@ -508,7 +508,7 @@
       "C. The program uses checkpoints for safe termination",
       "D. The thread ignores the request until it finishes"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Asynchronous cancellation stops the target thread right away, which can leave resources in an inconsistent state."
   },
   {
@@ -519,7 +519,7 @@
       "C. It can leave shared data in an inconsistent state",
       "D. It is always slower than deferred cancellation"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Immediate termination can prevent proper cleanup, risking inconsistencies. Other statements are incorrect or unrelated."
   },
   {
@@ -530,7 +530,7 @@
       "C. Periodically checks if it should be canceled at defined points",
       "D. Ignores any cancellation signals"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Deferred cancellation requires the thread to reach a 'cancellation point' to terminate safely. Immediate termination is asynchronous."
   },
   {
@@ -541,7 +541,7 @@
       "C. It is delivered to all threads",
       "D. It depends on the implementation and the type of signal"
     ],
-    "answer": "D",
+    "answer": 4,
     "explanation": "Different signals and OS designs can deliver signals to one or more threads. It's implementation-dependent."
   },
   {
@@ -552,7 +552,7 @@
       "C. They are unrelated; threads can exist without a process",
       "D. Only single-threaded processes are allowed"
     ],
-    "answer": "A",
+    "answer": 1,
     "explanation": "A process owns resources (memory, files) and can have multiple threads that the OS schedules. Threads do not exist independently of processes."
   },
   {
@@ -563,7 +563,7 @@
       "C. Thread switching never requires saving state",
       "D. They are identical operations"
     ],
-    "answer": "A",
+    "answer": 1,
     "explanation": "Switching threads within the same process typically has less overhead than switching between processes. The other statements are incorrect."
   },
   {
@@ -574,7 +574,7 @@
       "C. Can only be done with single-threaded processes",
       "D. Must be avoided for performance reasons"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "With multiple cores, threads can run in parallel. A is incorrect, and concurrency typically improves performance."
   },
   {
@@ -585,7 +585,7 @@
       "C. Passing parameters to functions",
       "D. Using expensive hardware"
     ],
-    "answer": "B",
+    "answer": 2,
     "explanation": "Correctly handling concurrency and synchronization is the major difficulty. The other factors are secondary."
   },
   {
@@ -596,7 +596,7 @@
       "C. They can better handle multiple tasks (UI, background work) concurrently",
       "D. It forces the OS to use more memory"
     ],
-    "answer": "C",
+    "answer": 3,
     "explanation": "Multithreading allows applications to remain responsive and handle multiple tasks simultaneously. The other statements are incorrect or irrelevant."
   }
 ]
