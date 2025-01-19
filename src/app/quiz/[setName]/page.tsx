@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 type Question = {
   question: string;
   options: string[];
-  answer: string;
+  answer: number;
   explanation: string;
 };
 
@@ -26,10 +26,10 @@ export default function QuizPage() {
       .catch(() => setQuestionList([]));
   }, [setName]);
 
-  const handleOptionSelect = (optionChar: string) => {
+  const handleOptionSelect = (optionIndex: number) => {
     if (!isAnswered) {
       const updatedAnswers = [...userAnswers];
-      updatedAnswers[currentQuestion] = optionChar;
+      updatedAnswers[currentQuestion] = optionIndex.toString();
       setUserAnswers(updatedAnswers);
       setIsAnswered(true);
     }
@@ -47,12 +47,16 @@ export default function QuizPage() {
   const computeScore = () => {
     let score = 0;
     for (let i = 0; i < questionList.length; i++) {
-      if (userAnswers[i] === questionList[i].answer) {
+      if (userAnswers[i] === questionList[i].answer.toString()) {
         score++;
       }
     }
     return score;
   };
+
+  const currentQ = questionList[currentQuestion];
+  const userChoice = userAnswers[currentQuestion];
+  const isCorrect = userChoice === currentQ?.answer.toString();
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -64,18 +68,17 @@ export default function QuizPage() {
         return;
       }
 
-      const keyMap: Record<string, string> = {
-        a: "A",
-        b: "B",
-        c: "C",
-        d: "D",
-        "1": "A",
-        "2": "B",
-        "3": "C",
-        "4": "D",
-      };
-      const pressedKey = e.key.toLowerCase();
-      if (keyMap[pressedKey]) {
+      // Add a check to ensure currentQ is defined
+      if (!currentQ) return;
+
+      // Dynamically create keyMap based on the number of options
+      const keyMap: Record<string, number> = {};
+      currentQ.options.forEach((_, idx) => {
+        keyMap[(idx + 1).toString()] = idx + 1;
+      });
+
+      const pressedKey = e.key;
+      if (keyMap[pressedKey] !== undefined) {
         e.preventDefault();
         handleOptionSelect(keyMap[pressedKey]);
       }
@@ -85,7 +88,7 @@ export default function QuizPage() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [currentQuestion, isAnswered, showScore]);
+  }, [currentQuestion, isAnswered, showScore, currentQ]);
 
   if (showScore) {
     const finalScore = computeScore();
@@ -101,7 +104,7 @@ export default function QuizPage() {
         </p>
         <hr className="my-4" />
         {questionList.map((q, idx) => {
-          const isCorrect = userAnswers[idx] === q.answer;
+          const isCorrect = userAnswers[idx] === q.answer.toString();
           return (
             <div key={idx} className="mb-6">
               <p className="font-semibold">
@@ -131,10 +134,6 @@ export default function QuizPage() {
     return <div>Loading questions...</div>;
   }
 
-  const currentQ = questionList[currentQuestion];
-  const userChoice = userAnswers[currentQuestion];
-  const isCorrect = userChoice === currentQ?.answer;
-
   return (
     <div className="mx-auto max-w-xl p-4">
       <h1 className="text-2xl font-bold mb-2">{setName} Quiz</h1>
@@ -147,7 +146,7 @@ export default function QuizPage() {
         {currentQ.options.map((option, idx) => (
           <button
             key={idx}
-            onClick={() => handleOptionSelect(option.charAt(0))}
+            onClick={() => handleOptionSelect(idx)}
             disabled={isAnswered}
             className={`text-start bg-blue-500 bg-opacity-20 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 ${
               isAnswered ? "opacity-50 cursor-not-allowed" : ""
@@ -158,7 +157,7 @@ export default function QuizPage() {
         ))}
 
         <p className="text-sm text-gray-500">
-          (You can also press A/B/C/D or 1/2/3/4 on your keyboard)
+          (You can also press {currentQ.options.map((_, idx) => idx + 1).join('/')} on your keyboard)
         </p>
       </div>
 
@@ -171,7 +170,7 @@ export default function QuizPage() {
               <p className="text-red-600 font-semibold">Incorrect!</p>
               <p>
                 The correct answer is:{" "}
-                <span className="text-green-600">{currentQ.answer}</span>
+                <span className="text-red-600">{currentQ.options[currentQ.answer]}</span>
               </p>
             </div>
           )}
