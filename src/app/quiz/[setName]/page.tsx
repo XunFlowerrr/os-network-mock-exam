@@ -140,7 +140,7 @@ export default function QuizPage() {
       <p className="mb-4 text-gray-700">
         Question {currentQuestion + 1} of {questionList.length}
       </p>
-      <h2 className="text-lg font-medium mb-4">{currentQ.question}</h2>
+      <h2 className="text-lg font-medium mb-4" style={{ whiteSpace: 'pre-line' }}>{currentQ.question}</h2>
 
       <div className="flex flex-col space-y-2 mb-8">
         {currentQ.options.map((option, idx) => (
