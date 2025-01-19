@@ -113,12 +113,13 @@ export default function QuizPage() {
               <p>
                 Your answer:{" "}
                 <span className={isCorrect ? "text-green-600" : "text-red-600"}>
-                  {userAnswers[idx] || "N/A"}
+                  {/* cast to int and add 1 */}
+                  {parseInt(userAnswers[idx]) + 1}
                 </span>
               </p>
               {!isCorrect && (
                 <p>
-                  Correct answer: <span className="text-green-600">{q.answer}</span>
+                  Correct answer: <span className="text-green-600">{q.answer + 1}</span>
                 </p>
               )}
               <p className="mt-2 italic">Explanation: {q.explanation}</p>
