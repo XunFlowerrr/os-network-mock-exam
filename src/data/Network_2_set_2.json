@@ -7,7 +7,7 @@
       "C. It detects bit errors that occur during transmission",
       "D. It allows the receiver to request retransmission of a lost segment"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "Checksums are used to detect bit-level corruption in transmitted data. They do not inform on order (A), correctness at higher levels (B), or request retransmissions directly (D)."
   },
   {
@@ -18,7 +18,7 @@
       "C. The network will attempt to deliver packets but offers no delivery guarantees",
       "D. Each packet is routed strictly on the shortest path"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "Best-effort means the network tries to deliver packets but does not guarantee delivery, in-order arrival, or reliability."
   },
   {
@@ -29,7 +29,7 @@
       "C. Source port 7000, destination port 7000",
       "D. Source port 6500, destination port 6500"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "When replying, the roles of source and destination ports reverse: host B\u2019s source port becomes 7000, and it sends back to A at port 6500."
   },
   {
@@ -40,7 +40,7 @@
       "C. A single UDP socket cannot send segments to more than one distinct remote IP",
       "D. Multiplexing and demultiplexing are handled by router hardware, not end hosts"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "UDP uses destination port for demultiplexing. If the same destination port is used, the receiver\u2019s OS will direct those incoming UDP segments to the same socket unless further logic is applied."
   },
   {
@@ -51,7 +51,7 @@
       "C. SYN flag in the TCP header",
       "D. The error-detection code in the Ethernet trailer"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "TCP uses ACK segments to confirm correct receipt of data. The other items (IP checksums, SYN flags, or Ethernet error codes) do not serve that function for TCP data correctness."
   },
   {
@@ -62,7 +62,7 @@
       "C. In the end systems (hosts) at the network\u2019s edge",
       "D. Directly in the physical layer hardware"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "Transport-layer functionality (TCP, UDP) primarily resides in the end hosts, not in routers or lower-layer hardware."
   },
   {
@@ -73,7 +73,7 @@
       "C. By sending a NAK to itself",
       "D. By periodically polling the receiver for status"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Timeouts are a key mechanism for the sender to detect possible loss (or corruption if unACKed) of a transmitted packet."
   },
   {
@@ -84,7 +84,7 @@
       "C. It directly delivers packets to MAC addresses at the link layer",
       "D. It ensures the fastest route is always chosen"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Transport-layer protocols provide end-to-end logical communication between application processes running on different hosts."
   },
   {
@@ -95,7 +95,7 @@
       "C. Concatenating data from multiple sockets and creating a new segment",
       "D. Checking the ARP cache for the destination\u2019s MAC address"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Demultiplexing uses the incoming segment\u2019s header fields to direct the segment\u2019s payload to the correct receiving socket (process)."
   },
   {
@@ -106,7 +106,7 @@
       "C. Multiplexing allows data from different sockets to be encapsulated for transmission",
       "D. It is only available in TCP and not supported by UDP"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "Multiplexing means taking data from multiple sockets or processes and packaging it into transport segments. Both TCP and UDP do this, though in different ways."
   },
   {
@@ -117,7 +117,7 @@
       "C. Allow the receiver to detect duplicates and to properly order segments",
       "D. Increase the checksum\u2019s accuracy"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "Sequence numbers help the receiver identify duplicate or out-of-order packets. They are not directly used for checksums or eliminating retransmissions."
   },
   {
@@ -128,7 +128,7 @@
       "C. Random delivery with potential reordering, minimal overhead",
       "D. Guaranteed bandwidth and delay"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "TCP provides reliability, in-order data delivery, congestion control, and flow control. UDP is connectionless, with no guaranteed ordering or reliability."
   },
   {
@@ -139,7 +139,7 @@
       "C. The receiver detected an error or missing data in the last packet",
       "D. The receiver buffer is full"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "A NAK generally notifies the sender that the receiver found an error or cannot use the current packet, prompting retransmission."
   },
   {
@@ -150,7 +150,7 @@
       "C. Always ensures strictly in-order delivery of packets",
       "D. Reserves a fixed bandwidth over the duration of the connection"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "UDP is connectionless, lightweight, does not incorporate reliability or congestion control by default, and does not guarantee in-order delivery."
   },
   {
@@ -161,7 +161,7 @@
       "C. To indicate how many bytes of data are contained in the segment payload",
       "D. To ensure all segments are of equal size"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "The UDP length field tells the receiver how many bytes are in the UDP segment (header + data), allowing the receiver to extract the correct amount of payload data."
   },
   {
@@ -172,7 +172,7 @@
       "C. To resend packets that may have been lost or corrupted",
       "D. To encrypt the segment payload"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "Retransmissions allow the receiver to receive data that was lost or corrupted on the first send. They are not for buffering or encryption."
   },
   {
@@ -183,7 +183,7 @@
       "C. The channel does not allow flow control messages",
       "D. The channel reorders packets but never loses them"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Rdt3.0 is designed for channels where packets can be corrupted or lost, requiring timeouts and retransmissions."
   },
   {
@@ -194,7 +194,7 @@
       "C. GBN uses cumulative ACKs, while SR sends ACKs for specific packets allowing out-of-order buffering",
       "D. SR relies on negative ACKs exclusively, while GBN uses positive ACKs"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "In GBN, the receiver sends cumulative ACKs and discards out-of-order packets. In SR, the receiver individually ACKs each packet and can buffer out-of-order data."
   },
   {
@@ -205,7 +205,7 @@
       "C. It cuts cwnd in half",
       "D. It immediately closes the connection"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Upon timeout, TCP Reno sets its congestion window to 1 MSS and re-enters slow start."
   },
   {
@@ -216,7 +216,7 @@
       "C. Cut cwnd in half, enter fast recovery",
       "D. Close the connection after repeated triple duplicate ACKs"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "TCP Reno halves the congestion window on triple duplicate ACKs (fast retransmit/fast recovery) instead of dropping it to 1 MSS."
   },
   {
@@ -227,7 +227,7 @@
       "C. The receiver window (rwnd)",
       "D. The NAT translation window"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "In TCP, the receiver window (rwnd) is used by the receiver to inform the sender of how much buffer space is available."
   },
   {
@@ -238,7 +238,7 @@
       "C. A three-way handshake with SYN, SYN+ACK, and ACK messages",
       "D. Sending a FIN message to start the connection and an ACK to confirm"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "TCP uses a three-way handshake: client sends SYN, server responds with SYN+ACK, client replies with ACK."
   },
   {
@@ -249,7 +249,7 @@
       "C. The receiver\u2019s IP address and average queue length at the router",
       "D. The size of the port number fields"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "TCP throughput is roughly (cwnd / RTT). The link capacity matters but is not the direct formula used to approximate short-term throughput."
   },
   {
@@ -260,7 +260,7 @@
       "C. TCP\u2019s congestion control (AIMD) reduces sending rate upon detecting loss, preventing single flows from hogging the link",
       "D. It uses a priority-based queue in the router"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "TCP\u2019s Additive Increase, Multiplicative Decrease (AIMD) fosters fairness by scaling back sending rate on packet loss, distributing bandwidth among flows over time."
   },
   {
@@ -271,7 +271,7 @@
       "C. 32 bytes",
       "D. 40 bytes"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "TCP\u2019s base header is 20 bytes without additional options like timestamps."
   },
   {
@@ -282,7 +282,7 @@
       "C. The window size is unbounded, so it\u2019s always fully utilized",
       "D. The checksum is too large for smaller packets"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Stop-and-wait allows only one outstanding packet at a time, so the ratio of transmission time to round-trip time affects utilization."
   },
   {
@@ -293,7 +293,7 @@
       "C. Sequence number and Acknowledgment number",
       "D. Receive window size and Congestion window"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Both TCP and UDP headers include source and destination port fields. Sequence/ACK numbers and windows are unique to TCP."
   },
   {
@@ -304,7 +304,7 @@
       "C. Sends exactly one packet at a time before waiting for an ACK",
       "D. Does not require timers"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Selective Repeat can buffer out-of-order data and acknowledge each packet individually, reducing unnecessary retransmissions."
   },
   {
@@ -315,7 +315,7 @@
       "C. The receiver expects the next packet to begin at byte n-1",
       "D. A negative ACK for packet n is requested"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Cumulative acknowledgments confirm receipt of all bytes up to and including n, indicating readiness for the next data byte."
   },
   {
@@ -326,7 +326,7 @@
       "C. The timer is ignored, letting it expire naturally",
       "D. The timer is multiplied by two to handle congestion"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Upon receiving an ACK for the outstanding segment, TCP cancels the corresponding retransmission timer."
   },
   {
@@ -335,7 +335,7 @@
       "A. TRUE",
       "B. FALSE"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Flow control ensures the sender does not exceed the receiver\u2019s advertised window. If the window is smaller than an MSS, the sender can only send up to that window size."
   },
   {
@@ -346,7 +346,7 @@
       "C. Multiple senders saturate a shared link at the same time",
       "D. RTT variations cause repeated timeouts"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Flow control is specifically about ensuring the receiver isn\u2019t overwhelmed. Congestion control deals with the network\u2019s capacity constraints."
   },
   {
@@ -357,7 +357,7 @@
       "C. 0.85",
       "D. 0"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "If the ratio of goodput to send rate is 0.85, then 15% (i.e., 0.15) of transmitted packets are not contributing to final successful delivery."
   },
   {
@@ -368,7 +368,7 @@
       "C. Sending a triple handshake message to the router",
       "D. The receiver ignoring the advertised window"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "End-to-end congestion control relies on the sender\u2019s inference (loss, RTT) to adjust sending rate, not explicit router feedback."
   },
   {
@@ -379,7 +379,7 @@
       "C. Keep cwnd fixed for each RTT and do not react to losses",
       "D. Decrease cwnd by 1 each RTT until a threshold, then reset the connection"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "AIMD increments congestion window by ~1 per RTT (additive increase) but halves cwnd upon loss (multiplicative decrease)."
   },
   {
@@ -390,7 +390,7 @@
       "C. Remains constant at 1 MSS throughout slow start",
       "D. Decreases by half each time a new ACK arrives"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Slow start doubles the congestion window every RTT until it reaches the threshold or detects a loss, leading to an exponential increase."
   },
   {
@@ -401,7 +401,7 @@
       "C. CUBIC never does a multiplicative decrease on loss",
       "D. CUBIC only works with small bandwidth-delay products"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "TCP CUBIC modifies window growth to a function of (t - K)^3, allowing faster ramp-up until near the previous Wmax, then slower approach to reduce overshoot."
   },
   {
@@ -412,7 +412,7 @@
       "C. It uses router CPU cycles to read application-layer data",
       "D. It uses ICMP messages to track session states"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "NAT devices maintain a translation table that maps private (IP, port) pairs to public (IP, port) pairs so that return traffic can be correctly forwarded."
   },
   {
@@ -423,7 +423,7 @@
       "C. Requires a global redefinition of TCP congestion control",
       "D. Is mandated by IPv6"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "NAT disrupts the end-to-end model by altering IP addresses and port numbers in transit, complicating application protocols that expect full transparency."
   },
   {
@@ -434,7 +434,7 @@
       "C. 128 bits",
       "D. 256 bits"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "IPv6 uses 128-bit addresses, a major expansion from IPv4\u2019s 32-bit addresses."
   },
   {
@@ -445,7 +445,7 @@
       "C. Dropping all IPv6 headers during transit",
       "D. Aggregating multiple IPv6 addresses into one IPv4 address"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Tunneling involves encapsulating the IPv6 datagram inside an IPv4 datagram for IPv4-only network segments."
   },
   {
@@ -456,7 +456,7 @@
       "C. To remove the time-to-live (TTL) feature",
       "D. To incorporate transport-layer reliability into IP"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "IPv6\u2019s design motivations include simpler headers (no checksums, no fragmentation by routers), flexible extension headers, and an expanded address space."
   },
   {
@@ -467,7 +467,7 @@
       "C. IPv6 is used only in data centers with no consumer adoption",
       "D. IPv6 does not support fragmentation under any circumstances"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Many ISPs and domains support both IPv4 and IPv6; the transition is gradual and ongoing. Some fragmentation can occur at endpoints in IPv6 but not typically at routers."
   },
   {
@@ -478,7 +478,7 @@
       "C. Network layer",
       "D. Data link layer"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "DHCP is an application-layer protocol that helps devices obtain network configuration, such as IP addresses, from a DHCP server."
   },
   {
@@ -489,7 +489,7 @@
       "C. Offer, Discover, Request, ACK",
       "D. SYN, SYN+ACK, ACK"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "A new host broadcasts a DHCP Discover, the server replies with an Offer, the host sends a Request, and finally the server sends an ACK."
   },
   {
@@ -500,7 +500,7 @@
       "C. Running a distance-vector routing algorithm",
       "D. Determining the next IP header checksum"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Data-plane forwarding is about moving incoming packets from input interfaces to the appropriate output interface based on the forwarding table."
   },
   {
@@ -511,7 +511,7 @@
       "C. The output port has infinite buffers",
       "D. The router performs no IP checksum"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "HOL blocking means the first packet in the input queue is blocked, preventing other packets from progressing, even if they could otherwise be switched to different outputs."
   },
   {
@@ -522,7 +522,7 @@
       "C. Round Robin",
       "D. Weighted Fair Queueing"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "Round Robin scheduling cycles through each queue, sending one packet from each class in turn."
   },
   {
@@ -533,7 +533,7 @@
       "C. FIFO (First-In-First-Out)",
       "D. Token Bucket shaping"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "With no differentiation among packets, a simple FIFO queue is typically used to send the earliest arrived packet first."
   },
   {
@@ -544,7 +544,7 @@
       "C. Avoid storing any forwarding state",
       "D. Use purely random forwarding decisions"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Generalized forwarding extends beyond destination-based forwarding by allowing matches on multiple header fields and a range of actions (drop, modify, forward, etc.)."
   },
   {
@@ -555,7 +555,7 @@
       "C. VLAN identifier",
       "D. Physical layer waveforms"
     ],
-    "answer": 4,
+    "answer": 3,
     "explanation": "OpenFlow can match on link (MAC), network (IP), and transport (TCP/UDP) headers, plus VLAN tags, but not on raw physical layer waveforms."
   },
   {
@@ -566,7 +566,7 @@
       "C. Providing specialized functions (e.g., NAT, firewall) beyond normal IP forwarding",
       "D. Doubling the maximum bandwidth on each link"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "Middleboxes do tasks such as NAT, firewalls, or caching, going beyond standard IP forwarding. They do not simply act as normal routers."
   },
   {
@@ -577,7 +577,7 @@
       "C. The transport layer is narrower than IP in the hourglass architecture",
       "D. The IP hourglass prevents any new application protocols from being developed"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "The hourglass principle highlights IP as the universal thin waist, supporting diverse link layers below and varied transport/application protocols above."
   },
   {
@@ -588,7 +588,7 @@
       "C. Transport layer",
       "D. Network layer"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "TCP operates in the transport layer and provides error detection/correction (via retransmissions) and reliable delivery."
   },
   {
@@ -599,7 +599,7 @@
       "C. To handle physical-layer issues like wave reflection",
       "D. To replace TCP with a simpler protocol"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "NAT helps multiple internal hosts share a single public IPv4 address, mitigating IPv4 address depletion. It does not address reliability or wave reflections."
   },
   {
@@ -610,7 +610,7 @@
       "C. Guaranteeing in-order delivery at the IP layer",
       "D. Forcing static routes for all segments"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "IPv6 omits router fragmentation and the IP header checksum, speeding up processing on intermediate routers."
   },
   {
@@ -621,7 +621,7 @@
       "C. The router\u2019s MAC address and a custom hop-limit value",
       "D. The entire forwarding table used by local routers"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "DHCP supplies IP configuration details to the host, including IP address, subnet mask, default gateway, and DNS server. It doesn\u2019t assign MAC addresses or supply routing tables."
   },
   {
@@ -632,7 +632,7 @@
       "C. It relied on the CPU to copy packets from input to output using system memory",
       "D. It required no CPU involvement"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "Early routers used a shared bus or CPU approach, copying each incoming packet into system memory and then to the output port, which can be a bottleneck but was simpler to implement."
   },
   {
@@ -643,7 +643,7 @@
       "C. It has no memory for storing packets",
       "D. It uses an extremely large header for every packet"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "In bus-based switching, only one packet can traverse the bus at any moment, limiting throughput if multiple ports need to send simultaneously."
   },
   {
@@ -654,7 +654,7 @@
       "C. TTL is set to zero in each IP header",
       "D. Each input port is assigned a unique MAC address"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Crossbar (multistage interconnection) can support multiple simultaneous transmissions if they don\u2019t conflict for the same output port. Conflicts require scheduling or queueing."
   },
   {
@@ -665,7 +665,7 @@
       "C. The link is completely idle",
       "D. The input port has enough buffer for all future traffic"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Queue overflow happens if packets arrive faster than they can be transmitted plus the finite buffer is full."
   },
   {
@@ -676,7 +676,7 @@
       "C. The router discards the newly arriving packet if the buffer is full",
       "D. The router floods all incoming packets out of every interface"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "Tail drop discards the arriving packet when the queue/buffer is full, ignoring priority or other policy."
   },
   {
@@ -687,7 +687,7 @@
       "C. Every class receives strictly equal bandwidth irrespective of packet size",
       "D. No queue can be served more than once"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Round Robin cycles through each queue, sending up to one packet from each active queue in turn."
   },
   {
@@ -698,7 +698,7 @@
       "C. Allocates bandwidth proportionally to weights assigned to each class",
       "D. Randomly selects a queue to send from"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "WFQ is like Round Robin with a weighting factor that gives certain queues proportionally more transmission opportunity based on assigned weights."
   },
   {
@@ -709,7 +709,7 @@
       "C. Forcing all hosts to use TCP only",
       "D. Eliminating all physical-layer upgrades"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Network neutrality concerns revolve around potential prioritization or throttling of specific traffic, affecting fairness and open access principles."
   },
   {
@@ -720,7 +720,7 @@
       "C. Source host reassembles fragments from different flows",
       "D. Link-layer devices handle fragmentation, not IP"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "In IPv4, routers can fragment if the packet is too large for the outgoing link MTU, but reassembly is done only at the destination host."
   },
   {
@@ -731,7 +731,7 @@
       "C. Prevent a packet from looping indefinitely by decrementing at each hop",
       "D. Mark packets for load balancing across multiple paths"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "TTL is decremented each time a packet passes through a router, and the packet is dropped when TTL reaches zero, preventing loops."
   },
   {
@@ -742,7 +742,7 @@
       "C. The first 22 bytes are for the subnet",
       "D. Only used for IPv6"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "/22 indicates that the top 22 bits define the subnet portion. The remaining bits define the host portion."
   },
   {
@@ -753,7 +753,7 @@
       "C. Update the ARP cache of all hosts in a broadcast domain",
       "D. Provide reliable data transfer at the transport layer"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "DHCP automatically configures hosts with IP addresses and other network parameters. Routing updates are handled by routing protocols, not DHCP."
   },
   {
@@ -764,7 +764,7 @@
       "C. 64 bits",
       "D. 128 bits"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "IPv4 uses 32-bit addresses, usually represented in dotted-decimal notation, e.g., 192.168.0.1."
   },
   {
@@ -775,7 +775,7 @@
       "C. It never uses hardware acceleration",
       "D. It only runs on the control processor"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "The data plane is responsible for forwarding packets at line speed using the existing forwarding table, possibly implemented in specialized hardware."
   },
   {
@@ -786,7 +786,7 @@
       "C. The sender\u2019s timer is disabled after the first packet is sent",
       "D. The receiver never acknowledges any packets"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "In Go-Back-N, cumulative ACKs force the sender to retransmit the lost packet and all subsequent packets in the window, as it can\u2019t be certain which ones arrived successfully after the gap."
   },
   {
@@ -797,7 +797,7 @@
       "C. Buffers out-of-order packets, requiring fewer retransmissions from the sender",
       "D. Does not support timeouts"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "By buffering out-of-order packets and ACKing individually, SR avoids resending all subsequent packets after one loss, improving efficiency."
   },
   {
@@ -808,7 +808,7 @@
       "C. Closes the connection and notifies the user",
       "D. Resets all timers and continues sending with no changes"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Fast retransmit triggers an immediate retransmission of the missing segment, and in TCP Reno it halves the cwnd while entering fast recovery."
   },
   {
@@ -819,7 +819,7 @@
       "C. Only if the receiving socket has the correct sequence number",
       "D. Only if the sender\u2019s port is 0"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Multiple senders sending to the same UDP destination port on a host typically end up at the same receiving socket if the OS is using a single socket for that port."
   },
   {
@@ -830,7 +830,7 @@
       "C. Trigger an immediate FIN to close the connection",
       "D. Expand the TCP window beyond 65535 bytes"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "The URG pointer allows some data to be flagged as urgent, prompting the receiver to process it ahead of other queued bytes."
   },
   {
@@ -841,7 +841,7 @@
       "C. The physical layer changes IP addresses frequently",
       "D. The three-way handshake is repeated every RTT"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Large bandwidth-delay products require a large congestion window for high throughput. Classic TCP might grow cwnd slowly, underutilizing the link."
   },
   {
@@ -852,7 +852,7 @@
       "C. It prohibits any sub-delegations of IP addresses",
       "D. It eliminates NAT usage"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Route aggregation allows multiple contiguous address blocks to be advertised under one prefix, shrinking routing tables in the core."
   },
   {
@@ -863,7 +863,7 @@
       "C. Split the control plane from the data plane, enabling centralized network logic",
       "D. Remove forwarding decisions from switches"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "SDN decouples the network\u2019s control plane from the data plane and places control logic in a (logically) centralized controller, simplifying data-plane devices."
   },
   {
@@ -874,7 +874,7 @@
       "C. Tunneling: encapsulate IPv6 packets in IPv4 datagrams",
       "D. NAT66"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "Tunneling IPv6 packets within IPv4 datagrams lets IPv6 routers communicate over an IPv4-only region. NAT66 is IPv6-to-IPv6 NAT, not relevant here."
   }
 ]

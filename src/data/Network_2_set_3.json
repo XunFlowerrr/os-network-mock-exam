@@ -8,7 +8,7 @@
       "a, b",
       "b, c"
     ],
-    "answer": 5,
+    "answer": 4,
     "explanation": "rdt3.0 assumes that the channel may corrupt or lose packets, requiring timeouts and retransmissions."
   },
   {
@@ -20,7 +20,7 @@
       "a, c",
       "b, c"
     ],
-    "answer": 4,
+    "answer": 3,
     "explanation": "UDP is connectionless and lacks congestion control but does not guarantee in-order delivery."
   },
   {
@@ -32,7 +32,7 @@
       "a, c",
       "b, c"
     ],
-    "answer": 4,
+    "answer": 3,
     "explanation": "In slow start, cwnd grows exponentially. On timeout, cwnd returns to 1, but a triple-duplicate ACK halves cwnd (not 1)."
   },
   {
@@ -43,7 +43,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Go-Back-N uses a sliding window at the sender and cumulative ACKs at the receiver. It discards out-of-order packets."
   },
   {
@@ -54,7 +54,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Flow control is driven by receiver-advertised window. The sender will not exceed that window."
   },
   {
@@ -65,7 +65,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "The three-way handshake is SYN, SYN+ACK, ACK. FIN is used for connection teardown, not in the handshake."
   },
   {
@@ -76,7 +76,7 @@
       "a, c",
       "b"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "rdt2.2 does not use NAKs; it relies on duplicate ACKs to indicate corrupted or missing data and a checksum to detect errors."
   },
   {
@@ -87,7 +87,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "UDP is chosen when some packet loss is acceptable, and the app wants low overhead or minimal delay. Reliable delivery is not guaranteed by UDP."
   },
   {
@@ -98,7 +98,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Selective Repeat individually acknowledges each packet, allowing out-of-order buffering, and typically each unACKed packet has a timer."
   },
   {
@@ -109,7 +109,7 @@
       "a, c",
       "a, b, c, d"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Best-effort packet forwarding is a network-layer function, not transport. The other three are typical transport duties."
   },
   {
@@ -120,7 +120,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Stop-and-wait sends exactly one packet, then waits for an ACK. This yields low utilization on large delay-bandwidth product links."
   },
   {
@@ -131,7 +131,7 @@
       "b, c, d",
       "a, b, c, d"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Sequence and acknowledgment numbers primarily handle reliability and ordering. Ports identify sockets, urgent pointer is for urgent data, not strictly ordering."
   },
   {
@@ -143,7 +143,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Slow start doubles cwnd every RTT, ignoring the other claims about staying constant or only using the receiver window."
   },
   {
@@ -154,7 +154,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "AIMD linearly increases cwnd during congestion avoidance and halves it on loss. cwnd does not remain fixed if no loss occurs."
   },
   {
@@ -165,7 +165,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Flow control is between endpoints. The receiver\u2019s window dictates sending capacity, not the router."
   },
   {
@@ -176,7 +176,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Fast retransmit occurs on triple duplicate ACK, prompting immediate retransmission. It does not set cwnd to 1, but halves it."
   },
   {
@@ -187,7 +187,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Cumulative ACKs confirm all data up to a point is received. They are characteristic of Go-Back-N. Storing out-of-order data is optional or not typical in GBN."
   },
   {
@@ -200,7 +200,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "An overly short RTO leads to frequent, spurious retransmissions if ACKs arrive just after the early timeout."
   },
   {
@@ -211,7 +211,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "The receiver window is for flow control, specifying how many bytes the receiver can handle. Congestion control is separate."
   },
   {
@@ -222,7 +222,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Stop-and-wait can cause retransmissions if an ACK is lost, and it uses timers and seq. numbers. It does not allow multiple in-flight segments."
   },
   {
@@ -233,7 +233,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "TCP teardown typically requires each side to send its own FIN. The states include FIN_WAIT_1, FIN_WAIT_2, etc. The handshake for teardown is often described as four steps, not a three-way handshake."
   },
   {
@@ -244,7 +244,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Pipelining can require extra complexity (e.g., buffering) but improves utilization. Retransmissions are still needed on loss."
   },
   {
@@ -255,7 +255,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "DNS typically uses UDP for queries, resorting to TCP for zone transfers or large responses, and it translates names to IP addresses."
   },
   {
@@ -266,7 +266,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "TCP typically uses packet loss and rising RTT as congestion indicators. Explicit queue occupancy signals would be network-assisted, which classic TCP does not rely on."
   },
   {
@@ -277,7 +277,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "In fast recovery, cwnd is set to ssthresh + 3*MSS after triple dup ACK. The sender recovers by sending additional segments until an ACK arrives acknowledging new data. It does not set cwnd=1 in fast recovery."
   },
   {
@@ -288,7 +288,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "UDP checksums detect bit corruption. A corrupted packet is usually discarded. There's no ordering guarantee."
   },
   {
@@ -299,7 +299,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "The length field covers the total UDP segment (header + data). The size can vary; it's not fixed at 20 bytes."
   },
   {
@@ -310,7 +310,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 4,
+    "answer": 3,
     "explanation": "TCP handshake: client -> SYN, server -> SYN+ACK, client -> ACK. The ACK from the client increments the server's ISN."
   },
   {
@@ -321,7 +321,7 @@
       "b, c",
       "a, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "TCP sequence numbers correspond to bytes in the data stream. Each new connection chooses an initial sequence number that\u2019s not necessarily 0."
   },
   {
@@ -332,7 +332,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "The network layer handles routing and addressing. Encryption is not a standard network-layer function (that\u2019s typically higher-layer or IPsec)."
   },
   {
@@ -344,7 +344,7 @@
       "a, c",
       "b, c"
     ],
-    "answer": 4,
+    "answer": 3,
     "explanation": "A large RTO leads to slow detection of packet loss, so the link might remain underutilized or waiting. Spurious retransmissions come from too short an RTO."
   },
   {
@@ -355,7 +355,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "TCP uses an EWMA to compute EstimatedRTT, and sets RTO to EstimatedRTT plus a safety margin (4 * DevRTT). SampleRTT can differ from the average."
   },
   {
@@ -366,7 +366,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "rdt2.0 uses checksums for error detection and uses NAK for errors. Duplicate detection by seq. number is introduced in 2.1. So 2.0 doesn't rely heavily on that mechanism."
   },
   {
@@ -377,7 +377,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "HOL blocking can degrade throughput by blocking subsequent packets behind the front packet. It's harmful, not helpful."
   },
   {
@@ -388,7 +388,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Routers may fragment, storing offset info. Reassembly, however, happens only at the final destination, not at each router."
   },
   {
@@ -399,7 +399,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "IPv6 uses 128-bit addresses and has a fixed 40-byte base header. Routers don\u2019t do fragmentation in IPv6."
   },
   {
@@ -410,7 +410,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "DHCP automates IP assignment (no manual config) and typically uses the four-message sequence to provide the host\u2019s networking parameters."
   },
   {
@@ -421,7 +421,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "NAT breaks the end-to-end argument by rewriting addresses. It does allow multiple hosts behind one IP and does modify source info."
   },
   {
@@ -432,7 +432,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Destination-based forwarding uses the IP address for decisions and often employs longest prefix matching. Partial matches alone are insufficient; it must match a prefix in the forwarding table."
   },
   {
@@ -443,7 +443,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "ICMP is for error/diagnostic reporting (like unreachable). It does not modify the payload of user data packets."
   },
   {
@@ -454,7 +454,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "ARP broadcasts a request to map IP to MAC. It does not update DNS, which resolves domain names to IP addresses."
   },
   {
@@ -465,7 +465,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Crossbar allows parallel transfers for distinct inputs/outputs, generally offering higher throughput than a single bus."
   },
   {
@@ -476,7 +476,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "WFQ assigns bandwidth proportionally to weights. If all weights are equal, it effectively does round-robin scheduling."
   },
   {
@@ -487,7 +487,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Tail drop discards the newly arrived packet if the queue is full, which can cause TCP flows to synchronize. It is not inherently fair across flows."
   },
   {
@@ -498,7 +498,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "NAT typically modifies IP/port fields, mapping internal addresses to one external IP with distinct ports. Internal hosts do not each get a global IP."
   },
   {
@@ -509,7 +509,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "IPv6 extension headers follow the base header for optional features. Not all extension headers must be processed by every router, and they do not replace the entire IPv6 base header."
   },
   {
@@ -520,7 +520,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "ICMPv6 merges ARP functionality with neighbor discovery. It is also used for error reporting, so (b) is false."
   },
   {
@@ -531,7 +531,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "IP is best-effort and does not guarantee reliability or order. So (b) and (c) are correct, (a) is false."
   },
   {
@@ -542,7 +542,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Forwarding is local to a router (input to output). Routing finds entire paths. (c) is reversed: forwarding is per-router, routing is network-wide."
   },
   {
@@ -553,7 +553,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "TTL is decremented each hop and the packet is dropped at zero. It does not identify the transport protocol."
   },
   {
@@ -564,7 +564,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Classful addressing is mostly replaced by CIDR. NAT modifies source IP (and possibly port)."
   },
   {
@@ -576,7 +576,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "A DHCP Offer includes the IP address lease info. Usually it\u2019s broadcast or unicast to an IP of 0.0.0.0, not specifically to the client\u2019s MAC at layer 2 in typical practice. Domain name is optional or not always present."
   },
   {
@@ -587,7 +587,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "ARP requests typically use the MAC broadcast (FF:FF:FF:FF:FF:FF). DNS queries do not typically use link-layer broadcast."
   },
   {
@@ -598,7 +598,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Transport-layer demux can use (source IP, source port, destination IP, destination port). MAC addresses are link-layer specifics, not used by transport-level demux."
   },
   {
@@ -609,7 +609,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Ephemeral ports are usually in a range above 1024. They\u2019re assigned by the OS for client connections."
   },
   {
@@ -620,7 +620,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "In link-state, routers flood cost info and each router computes shortest paths using that global knowledge. (b) is false."
   },
   {
@@ -631,7 +631,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Distance-vector does risk count-to-infinity. Routers exchange vectors with neighbors and store next-hop info and cost."
   },
   {
@@ -642,7 +642,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "TCP includes its own checksum. IPv4 has a header checksum only, not covering the entire TCP segment. A bad TCP checksum leads to the segment being discarded."
   },
   {
@@ -653,7 +653,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 4,
+    "answer": 3,
     "explanation": "MSS is the maximum data portion. It excludes headers and can be negotiated in the SYN exchange."
   },
   {
@@ -664,7 +664,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "Round Robin visits each queue in a cycle. If all classes are equally weighted, it can achieve fairness. Earliest arrival is FIFO, not RR."
   },
   {
@@ -675,7 +675,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "WFQ tries to allocate bandwidth proportionally to weights among classes. It doesn\u2019t remove queueing delay, but manages classes concurrently."
   },
   {
@@ -686,7 +686,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Scheduling can reduce HOL blocking, which is otherwise detrimental. The front packet blocks subsequent packets that might otherwise move."
   },
   {
@@ -697,7 +697,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Classful addressing is mostly obsolete. CIDR uses variable-length masks, and NAT allows private IP reuse."
   },
   {
@@ -708,7 +708,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "IPv4\u2019s checksum covers only the header. Every router updates fields like TTL, requiring a new checksum calculation."
   },
   {
@@ -719,7 +719,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "The DHCP Request is usually broadcast to ensure the Offer from the selected server is confirmed. The message can request additional parameters, e.g., DNS servers."
   },
   {
@@ -730,7 +730,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "URG signals urgent data to the receiving application. The network layer does not drop other packets for URG."
   },
   {
@@ -741,7 +741,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "TTL halts indefinite looping. Routing issues can cause loops, but IP reassembly is done at the destination, not each router."
   },
   {
@@ -752,7 +752,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 3,
+    "answer": 2,
     "explanation": "TCP uses packet loss signals for congestion and can also consider RTT. It is end-to-end, no explicit router support required. So statement (b) is incorrect."
   },
   {
@@ -763,7 +763,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "TCP can handle out-of-order arrival by buffering. It does not simply discard them. So (c) is false."
   },
   {
@@ -774,7 +774,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "The ID field labels fragments belonging to the same datagram so the destination can reassemble them. It\u2019s not a TCP flow control mechanism."
   },
   {
@@ -785,7 +785,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "The version field (4 bits) indicates IPv4. The source address is 32 bits, not 128. The header length is in 32-bit words."
   },
   {
@@ -798,7 +798,7 @@
       "a, c",
       "b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "The IP options field is variable length and can be processed by routers for functionalities like route recording or timestamps."
   },
   {
@@ -809,7 +809,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Queueing delay forms when arrivals exceed service rate. NAT has no direct effect on queueing. If the buffer is full, drops occur."
   },
   {
@@ -820,7 +820,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "The total length includes both the IP header and payload, telling the total size of the datagram. It can be up to 65535, not fixed at that value."
   },
   {
@@ -831,7 +831,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "The network layer does best-effort delivery; the link layer provides reliability hop-by-hop, not end-to-end. The transport layer does process-to-process."
   },
   {
@@ -842,7 +842,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "The Next Header is 8 bits, analogous to the IPv4 Protocol field, and can point to extension headers or a transport protocol."
   },
   {
@@ -853,7 +853,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "Forwarding tables match on IP prefixes to choose output interfaces, often using longest prefix match. Port numbers are for transport-layer demux, not IP forwarding."
   },
   {
@@ -865,7 +865,7 @@
       "a, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "ARP tables map IP addresses to MAC addresses. The statement says \u201c(a) It maps MAC addresses to IP addresses,\u201d but ARP is actually IP->MAC. So (a) is reversed. (c) is not correct; ARP is used by the link layer/Internet stack to send frames."
   },
   {
@@ -876,7 +876,7 @@
       "a, b",
       "a, b, c"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "DHCP ACK finalizes the lease, confirming the IP address for the client. The ACK can be broadcast or unicast, depending on the environment, so (b) is not strictly always true."
   },
   {
@@ -887,7 +887,7 @@
       "b, c",
       "a, b, c"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "QUIC is built on UDP and combines security and transport setup in a single handshake, not the TCP three-way handshake."
   }
 ]
