@@ -1,17 +1,38 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { getDefaultQuestionSetList } from "@/lib/action/questionSet.action";
+import { IQuestionSetMeta } from "@/lib/database/model/questionSetMeta.model";
+import {
+  LoginLink,
+  LogoutLink,
+  RegisterLink,
+} from "@kinde-oss/kinde-auth-nextjs";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
 export default function Home() {
   // Update sets state to handle objects with name and displayName
+
+  const { isAuthenticated, user } = useKindeBrowserClient();
+
+  console.log(isAuthenticated);
+  console.log(user);
   const [sets, setSets] = useState<{ name: string; displayName: string }[]>([]);
   const [fileData, setFileData] = useState<any>(null);
   const [renameSet, setRenameSet] = useState("");
+  const [defaultSets, setDefaultSets] = useState<IQuestionSetMeta[]>([]);
 
   useEffect(() => {
-    fetch("/api/sets")
-      .then((res) => res.json())
-      .then((data) => setSets(data));
+    async function fetchData() {
+      try {
+        const sets = await getDefaultQuestionSetList();
+
+        setDefaultSets(sets);
+      } catch (error) {
+        console.error("Error fetching default question sets:", error);
+      }
+    }
+    fetchData();
   }, []);
 
   // Handle file import
@@ -65,6 +86,15 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-xl p-4">
+      {isAuthenticated ? (
+        <LogoutLink>Logout</LogoutLink>
+      ) : (
+        <>
+          <LoginLink>Sign in</LoginLink>
+          <RegisterLink>Sign up</RegisterLink>
+        </>
+      )}
+
       {/* File import interface */}
       {/* <div className="mb-4">
         <label className="mr-2">Import new question set:</label>
@@ -92,13 +122,11 @@ export default function Home() {
 
       <h1 className="text-2xl font-bold mb-4">Welcome to the Quiz Home</h1>
       <ul>
-        {sets.map((set, index) => (
+        {defaultSets.map((set, index) => (
           <li key={index} className="mb-2">
-            <Link href={`/quiz/${set.name}`}>
+            <Link href={`/quiz/${set.questionSetId}`}>
               <div className="flex bg-slate-300 bg-opacity-20 p-2 rounded-md cursor-pointer hover:scale-[101%] transition-all duration-75">
-                <span className="hover">
-                  {set.displayName}
-                </span>
+                <span className="hover">{set.title}</span>
               </div>
             </Link>
           </li>
