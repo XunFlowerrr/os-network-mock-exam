@@ -9,6 +9,12 @@ type Question = {
   explanation: string;
 };
 
+type QuizData = {
+  title: string;
+  description: string;
+  questions: Question[];
+};
+
 export default function QuizPage() {
   const pathname = usePathname();
   const segments = pathname.split("/");
@@ -19,10 +25,15 @@ export default function QuizPage() {
   const [userAnswers, setUserAnswers] = useState<string[]>([]);
   const [isAnswered, setIsAnswered] = useState(false);
   const [showScore, setShowScore] = useState(false);
+  const [quizData, setQuizData] = useState<QuizData | null>(null);
 
   useEffect(() => {
     import(`@/data/${setName}.json`)
-      .then((data) => setQuestionList(data.default as Question[]))
+      .then((data) => {
+        const quizData = data.default as QuizData;
+        setQuestionList(quizData.questions);
+        setQuizData(quizData);
+      })
       .catch(() => setQuestionList([]));
   }, [setName]);
 
@@ -137,7 +148,8 @@ export default function QuizPage() {
 
   return (
     <div className="mx-auto max-w-xl p-4">
-      <h1 className="text-2xl font-bold mb-2">{setName} Quiz</h1>
+      <h1 className="text-2xl font-bold mb-2">{quizData?.title} Quiz</h1>
+      {/* <p className="mb-4 text-gray-700">{quizData?.description}</p> */}
       <p className="mb-4 text-gray-700">
         Question {currentQuestion + 1} of {questionList.length}
       </p>

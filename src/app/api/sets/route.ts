@@ -5,8 +5,18 @@ import path from "path";
 export async function GET() {
   const dataPath = path.join(process.cwd(), "src", "data");
   const files = fs.readdirSync(dataPath);
-  // Return only .json files
-  const jsonFiles = files.filter((file) => file.endsWith(".json"));
+  // Return only .json files with name and displayName
+  const jsonFiles = files
+    .filter((file) => file.endsWith(".json"))
+    .map((file) => {
+      const filePath = path.join(dataPath, file);
+      const fileContents = fs.readFileSync(filePath, "utf-8");
+      const jsonData = JSON.parse(fileContents);
+      return {
+        name: file.replace(".json", ""),
+        displayName: jsonData.title,
+      };
+    });
   return NextResponse.json(jsonFiles);
 }
 

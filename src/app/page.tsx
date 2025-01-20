@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function Home() {
-  const [sets, setSets] = useState<string[]>([]);
+  // Update sets state to handle objects with name and displayName
+  const [sets, setSets] = useState<{ name: string; displayName: string }[]>([]);
   const [fileData, setFileData] = useState<any>(null);
   const [renameSet, setRenameSet] = useState("");
 
@@ -65,10 +66,10 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-xl p-4">
       {/* File import interface */}
-      <div className="mb-4">
+      {/* <div className="mb-4">
         <label className="mr-2">Import new question set:</label>
         <input type="file" accept=".json" onChange={handleFileImport} />
-      </div>
+      </div> */}
 
       {/* Optional preview */}
       {fileData && <pre>{JSON.stringify(fileData, null, 2)}</pre>}
@@ -91,12 +92,14 @@ export default function Home() {
 
       <h1 className="text-2xl font-bold mb-4">Welcome to the Quiz Home</h1>
       <ul>
-        {sets.map((setName) => (
-          <li key={setName} className="mb-2">
-            <Link href={`/quiz/${setName.replace(".json", "")}`}>
-              <span className="text-blue-600 hover:underline">
-                {setName.replace(".json", "")}
-              </span>
+        {sets.map((set, index) => (
+          <li key={index} className="mb-2">
+            <Link href={`/quiz/${set.name}`}>
+              <div className="flex bg-slate-300 bg-opacity-20 p-2 rounded-md cursor-pointer hover:scale-[101%] transition-all duration-75">
+                <span className="hover">
+                  {set.displayName}
+                </span>
+              </div>
             </Link>
           </li>
         ))}
