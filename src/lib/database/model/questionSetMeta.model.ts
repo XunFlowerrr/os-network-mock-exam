@@ -4,8 +4,9 @@ import mongoose, { Schema, model, Document } from "mongoose";
 
 export interface IQuestionSetMeta extends Document {
   title: string;
-  defaultLoad: boolean;
+  public: boolean;
   questionSetId: mongoose.Types.ObjectId; // Reference to QuestionSet
+  ownerId: string;
   description?: string;
   // ...existing code...
 }
@@ -13,7 +14,8 @@ export interface IQuestionSetMeta extends Document {
 const QuestionSetMetaSchema = new Schema<IQuestionSetMeta>(
   {
     title: { type: String, required: true },
-    defaultLoad: { type: Boolean, default: false },
+    public: { type: Boolean, required: true, default: false, index: true },
+    ownerId: { type: String, required: true },
     description: { type: String },
     questionSetId: {
       type: Schema.Types.ObjectId,

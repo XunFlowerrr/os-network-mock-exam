@@ -1,10 +1,10 @@
-import { getDefaultQuestionSetList } from "@/lib/action/questionSet.action";
+import { getPublicQuestionSetList } from "@/lib/action/questionSet.action";
 import { IQuestionSet } from "@/lib/database/model/questionSet.model";
 import { IQuestionSetMeta } from "@/lib/database/model/questionSetMeta.model";
 import React from "react";
 
 async function Page() {
-  const questionSet: IQuestionSetMeta[] = await getDefaultQuestionSetList();
+  const questionSet: IQuestionSetMeta[] = await getPublicQuestionSetList();
 
   return (
     <main>

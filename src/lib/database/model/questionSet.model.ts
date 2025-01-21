@@ -12,7 +12,8 @@ export interface IQuestion {
 export interface IQuestionSet extends Document {
   title: string;
   description?: string; // optional field
-  defaultLoad: boolean; // special field to load for everyone
+  public: boolean;
+  ownerId: string; // Reference to the user who created the set
   questions: IQuestion[];
 }
 
@@ -32,7 +33,8 @@ const QuestionSetSchema = new Schema<IQuestionSet>(
   {
     title: { type: String, required: true },
     description: { type: String }, // optional
-    defaultLoad: { type: Boolean, default: false }, // set true as default
+    public: { type: Boolean, required: true, default: false, index: true },
+    ownerId: { type: String, required: true },
     questions: { type: [QuestionSchema], required: true },
   },
   {

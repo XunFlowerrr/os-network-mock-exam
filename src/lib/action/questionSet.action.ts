@@ -6,10 +6,10 @@ import QuestionSetMeta, {
 } from "../database/model/questionSetMeta.model";
 import { connectToDatabase } from "../database/mongoose"; // Ensure correct import
 
-export async function getDefaultQuestionSetList(): Promise<IQuestionSetMeta[]> {
+export async function getPublicQuestionSetList(): Promise<IQuestionSetMeta[]> {
   try {
     await connectToDatabase();
-    const questionSet = await QuestionSetMeta.find({ defaultLoad: true });
+    const questionSet = await QuestionSetMeta.find({ public: true });
     console.log("Fetched question set:", questionSet); // Added logging
     console.log("Type of question set:", typeof questionSet); // Added logging
     return JSON.parse(JSON.stringify(questionSet));
@@ -22,20 +22,19 @@ export async function getDefaultQuestionSetList(): Promise<IQuestionSetMeta[]> {
 export async function getQuestionSetById(id: string): Promise<IQuestionSet> {
   try {
     await connectToDatabase();
-    let questionSet = null;
-    const defaultQuestionSet = await QuestionSet.find({
-      _id: id,
-      defaultLoad: true,
-    });
-    if (!defaultQuestionSet) {
-      console.log("Default question set not found"); // Added logging
-      questionSet = await QuestionSet.findById(id);
+    const questionSet = await QuestionSet.findById<IQuestionSet>(id);
+    console.log("Fetched question set:", questionSet); // Added logging
+    console.log("Type of question set:", typeof questionSet); // Added logging
+    if (!questionSet) {
+      throw new Error("Question set not found");
     }
-    console.log("Fetched question set by ID:", questionSet); // Added logging
-    console.log("Type of question set by ID:", typeof questionSet); // Added logging
+    console.log("Public field:", questionSet.public); // Added logging
+    if (!questionSet.public) {
+      throw new Error("Question set is not public");
+    }
     return JSON.parse(JSON.stringify(questionSet));
   } catch (error) {
-    console.error("Error fetching question set by ID:", error); // Added error logging
-    throw new Error("Error fetching question set by ID");
+    console.error("Error fetching question set:", error);
+    throw error;
   }
 }
