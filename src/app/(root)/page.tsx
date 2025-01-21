@@ -18,19 +18,18 @@ export default function Home() {
   console.log("isAuthenticated", isAuthenticated);
   console.log("user", user);
 
-  // Fetch the public question sets on component mount
-  useEffect(() => {
-    const fetchQuestionSets = async () => {
-      try {
-        const sets = await getPublicQuestionSetList();
-        setDefaultSets(sets);
-      } catch (error) {
-        console.error("Error fetching default question sets:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchQuestionSets = async () => {
+    try {
+      const sets = await getPublicQuestionSetList();
+      setDefaultSets(sets);
+    } catch (error) {
+      console.error("Error fetching default question sets:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchQuestionSets();
   }, []);
 
