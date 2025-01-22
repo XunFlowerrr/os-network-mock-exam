@@ -1,68 +1,52 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { getPublicQuestionSetList } from "@/lib/action/questionSet.action";
-import { IQuestionSetMeta } from "@/lib/database/model/questionSetMeta.model";
+import { AppSidebar } from "@/components/app-sidebar";
 import {
-  LoginLink,
-  LogoutLink,
-  RegisterLink,
-} from "@kinde-oss/kinde-auth-nextjs";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Separator } from "@/components/ui/separator";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 
-export default function Home() {
-  const [defaultSets, setDefaultSets] = useState<IQuestionSetMeta[]>([]);
-  const [loading, setLoading] = useState(true);
-  const { isAuthenticated, user } = useKindeBrowserClient();
-  console.log("isAuthenticated", isAuthenticated);
-  console.log("user", user);
-
-  const fetchQuestionSets = async () => {
-    try {
-      const sets = await getPublicQuestionSetList();
-      setDefaultSets(sets);
-    } catch (error) {
-      console.error("Error fetching default question sets:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchQuestionSets();
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
+export default function Page() {
   return (
-    <div className="w-full h-full flex-col">
-      {/* Authentication Links */}
-      {isAuthenticated ? (
-        <LogoutLink>Logout</LogoutLink>
-      ) : (
-        <>
-          <LoginLink>Sign in</LoginLink>
-          <RegisterLink>Sign up</RegisterLink>
-        </>
-      )}
-
-      <h1 className="text-2xl font-bold mb-4">Welcome to the Quiz Home</h1>
-
-      {/* Display list of question sets */}
-      <ul className="flex flex-col max-w-[50%]">
-        {defaultSets.map((set) => (
-          <li key={`${set.questionSetId}`} className="mb-2">
-            <Link href={`/quiz/${set.questionSetId}`}>
-              <div className="flex bg-slate-300 bg-opacity-20 p-2 rounded-md cursor-pointer hover:scale-[101%] transition-all duration-75">
-                <span>{set.title}</span>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset>
+        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+          <div className="flex items-center gap-2 px-4">
+            <SidebarTrigger className="-ml-1" />
+            <Separator orientation="vertical" className="mr-2 h-4" />
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem className="hidden md:block">
+                  <BreadcrumbLink href="#">
+                    Building Your Application
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="hidden md:block" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </div>
+        </header>
+        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
+          </div>
+          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+        </div>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }

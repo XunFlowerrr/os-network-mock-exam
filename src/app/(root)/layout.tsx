@@ -20,10 +20,7 @@ export default function MainLayout({
   return (
     <main className="w-screen h-screen">
       <div className="flex w-full h-full overflow-x-hidden">
-        <div className="flex w-[20vw]">
-          <SideBar></SideBar>
-        </div>
-        <div className="w-[80vw] flex justify-center p-4">{children}</div>
+        <div className="w-full flex justify-center">{children}</div>
       </div>
     </main>
   );
