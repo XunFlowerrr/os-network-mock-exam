@@ -5,9 +5,11 @@ import mongoose, { Schema, model, Document } from "mongoose";
 export interface IQuestionSetMeta extends Document {
   title: string;
   public: boolean;
-  questionSetId: mongoose.Types.ObjectId; // Reference to QuestionSet
+  questionSetId: mongoose.Types.ObjectId;
   ownerId: string;
+  questionCount: number;
   description?: string;
+  _id: string;
   // ...existing code...
 }
 
@@ -17,12 +19,12 @@ const QuestionSetMetaSchema = new Schema<IQuestionSetMeta>(
     public: { type: Boolean, required: true, default: false, index: true },
     ownerId: { type: String, required: true },
     description: { type: String },
+    questionCount: { type: Number, required: true },
     questionSetId: {
       type: Schema.Types.ObjectId,
       ref: "QuestionSet",
       required: true,
     },
-    // ...existing code...
   },
   {
     timestamps: true,

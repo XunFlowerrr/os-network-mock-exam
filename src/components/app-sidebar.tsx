@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   AudioWaveform,
   BookOpen,
@@ -12,164 +12,129 @@ import {
   PieChart,
   Settings2,
   SquareTerminal,
-} from "lucide-react"
+} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { NavMain } from "@/components/nav-main";
+import { NavTab } from "@/components/nav-projects";
+import { NavUser } from "@/components/nav-user";
+import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
+import NavUserSkeleton from "./nav-user-skeleton";
+import { Skeleton } from "./ui/skeleton";
 
 // This is sample data.
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   teams: [
     {
       name: "Acme Inc",
       logo: GalleryVerticalEnd,
       plan: "Enterprise",
     },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
   ],
   navMain: [
+    // {
+    //   title: "Explore",
+    //   url: "#",
+    //   icon: SquareTerminal,
+    //   isActive: false,
+    //   items: [
+    //     {
+    //       title: "History",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Starred",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Settings",
+    //       url: "#",
+    //     },
+    //   ],
+    // },
     {
-      title: "Playground",
+      title: "My collections",
       url: "#",
-      icon: SquareTerminal,
+      icon: Bot,
       isActive: true,
       items: [
         {
-          title: "History",
+          title: "Liked quizes",
           url: "#",
         },
         {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
+          title: "All quizes",
           url: "#",
         },
       ],
     },
   ],
-  projects: [
+  tabs: [
     {
-      name: "Design Engineering",
+      name: "Explore",
       url: "#",
       icon: Frame,
     },
     {
-      name: "Sales & Marketing",
+      name: "My collections",
       url: "#",
       icon: PieChart,
     },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  return (
+  const { isAuthenticated, getUser, isLoading } = useKindeBrowserClient();
+  const [user, setUser] = React.useState<KindeUser<
+    Record<string, string>
+  > | null>(null);
+  const retrieveUser = async () => {
+    const user = await getUser();
+    setUser(user);
+    console.log("user", user);
+  };
+
+  React.useEffect(() => {
+    console.log("isAuthenticated", isAuthenticated);
+    console.log("isLoading", isLoading);
+    if (isAuthenticated && !isLoading) {
+      retrieveUser();
+    }
+  }, [isAuthenticated, isLoading]);
+
+  return isLoading ? (
+    <Sidebar collapsible="icon" {...props}>
+      <SidebarHeader></SidebarHeader>
+      <SidebarContent>
+        <div className="flex flex-col h-full px-2">
+          <Skeleton className="h-full w-full "></Skeleton>
+        </div>
+      </SidebarContent>
+      <SidebarFooter>
+        <Skeleton className="h-12 w-full"></Skeleton>
+      </SidebarFooter>
+    </Sidebar>
+  ) : (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
+        <NavTab tabs={data.tabs} />
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

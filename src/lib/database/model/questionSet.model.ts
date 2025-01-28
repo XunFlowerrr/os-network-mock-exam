@@ -1,10 +1,15 @@
 import mongoose, { Schema, model, Document } from "mongoose";
 
-// Interface for an individual question
+// Interface for an individual option
+export interface IOption {
+  statement: string;
+  isCorrect: boolean;
+}
+
+// Updated Interface for an individual question
 export interface IQuestion {
   question: string;
-  options: string[];
-  answer: number;
+  options: IOption[];
   explanation: string;
 }
 
@@ -17,12 +22,20 @@ export interface IQuestionSet extends Document {
   questions: IQuestion[];
 }
 
+// Schema for embedded options
+const OptionSchema = new Schema<IOption>(
+  {
+    statement: { type: String, required: true },
+    isCorrect: { type: Boolean, required: true, default: false },
+  },
+  { _id: false } // Disable _id for subdocuments if not needed
+);
+
 // Schema for embedded questions
 const QuestionSchema = new Schema<IQuestion>(
   {
     question: { type: String, required: true },
-    options: { type: [String], required: true },
-    answer: { type: Number, required: true },
+    options: { type: [OptionSchema], required: true },
     explanation: { type: String, required: true },
   },
   { _id: false }
