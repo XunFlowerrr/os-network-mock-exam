@@ -7,6 +7,14 @@ import {
   IQuestion,
   IQuestionSet,
 } from "@/lib/database/model/questionSet.model";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
+import { Separator } from "@radix-ui/react-separator";
+import BreadcrumbGenerator from "@/components/BreadcrumbGenerator";
 
 type QuizData = IQuestionSet;
 
@@ -246,83 +254,108 @@ export default function QuizPage() {
   // Render the current question and its options
   console.log(`Rendering Question ${currentQuestion + 1}`);
   return (
-    <div className="mx-auto max-w-xl p-4">
-      <h1 className="text-2xl font-bold mb-2">{quizData.title} Quiz</h1>
-      {quizData.description && (
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset>
+        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+          <div className="flex items-center gap-2 px-4">
+            <SidebarTrigger className="-ml-1" />
+            <Separator orientation="vertical" className="mr-2 h-4" />
+            <BreadcrumbGenerator
+              context={[
+                {
+                  name: "Home",
+                  url: "/",
+                },
+                {
+                  name: quizData.title,
+                  url: "/quiz/" + setName,
+                },
+              ]}
+            />
+          </div>
+        </header>
+        <div className="mx-auto max-w-xl p-4">
+          <h1 className="text-2xl font-bold mb-2">{quizData.title} Quiz</h1>
+          {/* {quizData.description && (
         <p className="mb-4 text-gray-700">{quizData.description}</p>
-      )}
-      <p className="mb-4 text-gray-700">
-        Question {currentQuestion + 1} of {questionList.length}
-      </p>
-      <h2
-        className="text-lg font-medium mb-4"
-        style={{ whiteSpace: "pre-line" }}
-      >
-        {currentQ.question}
-      </h2>
+      )} */}
+          <p className="mb-4 text-gray-700">
+            Question {currentQuestion + 1} of {questionList.length}
+          </p>
+          <h2
+            className="text-lg font-medium mb-4"
+            style={{ whiteSpace: "pre-line" }}
+          >
+            {currentQ.question}
+          </h2>
 
-      {/* Safe rendering of options */}
-      <div className="flex flex-col space-y-2 mb-8">
-        {currentQ?.options?.length > 0 ? (
-          currentQ.options.map((option, idx) => (
-            <button
-              key={idx}
-              onClick={() => handleOptionSelect(idx)}
-              disabled={isAnswered}
-              className={`text-start bg-blue-500 bg-opacity-20 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 ${
-                isAnswered ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-            >
-              {idx + 1}. {option.statement}
-            </button>
-          ))
-        ) : (
-          <p>No options available for this question.</p>
-        )}
-        <p className="text-sm text-gray-500">
-          (You can also press{" "}
-          {currentQ.options.map((_, idx) => idx + 1).join("/")} on your
-          keyboard)
-        </p>
-      </div>
+          {/* Safe rendering of options */}
+          <div className="flex flex-col space-y-2 mb-8">
+            {currentQ?.options?.length > 0 ? (
+              currentQ.options.map((option, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => handleOptionSelect(idx)}
+                  disabled={isAnswered}
+                  className={`text-start bg-blue-500 bg-opacity-20 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 ${
+                    isAnswered ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                >
+                  {idx + 1}. {option.statement}
+                </button>
+              ))
+            ) : (
+              <p>No options available for this question.</p>
+            )}
+            <p className="text-sm text-gray-500">
+              (You can also press{" "}
+              {currentQ.options.map((_, idx) => idx + 1).join("/")} on your
+              keyboard)
+            </p>
+          </div>
 
-      {isAnswered && (
-        <div className="mb-8">
-          {isCorrect ? (
-            <p className="text-green-600 font-semibold">Correct!</p>
-          ) : (
-            <div>
-              <p className="text-red-600 font-semibold">Incorrect!</p>
-              {(() => {
-                const correctOption = currentQ.options.find(
-                  (opt) => opt.isCorrect
-                );
-                return (
-                  correctOption && (
-                    <p>
-                      Correct answer:{" "}
-                      <span className="text-green-600">
-                        {currentQ.options.indexOf(correctOption) + 1}.{" "}
-                        {correctOption.statement}
-                      </span>
-                    </p>
-                  )
-                );
-              })()}
+          {isAnswered && (
+            <div className="mb-8">
+              {isCorrect ? (
+                <p className="text-green-600 font-semibold">Correct!</p>
+              ) : (
+                <div>
+                  <p className="text-red-600 font-semibold">Incorrect!</p>
+                  {(() => {
+                    const correctOption = currentQ.options.find(
+                      (opt) => opt.isCorrect
+                    );
+                    return (
+                      correctOption && (
+                        <p>
+                          Correct answer:{" "}
+                          <span className="text-green-600">
+                            {currentQ.options.indexOf(correctOption) + 1}.{" "}
+                            {correctOption.statement}
+                          </span>
+                        </p>
+                      )
+                    );
+                  })()}
+                </div>
+              )}
+              <p className="mt-2 italic">Explanation: {currentQ.explanation}</p>
             </div>
           )}
-          <p className="mt-2 italic">Explanation: {currentQ.explanation}</p>
-        </div>
-      )}
 
-      {isAnswered && (
-        <button
-          onClick={handleNext}
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
-        >
-          {currentQuestion < questionList.length - 1 ? "Next" : "Show Results"}
-        </button>
-      )}
-    </div>
+          {isAnswered && (
+            <button
+              onClick={handleNext}
+              className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
+            >
+              {currentQuestion < questionList.length - 1
+                ? "Next"
+                : "Show Results"}
+            </button>
+          )}
+        </div>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }
