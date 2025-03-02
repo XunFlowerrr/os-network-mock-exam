@@ -1,0 +1,222 @@
+[
+  {
+    "question": "1. เมื่อกล่าวถึง router จะสามารถกล่าวได้ว่าการทำงานอยู่ในระดับใดบ้าง?",
+    "options": [
+      "Transport layer, network layer",
+      "Physical layer, data link layer",
+      "Data link layer, network layer",
+      "Network layer, data link layer, Physical layer"
+    ],
+    "answer": 0,
+    "explanation": "Router ทำงานหลักในระดับ Network layer โดยใช้โปรโตคอล IP ในการกำหนดเส้นทาง แต่ยังมีส่วนช่วยในระดับ Transport layer ในบางกรณีด้วย"
+  },
+  {
+    "question": "2. เมื่อเฟรมข้อมูลถูกส่งมาจาก switch เพื่อไปสู่ router A เพื่อส่งต่อไปยัง router B ที่เชื่อมต่อกับเครื่องปลายทาง ท่านจงระบุหน้าที่ของ router ในการสื่อสารนี้",
+    "options": [
+      "สําเนา MAC destination address แล้วค้นหาเส้นทางใน forwarding table",
+      "เปลี่ยน IP destination address ในช่องของ destination address ให้เป็น MAC address ของ router B ของเครื่องปลายทาง",
+      "สําเนา IP destination address แล้วค้นหาเส้นทางใน forwarding table",
+      "เปลี่ยน MAC destination address ในช่องของ destination address ให้เป็น MAC address ของ router B ของเครื่องปลายทาง"
+    ],
+    "answer": 2,
+    "explanation": "Router จะทำการตรวจสอบ IP destination address จากข้อมูลที่ได้รับเพื่อค้นหาเส้นทางใน forwarding table แล้วส่งต่อไปยังปลายทางโดยไม่เปลี่ยนแปลง IP header"
+  },
+  {
+    "question": "3. ลักษณะของ VLAN คืออะไร?",
+    "options": [
+      "การเชื่อมต่อ host ในเครือข่ายบางเครื่องที่แตกต่างกัน (different physical connecting) ให้เป็นเสมือนเครือข่ายเดียวกันโดยไม่มีการปรับเปลี่ยนสายเชื่อมต่อ",
+      "ความยืดหยุ่นของการเชื่อมต่อที่สามารถปรับเปลี่ยนรูปแบบการเชื่อมต่อ (physical connecting) ให้เปลี่ยนเป็นหลายทอพอโลยี",
+      "การใช้ switch เชื่อมต่อเครือข่ายที่แตกต่างกัน (different physical connecting) ให้เป็นเครือข่ายเดียวกัน",
+      "การเชื่อมต่อ switch ที่สามารถเปลี่ยนจาก star-bus เป็น star-ring ได้โดยไม่ต้องปรับเปลี่ยนรูปแบบการเชื่อมต่อ"
+    ],
+    "answer": 0,
+    "explanation": "VLAN ช่วยให้สามารถรวม host จากส่วนที่แตกต่างกันทางกายภาพให้เป็นเครือข่ายเสมือนเดียวกันโดยไม่ต้องปรับเปลี่ยนสายเชื่อมต่อ"
+  },
+  {
+    "question": "4. Port ใดที่ใช้ในการโทรทางไกลด้วย application program จากเครื่องคอมพิวเตอร์?",
+    "options": [
+      "MTP",
+      "TCAP",
+      "TUP",
+      "SCCP"
+    ],
+    "answer": 1,
+    "explanation": "TCAP (Transaction Capabilities Application Part) เป็นโปรโตคอลที่ใช้ในระบบโทรศัพท์เพื่อสื่อสารข้อมูลสัญญาณควบคุมระหว่างระบบเครือข่าย"
+  },
+  {
+    "question": "5. การเชื่อมต่อเครือข่ายอินเทอร์เน็ตจากบ้านไปสู่เครือข่ายอินเทอร์เน็ตด้วยระบบดั้งเดิม (Dial-up service) มีอุปกรณ์ที่สำคัญคืออะไร?",
+    "options": [
+      "Modem",
+      "Server",
+      "DSLAM",
+      "Converter"
+    ],
+    "answer": 0,
+    "explanation": "Dial-up service ใช้อุปกรณ์ Modem ในการแปลงสัญญาณดิจิทัลจากคอมพิวเตอร์เป็นสัญญาณอนาล็อกเพื่อส่งผ่านสายโทรศัพท์"
+  },
+  {
+    "question": "6. การส่งคลื่นเสียง (Voice transmission) ในระบบโทรศัพท์แบบดั้งเดิมมีช่วงความถี่เท่าใด?",
+    "options": [
+      "คลื่นความถี่ระหว่าง 300 Hz – 3300 Hz",
+      "คลื่นความถี่ระหว่าง 3000 Hz – 6000 Hz",
+      "คลื่นความถี่ระหว่าง 1200 Hz – 4200 Hz",
+      "คลื่นความถี่ระหว่าง 300 Hz – 6300 Hz"
+    ],
+    "answer": 0,
+    "explanation": "ระบบโทรศัพท์แบบดั้งเดิมใช้ช่วงความถี่ 300 Hz – 3300 Hz ซึ่งครอบคลุมเสียงที่มนุษย์ได้ยิน"
+  },
+  {
+    "question": "7. หากมีการติดตั้งและเชื่อมต่อ transparent switch 2 ตัว เชื่อมต่อวง LAN สองวง สิ่งใดจะเกิดขึ้น?",
+    "options": [
+      "จะเกิดการวนลูปเพราะแต่ละ switch จะส่งข้อมูลไปมาระหว่างกันจนเกิดการวนลูปในเครือข่ายทั้งสอง",
+      "จะไม่เกิดการส่งข้อมูลใด ๆ เนื่องจากเฟรมข้อมูลไม่รู้ว่าควรจะส่งไปยัง Switch ตัวใด",
+      "ไม่เกิดอะไรขึ้นเพราะการหาเส้นทางสามารถดำเนินการได้ด้วย switch ตัวใดตัวหนึ่งที่แบ่งหน้าที่เรียบร้อย",
+      "ไม่เกิดอะไรขึ้นเพราะการหาเส้นทางสามารถทำได้จากทั้งสอง switch พร้อม ๆ กัน"
+    ],
+    "answer": 0,
+    "explanation": "การเชื่อมต่อ transparent switch ที่ไม่มีการควบคุม loop จะทำให้เกิดวงวนลูป (looping) ในเครือข่าย"
+  },
+  {
+    "question": "8. ข้อใดกล่าวถูกต้องของการใช้ระบบ DSL?",
+    "options": [
+      "ความปลอดภัยต่ำเพราะมีการใช้งานร่วมกับระบบโทรทัศน์",
+      "ความปลอดภัยสูงเพราะมีระบบป้องกันการดักจับข้อมูลในระบบเครือข่าย",
+      "ความปลอดภัยสูงเพราะไม่ใช้สายสื่อสารร่วมกับผู้อื่น",
+      "ความปลอดภัยต่ำเพราะมีการใช้งานร่วมกับระบบโทรศัพท์"
+    ],
+    "answer": 2,
+    "explanation": "DSL ใช้สายที่เป็นแบบ dedicated ซึ่งไม่แชร์กับผู้ใช้งานคนอื่น ทำให้มีความปลอดภัยสูงในแง่ของการแยกข้อมูล"
+  },
+  {
+    "question": "9. การสร้างเส้นทางใน switching table ที่มีการใช้ spanning tree algorithm จะช่วยแก้ปัญหาการสื่อสารในด้านใด?",
+    "options": [
+      "ป้องกันการโจมตีจากผู้ไม่ประสงค์ดี",
+      "ป้องกันการเกิด collision ในเครือข่าย",
+      "ป้องกันการติดลูปของการใช้ switch",
+      "ป้องกันการเกิด congestion ในเครือข่าย"
+    ],
+    "answer": 2,
+    "explanation": "Spanning Tree Algorithm ถูกออกแบบมาเพื่อป้องกันปัญหาการเกิด loop ในเครือข่ายที่ใช้ switch"
+  },
+  {
+    "question": "10. การส่งข้อมูลแบบ out-of-band มีช่องทางการสื่อสารจำนวนเท่าไร?",
+    "options": [
+      "4 ช่องทาง มี voice bandwidth, data bandwidth, control bandwidth, management bandwidth",
+      "2 ช่องทาง voice bandwidth เป็นคนละช่องกับ data bandwidth",
+      "1 ช่องทาง voice bandwidth เป็นอันเดียวกับ data bandwidth",
+      "3 ช่องทาง มี voice bandwidth, data bandwidth, control bandwidth"
+    ],
+    "answer": 0,
+    "explanation": "การส่งข้อมูลแบบ out-of-band แยกช่องสำหรับการส่งสัญญาณที่แตกต่างกัน เช่น voice, data, control และ management จึงมีทั้งหมด 4 ช่องทาง"
+  },
+  {
+    "question": "11. ข้อใดเป็นลักษณะการทำงานของ circuit switched network?",
+    "options": [
+      "ไม่มีการจองเส้นทางการสื่อสารเมื่อมีข้อมูลจะส่งข้อมูลลงในช่องสัญญาณทันที",
+      "มีการสลับ slot เพื่อส่งข้อมูลเป็นระยะ ๆ",
+      "มีการจองเส้นทางการสื่อสารเมื่อต้องการส่งข้อมูลและปลดปล่อยเมื่อเสร็จสิ้น",
+      "มีการจองเส้นทางการสื่อสารตลอดเวลาแม้จะไม่มีข้อมูลส่ง"
+    ],
+    "answer": 3,
+    "explanation": "ในระบบ circuit switched network จะมีการจองเส้นทางตลอดเวลาที่การสื่อสารเกิดขึ้น แม้ว่าจะไม่มีข้อมูลส่งอยู่ก็ตาม"
+  },
+  {
+    "question": "12. การทำงานของ hub จะสามารถกล่าวได้ว่าการทำงานอยู่ในระดับใด?",
+    "options": [
+      "Physical layer",
+      "Network layer",
+      "Data link layer",
+      "Transport layer"
+    ],
+    "answer": 0,
+    "explanation": "Hub ทำงานในระดับ Physical layer โดยเป็นอุปกรณ์ที่ส่งต่อสัญญาณไฟฟ้าโดยตรง"
+  },
+  {
+    "question": "13. ระบบการเชื่อมต่อแบบ digital subscriber line (DSL) เป็นการให้บริการอินเทอร์เน็ตโดยมีการใช้งานการสื่อสารข้อมูลคู่กับการบริการใด?",
+    "options": [
+      "โทรศัพท์",
+      "โทรทัศน์สาธารณะ",
+      "โทรทัศน์วงจรปิด",
+      "เครือข่ายท้องถิ่น"
+    ],
+    "answer": 0,
+    "explanation": "DSL ใช้สายโทรศัพท์ในการให้บริการอินเทอร์เน็ตควบคู่กับบริการโทรศัพท์"
+  },
+  {
+    "question": "14. ปัจจุบันการให้บริการแบบ digital data service (DDS) มีลักษณะการบริการอย่างไร?",
+    "options": [
+      "ส่งข้อมูลด้วยสัญญาณดิจิทัลบนระบบ analog switched line ที่ความเร็ว 56 kbps",
+      "ส่งข้อมูลด้วยสัญญาณดิจิทัลบนระบบ digital leased line ที่ความเร็ว 64 kbps",
+      "ส่งข้อมูลด้วยสัญญาณแอนะล็อกบนระบบ digital leased line ที่ความเร็ว 64 kbps",
+      "ส่งข้อมูลด้วยสัญญาณแอนะล็อกบนระบบ analog switched line ที่ความเร็ว 56 kbps"
+    ],
+    "answer": 1,
+    "explanation": "DDS ให้บริการส่งข้อมูลด้วยสัญญาณดิจิทัลบนระบบ digital leased line ที่มีอัตราเร็ว 64 kbps"
+  },
+  {
+    "question": "15. การบริการใดที่ใช้ LEO?",
+    "options": [
+      "GPS",
+      "ISM",
+      "Mobile",
+      "Government"
+    ],
+    "answer": 2,
+    "explanation": "LEO (Low Earth Orbit) ใช้ในบริการสื่อสารดาวเทียมสำหรับการโทรและอินเทอร์เน็ตที่เกี่ยวข้องกับการสื่อสารเคลื่อนที่"
+  },
+  {
+    "question": "16. การทำงานของ router ในระดับ physical layer เกิดขึ้นได้หรือไม่?",
+    "options": [
+      "เกิดขึ้นไม่ได้เพราะ router สามารถทำงานเหมือน switch คือการหาเส้นทางเท่านั้น",
+      "เกิดขึ้นได้เพราะ router สามารถตรวจสอบลักษณะข้อมูลที่ต้องการส่งไปยังปลายทางได้",
+      "เกิดขึ้นไม่ได้เพราะ router ทำงานเฉพาะในระดับ Network layer เท่านั้น",
+      "เกิดขึ้นได้เพราะ router ทำหน้าที่เป็น repeater ในระดับ physical layer ได้"
+    ],
+    "answer": 2,
+    "explanation": "Router ทำงานในระดับ Network layer โดยไม่ดำเนินการที่ระดับ Physical layer"
+  },
+  {
+    "question": "17. ข้อใดเป็นลักษณะการสื่อสารที่เกิดในระบบ cable networks?",
+    "options": [
+      "Contention-based",
+      "Contention-free",
+      "Congestion-based",
+      "Congestion-free"
+    ],
+    "answer": 0,
+    "explanation": "ระบบ cable networks มักใช้การสื่อสารแบบแชร์สื่อ (contention-based) ซึ่งผู้ใช้หลายรายต้องแบ่งการใช้ช่องสัญญาณร่วมกัน"
+  },
+  {
+    "question": "18. การบริการใดที่ใช้ MEO?",
+    "options": [
+      "Government",
+      "Mobile",
+      "GPS",
+      "ISM"
+    ],
+    "answer": 2,
+    "explanation": "GPS ใช้ดาวเทียมในวงโคจรระดับ MEO (Medium Earth Orbit)"
+  },
+  {
+    "question": "19. การท่า virtual LAN หรือ VLAN นั้นจะใช้อุปกรณ์ใดในการเชื่อมต่อ?",
+    "options": [
+      "Repeater",
+      "Router",
+      "Switch",
+      "Hub"
+    ],
+    "answer": 2,
+    "explanation": "VLAN มักถูกตั้งค่าบน switch เพื่อแบ่งเครือข่ายออกเป็นส่วน ๆ โดยไม่ต้องเปลี่ยนแปลงทางกายภาพ"
+  },
+  {
+    "question": "20. เมื่อ base station ทั้งสองมีการ overlap ขอบเขตการเชื่อมต่อร่วมกันและจำเป็นต้องเกิดการเปลี่ยน base station เรียกการเปลี่ยนแบบนี้ว่าอะไร?",
+    "options": [
+      "Soft handoff",
+      "Hard handoff",
+      "Weak handoff",
+      "Strong handoff"
+    ],
+    "answer": 0,
+    "explanation": "การเปลี่ยน base station ในระหว่างการ overlap ของสัญญาณเรียกว่า soft handoff ซึ่งช่วยให้การส่งข้อมูลไม่สะดุด"
+  }
+]
