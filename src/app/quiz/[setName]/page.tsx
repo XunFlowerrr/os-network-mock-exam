@@ -74,7 +74,7 @@ export default function QuizPage() {
       // Dynamically create keyMap based on the number of options
       const keyMap: Record<string, number> = {};
       currentQ.options.forEach((_, idx) => {
-        keyMap[(idx+1).toString()] = idx;
+        keyMap[(idx + 1).toString()] = idx;
       });
 
       const pressedKey = e.key;
@@ -119,7 +119,8 @@ export default function QuizPage() {
               </p>
               {!isCorrect && (
                 <p>
-                  Correct answer: <span className="text-green-600">{q.answer + 1}</span>
+                  Correct answer:{" "}
+                  <span className="text-green-600">{q.answer + 1}</span>
                 </p>
               )}
               <p className="mt-2 italic">Explanation: {q.explanation}</p>
@@ -141,24 +142,47 @@ export default function QuizPage() {
       <p className="mb-4 text-gray-700">
         Question {currentQuestion + 1} of {questionList.length}
       </p>
-      <h2 className="text-lg font-medium mb-4" style={{ whiteSpace: 'pre-line' }}>{currentQ.question}</h2>
+      <h2
+        className="text-lg font-medium mb-4"
+        style={{ whiteSpace: "pre-line" }}
+      >
+        {currentQ.question}
+      </h2>
 
       <div className="flex flex-col space-y-2 mb-8">
-        {currentQ.options.map((option, idx) => (
-          <button
-            key={idx}
-            onClick={() => handleOptionSelect(idx)}
-            disabled={isAnswered}
-            className={`text-start bg-blue-500 bg-opacity-20 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 ${
-              isAnswered ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-          >
-            {option}
-          </button>
-        ))}
+        {currentQ.options.map((option, idx) => {
+          const isUserChoice = userAnswers[currentQuestion] === idx.toString();
+          const isCorrectOption = idx === currentQ.answer;
+          let buttonClasses =
+            "text-start px-4 py-2 rounded focus:outline-none focus:ring-2 ";
+          if (isAnswered) {
+            if (isCorrectOption) {
+              buttonClasses += "bg-green-500 text-white ";
+            } else if (isUserChoice) {
+              buttonClasses += "border-2 border-red-500 "; // incorrect answer styled with red border only
+            } else {
+              buttonClasses += "bg-blue-500 bg-opacity-20 ";
+            }
+          } else {
+            buttonClasses +=
+              "bg-blue-500 bg-opacity-20 hover:bg-blue-600 focus:ring-blue-400 ";
+          }
+          return (
+            <button
+              key={idx}
+              onClick={() => handleOptionSelect(idx)}
+              disabled={isAnswered}
+              className={buttonClasses}
+            >
+              {option}
+            </button>
+          );
+        })}
 
         <p className="text-sm text-gray-500">
-          (You can also press {currentQ.options.map((_, idx) => idx + 1).join('/')} on your keyboard)
+          (You can also press{" "}
+          {currentQ.options.map((_, idx) => idx + 1).join("/")} on your
+          keyboard)
         </p>
       </div>
 
@@ -171,7 +195,9 @@ export default function QuizPage() {
               <p className="text-red-600 font-semibold">Incorrect!</p>
               <p>
                 The correct answer is:{" "}
-                <span className="text-red-600">{currentQ.options[currentQ.answer]}</span>
+                <span className="text-red-600">
+                  {currentQ.options[currentQ.answer]}
+                </span>
               </p>
             </div>
           )}
