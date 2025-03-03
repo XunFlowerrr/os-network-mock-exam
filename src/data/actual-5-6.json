@@ -7,8 +7,8 @@
       "Data link layer, network layer",
       "Network layer, data link layer, Physical layer"
     ],
-    "answer": 0,
-    "explanation": "Router ทำงานหลักในระดับ Network layer โดยใช้โปรโตคอล IP ในการกำหนดเส้นทาง แต่ยังมีส่วนช่วยในระดับ Transport layer ในบางกรณีด้วย"
+    "answer": 3,
+    "explanation": "Router ทำงานในระดับ Network layer โดยมีหน้าที่เป็นเครื่องส่งต่อข้อมูลระหว่างเครือข่าย และสามารถทำงานในระดับ data link layer ในการตรวจสอบ MAC address และในระดับ Physical layer ในการส่งสัญญาณไฟฟ้า"
   },
   {
     "question": "2. เมื่อเฟรมข้อมูลถูกส่งมาจาก switch เพื่อไปสู่ router A เพื่อส่งต่อไปยัง router B ที่เชื่อมต่อกับเครื่องปลายทาง ท่านจงระบุหน้าที่ของ router ในการสื่อสารนี้",
@@ -18,8 +18,8 @@
       "สําเนา IP destination address แล้วค้นหาเส้นทางใน forwarding table",
       "เปลี่ยน MAC destination address ในช่องของ destination address ให้เป็น MAC address ของ router B ของเครื่องปลายทาง"
     ],
-    "answer": 2,
-    "explanation": "Router จะทำการตรวจสอบ IP destination address จากข้อมูลที่ได้รับเพื่อค้นหาเส้นทางใน forwarding table แล้วส่งต่อไปยังปลายทางโดยไม่เปลี่ยนแปลง IP header"
+    "answer": 3,
+    "explanation": "Router จะเปลี่ยน MAC destination address ในเฟรมข้อมูลให้เป็น MAC address ของ router B ก่อนส่งต่อไปยังเครื่องปลายทาง"
   },
   {
     "question": "3. ลักษณะของ VLAN คืออะไร?",
@@ -106,8 +106,8 @@
       "1 ช่องทาง voice bandwidth เป็นอันเดียวกับ data bandwidth",
       "3 ช่องทาง มี voice bandwidth, data bandwidth, control bandwidth"
     ],
-    "answer": 0,
-    "explanation": "การส่งข้อมูลแบบ out-of-band แยกช่องสำหรับการส่งสัญญาณที่แตกต่างกัน เช่น voice, data, control และ management จึงมีทั้งหมด 4 ช่องทาง"
+    "answer": 1,
+    "explanation": "การสื่อสารแบบ out-of-band มีช่องทางสื่อสาร 2 ช่องทาง คือ voice bandwidth และ data bandwidth โดยแต่ละช่องทางจะมีการสื่อสารแยกกัน"
   },
   {
     "question": "11. ข้อใดเป็นลักษณะการทำงานของ circuit switched network?",
@@ -117,8 +117,8 @@
       "มีการจองเส้นทางการสื่อสารเมื่อต้องการส่งข้อมูลและปลดปล่อยเมื่อเสร็จสิ้น",
       "มีการจองเส้นทางการสื่อสารตลอดเวลาแม้จะไม่มีข้อมูลส่ง"
     ],
-    "answer": 3,
-    "explanation": "ในระบบ circuit switched network จะมีการจองเส้นทางตลอดเวลาที่การสื่อสารเกิดขึ้น แม้ว่าจะไม่มีข้อมูลส่งอยู่ก็ตาม"
+    "answer": 2,
+    "explanation": "ในระบบ circuit switched network จะมีการจองเส้นทางตลอดเวลาที่การสื่อสารเกิดขึ้น และปลดปล่อยเมื่อเสร็จสิ้นการสื่อสาร"
   },
   {
     "question": "12. การทำงานของ hub จะสามารถกล่าวได้ว่าการทำงานอยู่ในระดับใด?",
@@ -172,8 +172,8 @@
       "เกิดขึ้นไม่ได้เพราะ router ทำงานเฉพาะในระดับ Network layer เท่านั้น",
       "เกิดขึ้นได้เพราะ router ทำหน้าที่เป็น repeater ในระดับ physical layer ได้"
     ],
-    "answer": 2,
-    "explanation": "Router ทำงานในระดับ Network layer โดยไม่ดำเนินการที่ระดับ Physical layer"
+    "answer": 3,
+    "explanation": "Router ทำงานในระดับ physical layer โดยสามารถส่งสัญญาณไฟฟ้าไปยังเครือข่ายต่อไป"
   },
   {
     "question": "17. ข้อใดเป็นลักษณะการสื่อสารที่เกิดในระบบ cable networks?",
