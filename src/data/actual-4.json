@@ -139,7 +139,7 @@
       "Data-link layer ณ แหล่งข้อมูลต้นทางไม่รับทราบการยกเลิก เว้นแต่ Upper-layer protocols ควบคุมและรายงาน",
       "Data-link layer ณ แหล่งข้อมูลต้นทางไม่รับทราบการยกเลิก เว้นแต่ application-layer protocols ควบคุมและรายงาน"
     ],
-    "answer": 0,
+    "answer": 2,
     "explanation": "ใน standard Ethernet ไม่มีการควบคุมการ retransmission ที่ Data-link layer เมื่อเกิด overflow จึงไม่มีการรายงานการยกเลิกให้กับต้นทาง"
   },
   {
@@ -183,8 +183,8 @@
       "Intensive Basic Service Set",
       "Ad hoc Basic Service Set"
     ],
-    "answer": 0,
-    "explanation": "การเชื่อมต่อแบบนี้ในเครือข่ายไร้สายเรียกว่า Extended Service Set (ESS) ซึ่งใช้ access point ในการกระจายสัญญาณและควบคุมการเชื่อมต่อ"
+    "answer": 1,
+    "explanation": "การเชื่อมต่อแบบนี้ในเครือข่ายไร้สายเรียกว่า Infrastructure Basic Service Set ซึ่งใช้ access point ในการกระจายสัญญาณและการจัดการ"
   },
   {
     "question": "18. ใน frame format ของ Ethernet มีฟิลด์ Preamble ขนาด 7 ไบต์ ฟิลด์นี้เกิดในระดับใดและถือเป็นส่วนหนึ่งของเฟรมข้อมูลหรือไม่?",
@@ -201,12 +201,12 @@
     "question": "19. ใน Ethernet frame มีฟิลด์ที่ใช้ในการประสานจังหวะการรับ-ส่งระหว่างต้นทางและปลายทาง ฟิลด์นั้นชื่อว่าอะไร?",
     "options": [
       "Flag",
-      "Start frame delimiter",
       "Preamble",
+      "Start frame delimiter",
       "Preliminary"
     ],
     "answer": 1,
-    "explanation": "Start Frame Delimiter (SFD) เป็นฟิลด์ที่บ่งบอกจุดเริ่มต้นของ frame หลังจาก Preamble และใช้สำหรับประสานจังหวะการรับส่ง"
+    "explanation": "Preamble ใช้สำหรับการซิงโครไนซ์ ใช้ในการประสานจังหวะการรับ-ส่งระหว่างต้นทางและปลายทาง"
   },
   {
     "question": "20. Guard band มีไว้เพื่อวัตถุประสงค์ใด?",
