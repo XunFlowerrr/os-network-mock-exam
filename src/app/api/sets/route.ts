@@ -3,11 +3,18 @@ import fs from "fs";
 import path from "path";
 
 export async function GET() {
-  const dataPath = path.join(process.cwd(), "src", "data");
-  const files = fs.readdirSync(dataPath);
-  // Return only .json files
-  const jsonFiles = files.filter((file) => file.endsWith(".json"));
-  return NextResponse.json(jsonFiles);
+  const noRandomPath = path.join(process.cwd(), "src", "data", "no-random");
+  const randomPath = path.join(process.cwd(), "src", "data", "random");
+
+  const noRandomFiles = fs.existsSync(noRandomPath)
+    ? fs.readdirSync(noRandomPath).filter(file => file.endsWith(".json"))
+    : [];
+
+  const randomFiles = fs.existsSync(randomPath)
+    ? fs.readdirSync(randomPath).filter(file => file.endsWith(".json"))
+    : [];
+
+  return NextResponse.json({ noRandom: noRandomFiles, random: randomFiles });
 }
 
 export async function POST(request: Request) {

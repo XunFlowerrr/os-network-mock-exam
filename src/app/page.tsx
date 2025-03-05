@@ -3,7 +3,10 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function Home() {
-  const [sets, setSets] = useState<string[]>([]);
+  const [sets, setSets] = useState<{ noRandom: string[]; random: string[] }>({
+    noRandom: [],
+    random: [],
+  });
   const [fileData, setFileData] = useState<any>(null);
   const [renameSet, setRenameSet] = useState("");
 
@@ -90,17 +93,36 @@ export default function Home() {
       )}
 
       <h1 className="text-2xl font-bold mb-4">Welcome to the Quiz Home</h1>
-      <ul>
-        {sets.map((setName) => (
-          <li key={setName} className="mb-2">
-            <Link href={`/quiz/${setName.replace(".json", "")}`}>
-              <span className="text-blue-600 hover:underline">
-                {setName.replace(".json", "")}
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+
+      <section className="mb-6">
+        <h2 className="text-xl font-semibold">No-Random Sets</h2>
+        <ul>
+          {sets.noRandom.map((setName) => (
+            <li key={setName} className="mb-2">
+              <Link href={`/quiz/${setName.replace(".json", "")}`}>
+                <span className="text-blue-600 hover:underline">
+                  {setName.replace(".json", "")}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-xl font-semibold">Random Sets</h2>
+        <ul>
+          {sets.random.map((setName) => (
+            <li key={setName} className="mb-2">
+              <Link href={`/quiz/random/${setName.replace(".json", "")}`}>
+                <span className="text-blue-600 hover:underline">
+                  {setName.replace(".json", "")}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   );
 }

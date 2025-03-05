@@ -1,36 +1,65 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import ExplanationSection from "@/components/ExplanationSection";
 
-type Question = {
+// Helper function to shuffle an array
+function shuffleArray<T>(array: T[]): T[] {
+  const arr = array.slice();
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+type RandomQuestion = {
   question: string;
-  options: string[];
-  answer: number;
+  // Each option is an object with statement and istrue
+  options: { statement: string; istrue: boolean }[];
   explanation: string;
 };
 
-export default function QuizPage() {
+export default function RandomQuizPage() {
   const pathname = usePathname();
   const segments = pathname.split("/");
-  const setName = segments[segments.length - 1];
+  const setName = segments[segments.length - 1].split("?")[0];
 
-  const [questionList, setQuestionList] = useState<Question[]>([]);
+  const [questionList, setQuestionList] = useState<RandomQuestion[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [userAnswers, setUserAnswers] = useState<string[]>([]);
+  const [userAnswers, setUserAnswers] = useState<number[]>([]);
   const [isAnswered, setIsAnswered] = useState(false);
   const [showScore, setShowScore] = useState(false);
 
   useEffect(() => {
-    import(`@/data/no-random/${setName}.json`)
-      .then((data) => setQuestionList(data.default as Question[]))
+    import(`@/data/random/${setName}.json`)
+      .then((data) => {
+        let questions = data.default as RandomQuestion[];
+        // Always randomize questions for the random quiz
+        questions = shuffleArray(questions);
+
+        // Also randomize the options for each question
+        questions = questions.map((q) => {
+          // Find the correct answer before shuffling
+          const correctOption = q.options.find((opt) => opt.istrue);
+          // Shuffle the options
+          const shuffledOptions = shuffleArray(q.options);
+          return {
+            ...q,
+            options: shuffledOptions,
+          };
+        });
+
+        setQuestionList(questions);
+      })
       .catch(() => setQuestionList([]));
   }, [setName]);
 
   const handleOptionSelect = (optionIndex: number) => {
     if (!isAnswered) {
-      const updatedAnswers = [...userAnswers];
-      updatedAnswers[currentQuestion] = optionIndex.toString();
-      setUserAnswers(updatedAnswers);
+      const updated = [...userAnswers];
+      updated[currentQuestion] = optionIndex;
+      setUserAnswers(updated);
       setIsAnswered(true);
     }
   };
@@ -46,48 +75,37 @@ export default function QuizPage() {
 
   const computeScore = () => {
     let score = 0;
-    for (let i = 0; i < questionList.length; i++) {
-      if (userAnswers[i] === questionList[i].answer.toString()) {
-        score++;
-      }
-    }
+    questionList.forEach((q, idx) => {
+      // Find the index of the correct option
+      const correctIndex = q.options.findIndex((opt) => opt.istrue);
+      if (userAnswers[idx] === correctIndex) score++;
+    });
     return score;
   };
 
   const currentQ = questionList[currentQuestion];
-  const userChoice = userAnswers[currentQuestion];
-  const isCorrect = userChoice === currentQ?.answer.toString();
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
       if (showScore) return;
-
       if (isAnswered) {
         e.preventDefault();
         handleNext();
         return;
       }
-
-      // Add a check to ensure currentQ is defined
       if (!currentQ) return;
-
-      // Dynamically create keyMap based on the number of options
       const keyMap: Record<string, number> = {};
       currentQ.options.forEach((_, idx) => {
         keyMap[(idx + 1).toString()] = idx;
       });
-
       const pressedKey = e.key;
       if (keyMap[pressedKey] !== undefined) {
         e.preventDefault();
         handleOptionSelect(keyMap[pressedKey]);
       }
     }
-
     window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentQuestion, isAnswered, showScore, currentQ]);
 
   if (showScore) {
@@ -104,7 +122,8 @@ export default function QuizPage() {
         </p>
         <hr className="my-4" />
         {questionList.map((q, idx) => {
-          const isCorrect = userAnswers[idx] === q.answer.toString();
+          const correctIndex = q.options.findIndex((opt) => opt.istrue);
+          const isCorrect = userAnswers[idx] === correctIndex;
           return (
             <div key={idx} className="mb-6">
               <p className="font-semibold">
@@ -113,14 +132,13 @@ export default function QuizPage() {
               <p>
                 Your answer:{" "}
                 <span className={isCorrect ? "text-green-600" : "text-red-600"}>
-                  {/* cast to int and add 1 */}
-                  {parseInt(userAnswers[idx]) + 1}
+                  {userAnswers[idx] !== undefined ? userAnswers[idx] + 1 : "-"}
                 </span>
               </p>
               {!isCorrect && (
                 <p>
                   Correct answer:{" "}
-                  <span className="text-green-600">{q.answer + 1}</span>
+                  <span className="text-green-600">{correctIndex + 1}</span>
                 </p>
               )}
               <p className="mt-2 italic">Explanation: {q.explanation}</p>
@@ -132,13 +150,15 @@ export default function QuizPage() {
     );
   }
 
-  if (!questionList[currentQuestion]) {
+  if (!currentQ) {
     return <div>Loading questions...</div>;
   }
 
   return (
     <div className="mx-auto max-w-xl p-4">
-      <h1 className="text-2xl font-bold mb-2">{setName} Quiz</h1>
+      <h1 className="text-2xl font-bold mb-2">
+        {setName} Quiz (Random Schema)
+      </h1>
       <p className="mb-4 text-gray-700">
         Question {currentQuestion + 1} of {questionList.length}
       </p>
@@ -148,23 +168,22 @@ export default function QuizPage() {
       >
         {currentQ.question}
       </h2>
-
       <div className="flex flex-col space-y-2 mb-8">
         {currentQ.options.map((option, idx) => {
-          const isUserChoice = userAnswers[currentQuestion] === idx.toString();
-          const isCorrectOption = idx === currentQ.answer;
-          let buttonClasses =
+          const userChoice = userAnswers[currentQuestion] === idx;
+          const correctChoice = option.istrue;
+          let btnClass =
             "text-start px-4 py-2 rounded focus:outline-none focus:ring-2 ";
           if (isAnswered) {
-            if (isCorrectOption) {
-              buttonClasses += "bg-green-500 text-white ";
-            } else if (isUserChoice) {
-              buttonClasses += "border-2 border-red-500 "; // incorrect answer styled with red border only
+            if (correctChoice) {
+              btnClass += "bg-green-500 text-white ";
+            } else if (userChoice) {
+              btnClass += "border-2 border-red-500 ";
             } else {
-              buttonClasses += "bg-blue-500 bg-opacity-20 ";
+              btnClass += "bg-blue-500 bg-opacity-20 ";
             }
           } else {
-            buttonClasses +=
+            btnClass +=
               "bg-blue-500 bg-opacity-20 hover:bg-blue-600 focus:ring-blue-400 ";
           }
           return (
@@ -172,39 +191,25 @@ export default function QuizPage() {
               key={idx}
               onClick={() => handleOptionSelect(idx)}
               disabled={isAnswered}
-              className={buttonClasses}
+              className={btnClass}
             >
-              {option}
+              {option.statement}
             </button>
           );
         })}
-
         <p className="text-sm text-gray-500">
-          (You can also press{" "}
-          {currentQ.options.map((_, idx) => idx + 1).join("/")} on your
-          keyboard)
+          (You can also press {currentQ.options.map((_, i) => i + 1).join("/")}{" "}
+          on your keyboard)
         </p>
       </div>
-
-      {isAnswered && (
-        <div className="mb-8">
-          {isCorrect ? (
-            <p className="text-green-600 font-semibold">Correct!</p>
-          ) : (
-            <div>
-              <p className="text-red-600 font-semibold">Incorrect!</p>
-              <p>
-                The correct answer is:{" "}
-                <span className="text-red-600">
-                  {currentQ.options[currentQ.answer]}
-                </span>
-              </p>
-            </div>
-          )}
-          <p className="mt-2 italic">Explanation: {currentQ.explanation}</p>
-        </div>
-      )}
-
+      <ExplanationSection
+        correctStatement={
+          currentQ.options.find((opt) => opt.istrue)?.statement || ""
+        }
+        isCorrect={currentQ.options[userAnswers[currentQuestion]]?.istrue}
+        explanation={currentQ.explanation}
+        isAnswered={isAnswered}
+      />
       {isAnswered && (
         <button
           onClick={handleNext}
