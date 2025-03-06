@@ -1,5 +1,6 @@
 [
   {
+     "type": "multiple-choice",
     "question": "การใส่รหัสของ Esc เข้าไปเป็นส่วนหนึ่งของข้อมูลที่ต้องการส่ง เป็นการดำเนินการที่เรียกว่าอะไร?",
     "options": [
       {
@@ -22,6 +23,7 @@
     "explanation": "Byte stuffing คือวิธีแทรกไบต์พิเศษ (เช่น Esc) เข้าไปในข้อมูล เพื่อให้ผู้รับสามารถแยกแยะขอบเขตของเฟรมได้ถูกต้อง ป้องกันไม่ให้ข้อมูลบางส่วนถูกรับรู้ผิดว่าเป็นตัวบ่งบอกจุดเริ่มต้นหรือสิ้นสุดของเฟรม"
   },
   {
+     "type": "multiple-choice",
     "question": "ข้อใดเป็นข้อจำกัดของการใช้ Even parity-check code?",
     "options": [
       {
@@ -44,6 +46,7 @@
     "explanation": "Even parity-check code จะตรวจจับความผิดพลาดได้เฉพาะกรณีที่จำนวนบิตที่ถูกเปลี่ยน (flip) เป็นเลขคี่เท่านั้น หากบิตที่เสียหายเปลี่ยนไปเป็นจำนวนคู่จะยังคงค่า parity เป็นเลขคู่ไว้ ทำให้ตรวจไม่พบ"
   },
   {
+     "type": "multiple-choice",
     "question": "การกำหนดค่า control field ใน HDLC protocol มีไว้เพื่อวัตถุประสงค์ใด?",
     "options": [
       {
@@ -66,6 +69,7 @@
     "explanation": "Control field ใน HDLC จะกำหนดโหมดการทำงาน การควบคุมการไหล (flow control) และการจัดการตอบรับ (acknowledgement) ในระดับ data link layer"
   },
   {
+     "type": "multiple-choice",
     "question": "ในการจัดทำ framing นั้น จะไม่มีการใส่ข้อมูลใดในเฟรม?",
     "options": [
       {
@@ -88,6 +92,7 @@
     "explanation": "เฟรมในชั้น data link layer ประกอบด้วย MAC address ของผู้ส่งและผู้รับ รวมถึงข้อมูลตรวจสอบความผิดพลาด (error control) แต่จะไม่รวม IP address เพราะ IP เป็นข้อมูลในชั้น Network layer"
   },
   {
+     "type": "multiple-choice",
     "question": "ข้อใดเป็น sublayer ในระดับ data link layer?",
     "options": [
       {
@@ -110,6 +115,7 @@
     "explanation": "data link layer จะแบ่งเป็น 2 ส่วน คือ LLC (Logical Link Control) และ MAC (Media Access Control) ซึ่ง LLC มักจะเรียกรวมว่า data-link control sublayer"
   },
   {
+     "type": "multiple-choice",
     "question": "Normal response mode (NRM) ใช้เป็นเทคนิคการส่งข้อมูลในกรณีใด?",
     "options": [
       {
@@ -132,6 +138,7 @@
     "explanation": "Normal response mode (NRM) ถูกใช้ในระบบที่มีสถานีหลัก (primary station) และสถานีลูก (secondary station) โดยสถานีลูกจะรอให้สถานีหลักอนุญาตก่อนส่งข้อมูล"
   },
   {
+     "type": "multiple-choice",
     "question": "เมื่อกล่าวถึง Point-to-Point Protocol จะหมายถึงโพรโทคอลในระดับใด?",
     "options": [
       {
@@ -154,6 +161,7 @@
     "explanation": "PPP (Point-to-Point Protocol) เป็นโพรโทคอลที่ดำเนินงานในชั้น data link control sublayer เพื่อจัดการการเชื่อมต่อระหว่างโหนดแบบ point-to-point"
   },
   {
+     "type": "multiple-choice",
     "question": "การเชื่อมต่อระหว่าง node-to-node connection เกิดในระดับการเชื่อมต่อใด?",
     "options": [
       {
@@ -176,6 +184,7 @@
     "explanation": "node-to-node connection เป็นการสื่อสารระดับ data link โดย sublayer ที่ดูแลการควบคุมช่องทางระหว่างโหนดคือ data-link control (เช่น LLC) ในการกำกับและจัดการส่งข้อมูล"
   },
   {
+     "type": "multiple-choice",
     "question": "Redundant bits มีไว้เพื่ออะไร?",
     "options": [
       {
@@ -198,6 +207,7 @@
     "explanation": "Redundant bits คือบิตที่เพิ่มเข้ามาเพื่อให้ปลายทางใช้ตรวจสอบความถูกต้องของข้อมูลหลังการรับ (error detection) ว่าข้อมูลมีการสูญหายหรือเปลี่ยนแปลงหรือไม่"
   },
   {
+     "type": "multiple-choice",
     "question": "Authentication protocol มีหน้าที่ในการดำเนินการใด?",
     "options": [
       {
@@ -220,6 +230,7 @@
     "explanation": "Authentication protocol จะทำการยืนยันตัวตน (username และ password) ของผู้ส่งว่ามีสิทธิ์เข้าใช้งานเครือข่ายหรือเชื่อมต่อได้หรือไม่"
   },
   {
+     "type": "multiple-choice",
     "question": "กำหนดให้บิตข้อมูลคือ 1001 เมื่อทำ Linear block codes เพื่อให้ได้ code bit และเกิดเป็น codeword จะได้ค่าข้อมูลเป็นเท่าไร?",
     "options": [
       {
@@ -242,6 +253,7 @@
     "explanation": "เมื่อดำเนินการเข้ารหัสด้วยวิธี Linear block coding ตามกฎหรือโพลินอมที่กำหนด บิตข้อมูล 1001 จะถูกเติมบิตเสริม จนได้ผลเป็น codeword = 10010"
   },
   {
+     "type": "multiple-choice",
     "question": "โพรโทคอลที่ออกแบบเพื่อการเชื่อมต่อในวง LAN ในระดับ data link control sublayer คืออะไร?",
     "options": [
       {
@@ -264,6 +276,7 @@
     "explanation": "HDLC (High-Level Data Link Control) เป็นโพรโทคอลที่สามารถปรับใช้ใน LAN และทำงานในระดับ data link control sublayer เพื่อจัดรูปแบบเฟรมและควบคุมการส่งข้อมูล"
   },
   {
+     "type": "multiple-choice",
     "question": "การส่งข้อมูลที่ปลายทางเมื่อตอบกลับจะแนบชุดข้อมูลมากับ acknowledgement ด้วย มีชื่อเรียกว่าอะไร?",
     "options": [
       {
@@ -286,6 +299,7 @@
     "explanation": "piggybacking คือวิธีที่ผู้รับจะส่งข้อมูลกลับไปพร้อมกับ ACK ในเฟรมเดียวกัน เพื่อลดจำนวนเฟรม ACK แยกต่างหาก ทำให้การส่งข้อมูลมีประสิทธิภาพมากขึ้น"
   },
   {
+     "type": "multiple-choice",
     "question": "หากข้อมูลต้นฉบับคือ 10011001 เมื่อส่งไปปลายทางข้อมูลที่ได้รับคือ 10001101 จงระบุจำนวนบิตที่ผิดพลาด",
     "options": [
       {
@@ -308,6 +322,7 @@
     "explanation": "เมื่อตรวจพบความแตกต่างในตำแหน่งที่ 4 ถึง 6 (ถือเป็นช่วงต่อเนื่อง) จึงนับเป็น burst error ขนาด 3 บิต แม้จะมีบางบิตในช่วงนั้นไม่เปลี่ยนก็ตาม แต่ระยะ (start bit ถึง end bit) คือ 3 บิต"
   },
   {
+     "type": "multiple-choice",
     "question": "หากข้อมูลที่ดำเนินการส่งมีความยาว 8 บิต เมื่อนำมาทำ bit stuffing แล้วจะได้ข้อมูลดังนี้ 10011100011100001011000 ข้อมูลที่แท้จริงคืออะไร?",
     "options": [
       {
@@ -330,6 +345,7 @@
     "explanation": "หลังจากข้อมูลที่ดำเนินการส่งมีความยาว 8 บิต หลังบิตที่ 8 จะมีการเพิ่ม 0 เข้าไปหนึ่งตัว เช่น 10011100 0(เพิ่ม)  11100001 0(เพิ่ม) 11000 กลายเป็น 10011100011100001011000"
   },
   {
+     "type": "multiple-choice",
     "question": "การจัดทำ framing ที่แต่ละเฟรมมีขนาดเท่า ๆ กันนั้น เกิดขึ้นในการสื่อสารแบบใด?",
     "options": [
       {
@@ -352,6 +368,7 @@
     "explanation": "ในเทคโนโลยี ATM (Asynchronous Transfer Mode) แต่ละเซลล์จะมีขนาดคงที่ ทำให้มีลักษณะของเฟรมที่เท่ากัน ซึ่งนิยมใช้ในระบบเครือข่าย WAN"
   },
   {
+     "type": "multiple-choice",
     "question": "เฟรมใดที่ใช้ในการควบคุมการไหลและความผิดพลาด เมื่อการส่งแบบ piggybacking ไม่สามารถดำเนินการหรือมีความเหมาะสม?",
     "options": [
       {
@@ -374,6 +391,7 @@
     "explanation": "ใน HDLC เมื่อไม่สามารถส่ง ACK พร้อมข้อมูล (piggybacking) ได้ จะใช้ S-frame (Supervisory Frame) เพื่อแจ้งควบคุมการไหลและการตรวจจับ/แจ้งข้อผิดพลาดแทน"
   },
   {
+     "type": "multiple-choice",
     "question": "ข้อใดไม่ใช่ลักษณะการเชื่อมต่อในระดับ data link layer?",
     "options": [
       {
@@ -396,6 +414,7 @@
     "explanation": "การเชื่อมต่อใน data link layer อาจเป็นแบบ point-to-point, broadcast หรือ non-broadcast multiple access ได้ แต่คำว่า 'Broadband link' ไม่ใช่ลักษณะเฉพาะในชั้นนี้"
   },
   {
+     "type": "multiple-choice",
     "question": "ข้อเสียของการใช้วิธีการแบบ block coding เพื่อตรวจสอบความผิดพลาดของการส่งข้อมูลคืออะไร?",
     "options": [
       {
@@ -418,6 +437,7 @@
     "explanation": "block coding มีการกำหนดรูปแบบโค้ดที่รองรับข้อผิดพลาดบางลักษณะเท่านั้น หากความผิดพลาดอยู่นอกเหนือรูปแบบที่โค้ดกำหนด ก็จะตรวจจับไม่ได้ จึงตรวจสอบความผิดพลาดได้เฉพาะช่วงหรือรูปแบบที่กำหนดไว้"
   },
   {
+     "type": "multiple-choice",
     "question": "CRC นั้นมีข้อกำหนดตัวหารเพื่อสร้าง codewords คืออะไร?",
     "options": [
       {

@@ -15,8 +15,10 @@ function shuffleArray<T>(array: T[]): T[] {
 
 type RandomQuestion = {
   question: string;
-  // Each option is an object with statement and istrue
-  options: { statement: string; istrue: boolean }[];
+  type: "multiple-choice" | "fill-in-blank"; // Add question type
+  // Each option is an object with statement and istrue (optional for fill-in-blank)
+  options?: { statement: string; istrue: boolean }[];
+  correctAnswer?: string; // For fill-in-blank questions
   explanation: string;
 };
 
@@ -27,9 +29,10 @@ export default function RandomQuizPage() {
 
   const [questionList, setQuestionList] = useState<RandomQuestion[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [userAnswers, setUserAnswers] = useState<number[]>([]);
+  const [userAnswers, setUserAnswers] = useState<(number | string)[]>([]);
   const [isAnswered, setIsAnswered] = useState(false);
   const [showScore, setShowScore] = useState(false);
+  const [textAnswer, setTextAnswer] = useState("");
 
   useEffect(() => {
     import(`@/data/random/${setName}.json`)
@@ -38,16 +41,17 @@ export default function RandomQuizPage() {
         // Always randomize questions for the random quiz
         questions = shuffleArray(questions);
 
-        // Also randomize the options for each question
+        // Also randomize the options for each multiple-choice question
         questions = questions.map((q) => {
-          // Find the correct answer before shuffling
-          const correctOption = q.options.find((opt) => opt.istrue);
-          // Shuffle the options
-          const shuffledOptions = shuffleArray(q.options);
-          return {
-            ...q,
-            options: shuffledOptions,
-          };
+          if (q.type === "multiple-choice" && q.options) {
+            // Shuffle the options
+            const shuffledOptions = shuffleArray(q.options);
+            return {
+              ...q,
+              options: shuffledOptions,
+            };
+          }
+          return q;
         });
 
         setQuestionList(questions);
@@ -64,10 +68,21 @@ export default function RandomQuizPage() {
     }
   };
 
+  const handleTextSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!isAnswered && textAnswer.trim()) {
+      const updated = [...userAnswers];
+      updated[currentQuestion] = textAnswer.trim();
+      setUserAnswers(updated);
+      setIsAnswered(true);
+    }
+  };
+
   const handleNext = () => {
     if (currentQuestion < questionList.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
       setIsAnswered(false);
+      setTextAnswer("");
     } else {
       setShowScore(true);
     }
@@ -76,9 +91,20 @@ export default function RandomQuizPage() {
   const computeScore = () => {
     let score = 0;
     questionList.forEach((q, idx) => {
-      // Find the index of the correct option
-      const correctIndex = q.options.findIndex((opt) => opt.istrue);
-      if (userAnswers[idx] === correctIndex) score++;
+      const userAnswer = userAnswers[idx];
+      if (q.type === "multiple-choice" && q.options) {
+        // Find the index of the correct option
+        const correctIndex = q.options.findIndex((opt) => opt.istrue);
+        if (userAnswer === correctIndex) score++;
+      } else if (q.type === "fill-in-blank" && q.correctAnswer) {
+        // Compare text answers case-insensitive
+        if (
+          typeof userAnswer === "string" &&
+          userAnswer.toLowerCase() === q.correctAnswer.toLowerCase()
+        ) {
+          score++;
+        }
+      }
     });
     return score;
   };
@@ -93,15 +119,20 @@ export default function RandomQuizPage() {
         handleNext();
         return;
       }
+
       if (!currentQ) return;
-      const keyMap: Record<string, number> = {};
-      currentQ.options.forEach((_, idx) => {
-        keyMap[(idx + 1).toString()] = idx;
-      });
-      const pressedKey = e.key;
-      if (keyMap[pressedKey] !== undefined) {
-        e.preventDefault();
-        handleOptionSelect(keyMap[pressedKey]);
+
+      // For multiple choice questions, use number keys
+      if (currentQ.type === "multiple-choice" && currentQ.options) {
+        const keyMap: Record<string, number> = {};
+        currentQ.options.forEach((_, idx) => {
+          keyMap[(idx + 1).toString()] = idx;
+        });
+        const pressedKey = e.key;
+        if (keyMap[pressedKey] !== undefined) {
+          e.preventDefault();
+          handleOptionSelect(keyMap[pressedKey]);
+        }
       }
     }
     window.addEventListener("keydown", handleKeyDown);
@@ -122,8 +153,21 @@ export default function RandomQuizPage() {
         </p>
         <hr className="my-4" />
         {questionList.map((q, idx) => {
-          const correctIndex = q.options.findIndex((opt) => opt.istrue);
-          const isCorrect = userAnswers[idx] === correctIndex;
+          const userAnswer = userAnswers[idx];
+          let isCorrect = false;
+          let correctDisplay = "";
+
+          if (q.type === "multiple-choice" && q.options) {
+            const correctIndex = q.options.findIndex((opt) => opt.istrue);
+            isCorrect = userAnswer === correctIndex;
+            correctDisplay = (correctIndex + 1).toString();
+          } else if (q.type === "fill-in-blank" && q.correctAnswer) {
+            isCorrect =
+              typeof userAnswer === "string" &&
+              userAnswer.toLowerCase() === q.correctAnswer.toLowerCase();
+            correctDisplay = q.correctAnswer;
+          }
+
           return (
             <div key={idx} className="mb-6">
               <p className="font-semibold">
@@ -132,13 +176,17 @@ export default function RandomQuizPage() {
               <p>
                 Your answer:{" "}
                 <span className={isCorrect ? "text-green-600" : "text-red-600"}>
-                  {userAnswers[idx] !== undefined ? userAnswers[idx] + 1 : "-"}
+                  {q.type === "multiple-choice"
+                    ? userAnswer !== undefined
+                      ? Number(userAnswer) + 1
+                      : "-"
+                    : userAnswer || "-"}
                 </span>
               </p>
               {!isCorrect && (
                 <p>
                   Correct answer:{" "}
-                  <span className="text-green-600">{correctIndex + 1}</span>
+                  <span className="text-green-600">{correctDisplay}</span>
                 </p>
               )}
               <p className="mt-2 italic">Explanation: {q.explanation}</p>
@@ -168,45 +216,113 @@ export default function RandomQuizPage() {
       >
         {currentQ.question}
       </h2>
-      <div className="flex flex-col space-y-2 mb-8">
-        {currentQ.options.map((option, idx) => {
-          const userChoice = userAnswers[currentQuestion] === idx;
-          const correctChoice = option.istrue;
-          let btnClass =
-            "text-start px-4 py-2 rounded focus:outline-none focus:ring-2 ";
-          if (isAnswered) {
-            if (correctChoice) {
-              btnClass += "bg-green-500 text-white ";
-            } else if (userChoice) {
-              btnClass += "border-2 border-red-500 ";
-            } else {
-              btnClass += "bg-blue-500 bg-opacity-20 ";
-            }
-          } else {
-            btnClass +=
-              "bg-blue-500 bg-opacity-20 hover:bg-blue-600 focus:ring-blue-400 ";
-          }
-          return (
-            <button
-              key={idx}
-              onClick={() => handleOptionSelect(idx)}
+
+      {currentQ.type === "multiple-choice" && currentQ.options ? (
+        <>
+          <div className="flex flex-col space-y-2 mb-8">
+            {currentQ.options.map((option, idx) => {
+              const userChoice = userAnswers[currentQuestion] === idx;
+              const correctChoice = option.istrue;
+              let btnClass =
+                "text-start px-4 py-2 rounded focus:outline-none focus:ring-2 ";
+              if (isAnswered) {
+                if (correctChoice) {
+                  btnClass += "bg-green-500 text-white ";
+                } else if (userChoice) {
+                  btnClass += "border-2 border-red-500 ";
+                } else {
+                  btnClass += "bg-blue-500 bg-opacity-20 ";
+                }
+              } else {
+                btnClass +=
+                  "bg-blue-500 bg-opacity-20 hover:bg-blue-600 focus:ring-blue-400 ";
+              }
+              return (
+                <button
+                  key={idx}
+                  onClick={() => handleOptionSelect(idx)}
+                  disabled={isAnswered}
+                  className={btnClass}
+                >
+                  {option.statement}
+                </button>
+              );
+            })}
+            <p className="text-sm text-gray-500">
+              (You can also press{" "}
+              {currentQ.options.map((_, i) => i + 1).join("/")} on your
+              keyboard)
+            </p>
+          </div>
+        </>
+      ) : (
+        // Fill in the blank question
+        <form onSubmit={handleTextSubmit} className="mb-8">
+          <div className="flex flex-col space-y-2">
+            <input
+              type="text"
+              value={textAnswer}
+              onChange={(e) => setTextAnswer(e.target.value)}
               disabled={isAnswered}
-              className={btnClass}
-            >
-              {option.statement}
-            </button>
-          );
-        })}
-        <p className="text-sm text-gray-500">
-          (You can also press {currentQ.options.map((_, i) => i + 1).join("/")}{" "}
-          on your keyboard)
-        </p>
-      </div>
+              placeholder="Type your answer here..."
+              className="text-background px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400" // added text-black for foreground color
+            />
+            {!isAnswered && (
+              <button
+                type="submit"
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              >
+                Submit Answer
+              </button>
+            )}
+            {isAnswered && (
+              <div
+                className={`p-4 rounded ${
+                  typeof userAnswers[currentQuestion] === "string" &&
+                  currentQ.correctAnswer?.toLowerCase() ===
+                    userAnswers[currentQuestion].toLowerCase()
+                    ? "bg-green-100"
+                    : "bg-red-100"
+                }`}
+              >
+                <p className="font-medium text-background">
+                  Your answer: {userAnswers[currentQuestion] as string}
+                </p>
+                {typeof userAnswers[currentQuestion] === "string" &&
+                  currentQ.correctAnswer?.toLowerCase() !==
+                    userAnswers[currentQuestion].toLowerCase() && (
+                    <p className="font-medium mt-2 text-background">
+                      Correct answer:{" "}
+                      <span className="text-green-600">
+                        {currentQ.correctAnswer}
+                      </span>
+                    </p>
+                  )}
+              </div>
+            )}
+            <p className="text-sm text-gray-500">
+              (Press Enter to submit your answer)
+            </p>
+          </div>
+        </form>
+      )}
+
       <ExplanationSection
         correctStatement={
-          currentQ.options.find((opt) => opt.istrue)?.statement || ""
+          currentQ.type === "multiple-choice"
+            ? currentQ.options?.find((opt) => opt.istrue)?.statement || ""
+            : currentQ.correctAnswer || ""
         }
-        isCorrect={currentQ.options[userAnswers[currentQuestion]]?.istrue}
+        isCorrect={
+          currentQ.type === "multiple-choice"
+            ? currentQ.options?.[userAnswers[currentQuestion] as number]
+                ?.istrue ?? false
+            : Boolean(
+                typeof userAnswers[currentQuestion] === "string" &&
+                  currentQ.correctAnswer?.toLowerCase() ===
+                    userAnswers[currentQuestion].toLowerCase()
+              )
+        }
         explanation={currentQ.explanation}
         isAnswered={isAnswered}
       />

@@ -1,5 +1,6 @@
 [
   {
+     "type": "multiple-choice",
     "question": "การสื่อสารระหว่างเครือข่ายจะใช้สิ่งใดเป็นข้อมูลเพื่อบอกตำแหน่งของจุดหมายปลายทาง?",
     "options": [
       {
@@ -22,6 +23,7 @@
     "explanation": "IP address เป็นตัวระบุจุดหมายปลายทางของข้อมูลในระดับเครือข่าย (network layer) เมื่อต้องการส่งแพ็กเก็ตระหว่างเครือข่ายต่าง ๆ เราจะอ้างอิง IP address เพื่อกำหนดเส้นทางไปยังปลายทาง"
   },
   {
+     "type": "multiple-choice",
     "question": "จงให้ความหมายของคำว่า process delay",
     "options": [
       {
@@ -44,6 +46,7 @@
     "explanation": "Process delay คือระยะเวลาที่เราท์เตอร์หรืออุปกรณ์เครือข่ายใช้ในการตรวจสอบส่วนหัวของแพ็กเก็ต (header) ทำการ lookup ตารางเส้นทาง (forwarding หรือ routing table) และตัดสินใจว่าจะส่งแพ็กเก็ตไปทางใด"
   },
   {
+     "type": "multiple-choice",
     "question": "การทำ packetizing หมายถึงอะไร?",
     "options": [
       {
@@ -66,6 +69,7 @@
     "explanation": "Packetizing คือกระบวนการนำข้อมูล (payload) ที่ได้รับจากชั้นบน (เช่น transport layer) มาหุ้มห่อรวมเข้ากับส่วนหัว (header) ต่าง ๆ ในระดับเครือข่าย (network layer) เพื่อสร้างเป็นแพ็กเก็ตที่พร้อมส่งบนเครือข่าย"
   },
   {
+     "type": "multiple-choice",
     "question": "วิธีการใดที่ใช้ในการจับกลุ่ม router ให้เป็นกลุ่มเดียวกันเพื่อลดเส้นทางการส่งข้อมูลให้สั้นลง?",
     "options": [
       {
@@ -88,6 +92,7 @@
     "explanation": "CIDR (Classless Inter-Domain Routing) เป็นวิธีการรวมกลุ่มเครือข่ายย่อยเข้าด้วยกัน (route aggregation) ทำให้ตารางเส้นทางในเราท์เตอร์มีรายการน้อยลง ช่วยเพิ่มประสิทธิภาพในการส่งข้อมูลระหว่างเครือข่าย"
   },
   {
+     "type": "multiple-choice",
     "question": "ความหมายของ 167.199.170.82/27 หมายความว่าอะไร?",
     "options": [
       {
@@ -110,6 +115,7 @@
     "explanation": "สัญลักษณ์ /27 หมายถึงมี prefix (ส่วนที่เป็น network) 27 บิต จาก IP address 167.199.170.82 ซึ่งแสดงว่า 27 บิตแรกเป็นส่วนของ network และเหลืออีก 5 บิตสำหรับ host"
   },
   {
+     "type": "multiple-choice",
     "question": "ลักษณะของการเชื่อมต่อแบบ connectionless คืออะไร?",
     "options": [
       {
@@ -132,6 +138,7 @@
     "explanation": "Connectionless หมายถึงการส่งข้อมูลทันทีเมื่อช่องทางพร้อม โดยไม่ต้องมีการตั้งค่าสร้างการเชื่อมต่อหรือแจ้งปลายทางล่วงหน้า ปลายทางอาจยังไม่พร้อมก็ตาม"
   },
   {
+     "type": "multiple-choice",
     "question": "Address space ของ IPv6 มีค่าเท่าไร?",
     "options": [
       {
@@ -154,6 +161,7 @@
     "explanation": "IPv6 ใช้ address ที่มีขนาด 128 บิต ทำให้มีจำนวนแอดเดรสเพียงพอสำหรับการใช้งานในอนาคตอย่างมหาศาล"
   },
   {
+     "type": "multiple-choice",
     "question": "การสื่อสารที่มีการส่งข้อมูลในปริมาณมากจนเกิดสภาวะ overflow ของ buffer ใน router จะเกิดสิ่งใดในที่สุด?",
     "options": [
       {
@@ -176,6 +184,7 @@
     "explanation": "เมื่อบัฟเฟอร์ใน router เต็มหรือ overflow แพ็กเก็ตใหม่ที่เข้ามาจะไม่สามารถจัดเก็บได้และถูกทิ้ง (drop) ส่งผลให้เกิด packet loss"
   },
   {
+     "type": "multiple-choice",
     "question": "การสื่อสารระหว่างเครือข่ายนั้นเป็นหน้าที่ของการทำงานในระดับใด?",
     "options": [
       {
@@ -198,6 +207,7 @@
     "explanation": "หน้าที่ของ Network layer คือจัดการการส่งข้อมูลระหว่างเครือข่าย (internetworking) เช่น การกำหนดเส้นทาง (routing) และการส่งแพ็กเก็ตข้ามเครือข่าย"
   },
   {
+     "type": "multiple-choice",
     "question": "เมื่อ router เริ่มมีการรับข้อมูลเข้าสู่คิวแล้ว router จะส่งข้อมูลนั้นสู่แหล่งรับข้อมูลปลายทางเมื่อใด?",
     "options": [
       {
@@ -220,6 +230,7 @@
     "explanation": "ภายใน router มักจะใช้วิธี store-and-forward คือรับแพ็กเก็ตทั้งหมดจนสมบูรณ์ก่อน จากนั้นจึงตรวจสอบส่วนหัว (header) และหาเส้นทางเพื่อส่งต่อไปยังปลายทาง"
   },
   {
+     "type": "multiple-choice",
     "question": "Payload ที่ใช้ทำ packetizing นั้นรับมาจากระดับการทำงานใด?",
     "options": [
       {
@@ -242,6 +253,7 @@
     "explanation": "Payload ที่ทำ packetizing ในชั้นเครือข่าย (network layer) ได้รับมาจากชั้น Transport layer ซึ่งเป็นชั้นที่แบ่งและเตรียมข้อมูลของแอปพลิเคชันให้พร้อมส่ง"
   },
   {
+     "type": "multiple-choice",
     "question": "การส่งข้อมูลที่กระจาย packet ไปตามเส้นทางการสื่อสารหลาย ๆ เส้นทางเพื่อไปถึงปลายทางเดียวกัน เป็นการส่งข้อมูลด้วยวิธีอะไร?",
     "options": [
       {
@@ -264,6 +276,7 @@
     "explanation": "Packet switching แบบ connectionless จะไม่มีการกำหนดเส้นทางล่วงหน้า แพ็กเก็ตแต่ละอันจึงอาจเดินทางผ่านเส้นทางต่าง ๆ เพื่อไปสู่ปลายทางเดียวกัน"
   },
   {
+     "type": "multiple-choice",
     "question": "Address ในคลาสใดที่ขนาดของ network ID มีค่าน้อยกว่า host ID?",
     "options": [
       {
@@ -286,6 +299,7 @@
     "explanation": "Class A ใช้ 8 บิตเป็น network ID และอีก 24 บิตเป็น host ID ทำให้ขนาด network ID (8 บิต) น้อยกว่าขนาด host ID (24 บิต)"
   },
   {
+     "type": "multiple-choice",
     "question": "กำหนดให้ IP address คือ 23.14.67.92/12 ข้อใดต่อไปนี้ถูกต้อง?",
     "options": [
       {
@@ -308,6 +322,7 @@
     "explanation": "การระบุ /12 หมายความว่ามี 12 บิตแรกเป็น prefix ในการกำหนดเครือข่าย ทำให้ subnet mask เท่ากับ 255.240.0.0"
   },
   {
+     "type": "multiple-choice",
     "question": "การส่งข้อมูลแบบ circuit switching นั้นมีลักษณะอย่างไร?",
     "options": [
       {
@@ -330,6 +345,7 @@
     "explanation": "Circuit switching คือการสร้างหรือจองเส้นทางเฉพาะเพื่อสื่อสารระหว่างโหนดต้นทางกับปลายทางหนึ่ง ๆ ตลอดช่วงการสื่อสาร โดยไม่แบ่งช่องทางร่วมกับแหล่งข้อมูลอื่นในขณะที่กำลังใช้งาน"
   },
   {
+     "type": "multiple-choice",
     "question": "สภาวะของการเกิด congestion คืออะไร?",
     "options": [
       {
@@ -352,6 +368,7 @@
     "explanation": "Congestion เกิดขึ้นเมื่อมีปริมาณแพ็กเก็ตที่ส่งเข้ามาในเครือข่ายมากเกินกว่าความสามารถที่เครือข่ายหรืออุปกรณ์ (เช่น router) จะรับมือได้ทัน"
   },
   {
+     "type": "multiple-choice",
     "question": "หากข้อมูลที่ส่งมีขนาด 100 MBytes นำส่งด้วยอัตราการสื่อสาร 20 Mbps จงหาค่า transmission delay",
     "options": [
       {
@@ -374,6 +391,7 @@
     "explanation": "คำนวณได้โดยแปลง 100 MBytes เป็น 800 Mb (1 Byte = 8 bits) แล้วนำไปหารด้วยอัตรา 20 Mbps จะได้ 800 Mb / 20 Mbps = 40 วินาที"
   },
   {
+     "type": "multiple-choice",
     "question": "ข้อใดไม่ใช่มาตรในการวัดประสิทธิภาพของเครือข่าย?",
     "options": [
       {
@@ -396,6 +414,7 @@
     "explanation": "มาตรในการวัดประสิทธิภาพของเครือข่ายทั่วไป ได้แก่ Delay, Throughput และ Packet loss ส่วน 'Dropping packets' เป็นลักษณะเหตุการณ์ที่เกิดขึ้น ไม่ใช่ตัวชี้วัดหลักโดยตรง"
   },
   {
+     "type": "multiple-choice",
     "question": "ข้อใดกล่าวถูกต้องที่สุด?",
     "options": [
       {
@@ -418,6 +437,7 @@
     "explanation": "โดยทั่วไปจำนวน IP address ในแต่ละ subnet จะอยู่ในรูป 2^n (เช่น 2, 4, 8, 16, 32... ) เพื่อสอดคล้องกับการกำหนดบิต subnet mask"
   },
   {
+     "type": "multiple-choice",
     "question": "การใช้ค่า checksum ในระดับ network layer นั้นมีวัตถุประสงค์ใด?",
     "options": [
       {
