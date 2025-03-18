@@ -155,17 +155,33 @@ export default function RandomQuizPage() {
         {questionList.map((q, idx) => {
           const userAnswer = userAnswers[idx];
           let isCorrect = false;
-          let correctDisplay = "";
+          let userAnswerDisplay = "";
+          let correctAnswerDisplay = "";
 
           if (q.type === "multiple-choice" && q.options) {
-            const correctIndex = q.options.findIndex((opt) => opt.istrue);
-            isCorrect = userAnswer === correctIndex;
-            correctDisplay = (correctIndex + 1).toString();
+            // Get the full statement of the user's answer
+            userAnswerDisplay =
+              typeof userAnswer === "number" &&
+              userAnswer >= 0 &&
+              userAnswer < q.options.length
+                ? q.options[userAnswer].statement
+                : "No answer";
+
+            // Find the correct answer statement
+            const correctOption = q.options.find((opt) => opt.istrue);
+            correctAnswerDisplay = correctOption ? correctOption.statement : "";
+
+            isCorrect =
+              typeof userAnswer === "number" &&
+              q.options[userAnswer] &&
+              q.options[userAnswer].istrue;
           } else if (q.type === "fill-in-blank" && q.correctAnswer) {
+            userAnswerDisplay =
+              typeof userAnswer === "string" ? userAnswer : "No answer";
+            correctAnswerDisplay = q.correctAnswer;
             isCorrect =
               typeof userAnswer === "string" &&
               userAnswer.toLowerCase() === q.correctAnswer.toLowerCase();
-            correctDisplay = q.correctAnswer;
           }
 
           return (
@@ -176,17 +192,13 @@ export default function RandomQuizPage() {
               <p>
                 Your answer:{" "}
                 <span className={isCorrect ? "text-green-600" : "text-red-600"}>
-                  {q.type === "multiple-choice"
-                    ? userAnswer !== undefined
-                      ? Number(userAnswer) + 1
-                      : "-"
-                    : userAnswer || "-"}
+                  {userAnswerDisplay}
                 </span>
               </p>
               {!isCorrect && (
                 <p>
                   Correct answer:{" "}
-                  <span className="text-green-600">{correctDisplay}</span>
+                  <span className="text-green-600">{correctAnswerDisplay}</span>
                 </p>
               )}
               <p className="mt-2 italic">Explanation: {q.explanation}</p>
