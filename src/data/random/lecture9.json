@@ -1,7 +1,7 @@
 [
   {
     "type": "multiple-choice",
-    "question": "1.Port number ช่วงใดที่สามารถนำไปใช้พัฒนาโปรแกรมทั่วไปได้ (1 Point)",
+    "question": "Port number ช่วงใดที่สามารถนำไปใช้พัฒนาโปรแกรมทั่วไปได้",
     "options": [
       {
         "statement": "Dynamic ports",
@@ -24,7 +24,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "2.อะไรอาจเกิดขึ้นเมื่อค่า IP address ที่บ่งบอกเครื่องรับปลายทางที่ปรากฏใน pseudoheader มีความเสียหายเกิดขึ้น (1 Point)",
+    "question": "อะไรอาจเกิดขึ้นเมื่อค่า IP address ที่บ่งบอกเครื่องรับปลายทางที่ปรากฏใน pseudoheader มีความเสียหายเกิดขึ้น",
     "options": [
       {
         "statement": "Router ขอให้แหล่งข้อมูลต้นทางส่งข้อมูลใหม่",
@@ -47,7 +47,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "3.ข้อใดไม่ขั้นตอนการสื่อสารด้วย TCP (1 Point)",
+    "question": "ข้อใดไม่ขั้นตอนการสื่อสารด้วย TCP",
     "options": [
       {
         "statement": "ตรวจสอบว่าข้อมูลที่ต้องการส่งมีความถูกต้องด้วยการคำนวณ CRC",
@@ -70,7 +70,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "4.ข้อใดต่อไปนี้กล่าวถูกต้อง (1 Point)",
+    "question": "ข้อใดต่อไปนี้กล่าวถูกต้อง",
     "options": [
       {
         "statement": "กลไกการ push ข้อมูลในระดับ Transport layer จะกระทำเมื่อปลายทางพร้อมรับข้อมูล",
@@ -93,7 +93,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "5.กำหนดให้ UDP header มีค่าเท่ากับ “001E000B001C0014” แสดงว่า source port number มีค่าเท่าไร (1 Point)",
+    "question": "กำหนดให้ UDP header มีค่าเท่ากับ “001E000B001C0014” แสดงว่า source port number มีค่าเท่าไร",
     "options": [
       {
         "statement": "11",
@@ -117,7 +117,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "6.เมื่อแหล่งรับข้อมูลปลายทางได้รับข้อมูลเรียบร้อยจะต้องส่งสิ่งใดกลับมาให้แหล่งส่งข้อมูลต้นทาง (1 Point)",
+    "question": "เมื่อแหล่งรับข้อมูลปลายทางได้รับข้อมูลเรียบร้อยจะต้องส่งสิ่งใดกลับมาให้แหล่งส่งข้อมูลต้นทาง",
     "options": [
       {
         "statement": "Flag",
@@ -140,7 +140,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "7.Congestion เกิดในกรณีใดต่อไปนี้ที่ถูกที่สุด (1 Point)",
+    "question": "Congestion เกิดในกรณีใดต่อไปนี้ที่ถูกที่สุด",
     "options": [
       {
         "statement": "เมื่อปริมาณข้อมูลที่ส่งในช่องทางการสื่อสารมีมากกว่าขนาดของความจุที่ช่องทางการสื่อสารสามารถรับได้",
@@ -163,7 +163,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "8.การสื่อสารในระดับ transport layer จะต้องอาศัยสิ่งใดต่อไปนี้ (1 Point)",
+    "question": "การสื่อสารในระดับ transport layer จะต้องอาศัยสิ่งใดต่อไปนี้",
     "options": [
       {
         "statement": "IP address และ Port number",
@@ -186,7 +186,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "9.กำหนดให้ UDP header มีค่าเท่ากับ “001E000B001C0014” แสดงว่า Total length มีค่าเท่าไร (1 Point)",
+    "question": "กำหนดให้ UDP header มีค่าเท่ากับ “001E000B001C0014” แสดงว่า Total length มีค่าเท่าไร",
     "options": [
       {
         "statement": "11",
@@ -209,7 +209,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "10.Socket address หมายถึงค่าใดต่อไปนี้ (1 Point)",
+    "question": "Socket address หมายถึงค่าใดต่อไปนี้",
     "options": [
       {
         "statement": "IP address และ Port number",
@@ -232,7 +232,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "11.Transport layer ณ แหล่งส่งข้อมูลต้นทางที่มีหน้าที่เป็น producer จะทำหน้าที่อย่างไร (1 Point)",
+    "question": "Transport layer ณ แหล่งส่งข้อมูลต้นทางที่มีหน้าที่เป็น producer จะทำหน้าที่อย่างไร",
     "options": [
       {
         "statement": "รับข้อมูลจาก network layer เพื่อส่งต่อไปสู่การ decapsulate",
@@ -255,7 +255,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "12.Transport layer ณ แหล่งรับข้อมูลปลายทางที่มีหน้าที่เป็น consumer จะทำหน้าที่อย่างไร (1 Point)",
+    "question": "Transport layer ณ แหล่งรับข้อมูลปลายทางที่มีหน้าที่เป็น consumer จะทำหน้าที่อย่างไร",
     "options": [
       {
         "statement": "รับข้อมูลจาก network layer เพื่อส่งต่อไปสู่การ decapsulate",
@@ -278,7 +278,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "13.Transport layer จะเป็นผู้ให้บริการแก่ระดับการทำงานระดับใดต่อไปนี้ (1 Point)",
+    "question": "Transport layer จะเป็นผู้ให้บริการแก่ระดับการทำงานระดับใดต่อไปนี้",
     "options": [
       {
         "statement": "Application layer",
@@ -301,7 +301,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "14.ข้อใดไม่เป็นกระบวนการ error control ในระดับ Transport layer (1 Point)",
+    "question": "ข้อใดไม่เป็นกระบวนการ error control ในระดับ Transport layer",
     "options": [
       {
         "statement": "กำจัด packet ที่มีความซ้ำซ้อน",
@@ -324,7 +324,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "15.ข้อใดไม่ใช่ส่วนหนึ่งของการทำ error control (1 Point)",
+    "question": "ข้อใดไม่ใช่ส่วนหนึ่งของการทำ error control",
     "options": [
       {
         "statement": "กลไกในการตรวจสอบความผิดพลาดในการส่งข้อมูลและกลไกการส่งข้อมูลใหม่ในกรณีที่ segment เสียหาย",
@@ -347,7 +347,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "16.เมื่อ buffer ณ Transport layer ของแหล่งรับข้อมูลเต็ม จะมีการส่งสัญญาณจากแหล่งรับข้อมูลสู่แหล่งส่งข้อมูลต้นทางเพื่อให้ Transport layer ของแหล่งส่งข้อมูลต้นทางหยุดหรือชะลอการส่งข้อมูล เป็นขั้นตอนการทำงานที่เรียกว่าอะไร (1 Point)",
+    "question": "เมื่อ buffer ณ Transport layer ของแหล่งรับข้อมูลเต็ม จะมีการส่งสัญญาณจากแหล่งรับข้อมูลสู่แหล่งส่งข้อมูลต้นทางเพื่อให้ Transport layer ของแหล่งส่งข้อมูลต้นทางหยุดหรือชะลอการส่งข้อมูล เป็นขั้นตอนการทำงานที่เรียกว่าอะไร",
     "options": [
       {
         "statement": "Congestion control",
@@ -370,7 +370,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "17.Congestion control กระทำในระดับใด (1 Point)",
+    "question": "Congestion control กระทำในระดับใด",
     "options": [
       {
         "statement": "Data link layer",
@@ -393,7 +393,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "18.ข้อใดต่อไปนี้ไม่ควรใช้ UDP (1 Point)",
+    "question": "ข้อใดต่อไปนี้ไม่ควรใช้ UDP",
     "options": [
       {
         "statement": "การหาเส้นทางโดย RIP",
@@ -416,7 +416,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "19.การส่งข้อมูลของ TCP ที่มีลักษณะเป็น stream delivery นั้นต้องมีองค์ประกอบใดต่อไปนี้เป็นส่วนช่วยให้การส่งข้อมูลมีประสิทธิภาพ (1 Point)",
+    "question": "การส่งข้อมูลของ TCP ที่มีลักษณะเป็น stream delivery นั้นต้องมีองค์ประกอบใดต่อไปนี้เป็นส่วนช่วยให้การส่งข้อมูลมีประสิทธิภาพ",
     "options": [
       {
         "statement": "Receiving buffer",
@@ -439,7 +439,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "20.การสื่อสารใดเป็นแบบ connectionless (1 Point)",
+    "question": "การสื่อสารใดเป็นแบบ connectionless",
     "options": [
       {
         "statement": "การสั่ง scan เอกสารด้วยเครื่อง scanner สู่เครื่องคอมพิวเตอร์",
