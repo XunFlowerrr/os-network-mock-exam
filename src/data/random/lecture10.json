@@ -136,12 +136,13 @@
     "question": "เมื่อ client ต้องการสร้างการเชื่อมต่อเพื่อการสื่อสาร ข้อมูลใดต่อไปนี้จะถูกใช้ในระดับ application layer",
     "options": [
       { "statement": "MAC address",       "istrue": false },
-      { "statement": "Port number",       "istrue": true  },
-      { "statement": "Socket address",    "istrue": false },
+      { "statement": "Port number",       "istrue": false },
+      { "statement": "Socket address",    "istrue": true },
       { "statement": "IP address",        "istrue": false }
     ],
-    "explanation": "ที่ระดับ Application Layer จะใช้หมายเลขพอร์ต (Port number) เพื่อระบุกระบวนการ (process) หรือบริการ (service) ปลายทางและต้นทาง ช่วยให้แอปพลิเคชันทั้งสองฝั่งสามารถเชื่อมต่อและรับส่งข้อมูลกันได้อย่างถูกต้อง ส่วน MAC address ใช้ใน Data Link Layer, IP address ใช้ใน Network Layer และแม้ Socket address จะแสดงทั้ง IP และ Port แต่เมื่อพูดถึงที่ระดับ Application Layer จึงเน้นที่การใช้ Port number เป็นหลัก"
+    "explanation": "Application layer ใช้ socket address ซึ่งประกอบด้วย IP address และ port number เพื่อระบุกระบวนการ (process) บนโฮสต์ต้นทางและปลายทาง ทำให้แอปพลิเคชันสามารถเชื่อมต่อและรับส่งข้อมูลระหว่างกันได้อย่างถูกต้อง"
   },
+
   {
     "type": "multiple-choice",
     "question": "การสื่อสารในระดับ application layer จะเป็นการใช้ข้อมูลใดต่อไปนี้",
