@@ -236,11 +236,11 @@
     "options": [
       {
         "statement": "รับข้อมูลจาก network layer เพื่อส่งต่อไปสู่การ decapsulate",
-        "istrue": true
+        "istrue": false
       },
       {
         "statement": "หุ้มห่อข้อมูล (encapsulate) ณ Transport layer เพื่อส่งข้อมูลต่อไปให้ network layer ทำงานต่อไป",
-        "istrue": false
+        "istrue": true
       },
       {
         "statement": "รับข้อมูลจาก application layer เพื่อส่งต่อไปหุ้มห่อ (encapsulate) ในระดับ Transport layer",
@@ -251,8 +251,9 @@
         "istrue": false
       }
     ],
-    "explanation": "ตามตัวเลือกที่ให้มา คำตอบระบุว่าผู้ส่ง (producer) ในระดับ Transport layer รับข้อมูลจาก Network layer เพื่อนำไป decapsulate"
+    "explanation": "ที่ฝั่งต้นทาง (producer) Transport layer จะรับข้อมูลจากชั้นบน (Application layer) แล้วทำการหุ้มห่อ (encapsulation) ด้วยการเพิ่ม header ของ Transport layer ให้เป็น segment จากนั้นจึงส่งต่อ segment นี้ให้ Network layer เพื่อดำเนินการส่งต่อผ่าน IP ต่อไป"
   },
+
   {
     "type": "multiple-choice",
     "question": "Transport layer ณ แหล่งรับข้อมูลปลายทางที่มีหน้าที่เป็น consumer จะทำหน้าที่อย่างไร",
