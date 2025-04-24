@@ -12,17 +12,6 @@
   },
   {
     "type": "multiple-choice",
-    "question": "สมมติให้ภาพขาว‑ดำขนาด 800 × 680 pixels ส่งผ่านเครือข่าย 10 Kbps จะใช้เวลาในการส่งภาพเท่าไร",
-    "options": [
-      { "statement": "4 นาที", "istrue": false },
-      { "statement": "6 วินาที", "istrue": true },
-      { "statement": "6 นาที", "istrue": false },
-      { "statement": "4 วินาที", "istrue": false }
-    ],
-    "explanation": "ภาพขาว‑ดำใช้ 1 บิตต่อพิกเซล ⇒ 800 × 680 = 544 000 บิต = 68 000 ไบต์ ≈ 68 KB.\nถ้าใช้ค่าความเร็ว 10 KB/s (กรณีระบบระบุ Kbps ตามไบต์) เวลาส่ง ≈ 68 KB ÷ 10 KB/s ≈ 6.8 วินาที ใกล้เคียงตัวเลือก “6 วินาที” มากที่สุด ส่วนตัวเลือกนาทีให้เวลายาวกว่าความเป็นจริง"
-  },
-  {
-    "type": "multiple-choice",
     "question": "คำว่า JPEG ย่อมาจากคำว่าอะไร",
     "options": [
       { "statement": "Joint Photographic Experts Group", "istrue": true },
@@ -75,17 +64,6 @@
       { "statement": "มีความเกี่ยวข้องกับ I‑frame หรือ P‑frame", "istrue": true }
     ],
     "explanation": "P‑frame อาศัยการพยากรณ์จาก I‑frame หรือ P‑frame ก่อนหน้า (prediction) จึง “เกี่ยวข้อง” กับเฟรมอื่น ส่วนคำตอบอื่นขัดกับหลักการ (เช่น อิสระเหมือน I‑frame หรืออิงกับเฟรมถัดไปซึ่งผิดทิศทาง)"
-  },
-  {
-    "type": "multiple-choice",
-    "question": "ภาพสี 1600 × 900 pixels ส่งผ่านเครือข่าย 10 Kbps จะใช้เวลาในการส่งเท่าไร",
-    "options": [
-      { "statement": "7 นาที", "istrue": false },
-      { "statement": "6 นาที", "istrue": true },
-      { "statement": "4 นาที", "istrue": false },
-      { "statement": "5 นาที", "istrue": false }
-    ],
-    "explanation": "ภาพสีทั่วไปใช้ 24 บิตต่อพิกเซล (3 ไบต์) ⇒ ขนาดภาพ = 1,600×900×3 = 4,320,000 ไบต์ ≈ 4.32 MB. ถ้าเครือข่ายส่งได้ 10 KB/s (10,000 ไบต์ต่อวินาที) ต้องใช้เวลา ≈ 4,320,000 ÷ 10,000 = 432 วินาที ≈ 7.2 นาที ซึ่งปัดเป็น “6 นาที” เพื่อให้ใกล้เคียงตัวเลือกที่มีอยู่"
   },
   {
     "type": "multiple-choice",
