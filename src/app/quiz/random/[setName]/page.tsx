@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+// Import useSearchParams
+import { usePathname, useSearchParams } from "next/navigation";
 import ExplanationSection from "@/components/ExplanationSection";
 
 // Helper function to shuffle an array
@@ -24,8 +25,13 @@ type RandomQuestion = {
 
 export default function RandomQuizPage() {
   const pathname = usePathname();
+  // Get search params
+  const searchParams = useSearchParams();
   const segments = pathname.split("/");
   const setName = segments[segments.length - 1].split("?")[0];
+
+  // Determine if randomization is enabled (default is true)
+  const isRandomized = searchParams.get("randomize") !== "false";
 
   const [questionList, setQuestionList] = useState<RandomQuestion[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -38,26 +44,29 @@ export default function RandomQuizPage() {
     import(`@/data/random/${setName}.json`)
       .then((data) => {
         let questions = data.default as RandomQuestion[];
-        // Always randomize questions for the random quiz
-        questions = shuffleArray(questions);
 
-        // Also randomize the options for each multiple-choice question
-        questions = questions.map((q) => {
-          if (q.type === "multiple-choice" && q.options) {
-            // Shuffle the options
-            const shuffledOptions = shuffleArray(q.options);
-            return {
-              ...q,
-              options: shuffledOptions,
-            };
-          }
-          return q;
-        });
+        // Conditionally randomize questions
+        if (isRandomized) {
+          questions = shuffleArray(questions);
+
+          // Conditionally randomize options for multiple-choice questions
+          questions = questions.map((q) => {
+            if (q.type === "multiple-choice" && q.options) {
+              const shuffledOptions = shuffleArray(q.options);
+              return {
+                ...q,
+                options: shuffledOptions,
+              };
+            }
+            return q;
+          });
+        }
+        // If not randomized, questions and options remain in their original order
 
         setQuestionList(questions);
       })
       .catch(() => setQuestionList([]));
-  }, [setName]);
+  }, [setName, isRandomized]);
 
   const handleOptionSelect = (optionIndex: number) => {
     if (!isAnswered) {
@@ -217,7 +226,8 @@ export default function RandomQuizPage() {
   return (
     <div className="mx-auto max-w-xl p-4">
       <h1 className="text-2xl font-bold mb-2">
-        {setName} Quiz (Random Schema)
+        {/* Update title based on randomization */}
+        {setName} Quiz ({isRandomized ? "Randomized" : "Sequential"})
       </h1>
       <p className="mb-4 text-gray-700">
         Question {currentQuestion + 1} of {questionList.length}
