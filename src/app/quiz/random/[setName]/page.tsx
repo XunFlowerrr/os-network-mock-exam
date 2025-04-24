@@ -257,7 +257,7 @@ export default function RandomQuizPage() {
                 }
               } else {
                 btnClass +=
-                  "bg-blue-500 bg-opacity-20 hover:bg-blue-600 focus:ring-blue-400 ";
+                  "bg-blue-500 bg-opacity-20 hover:bg-blue-600 focus:ring-blue-400 hover:text-white ";
               }
               return (
                 <button
