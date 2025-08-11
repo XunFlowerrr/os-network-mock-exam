@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { usePathname } from "next/navigation";
 
 type Question = {
@@ -90,44 +90,61 @@ export default function QuizPage() {
     };
   }, [currentQuestion, isAnswered, showScore, currentQ]);
 
+  const progress = useMemo(
+    () =>
+      questionList.length ? (currentQuestion / questionList.length) * 100 : 0,
+    [currentQuestion, questionList.length]
+  );
+
   if (showScore) {
     const finalScore = computeScore();
     return (
-      <div className="mx-auto max-w-xl p-4">
-        <h1 className="text-2xl font-bold mb-4">Quiz Complete!</h1>
-        <p className="mb-2">
-          You scored{" "}
-          <span className="font-semibold">
-            {finalScore} / {questionList.length}
-          </span>
-          .
-        </p>
-        <hr className="my-4" />
-        {questionList.map((q, idx) => {
-          const isCorrect = userAnswers[idx] === q.answer.toString();
-          return (
-            <div key={idx} className="mb-6">
-              <p className="font-semibold">
-                Question {idx + 1}: {q.question}
-              </p>
-              <p>
-                Your answer:{" "}
-                <span className={isCorrect ? "text-green-600" : "text-red-600"}>
-                  {/* cast to int and add 1 */}
-                  {parseInt(userAnswers[idx]) + 1}
-                </span>
-              </p>
-              {!isCorrect && (
-                <p>
-                  Correct answer:{" "}
-                  <span className="text-green-600">{q.answer + 1}</span>
+      <div className="max-w-3xl mx-auto space-y-8">
+        <div className="text-center space-y-2">
+          <h1 className="text-3xl font-bold gradient-text">Results</h1>
+          <p className="text-muted">
+            You scored {finalScore} / {questionList.length}
+          </p>
+        </div>
+        <div className="grid gap-6">
+          {questionList.map((q, idx) => {
+            const correct = userAnswers[idx] === q.answer.toString();
+            return (
+              <div
+                key={idx}
+                className="p-5 rounded-lg border border-border bg-card"
+              >
+                <p className="font-semibold mb-2">
+                  Q{idx + 1}. {q.question}
                 </p>
-              )}
-              <p className="mt-2 italic">Explanation: {q.explanation}</p>
-              <hr className="mt-4" />
-            </div>
-          );
-        })}
+                <p className="text-sm">
+                  Your answer:{" "}
+                  <span
+                    className={
+                      correct
+                        ? "text-success font-medium"
+                        : "text-danger font-medium"
+                    }
+                  >
+                    {parseInt(userAnswers[idx]) + 1}
+                  </span>
+                </p>
+                {!correct && (
+                  <p className="text-sm mt-1">
+                    Correct answer:{" "}
+                    <span className="text-success font-medium">
+                      {q.answer + 1}
+                    </span>
+                  </p>
+                )}
+                <p className="mt-3 text-sm leading-relaxed whitespace-pre-line">
+                  <span className="font-medium">Explanation:</span>{" "}
+                  {q.explanation}
+                </p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
@@ -137,80 +154,93 @@ export default function QuizPage() {
   }
 
   return (
-    <div className="mx-auto max-w-xl p-4">
-      <h1 className="text-2xl font-bold mb-2">{setName} Quiz</h1>
-      <p className="mb-4 text-gray-700">
-        Question {currentQuestion + 1} of {questionList.length}
-      </p>
-      <h2
-        className="text-lg font-medium mb-4"
-        style={{ whiteSpace: "pre-line" }}
-      >
-        {currentQ.question}
-      </h2>
-
-      <div className="flex flex-col space-y-2 mb-8">
-        {currentQ.options.map((option, idx) => {
-          const isUserChoice = userAnswers[currentQuestion] === idx.toString();
-          const isCorrectOption = idx === currentQ.answer;
-          let buttonClasses =
-            "text-start px-4 py-2 rounded focus:outline-none focus:ring-2 ";
-          if (isAnswered) {
-            if (isCorrectOption) {
-              buttonClasses += "bg-green-500 text-white ";
-            } else if (isUserChoice) {
-              buttonClasses += "border-2 border-red-500 "; // incorrect answer styled with red border only
-            } else {
-              buttonClasses += "bg-blue-500 bg-opacity-20 ";
-            }
-          } else {
-            buttonClasses +=
-              "bg-blue-500 bg-opacity-20 hover:bg-blue-600 focus:ring-blue-400 ";
-          }
-          return (
-            <button
-              key={idx}
-              onClick={() => handleOptionSelect(idx)}
-              disabled={isAnswered}
-              className={buttonClasses}
-            >
-              {option}
-            </button>
-          );
-        })}
-
-        <p className="text-sm text-gray-500">
-          (You can also press{" "}
-          {currentQ.options.map((_, idx) => idx + 1).join("/")} on your
-          keyboard)
-        </p>
+    <div className="max-w-3xl mx-auto space-y-8">
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <h1 className="text-2xl font-bold tracking-tight gradient-text">
+            {setName} Quiz
+          </h1>
+          <span className="text-xs text-muted">
+            {currentQuestion + 1}/{questionList.length}
+          </span>
+        </div>
+        <div className="w-full h-2 bg-border rounded-full overflow-hidden">
+          <div
+            className="h-full bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] transition-all"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
       </div>
-
+      <div className="space-y-6">
+        <h2 className="text-lg font-medium whitespace-pre-line leading-relaxed">
+          {currentQ.question}
+        </h2>
+        <div className="grid gap-3">
+          {currentQ.options.map((option, idx) => {
+            const isUserChoice =
+              userAnswers[currentQuestion] === idx.toString();
+            const isCorrectOption = idx === currentQ.answer;
+            let base =
+              "text-left px-4 py-3 rounded-lg border transition-all focus:outline-none focus:ring-2";
+            let styles = "";
+            if (isAnswered) {
+              if (isCorrectOption)
+                styles =
+                  "border-success bg-success/10 text-success font-medium";
+              else if (isUserChoice)
+                styles = "border-danger bg-danger/10 text-danger";
+              else styles = "border-border bg-background/60";
+            } else {
+              styles =
+                "border-border bg-card hover:border-accent hover:shadow-soft";
+            }
+            return (
+              <button
+                key={idx}
+                onClick={() => handleOptionSelect(idx)}
+                disabled={isAnswered}
+                className={`${base} ${styles}`}
+              >
+                {option}
+              </button>
+            );
+          })}
+          <p className="text-xs text-muted">
+            Press {currentQ.options.map((_, idx) => idx + 1).join("/")} to
+            answer
+          </p>
+        </div>
+      </div>
       {isAnswered && (
-        <div className="mb-8">
-          {isCorrect ? (
-            <p className="text-green-600 font-semibold">Correct!</p>
-          ) : (
-            <div>
-              <p className="text-red-600 font-semibold">Incorrect!</p>
-              <p>
-                The correct answer is:{" "}
-                <span className="text-red-600">
-                  {currentQ.options[currentQ.answer]}
-                </span>
-              </p>
-            </div>
+        <div className="space-y-4 p-4 rounded-lg border border-border bg-card">
+          <p
+            className={
+              isCorrect
+                ? "text-success font-semibold"
+                : "text-danger font-semibold"
+            }
+          >
+            {isCorrect ? "Correct!" : "Incorrect"}
+          </p>
+          {!isCorrect && (
+            <p className="text-sm">
+              Correct answer:{" "}
+              <span className="font-medium text-success">
+                {currentQ.options[currentQ.answer]}
+              </span>
+            </p>
           )}
-          <p className="mt-2 italic">Explanation: {currentQ.explanation}</p>
+          <p className="text-sm leading-relaxed whitespace-pre-line">
+            <span className="font-medium">Explanation:</span>{" "}
+            {currentQ.explanation}
+          </p>
         </div>
       )}
-
       {isAnswered && (
-        <button
-          onClick={handleNext}
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
-        >
-          {currentQuestion < questionList.length - 1 ? "Next" : "Show Results"}
+        <button onClick={handleNext} className="btn-primary px-6 py-3">
+          {currentQuestion < questionList.length - 1
+            ? "Next Question"
+            : "View Results"}
         </button>
       )}
     </div>
