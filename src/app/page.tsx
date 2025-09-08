@@ -4,7 +4,13 @@ import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
-import { FiUploadCloud, FiDatabase, FiShuffle, FiSearch } from "react-icons/fi";
+import {
+  FiUploadCloud,
+  FiDatabase,
+  FiShuffle,
+  FiSearch,
+  FiGitBranch,
+} from "react-icons/fi";
 
 export default function Home() {
   const [sets, setSets] = useState<{ noRandom: string[]; random: string[] }>({
@@ -12,12 +18,39 @@ export default function Home() {
     random: [],
   });
   const [query, setQuery] = useState("");
+  const [syncing, setSyncing] = useState(false);
 
   useEffect(() => {
     fetch("/api/sets")
       .then((res) => res.json())
       .then((data) => setSets(data));
   }, []);
+
+  const handleSyncToGithub = async () => {
+    try {
+      setSyncing(true);
+      const response = await fetch("/api/sync", {
+        method: "POST",
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert(result.message);
+        // Refresh the sets data
+        const res = await fetch("/api/sets");
+        const data = await res.json();
+        setSets(data);
+      } else {
+        alert(`Sync failed: ${result.message}`);
+      }
+    } catch (error) {
+      console.error("Sync error:", error);
+      alert("Failed to sync to GitHub. Please check the console for details.");
+    } finally {
+      setSyncing(false);
+    }
+  };
 
   const filteredNoRandom = useMemo(
     () =>
@@ -54,7 +87,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-3 gap-8">
         <Card>
           <CardHeader className="flex items-center gap-2">
             <FiUploadCloud className="text-accent" />
@@ -108,9 +141,29 @@ export default function Home() {
             </div>
           </CardContent>
         </Card>
+
+        <Card>
+          <CardHeader className="flex items-center gap-2">
+            <FiGitBranch className="text-accent" />
+            <CardTitle>Sync to GitHub</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted mb-4">
+              Sync your new question sets to GitHub repository.
+            </p>
+            <Button
+              onClick={handleSyncToGithub}
+              loading={syncing}
+              className="w-full"
+            >
+              <FiGitBranch className="mr-2" />
+              {syncing ? "Syncing..." : "Sync to GitHub"}
+            </Button>
+          </CardContent>
+        </Card>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-10">
+      <div className="grid md:grid-cols-3 gap-10">
         <section className="space-y-4">
           <div className="flex items-center gap-2">
             <FiDatabase className="text-accent" />
@@ -165,6 +218,24 @@ export default function Home() {
               );
             })}
           </ul>
+        </section>
+
+        <section className="space-y-4">
+          <div className="flex items-center gap-2">
+            <FiGitBranch className="text-accent" />
+            <h2 className="text-xl font-semibold">Recent Activity</h2>
+          </div>
+          <div className="p-4 rounded-lg border border-border bg-background/50">
+            <p className="text-sm text-muted">
+              Use the "Sync to GitHub" button above to push your new question
+              sets to the repository.
+            </p>
+            <div className="mt-3 text-xs text-muted">
+              <p>• Import new question sets</p>
+              <p>• Sync changes to GitHub</p>
+              <p>• Keep repository up to date</p>
+            </div>
+          </div>
         </section>
       </div>
     </div>
