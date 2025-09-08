@@ -1,0 +1,25 @@
+[
+  {
+    "type": "multiple-choice",
+    "question": "ในสถาปัตยกรรมคอมพิวเตอร์ ส่วนใดทำหน้าที่เป็นตัวกลางเชื่อมระหว่างโปรแกรมของผู้ใช้ (User Program) และฮาร์ดแวร์ (Hardware)?",
+    "options": [
+      {
+        "statement": "ระบบปฏิบัติการ (Operating System)",
+        "istrue": true
+      },
+      {
+        "statement": "หน่วยประมวลผลกลาง (CPU)",
+        "istrue": false
+      },
+      {
+        "statement": "โปรแกรมประยุกต์ (Application Software)",
+        "istrue": false
+      },
+      {
+        "statement": "ไดรเวอร์อุปกรณ์ (Device Driver)",
+        "istrue": false
+      }
+    ],
+    "explanation": "ระบบปฏิบัติการ (OS) คือซอฟต์แวร์ระบบที่ทำหน้าที่เป็นตัวกลางในการจัดการทรัพยากรฮาร์ดแวร์และให้บริการแก่โปรแกรมของผู้ใช้"
+  }
+]
