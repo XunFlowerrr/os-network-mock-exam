@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { exec } from "child_process";
 import { promisify } from "util";
+import path from "path";
 
 const execAsync = promisify(exec);
 
@@ -8,16 +9,19 @@ export async function POST() {
   try {
     const projectRoot = process.cwd();
 
+    // Use cross-platform path joining for the data directory
+    const dataPath = path.join("src", "data");
+
     // Step 1: Fetch latest changes
     console.log("Fetching latest changes...");
     await execAsync("git fetch origin", { cwd: projectRoot });
 
-    // Step 2: Add data directory
+    // Step 2: Add data directory (using cross-platform path)
     console.log("Adding data directory...");
-    await execAsync("git add ./src/data", { cwd: projectRoot });
+    await execAsync(`git add "${dataPath}"`, { cwd: projectRoot });
 
-    // Step 3: Check if there are changes to commit
-    const { stdout: statusOutput } = await execAsync("git status --porcelain ./src/data", { cwd: projectRoot });
+    // Step 3: Check if there are changes to commit (using cross-platform path)
+    const { stdout: statusOutput } = await execAsync(`git status --porcelain "${dataPath}"`, { cwd: projectRoot });
 
     if (!statusOutput.trim()) {
       return NextResponse.json({
