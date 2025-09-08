@@ -68,9 +68,22 @@ export default function Home() {
   return (
     <div className="space-y-10">
       <div className="text-center space-y-4">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
-          <span className="gradient-text">Quiz Collections</span>
-        </h1>
+        <div className="flex items-center justify-center gap-4 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
+            <span className="gradient-text">Quiz Collections</span>
+          </h1>
+          <Button
+            onClick={handleSyncToGithub}
+            loading={syncing}
+            variant="outline"
+            leftIcon={<FiGitBranch className="text-accent" />}
+            className="px-3 py-2 text-sm"
+          >
+            <span className="hidden sm:inline">
+              {syncing ? "Syncing..." : "Sync"}
+            </span>
+          </Button>
+        </div>
         <p className="text-muted max-w-2xl mx-auto">
           Practice Operating System & Networking concepts with structured and
           randomized question sets.
@@ -87,7 +100,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 gap-8">
         <Card>
           <CardHeader className="flex items-center gap-2">
             <FiUploadCloud className="text-accent" />
@@ -141,29 +154,9 @@ export default function Home() {
             </div>
           </CardContent>
         </Card>
-
-        <Card>
-          <CardHeader className="flex items-center gap-2">
-            <FiGitBranch className="text-accent" />
-            <CardTitle>Sync to GitHub</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted mb-4">
-              Sync your new question sets to GitHub repository.
-            </p>
-            <Button
-              onClick={handleSyncToGithub}
-              loading={syncing}
-              className="w-full"
-            >
-              <FiGitBranch className="mr-2" />
-              {syncing ? "Syncing..." : "Sync to GitHub"}
-            </Button>
-          </CardContent>
-        </Card>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-10">
+      <div className="grid md:grid-cols-2 gap-10">
         <section className="space-y-4">
           <div className="flex items-center gap-2">
             <FiDatabase className="text-accent" />
@@ -218,24 +211,6 @@ export default function Home() {
               );
             })}
           </ul>
-        </section>
-
-        <section className="space-y-4">
-          <div className="flex items-center gap-2">
-            <FiGitBranch className="text-accent" />
-            <h2 className="text-xl font-semibold">Recent Activity</h2>
-          </div>
-          <div className="p-4 rounded-lg border border-border bg-background/50">
-            <p className="text-sm text-muted">
-              Use the "Sync to GitHub" button above to push your new question
-              sets to the repository.
-            </p>
-            <div className="mt-3 text-xs text-muted">
-              <p>• Import new question sets</p>
-              <p>• Sync changes to GitHub</p>
-              <p>• Keep repository up to date</p>
-            </div>
-          </div>
         </section>
       </div>
     </div>
