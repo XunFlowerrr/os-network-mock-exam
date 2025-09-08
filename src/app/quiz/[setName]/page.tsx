@@ -21,9 +21,23 @@ export default function QuizPage() {
   const [showScore, setShowScore] = useState(false);
 
   useEffect(() => {
-    import(`@/data/no-random/${setName}.json`)
-      .then((data) => setQuestionList(data.default as Question[]))
-      .catch(() => setQuestionList([]));
+    // Try to load from different folders
+    const loadQuestionSet = async () => {
+      const folders = ["random", "no-random"];
+      for (const folder of folders) {
+        try {
+          const data = await import(`@/data/${folder}/${setName}.json`);
+          setQuestionList(data.default as Question[]);
+          return;
+        } catch (error) {
+          // Continue to next folder
+        }
+      }
+      // If no folder contains the set, set empty array
+      setQuestionList([]);
+    };
+
+    loadQuestionSet();
   }, [setName]);
 
   const handleOptionSelect = (optionIndex: number) => {

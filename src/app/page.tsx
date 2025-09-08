@@ -10,21 +10,34 @@ import {
   FiShuffle,
   FiSearch,
   FiGitBranch,
+  FiFileText,
+  FiFolder,
+  FiChevronRight,
+  FiChevronDown,
 } from "react-icons/fi";
 
 export default function Home() {
-  const [sets, setSets] = useState<{ noRandom: string[]; random: string[] }>({
-    noRandom: [],
-    random: [],
-  });
+  const [folderStructure, setFolderStructure] = useState<any[]>([]);
   const [query, setQuery] = useState("");
   const [syncing, setSyncing] = useState(false);
+  // Expand top-level roots by default for better UX
+  const [expandedFolders, setExpandedFolders] = useState<Set<string>>(
+    new Set(["no-random", "random"])
+  );
 
   useEffect(() => {
-    fetch("/api/sets")
-      .then((res) => res.json())
-      .then((data) => setSets(data));
+    fetchFolderStructure();
   }, []);
+
+  const fetchFolderStructure = async () => {
+    try {
+      const response = await fetch("/api/folders");
+      const data = await response.json();
+      setFolderStructure(data.folders || []);
+    } catch (error) {
+      console.error("Error fetching folder structure:", error);
+    }
+  };
 
   const handleSyncToGithub = async () => {
     try {
@@ -37,10 +50,8 @@ export default function Home() {
 
       if (response.ok) {
         alert(result.message);
-        // Refresh the sets data
-        const res = await fetch("/api/sets");
-        const data = await res.json();
-        setSets(data);
+        // Refresh the folder structure
+        fetchFolderStructure();
       } else {
         alert(`Sync failed: ${result.message}`);
       }
@@ -52,18 +63,161 @@ export default function Home() {
     }
   };
 
+  const collectAllFiles = (folders: any[], folderName: string): any[] => {
+    const result: any[] = [];
+    for (const folder of folders) {
+      if (folder.name === folderName) {
+        const collectFromFolder = (f: any): any[] => {
+          const files = f.files.map((file: any) => file.name);
+          for (const child of f.children || []) {
+            files.push(...collectFromFolder(child));
+          }
+          return files;
+        };
+        result.push(...collectFromFolder(folder));
+      }
+    }
+    return result;
+  };
+
   const filteredNoRandom = useMemo(
     () =>
-      sets.noRandom.filter((n) =>
-        n.toLowerCase().includes(query.toLowerCase())
+      collectAllFiles(folderStructure, "no-random").filter((name: string) =>
+        name.toLowerCase().includes(query.toLowerCase())
       ),
-    [sets.noRandom, query]
+    [folderStructure, query]
   );
+
   const filteredRandom = useMemo(
     () =>
-      sets.random.filter((n) => n.toLowerCase().includes(query.toLowerCase())),
-    [sets.random, query]
+      collectAllFiles(folderStructure, "random").filter((name: string) =>
+        name.toLowerCase().includes(query.toLowerCase())
+      ),
+    [folderStructure, query]
   );
+
+  const countAllFiles = (folders: any[]): number => {
+    let count = 0;
+    for (const folder of folders) {
+      count += folder.files.length;
+      if (folder.children && folder.children.length > 0) {
+        count += countAllFiles(folder.children);
+      }
+    }
+    return count;
+  };
+
+  // Used for the progress bar demo
+  const totalFiles = useMemo(
+    () => countAllFiles(folderStructure),
+    [folderStructure]
+  );
+
+  const toggleFolder = (folderPath: string) => {
+    const newExpanded = new Set(expandedFolders);
+    if (newExpanded.has(folderPath)) {
+      newExpanded.delete(folderPath);
+    } else {
+      newExpanded.add(folderPath);
+    }
+    setExpandedFolders(newExpanded);
+  };
+
+  const FolderItem = ({
+    folder,
+    basePath = "",
+    isRandom = false,
+  }: {
+    folder: any;
+    basePath?: string;
+    isRandom?: boolean;
+  }) => {
+    const folderPath = basePath ? `${basePath}/${folder.name}` : folder.name;
+    const isExpanded = expandedFolders.has(folderPath);
+    const hasChildren = folder.children && folder.children.length > 0;
+    const hasFiles = folder.files && folder.files.length > 0;
+    const deepCount = countAllFiles([folder]);
+
+    return (
+      <div className="space-y-2">
+        <button
+          onClick={() => toggleFolder(folderPath)}
+          className="flex items-center gap-2 w-full text-left p-3 rounded-lg border border-border bg-card hover:bg-accent/5 transition-colors group"
+          aria-expanded={isExpanded}
+        >
+          {hasChildren || hasFiles ? (
+            isExpanded ? (
+              <FiChevronDown className="text-accent" />
+            ) : (
+              <FiChevronRight className="text-accent" />
+            )
+          ) : (
+            <FiChevronRight className="opacity-0" />
+          )}
+          <FiFolder
+            className={`shrink-0 ${isExpanded ? "text-accent" : "text-muted"}`}
+          />
+          <span className="font-medium group-hover:text-accent transition-colors">
+            {folder.name}
+          </span>
+          {(hasChildren || hasFiles) && (
+            <span className="ml-auto text-xs text-foreground/80 bg-muted/60 border border-border px-2 py-1 rounded">
+              {deepCount} sets
+            </span>
+          )}
+        </button>
+
+        {isExpanded && (
+          <div className="ml-6 space-y-2 border-l border-border/60 pl-4">
+            {/* Render files in this folder */}
+            {folder.files.map((file: any) => {
+              const trimmedPath = isRandom
+                ? (file.path || "").replace(/^random\//, "")
+                : (file.path || "").replace(/^no-random\//, "");
+              const href = isRandom
+                ? `/quiz/random/${trimmedPath}`
+                : `/quiz/${trimmedPath}`;
+              return (
+                <Link
+                  key={file.name}
+                  href={href}
+                  className="flex items-center justify-between gap-3 p-3 rounded-lg border border-border bg-background hover:bg-accent/5 hover:shadow-soft dark:hover:shadow-soft-dark transition group relative overflow-hidden"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <FiFileText className="text-muted shrink-0" />
+                    <div className="min-w-0">
+                      <p className="font-medium truncate group-hover:text-accent transition-colors">
+                        {file.name}
+                      </p>
+                      <p className="text-xs text-muted truncate">{file.path}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <span className="text-[10px] uppercase tracking-wide text-muted bg-muted/30 border border-border px-2 py-0.5 rounded">
+                      JSON
+                    </span>
+                    <FiChevronRight className="text-muted group-hover:text-accent transition-colors" />
+                  </div>
+                  <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] scale-x-0 group-hover:scale-x-100 origin-left transition-transform" />
+                </Link>
+              );
+            })}
+
+            {/* Render subfolders */}
+            {folder.children &&
+              folder.children.map((child: any) => (
+                <FolderItem
+                  key={child.name}
+                  folder={child}
+                  basePath={folderPath}
+                  isRandom={isRandom}
+                />
+              ))}
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
     <div className="space-y-10">
@@ -111,8 +265,10 @@ export default function Home() {
               Create a new question set by entering the title and JSON content.
             </p>
             <Link href="/import">
-              <Button className="w-full">
-                <FiUploadCloud className="mr-2" />
+              <Button
+                className="w-full"
+                leftIcon={<FiUploadCloud className="text-accent" />}
+              >
                 Go to Import Page
               </Button>
             </Link>
@@ -125,92 +281,43 @@ export default function Home() {
             <CardTitle>Saved Sets Overview</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 gap-4 text-center">
+            <div className="grid grid-cols-1 gap-4 text-center">
               <div className="p-3 rounded-lg border border-border bg-background/50">
                 <p className="text-2xl font-bold gradient-text">
-                  {sets.noRandom.length}
+                  {folderStructure.find((f: any) => f.name === "random")
+                    ? countAllFiles([
+                        folderStructure.find((f: any) => f.name === "random"),
+                      ])
+                    : 0}
                 </p>
                 <p className="text-xs uppercase tracking-wide text-muted">
-                  Structured
-                </p>
-              </div>
-              <div className="p-3 rounded-lg border border-border bg-background/50">
-                <p className="text-2xl font-bold gradient-text">
-                  {sets.random.length}
-                </p>
-                <p className="text-xs uppercase tracking-wide text-muted">
-                  Random
+                  Random Sets
                 </p>
               </div>
             </div>
             <div className="mt-6 space-y-2">
               <p className="text-sm text-muted">Completion Tracker (demo)</p>
-              <ProgressBar
-                value={Math.min(
-                  100,
-                  (sets.noRandom.length + sets.random.length) * 3
-                )}
-              />
+              <ProgressBar value={Math.min(100, totalFiles * 3)} />
             </div>
           </CardContent>
         </Card>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-10">
-        <section className="space-y-4">
-          <div className="flex items-center gap-2">
-            <FiDatabase className="text-accent" />
-            <h2 className="text-xl font-semibold">Structured Sets</h2>
-          </div>
-          {filteredNoRandom.length === 0 && (
-            <p className="text-sm text-muted">No sets found.</p>
-          )}
-          <ul className="grid sm:grid-cols-2 gap-3">
-            {filteredNoRandom.map((setName) => {
-              const clean = setName.replace(".json", "");
-              return (
-                <li key={setName}>
-                  <Link
-                    href={`/quiz/${clean}`}
-                    className="block group border border-border rounded-lg px-4 py-3 bg-card hover:shadow-soft dark:hover:shadow-soft-dark transition relative overflow-hidden"
-                  >
-                    <span className="font-medium group-hover:text-accent transition-colors">
-                      {clean}
-                    </span>
-                    <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] scale-x-0 group-hover:scale-x-100 origin-left transition-transform" />
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-
+      <div className="space-y-6">
+        {/* Random only (full width) */}
         <section className="space-y-4">
           <div className="flex items-center gap-2">
             <FiShuffle className="text-accent" />
             <h2 className="text-xl font-semibold">Random Sets</h2>
           </div>
-          {filteredRandom.length === 0 && (
-            <p className="text-sm text-muted">No sets found.</p>
+          {folderStructure.find((f: any) => f.name === "random") ? (
+            <FolderItem
+              folder={folderStructure.find((f: any) => f.name === "random")}
+              isRandom={true}
+            />
+          ) : (
+            <p className="text-sm text-muted">No random sets found.</p>
           )}
-          <ul className="grid sm:grid-cols-2 gap-3">
-            {filteredRandom.map((setName) => {
-              const clean = setName.replace(".json", "");
-              return (
-                <li key={setName}>
-                  <Link
-                    href={`/quiz/random/${clean}`}
-                    className="block group border border-border rounded-lg px-4 py-3 bg-card hover:shadow-soft dark:hover:shadow-soft-dark transition relative overflow-hidden"
-                  >
-                    <span className="font-medium group-hover:text-accent transition-colors">
-                      {clean}
-                    </span>
-                    <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] scale-x-0 group-hover:scale-x-100 origin-left transition-transform" />
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
         </section>
       </div>
     </div>

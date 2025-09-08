@@ -1,16 +1,77 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Button from "@/components/ui/Button";
-import { FiCopy, FiSave, FiArrowLeft, FiCheck } from "react-icons/fi";
+import {
+  FiCopy,
+  FiSave,
+  FiArrowLeft,
+  FiCheck,
+  FiFolder,
+  FiFolderPlus,
+} from "react-icons/fi";
 
 export default function ImportPage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [saving, setSaving] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [folders, setFolders] = useState<
+    { name: string; path: string; fileCount: number; files: string[] }[]
+  >([]);
+  const [selectedFolder, setSelectedFolder] = useState("random");
+  const [newFolderName, setNewFolderName] = useState("");
+  const [showNewFolder, setShowNewFolder] = useState(false);
+  const [creatingFolder, setCreatingFolder] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    fetchFolders();
+  }, []);
+
+  const fetchFolders = async () => {
+    try {
+      const response = await fetch("/api/folders");
+      const data = await response.json();
+      setFolders(data.folders || []);
+    } catch (error) {
+      console.error("Error fetching folders:", error);
+    }
+  };
+
+  const handleCreateFolder = async () => {
+    if (!newFolderName.trim()) {
+      alert("Please enter a folder name.");
+      return;
+    }
+
+    try {
+      setCreatingFolder(true);
+      const response = await fetch("/api/folders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: newFolderName.trim() }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setFolders([...folders, result.folder]);
+        setSelectedFolder(result.folder.name);
+        setNewFolderName("");
+        setShowNewFolder(false);
+        alert("Folder created successfully!");
+      } else {
+        const error = await response.json();
+        alert(error.message || "Failed to create folder.");
+      }
+    } catch (error) {
+      console.error("Error creating folder:", error);
+      alert("Error creating folder");
+    } finally {
+      setCreatingFolder(false);
+    }
+  };
 
   const handleSave = async () => {
     if (!title.trim() || !content.trim()) {
@@ -37,7 +98,11 @@ export default function ImportPage() {
       const response = await fetch("/api/sets", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: sanitizedTitle, data: jsonData }),
+        body: JSON.stringify({
+          name: sanitizedTitle,
+          data: jsonData,
+          folder: selectedFolder,
+        }),
       });
 
       if (response.ok) {
@@ -163,6 +228,63 @@ Overall Tone:
               </code>
             </p>
           )}
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-2">Folder</label>
+          <div className="space-y-3">
+            <select
+              value={selectedFolder}
+              onChange={(e) => setSelectedFolder(e.target.value)}
+              className="w-full px-3 py-2 rounded-md border border-border bg-card focus:outline-none focus:ring-2 focus:ring-accent"
+            >
+              {folders.map((folder) => (
+                <option key={folder.name} value={folder.name}>
+                  📁 {folder.name} ({folder.fileCount} files)
+                </option>
+              ))}
+            </select>
+
+            {!showNewFolder ? (
+              <Button
+                onClick={() => setShowNewFolder(true)}
+                variant="outline"
+                leftIcon={<FiFolderPlus />}
+                className="w-full"
+              >
+                Create New Folder
+              </Button>
+            ) : (
+              <div className="space-y-2">
+                <input
+                  type="text"
+                  value={newFolderName}
+                  onChange={(e) => setNewFolderName(e.target.value)}
+                  placeholder="Enter folder name"
+                  className="w-full px-3 py-2 rounded-md border border-border bg-card focus:outline-none focus:ring-2 focus:ring-accent"
+                />
+                <div className="flex gap-2">
+                  <Button
+                    onClick={handleCreateFolder}
+                    loading={creatingFolder}
+                    leftIcon={<FiFolder />}
+                    className="flex-1"
+                  >
+                    Create Folder
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      setShowNewFolder(false);
+                      setNewFolderName("");
+                    }}
+                    variant="outline"
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         <div>

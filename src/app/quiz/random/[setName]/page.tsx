@@ -27,8 +27,14 @@ export default function RandomQuizPage() {
   const pathname = usePathname();
   // Get search params
   const searchParams = useSearchParams();
-  const segments = pathname.split("/");
-  const setName = segments[segments.length - 1].split("?")[0];
+  const segments = pathname.split("/").filter(Boolean);
+  // Expect path like /quiz/random/<nested...>
+  // Find the index of 'random' and join the remainder as relative path
+  const randomIdx = segments.indexOf("random");
+  const setName =
+    randomIdx >= 0
+      ? segments.slice(randomIdx + 1).join("/")
+      : segments[segments.length - 1];
 
   // Determine if randomization is enabled (default is true)
   const isRandomized = searchParams.get("randomize") !== "false";
@@ -41,31 +47,47 @@ export default function RandomQuizPage() {
   const [textAnswer, setTextAnswer] = useState("");
 
   useEffect(() => {
-    import(`@/data/random/${setName}.json`)
-      .then((data) => {
-        let questions = data.default as RandomQuestion[];
+    // Try to load from different folders
+    const loadQuestionSet = async () => {
+      // Attempt to import by nested path directly first (random/<path>.json)
+      const candidates = [
+        `@/data/random/${setName}.json`,
+        `@/data/no-random/${setName}.json`,
+      ];
+      for (const candidate of candidates) {
+        try {
+          const data = await import(/* @vite-ignore */ candidate);
+          let questions = data.default as RandomQuestion[];
 
-        // Conditionally randomize questions
-        if (isRandomized) {
-          questions = shuffleArray(questions);
+          // Conditionally randomize questions
+          if (isRandomized) {
+            questions = shuffleArray(questions);
 
-          // Conditionally randomize options for multiple-choice questions
-          questions = questions.map((q) => {
-            if (q.type === "multiple-choice" && q.options) {
-              const shuffledOptions = shuffleArray(q.options);
-              return {
-                ...q,
-                options: shuffledOptions,
-              };
-            }
-            return q;
-          });
+            // Conditionally randomize options for multiple-choice questions
+            questions = questions.map((q) => {
+              if (q.type === "multiple-choice" && q.options) {
+                const shuffledOptions = shuffleArray(q.options);
+                return {
+                  ...q,
+                  options: shuffledOptions,
+                };
+              }
+              return q;
+            });
+          }
+          // If not randomized, questions and options remain in their original order
+
+          setQuestionList(questions);
+          return; // Successfully loaded, exit the loop
+        } catch (error) {
+          // Continue to next folder
         }
-        // If not randomized, questions and options remain in their original order
+      }
+      // If no folder contains the set, set empty array
+      setQuestionList([]);
+    };
 
-        setQuestionList(questions);
-      })
-      .catch(() => setQuestionList([]));
+    loadQuestionSet();
   }, [setName, isRandomized]);
 
   const handleOptionSelect = (optionIndex: number) => {
