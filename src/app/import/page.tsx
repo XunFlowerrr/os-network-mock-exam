@@ -28,10 +28,16 @@ export default function ImportPage() {
         return;
       }
 
+      // Sanitize filename: replace spaces with underscores and remove forward slashes
+      const sanitizedTitle = title
+        .trim()
+        .replace(/\s+/g, "_")
+        .replace(/\//g, "_");
+
       const response = await fetch("/api/sets", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: title.trim(), data: jsonData }),
+        body: JSON.stringify({ name: sanitizedTitle, data: jsonData }),
       });
 
       if (response.ok) {
@@ -149,6 +155,14 @@ Overall Tone:
             placeholder="Enter the title for your question set"
             className="w-full px-3 py-2 rounded-md border border-border bg-card focus:outline-none focus:ring-2 focus:ring-accent"
           />
+          {title.trim() && (
+            <p className="text-xs text-muted mt-1">
+              Filename:{" "}
+              <code className="bg-muted px-1 py-0.5 rounded text-xs">
+                {title.trim().replace(/\s+/g, "_").replace(/\//g, "_")}.json
+              </code>
+            </p>
+          )}
         </div>
 
         <div>
