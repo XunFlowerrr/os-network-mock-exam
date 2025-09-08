@@ -20,7 +20,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const { name, data } = await request.json();
-    const dataPath = path.join(process.cwd(), "src", "data");
+    const dataPath = path.join(process.cwd(), "src", "data", "random");
     const filePath = path.join(dataPath, `${name}.json`);
 
     // Check if file already exists

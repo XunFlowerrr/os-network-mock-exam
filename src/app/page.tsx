@@ -11,59 +11,13 @@ export default function Home() {
     noRandom: [],
     random: [],
   });
-  const [fileData, setFileData] = useState<any>(null);
-  const [renameSet, setRenameSet] = useState("");
   const [query, setQuery] = useState("");
-  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     fetch("/api/sets")
       .then((res) => res.json())
       .then((data) => setSets(data));
   }, []);
-
-  // Handle file import
-  const handleFileImport = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      try {
-        const jsonData = JSON.parse(reader.result as string);
-        // Save to local storage (replace with your own handling if desired)
-        localStorage.setItem("importedQuestionSet", JSON.stringify(jsonData));
-        setFileData(jsonData);
-      } catch (error) {
-        console.error("Invalid JSON file");
-      }
-    };
-    reader.readAsText(file);
-  };
-
-  const handleSetRename = async () => {
-    if (!(fileData && renameSet.trim())) return;
-    try {
-      setSaving(true);
-      const response = await fetch("/api/sets", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: renameSet.trim(), data: fileData }),
-      });
-      if (response.ok) {
-        setRenameSet("");
-        const res = await fetch("/api/sets");
-        const data = await res.json();
-        setSets(data);
-      } else {
-        alert("Failed to save the set.");
-      }
-    } catch (e) {
-      console.error(e);
-      alert("Error saving set");
-    } finally {
-      setSaving(false);
-    }
-  };
 
   const filteredNoRandom = useMemo(
     () =>
@@ -107,39 +61,15 @@ export default function Home() {
             <CardTitle>Import Question Set</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              <input
-                type="file"
-                accept=".json"
-                onChange={handleFileImport}
-                className="block w-full text-sm text-muted file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-accent file:text-white hover:file:bg-[var(--accent-hover)] cursor-pointer"
-              />
-              {fileData && (
-                <div className="space-y-4">
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      placeholder="Save as name..."
-                      value={renameSet}
-                      onChange={(e) => setRenameSet(e.target.value)}
-                      className="flex-1 px-3 py-2 rounded-md border border-border bg-card focus:outline-none focus:ring-2 focus:ring-accent"
-                    />
-                    <Button onClick={handleSetRename} loading={saving}>
-                      Save
-                    </Button>
-                  </div>
-                  <details className="text-sm">
-                    <summary className="cursor-pointer select-none mb-2">
-                      Preview JSON (
-                      {Array.isArray(fileData) ? fileData.length : 0} items)
-                    </summary>
-                    <pre className="max-h-64 overflow-auto text-xs bg-background/50 p-3 rounded border border-border">
-                      {JSON.stringify(fileData, null, 2)}
-                    </pre>
-                  </details>
-                </div>
-              )}
-            </div>
+            <p className="text-muted mb-4">
+              Create a new question set by entering the title and JSON content.
+            </p>
+            <Link href="/import">
+              <Button className="w-full">
+                <FiUploadCloud className="mr-2" />
+                Go to Import Page
+              </Button>
+            </Link>
           </CardContent>
         </Card>
 
