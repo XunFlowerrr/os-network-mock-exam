@@ -59,14 +59,14 @@
       },
       {
         "statement": "ข้อมูลจาก data-centric จะรับมาจากส่วนสถาปัตยกรรมของ application-centric เสมอ",
-        "istrue": false
+        "istrue": true
       },
       {
         "statement": "การทำงานของ data-centric มีความเกี่ยวข้องกับ event-driven architecture เสมอ",
-        "istrue": true
+        "istrue": false
       }
     ],
-    "explanation": "สถาปัตยกรรมแบบ data-centric มักเกี่ยวข้องกับ event-driven เนื่องจากข้อมูลเปลี่ยนแปลงจะกระตุ้นเหตุการณ์อื่นในระบบ"
+    "explanation": "ข้อมูลจาก data-centric architecture มักจะมาจาก application-centric architecture ซึ่งเน้นการจัดการข้อมูลเป็นหลัก"
   },
   {
     "type": "multiple-choice",
@@ -120,7 +120,7 @@
     "options": [
       {
         "statement": "ระบบรักษาความปลอดภัยของข้อมูลในองค์กรต่าง ๆ",
-        "istrue": false
+        "istrue": true
       },
       {
         "statement": "ระบบการเงินการบัญชีของธนาคาร",
@@ -132,10 +132,10 @@
       },
       {
         "statement": "ระบบลูกค้าสัมพันธ์ของบริษัทเอกชน",
-        "istrue": true
+        "istrue": false
       }
     ],
-    "explanation": "event-driven architecture เหมาะกับระบบ CRM เพราะต้องตอบสนองต่อเหตุการณ์จากลูกค้าแบบ real-time"
+    "explanation": "Event-driven architecture เหมาะสมกับระบบที่ต้องตอบสนองต่อเหตุการณ์ต่าง ๆ อย่างรวดเร็ว เช่น ระบบรักษาความปลอดภัย"
   },
   {
     "type": "multiple-choice",
@@ -212,7 +212,7 @@
     "options": [
       {
         "statement": "แสดงกิจกรรมหลักที่เกิดขึ้นในระบบและคลาสหลักที่เกี่ยวข้อง",
-        "istrue": false
+        "istrue": true
       },
       {
         "statement": "แสดงองค์ประกอบของฟังก์ชันต่าง ๆ โดยละเอียดของระบบการทำงานทั้งหมด",
@@ -224,9 +224,9 @@
       },
       {
         "statement": "แสดงความสัมพันธ์ระหว่างคลาสต่าง ๆ ที่เกี่ยวข้องในระบบ",
-        "istrue": true
+        "istrue": false
       }
     ],
-    "explanation": "use case diagram ใช้แสดงความสัมพันธ์ระหว่างผู้ใช้งาน (actors) และกรณีการใช้งาน (use cases) ของระบบ"
+    "explanation": "Use case diagram ใช้เพื่อแสดงกิจกรรมหลักและผู้ใช้งานที่เกี่ยวข้องกับระบบ"
   }
 ]

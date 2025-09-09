@@ -97,7 +97,7 @@
     "options": [
       {
         "statement": "Project manager มีความสัมพันธ์ที่ดีกับ Executive Champion",
-        "istrue": true
+        "istrue": false
       },
       {
         "statement": "งบประมาณในการบริหารจัดการต้องเพียงพอ",
@@ -105,14 +105,14 @@
       },
       {
         "statement": "บุคลากรในทีมงานเป็นผู้มีประสบการณ์ในงานลักษณะเดียวกัน",
-        "istrue": false
+        "istrue": true
       },
       {
         "statement": "การทำงานของทีมงานต้องมีอิสระ",
         "istrue": false
       }
     ],
-    "explanation": "ในการทำงานทีมใหญ่ ความสัมพันธ์ที่ดีระหว่าง Project manager และ Executive Champion มีความสำคัญที่สุดเพื่อสนับสนุนการทำงานและทรัพยากร"
+    "explanation": "การมีบุคลากรที่มีประสบการณ์ในงานลักษณะเดียวกันจะช่วยให้การทำงานเป็นทีมมีประสิทธิภาพและสามารถแก้ไขปัญหาที่เกิดขึ้นได้ดี"
   },
   {
     "type": "multiple-choice",
@@ -143,11 +143,11 @@
     "options": [
       {
         "statement": "Team leader",
-        "istrue": false
+        "istrue": true
       },
       {
         "statement": "ทีมงานทุกคน",
-        "istrue": true
+        "istrue": false
       },
       {
         "statement": "เจ้าของบริษัท",
@@ -158,7 +158,7 @@
         "istrue": false
       }
     ],
-    "explanation": "การสร้างความไว้วางใจในการทำงานเป็นหน้าที่ของทีมงานทุกคน ไม่ใช่เพียงบุคคลใดบุคคลหนึ่ง"
+    "explanation": "Team leader มีหน้าที่สร้างความไว้วางใจในทีมงานเพื่อส่งเสริมการทำงานร่วมกันอย่างมีประสิทธิภาพ"
   },
   {
     "type": "multiple-choice",
@@ -239,7 +239,7 @@
       },
       {
         "statement": "Database administrator",
-        "istrue": true
+        "istrue": false
       },
       {
         "statement": "Domain expert",
@@ -247,10 +247,10 @@
       },
       {
         "statement": "Software architect",
-        "istrue": false
+        "istrue": true
       }
     ],
-    "explanation": "Database administrator เป็นตำแหน่งเฉพาะทางที่เน้นการจัดการฐานข้อมูลโดยตรง"
+    "explanation": "Software architect เป็นบทบาทเฉพาะทางที่มีหน้าที่ออกแบบโครงสร้างของซอฟต์แวร์ให้เหมาะสมกับความต้องการและเทคโนโลยีที่ใช้"
   },
   {
     "type": "multiple-choice",
