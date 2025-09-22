@@ -342,6 +342,36 @@ export default function EditSetPage() {
                       </Button>
                     )}
                   </div>
+                  <div
+                    className="mt-2 p-3 rounded border border-dashed border-border text-center text-sm text-muted bg-background/50"
+                    onDragOver={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
+                    onDrop={async (e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      const file = e.dataTransfer.files?.[0];
+                      if (!file) return;
+                      const formData = new FormData();
+                      formData.append("file", file);
+                      const uploadRes = await fetch(
+                        `/api/images/${encodeURI(setPath)}`,
+                        { method: "POST", body: formData }
+                      );
+                      const result = await uploadRes.json();
+                      if (!uploadRes.ok) {
+                        alert(result.message || "Upload failed");
+                      } else {
+                        const storedName: string = result.file;
+                        updateQuestion(qi, {
+                          image: `${setPath}/${storedName}`,
+                        });
+                      }
+                    }}
+                  >
+                    Drag & drop image here
+                  </div>
                 </div>
 
                 <div className="space-y-2">
