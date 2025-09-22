@@ -16,6 +16,7 @@ type Question = {
   question: string;
   options: Option[];
   explanation: string;
+  image?: string;
 };
 
 export default function EditSetPage() {
@@ -101,12 +102,14 @@ export default function EditSetPage() {
             typeof q.explanation === "string"
               ? q.explanation
               : String(q.explanation ?? "");
+          const image = typeof q.image === "string" ? q.image : undefined;
 
           return {
             type: qType,
             question: qText,
             options,
             explanation,
+            image,
           };
         });
         setQuestions(normalized);
@@ -262,6 +265,83 @@ export default function EditSetPage() {
                   >
                     Remove
                   </Button>
+                </div>
+
+                {/* Image section */}
+                <div className="space-y-2">
+                  <p className="text-sm font-medium">Image (optional)</p>
+                  {q.image && (
+                    <div className="flex items-start gap-3">
+                      <img
+                        src={`/api/images-serve/${encodeURI(q.image)}`}
+                        alt="question"
+                        className="max-h-40 rounded border border-border"
+                      />
+                    </div>
+                  )}
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="text"
+                      value={q.image || ""}
+                      onChange={(e) =>
+                        updateQuestion(qi, {
+                          image: e.target.value || undefined,
+                        })
+                      }
+                      placeholder={`${setPath}/image-name.png`}
+                      className="flex-1 px-2 py-1 rounded border border-border bg-background"
+                    />
+                    <label className="px-3 py-1 rounded border border-border bg-background cursor-pointer">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={async (ev) => {
+                          const file = ev.target.files?.[0];
+                          if (!file) return;
+                          const formData = new FormData();
+                          formData.append("file", file);
+                          const uploadRes = await fetch(
+                            `/api/images/${encodeURI(setPath)}`,
+                            {
+                              method: "POST",
+                              body: formData,
+                            }
+                          );
+                          const result = await uploadRes.json();
+                          if (!uploadRes.ok) {
+                            alert(result.message || "Upload failed");
+                          } else {
+                            const storedName: string = result.file;
+                            updateQuestion(qi, {
+                              image: `${setPath}/${storedName}`,
+                            });
+                          }
+                        }}
+                      />
+                      Upload
+                    </label>
+                    {q.image && (
+                      <Button
+                        variant="outline"
+                        leftIcon={<FiTrash2 />}
+                        onClick={async () => {
+                          const delRes = await fetch(
+                            `/api/images/${encodeURI(q.image!)}`,
+                            { method: "DELETE" }
+                          );
+                          if (!delRes.ok) {
+                            const msg = await delRes.json().catch(() => ({}));
+                            alert(msg.message || "Failed to delete image");
+                          } else {
+                            updateQuestion(qi, { image: undefined });
+                          }
+                        }}
+                      >
+                        Delete
+                      </Button>
+                    )}
+                  </div>
                 </div>
 
                 <div className="space-y-2">

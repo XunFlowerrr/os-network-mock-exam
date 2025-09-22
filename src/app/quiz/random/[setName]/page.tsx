@@ -21,6 +21,7 @@ type RandomQuestion = {
   options?: { statement: string; istrue: boolean }[];
   correctAnswer?: string; // For fill-in-blank questions
   explanation: string;
+  image?: string;
 };
 
 export default function RandomQuizPage() {
@@ -221,6 +222,15 @@ export default function RandomQuizPage() {
                 <p className="font-semibold mb-2">
                   Q{idx + 1}. {q.question}
                 </p>
+                {q.image && (
+                  <div>
+                    <img
+                      src={`/api/images-serve/${encodeURI(q.image)}`}
+                      alt="question"
+                      className="max-h-64 rounded border border-border mt-2"
+                    />
+                  </div>
+                )}
                 <p className="text-sm">
                   Your answer:{" "}
                   <span
@@ -279,6 +289,15 @@ export default function RandomQuizPage() {
         <h2 className="text-lg font-medium whitespace-pre-line leading-relaxed">
           {currentQ.question}
         </h2>
+        {currentQ.image && (
+          <div>
+            <img
+              src={`/api/images-serve/${encodeURI(currentQ.image)}`}
+              alt="question"
+              className="max-h-64 rounded border border-border mt-2"
+            />
+          </div>
+        )}
 
         {currentQ.type === "multiple-choice" && currentQ.options ? (
           <div className="grid gap-3">

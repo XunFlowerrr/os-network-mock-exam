@@ -7,6 +7,7 @@ type Question = {
   options: string[];
   answer: number;
   explanation: string;
+  image?: string;
 };
 
 export default function QuizPage() {
@@ -189,6 +190,15 @@ export default function QuizPage() {
         <h2 className="text-lg font-medium whitespace-pre-line leading-relaxed">
           {currentQ.question}
         </h2>
+        {currentQ.image && (
+          <div>
+            <img
+              src={`/api/images-serve/${encodeURI(currentQ.image)}`}
+              alt="question"
+              className="max-h-64 rounded border border-border mt-2"
+            />
+          </div>
+        )}
         <div className="grid gap-3">
           {currentQ.options.map((option, idx) => {
             const isUserChoice =
