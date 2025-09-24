@@ -124,12 +124,12 @@
     "type": "multiple-choice",
     "question": "“สมหมายได้รับอีเมลแจ้งจากกูเกิลว่าได้รับการคัดเลือกให้เป็นผู้ใช้งานดีเด่น และมีรางวัลให้ โดยสมหมายต้องส่งเลขบัญชีเงินฝากเพื่อการโอนเงินรางวัลไปให้บริษัทกูเกิลทางอีเมลนี้ ผลปรากฏว่าเมื่อดำเนินการแล้วได้เกิดการถอนเงินจากบัญชีเงินฝากนั้นจนหมด” ลักษณะการโจมตีนี้เรียกว่าอะไร",
     "options": [
-      { "statement": "Mail spoofing", "istrue": false },
-      { "statement": "Spear phishing", "istrue": true },
+      { "statement": "Mail spoofing", "istrue": true },
+      { "statement": "Spear phishing", "istrue": false },
       { "statement": "Whale phishing", "istrue": false },
       { "statement": "Caller ID spoofing", "istrue": false }
     ],
-    "explanation": "การโจมตีแบบสเปียร์ฟิชชิงเจาะจงเป้าหมายเฉพาะบุคคลด้วยข้อมูลที่น่าเชื่อถือ"
+    "explanation": "การปลอมแปลงอีเมล (mail spoofing) เป็นเทคนิคที่ใช้ในฟิชชิงเพื่อหลอกลวงผู้รับให้เชื่อว่าอีเมลนั้นมาจากแหล่งที่น่าเชื่อถือ"
   },
   {
     "type": "multiple-choice",

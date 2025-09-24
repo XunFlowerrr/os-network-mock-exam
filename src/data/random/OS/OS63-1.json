@@ -118,7 +118,7 @@
       { "statement": "Data transfer is slower", "istrue": false },
       { "statement": "It reduces memory size", "istrue": false }
     ],
-    "explanation": "DMA transfers data directly between devices and memory, freeing the CPU from managing data transfer."
+    "explanation": "DMA(Direct Memory Access) transfers data directly between devices and memory, freeing the CPU from managing data transfer."
   },
   {
     "type": "multiple-choice",

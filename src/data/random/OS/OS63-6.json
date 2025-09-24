@@ -45,7 +45,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "What is the calculated average waiting time for the given process set?\nProcess  Arrival Time  Burst Time\nP1       0 ms          8 ms\nP2       1 ms          4 ms\nP3       2 ms          9 ms\nP4       3 ms          5 ms",
+    "question": "What is the calculated average waiting time for the given process set?\nProcess | Arrival Time | Burst Time\nP1   |    0 ms     |     8 ms\nP2   |    1 ms     |     4 ms\nP3   |    2 ms     |     9 ms\nP4   |    3 ms     |     5 ms",
     "options": [
       { "statement": "6.5 milliseconds", "istrue": true },
       { "statement": "5 milliseconds", "istrue": false },
@@ -133,7 +133,7 @@
   },
   {
     "type": "multiple-choice",
-    "question": "Which is not a safe sequence?\n Allocation Max Available    Need\n    A B C   A B C   A B C  A B C\nP0  0 1 0   7 5 3   3 3 2  P0 7 4 3\nP1  2 0 0   3 2 2          P1 1 2 2\nP2  3 0 2   9 0 2          P2 6 0 0\nP3  2 1 1   2 2 2      P3 0 1 1\nP4  0 0 2   4 3 3          P4 4 3 1",
+    "question": "Which is not a safe sequence?\n Allocation--|----Max----|-Available-|----Need----\n-- A B C ---|  A B C    |   A B C   |    A B C     \nP0  0 1 0  |  7 5 3    |   3 3 2   | P0 7 4 3\nP1  2 0 0  |  3 2 2    |           | P1 1 2 2\nP2  3 0 2  |  9 0 2    |           | P2 6 0 0\nP3  2 1 1  |  2 2 2    |           | P3 0 1 1\nP4  0 0 2  |  4 3 3    |           | P4 4 3 1",
     "options": [
       { "statement": "P1, P4, P3, P2, P0", "istrue": false },
       { "statement": "P4, P3, P1, P2, P0", "istrue": true },
