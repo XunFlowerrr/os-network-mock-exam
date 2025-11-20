@@ -299,6 +299,11 @@ export default function Home() {
               <p className="text-sm text-muted">Completion Tracker (demo)</p>
               <ProgressBar value={Math.min(100, totalFiles * 3)} />
             </div>
+            <div className="mt-6">
+              <Link href="/sets/manage">
+                <Button className="w-full">Manage Sets</Button>
+              </Link>
+            </div>
           </CardContent>
         </Card>
       </div>
