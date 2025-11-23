@@ -15,9 +15,10 @@ function safeResolve(slug: string[]) {
   return { root, targetDir } as const;
 }
 
-export async function GET(_req: Request, ctx: { params: { slug: string[] } }) {
+export async function GET(_req: Request, ctx: { params: Promise<{ slug: string[] }> }) {
   try {
-    const res = safeResolve(ctx.params.slug);
+    const params = await ctx.params;
+    const res = safeResolve(params.slug);
     if ("error" in res) return NextResponse.json({ message: res.error }, { status: res.status });
 
     if (!fs.existsSync(res.targetDir)) {
@@ -33,23 +34,26 @@ export async function GET(_req: Request, ctx: { params: { slug: string[] } }) {
   }
 }
 
-export async function POST(req: Request, ctx: { params: { slug: string[] } }) {
+export async function POST(req: Request, ctx: { params: Promise<{ slug: string[] }> }) {
   try {
-    const res = safeResolve(ctx.params.slug);
+    const params = await ctx.params;
+    const res = safeResolve(params.slug);
     if ("error" in res) return NextResponse.json({ message: res.error }, { status: res.status });
 
     const form = await req.formData();
     const file = form.get("file");
-    if (!file || !(file instanceof File)) {
+    // Check if file exists and looks like a file object (has arrayBuffer method)
+    if (!file || typeof file !== "object" || !("arrayBuffer" in file)) {
       return NextResponse.json({ message: "No file uploaded" }, { status: 400 });
     }
 
-    const arrayBuffer = await file.arrayBuffer();
+    const arrayBuffer = await (file as any).arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
     if (!fs.existsSync(res.targetDir)) fs.mkdirSync(res.targetDir, { recursive: true });
 
     // Sanitize file name
-    const base = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+    const fileName = (file as any).name || "uploaded_image";
+    const base = fileName.replace(/[^a-zA-Z0-9._-]/g, "_");
     const savePath = path.join(res.targetDir, base);
     fs.writeFileSync(savePath, buffer);
 
@@ -61,9 +65,10 @@ export async function POST(req: Request, ctx: { params: { slug: string[] } }) {
   }
 }
 
-export async function DELETE(_req: Request, ctx: { params: { slug: string[] } }) {
+export async function DELETE(_req: Request, ctx: { params: Promise<{ slug: string[] }> }) {
   try {
-    const segments = ctx.params.slug || [];
+    const params = await ctx.params;
+    const segments = params.slug || [];
     const res = safeResolve(segments);
     if ("error" in res) return NextResponse.json({ message: res.error }, { status: res.status });
 

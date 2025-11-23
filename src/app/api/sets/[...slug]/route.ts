@@ -28,9 +28,10 @@ function resolveFilePath(slug: string[]) {
   return { filePath } as const;
 }
 
-export async function GET(_req: Request, ctx: { params: { slug: string[] } }) {
+export async function GET(_req: Request, ctx: { params: Promise<{ slug: string[] }> }) {
   try {
-    const res = resolveFilePath(ctx.params.slug);
+    const params = await ctx.params;
+    const res = resolveFilePath(params.slug);
     if ("error" in res) {
       return NextResponse.json({ message: res.error }, { status: res.status });
     }
@@ -51,16 +52,17 @@ export async function GET(_req: Request, ctx: { params: { slug: string[] } }) {
       );
     }
 
-    return NextResponse.json({ data: json, path: ctx.params.slug.join("/") });
+    return NextResponse.json({ data: json, path: params.slug.join("/") });
   } catch (error) {
     console.error("Error reading set:", error);
     return NextResponse.json({ message: "Failed to read set" }, { status: 500 });
   }
 }
 
-export async function PUT(req: Request, ctx: { params: { slug: string[] } }) {
+export async function PUT(req: Request, ctx: { params: Promise<{ slug: string[] }> }) {
   try {
-    const res = resolveFilePath(ctx.params.slug);
+    const params = await ctx.params;
+    const res = resolveFilePath(params.slug);
     if ("error" in res) {
       return NextResponse.json({ message: res.error }, { status: res.status });
     }

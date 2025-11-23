@@ -179,6 +179,39 @@ export default function EditSetPage() {
     );
   };
 
+  const handleImageUpload = async (file: File, qi: number) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    try {
+      const uploadRes = await fetch(`/api/images/${encodeURI(setPath)}`, {
+        method: "POST",
+        body: formData,
+      });
+      const result = await uploadRes.json();
+      if (!uploadRes.ok) {
+        alert(result.message || "Upload failed");
+      } else {
+        const storedName: string = result.file;
+        updateQuestion(qi, {
+          image: `${setPath}/${storedName}`,
+        });
+      }
+    } catch (e) {
+      console.error(e);
+      alert("Upload failed");
+    }
+  };
+
+  const handlePaste = (e: React.ClipboardEvent, qi: number) => {
+    if (e.clipboardData.files && e.clipboardData.files.length > 0) {
+      const file = e.clipboardData.files[0];
+      if (file.type.startsWith("image/")) {
+        e.preventDefault();
+        handleImageUpload(file, qi);
+      }
+    }
+  };
+
   const save = async () => {
     setSaving(true);
     try {
@@ -240,6 +273,7 @@ export default function EditSetPage() {
               <div
                 key={qi}
                 className="border border-border rounded-lg p-4 space-y-3 bg-card"
+                onPaste={(e) => handlePaste(e, qi)}
               >
                 <div className="flex gap-3 items-center">
                   <input
@@ -296,27 +330,9 @@ export default function EditSetPage() {
                         type="file"
                         accept="image/*"
                         className="hidden"
-                        onChange={async (ev) => {
+                        onChange={(ev) => {
                           const file = ev.target.files?.[0];
-                          if (!file) return;
-                          const formData = new FormData();
-                          formData.append("file", file);
-                          const uploadRes = await fetch(
-                            `/api/images/${encodeURI(setPath)}`,
-                            {
-                              method: "POST",
-                              body: formData,
-                            }
-                          );
-                          const result = await uploadRes.json();
-                          if (!uploadRes.ok) {
-                            alert(result.message || "Upload failed");
-                          } else {
-                            const storedName: string = result.file;
-                            updateQuestion(qi, {
-                              image: `${setPath}/${storedName}`,
-                            });
-                          }
+                          if (file) handleImageUpload(file, qi);
                         }}
                       />
                       Upload
@@ -343,31 +359,17 @@ export default function EditSetPage() {
                     )}
                   </div>
                   <div
-                    className="mt-2 p-3 rounded border border-dashed border-border text-center text-sm text-muted bg-background/50"
+                    tabIndex={0}
+                    className="mt-2 p-3 rounded border border-dashed border-border text-center text-sm text-muted bg-background/50 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent"
                     onDragOver={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
                     }}
-                    onDrop={async (e) => {
+                    onDrop={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
                       const file = e.dataTransfer.files?.[0];
-                      if (!file) return;
-                      const formData = new FormData();
-                      formData.append("file", file);
-                      const uploadRes = await fetch(
-                        `/api/images/${encodeURI(setPath)}`,
-                        { method: "POST", body: formData }
-                      );
-                      const result = await uploadRes.json();
-                      if (!uploadRes.ok) {
-                        alert(result.message || "Upload failed");
-                      } else {
-                        const storedName: string = result.file;
-                        updateQuestion(qi, {
-                          image: `${setPath}/${storedName}`,
-                        });
-                      }
+                      if (file) handleImageUpload(file, qi);
                     }}
                   >
                     Drag & drop image here

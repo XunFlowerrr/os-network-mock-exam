@@ -6,9 +6,10 @@ function getImageRoot() {
   return path.join(process.cwd(), "src", "data", "image");
 }
 
-export async function GET(_req: Request, ctx: { params: { slug: string[] } }) {
+export async function GET(_req: Request, ctx: { params: Promise<{ slug: string[] }> }) {
   try {
-    const slug = ctx.params.slug || [];
+    const params = await ctx.params;
+    const slug = params.slug || [];
     if (!Array.isArray(slug) || slug.length === 0) {
       return NextResponse.json({ message: "Invalid path" }, { status: 400 });
     }
