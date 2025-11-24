@@ -16,7 +16,7 @@
         "istrue": false
       },
       {
-        "statement": "Both B and C",
+        "statement": "Both B and C, base + limit < address",
         "istrue": true
       }
     ],
@@ -246,7 +246,7 @@
         "istrue": false
       },
       {
-        "statement": "Both B and C",
+        "statement": "Both triangle and circle",
         "istrue": true
       }
     ],
@@ -407,7 +407,7 @@
         "istrue": false
       },
       {
-        "statement": "Both A and B",
+        "statement": "Both A and B != less translation steps",
         "istrue": true
       }
     ],
