@@ -1,6 +1,7 @@
 "use client";
-import React, { useEffect, useState, useMemo } from "react";
-import { usePathname } from "next/navigation";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
+import Image from "next/image";
+import { useParams } from "next/navigation";
 
 type Question = {
   question: string;
@@ -11,9 +12,8 @@ type Question = {
 };
 
 export default function QuizPage() {
-  const pathname = usePathname();
-  const segments = pathname.split("/");
-  const setName = segments[segments.length - 1];
+  const params = useParams();
+  const setName = (params?.setName as string) ?? "";
 
   const [questionList, setQuestionList] = useState<Question[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -41,23 +41,28 @@ export default function QuizPage() {
     loadQuestionSet();
   }, [setName]);
 
-  const handleOptionSelect = (optionIndex: number) => {
-    if (!isAnswered) {
-      const updatedAnswers = [...userAnswers];
-      updatedAnswers[currentQuestion] = optionIndex.toString();
-      setUserAnswers(updatedAnswers);
-      setIsAnswered(true);
-    }
-  };
+  const handleOptionSelect = useCallback(
+    (optionIndex: number) => {
+      if (!isAnswered) {
+        setUserAnswers((prev) => {
+          const updated = [...prev];
+          updated[currentQuestion] = optionIndex.toString();
+          return updated;
+        });
+        setIsAnswered(true);
+      }
+    },
+    [isAnswered, currentQuestion],
+  );
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (currentQuestion < questionList.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
+      setCurrentQuestion((q) => q + 1);
       setIsAnswered(false);
     } else {
       setShowScore(true);
     }
-  };
+  }, [currentQuestion, questionList.length]);
 
   const computeScore = () => {
     let score = 0;
@@ -108,7 +113,7 @@ export default function QuizPage() {
   const progress = useMemo(
     () =>
       questionList.length ? (currentQuestion / questionList.length) * 100 : 0,
-    [currentQuestion, questionList.length]
+    [currentQuestion, questionList.length],
   );
 
   if (showScore) {
@@ -192,10 +197,14 @@ export default function QuizPage() {
         </h2>
         {currentQ.image && (
           <div>
-            <img
+            <Image
               src={`/api/images-serve/${encodeURI(currentQ.image)}`}
               alt="question"
-              className="max-h-64 rounded border border-border mt-2"
+              width={800}
+              height={400}
+              className="max-h-64 w-auto rounded border border-border mt-2 object-contain"
+              unoptimized
+              loading="lazy"
             />
           </div>
         )}

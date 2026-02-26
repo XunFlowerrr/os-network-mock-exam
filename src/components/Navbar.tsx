@@ -3,10 +3,11 @@ import React from "react";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import Button from "./ui/Button";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
+  const router = useRouter();
   return (
     <header className="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-background/70 border-b border-border">
       <div className="mx-auto max-w-5xl px-4 flex items-center h-14 gap-4">
@@ -30,7 +31,7 @@ export const Navbar: React.FC = () => {
         </nav>
         <div className="ml-auto flex items-center gap-2">
           <ThemeToggle />
-          <Button variant="outline" onClick={() => window.location.reload()}>
+          <Button variant="outline" onClick={() => router.refresh()}>
             Refresh Sets
           </Button>
         </div>
