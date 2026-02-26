@@ -2,15 +2,20 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  FiCopy,
-  FiSave,
-  FiArrowLeft,
-  FiCheck,
-  FiFolder,
-  FiFolderPlus,
-} from "react-icons/fi";
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { toast } from "sonner";
+import { Copy, Save, ArrowLeft, Check, Folder, FolderPlus } from "lucide-react";
 
 export default function ImportPage() {
   const [title, setTitle] = useState("");
@@ -42,7 +47,7 @@ export default function ImportPage() {
 
   const handleCreateFolder = async () => {
     if (!newFolderName.trim()) {
-      alert("Please enter a folder name.");
+      toast.error("Please enter a folder name.");
       return;
     }
 
@@ -60,14 +65,14 @@ export default function ImportPage() {
         setSelectedFolder(result.folder.name);
         setNewFolderName("");
         setShowNewFolder(false);
-        alert("Folder created successfully!");
+        toast.success("Folder created successfully!");
       } else {
         const error = await response.json();
-        alert(error.message || "Failed to create folder.");
+        toast.error(error.message || "Failed to create folder.");
       }
     } catch (error) {
       console.error("Error creating folder:", error);
-      alert("Error creating folder");
+      toast.error("Error creating folder");
     } finally {
       setCreatingFolder(false);
     }
@@ -75,7 +80,7 @@ export default function ImportPage() {
 
   const handleSave = async () => {
     if (!title.trim() || !content.trim()) {
-      alert("Please fill in both title and content.");
+      toast.error("Please fill in both title and content.");
       return;
     }
 
@@ -85,7 +90,7 @@ export default function ImportPage() {
       try {
         jsonData = JSON.parse(content);
       } catch (error) {
-        alert("Invalid JSON content.");
+        toast.error("Invalid JSON content.");
         return;
       }
 
@@ -106,15 +111,15 @@ export default function ImportPage() {
       });
 
       if (response.ok) {
-        alert("Set saved successfully!");
+        toast.success("Set saved successfully!");
         router.push("/");
       } else {
         const error = await response.json();
-        alert(error.message || "Failed to save the set.");
+        toast.error(error.message || "Failed to save the set.");
       }
     } catch (error) {
       console.error(error);
-      alert("Error saving set");
+      toast.error("Error saving set");
     } finally {
       setSaving(false);
     }
@@ -191,83 +196,85 @@ Overall Tone:
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6">
+    <div className="max-w-4xl mx-auto space-y-6">
       <div className="flex items-center gap-4">
         <Link href="/">
-          <Button variant="ghost" leftIcon={<FiArrowLeft />}>
+          <Button variant="ghost" leftIcon={<ArrowLeft className="h-4 w-4" />}>
             Back to Home
           </Button>
         </Link>
       </div>
 
-      <div className="text-center space-y-4">
-        <h1 className="text-3xl font-bold">Import Question Set</h1>
-        <p className="text-muted">
+      <div className="text-center space-y-2">
+        <h1 className="text-3xl font-bold gradient-text">
+          Import Question Set
+        </h1>
+        <p className="text-muted-foreground">
           Enter the title and paste the JSON content of your question set.
         </p>
       </div>
 
-      <div className="space-y-4">
-        <div>
-          <label htmlFor="title" className="block text-sm font-medium mb-2">
-            Title (Filename)
-          </label>
-          <input
-            id="title"
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Enter the title for your question set"
-            className="w-full px-3 py-2 rounded-md border border-border bg-card focus:outline-none focus:ring-2 focus:ring-accent"
-          />
-          {title.trim() && (
-            <p className="text-xs text-muted mt-1">
-              Filename:{" "}
-              <code className="bg-muted px-1 py-0.5 rounded text-xs">
-                {title.trim().replace(/\s+/g, "_").replace(/\//g, "_")}.json
-              </code>
-            </p>
-          )}
-        </div>
+      <Card>
+        <CardHeader>
+          <CardTitle>Set Details</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {/* Title */}
+          <div className="space-y-1.5">
+            <Label htmlFor="title">Title (Filename)</Label>
+            <Input
+              id="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Enter the title for your question set"
+            />
+            {title.trim() && (
+              <p className="text-xs text-muted-foreground">
+                Filename:{" "}
+                <code className="bg-muted px-1 py-0.5 rounded text-xs">
+                  {title.trim().replace(/\s+/g, "_").replace(/\//g, "_")}.json
+                </code>
+              </p>
+            )}
+          </div>
 
-        <div>
-          <label className="block text-sm font-medium mb-2">Folder</label>
-          <div className="space-y-3">
-            <select
-              value={selectedFolder}
-              onChange={(e) => setSelectedFolder(e.target.value)}
-              className="w-full px-3 py-2 rounded-md border border-border bg-card focus:outline-none focus:ring-2 focus:ring-accent"
-            >
-              {folders.map((folder) => (
-                <option key={folder.name} value={folder.name}>
-                  📁 {folder.name} ({folder.fileCount} files)
-                </option>
-              ))}
-            </select>
+          {/* Folder */}
+          <div className="space-y-2">
+            <Label>Folder</Label>
+            <Select value={selectedFolder} onValueChange={setSelectedFolder}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select a folder" />
+              </SelectTrigger>
+              <SelectContent>
+                {folders.map((folder) => (
+                  <SelectItem key={folder.name} value={folder.name}>
+                    📁 {folder.name} ({folder.fileCount} files)
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
 
             {!showNewFolder ? (
               <Button
                 onClick={() => setShowNewFolder(true)}
                 variant="outline"
-                leftIcon={<FiFolderPlus />}
+                leftIcon={<FolderPlus className="h-4 w-4" />}
                 className="w-full"
               >
                 Create New Folder
               </Button>
             ) : (
               <div className="space-y-2">
-                <input
-                  type="text"
+                <Input
                   value={newFolderName}
                   onChange={(e) => setNewFolderName(e.target.value)}
                   placeholder="Enter folder name"
-                  className="w-full px-3 py-2 rounded-md border border-border bg-card focus:outline-none focus:ring-2 focus:ring-accent"
                 />
                 <div className="flex gap-2">
                   <Button
                     onClick={handleCreateFolder}
                     loading={creatingFolder}
-                    leftIcon={<FiFolder />}
+                    leftIcon={<Folder className="h-4 w-4" />}
                     className="flex-1"
                   >
                     Create Folder
@@ -285,38 +292,46 @@ Overall Tone:
               </div>
             )}
           </div>
-        </div>
 
-        <div>
-          <label htmlFor="content" className="block text-sm font-medium mb-2">
-            Question Set Content (JSON)
-          </label>
-          <textarea
-            id="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            placeholder="Paste your JSON question set here"
-            rows={20}
-            className="w-full px-3 py-2 rounded-md border border-border bg-card focus:outline-none focus:ring-2 focus:ring-accent font-mono text-sm"
-          />
-        </div>
+          {/* Content */}
+          <div className="space-y-1.5">
+            <Label htmlFor="content">Question Set Content (JSON)</Label>
+            <Textarea
+              id="content"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder="Paste your JSON question set here"
+              rows={20}
+              className="font-mono text-sm"
+            />
+          </div>
 
-        <div className="flex gap-4">
-          <Button
-            onClick={handleCopyPrompt}
-            variant="outline"
-            leftIcon={copied ? <FiCheck /> : <FiCopy />}
-            className={
-              copied ? "bg-green-50 border-green-200 text-green-700" : ""
-            }
-          >
-            {copied ? "Copied!" : "Copy Prompt"}
-          </Button>
-          <Button onClick={handleSave} loading={saving} leftIcon={<FiSave />}>
-            Save Question Set
-          </Button>
-        </div>
-      </div>
+          {/* Actions */}
+          <div className="flex gap-3">
+            <Button
+              onClick={handleCopyPrompt}
+              variant="outline"
+              leftIcon={
+                copied ? (
+                  <Check className="h-4 w-4" />
+                ) : (
+                  <Copy className="h-4 w-4" />
+                )
+              }
+              className={copied ? "border-green-500 text-green-600" : ""}
+            >
+              {copied ? "Copied!" : "Copy Prompt"}
+            </Button>
+            <Button
+              onClick={handleSave}
+              loading={saving}
+              leftIcon={<Save className="h-4 w-4" />}
+            >
+              Save Question Set
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

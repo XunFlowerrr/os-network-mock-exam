@@ -2,6 +2,13 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
+import { cn } from "@/components/utils/cn";
+import { CheckCircle2, XCircle } from "lucide-react";
 
 type Question = {
   question: string;
@@ -20,22 +27,24 @@ export default function QuizPage() {
   const [userAnswers, setUserAnswers] = useState<string[]>([]);
   const [isAnswered, setIsAnswered] = useState(false);
   const [showScore, setShowScore] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Try to load from different folders
     const loadQuestionSet = async () => {
+      setLoading(true);
       const folders = ["random", "no-random"];
       for (const folder of folders) {
         try {
           const data = await import(`@/data/${folder}/${setName}.json`);
           setQuestionList(data.default as Question[]);
+          setLoading(false);
           return;
-        } catch (error) {
-          // Continue to next folder
+        } catch {
+          // continue to next folder
         }
       }
-      // If no folder contains the set, set empty array
       setQuestionList([]);
+      setLoading(false);
     };
 
     loadQuestionSet();
@@ -108,7 +117,14 @@ export default function QuizPage() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [currentQuestion, isAnswered, showScore, currentQ]);
+  }, [
+    currentQuestion,
+    isAnswered,
+    showScore,
+    currentQ,
+    handleNext,
+    handleOptionSelect,
+  ]);
 
   const progress = useMemo(
     () =>
@@ -116,52 +132,97 @@ export default function QuizPage() {
     [currentQuestion, questionList.length],
   );
 
+  // Loading skeleton
+  if (loading) {
+    return (
+      <div className="max-w-3xl mx-auto space-y-6">
+        <Skeleton className="h-8 w-48" />
+        <Skeleton className="h-2 w-full rounded-full" />
+        <Skeleton className="h-24 w-full rounded-xl" />
+        <div className="grid gap-3">
+          <Skeleton className="h-14 rounded-lg" />
+          <Skeleton className="h-14 rounded-lg" />
+          <Skeleton className="h-14 rounded-lg" />
+          <Skeleton className="h-14 rounded-lg" />
+        </div>
+      </div>
+    );
+  }
+
+  // Results view
   if (showScore) {
     const finalScore = computeScore();
+    const pct = Math.round((finalScore / questionList.length) * 100);
     return (
       <div className="max-w-3xl mx-auto space-y-8">
-        <div className="text-center space-y-2">
+        <div className="text-center space-y-3">
           <h1 className="text-3xl font-bold gradient-text">Results</h1>
-          <p className="text-muted">
-            You scored {finalScore} / {questionList.length}
+          <p className="text-muted-foreground text-lg">
+            You scored{" "}
+            <span className="font-bold text-foreground">{finalScore}</span>
+            {" / "}
+            {questionList.length}
           </p>
+          <Progress value={pct} className="max-w-sm mx-auto" />
+          <Badge
+            variant={
+              pct >= 80 ? "default" : pct >= 50 ? "secondary" : "destructive"
+            }
+            className="text-sm px-4 py-1"
+          >
+            {pct}%
+          </Badge>
         </div>
-        <div className="grid gap-6">
+        <div className="grid gap-4">
           {questionList.map((q, idx) => {
             const correct = userAnswers[idx] === q.answer.toString();
             return (
-              <div
+              <Card
                 key={idx}
-                className="p-5 rounded-lg border border-border bg-card"
+                className={cn(
+                  correct ? "border-green-500/40" : "border-red-500/40",
+                )}
               >
-                <p className="font-semibold mb-2">
-                  Q{idx + 1}. {q.question}
-                </p>
-                <p className="text-sm">
-                  Your answer:{" "}
-                  <span
-                    className={
-                      correct
-                        ? "text-success font-medium"
-                        : "text-danger font-medium"
-                    }
-                  >
-                    {parseInt(userAnswers[idx]) + 1}
-                  </span>
-                </p>
-                {!correct && (
-                  <p className="text-sm mt-1">
-                    Correct answer:{" "}
-                    <span className="text-success font-medium">
-                      {q.answer + 1}
+                <CardContent className="pt-5 space-y-2">
+                  <div className="flex items-start gap-2">
+                    {correct ? (
+                      <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
+                    ) : (
+                      <XCircle className="h-4 w-4 text-red-500 mt-0.5 shrink-0" />
+                    )}
+                    <p className="font-medium leading-snug">
+                      Q{idx + 1}. {q.question}
+                    </p>
+                  </div>
+                  <p className="text-sm text-muted-foreground pl-6">
+                    Your answer:{" "}
+                    <span
+                      className={cn(
+                        "font-medium",
+                        correct
+                          ? "text-green-600 dark:text-green-400"
+                          : "text-red-600 dark:text-red-400",
+                      )}
+                    >
+                      {q.options[parseInt(userAnswers[idx])]}
                     </span>
                   </p>
-                )}
-                <p className="mt-3 text-sm leading-relaxed whitespace-pre-line">
-                  <span className="font-medium">Explanation:</span>{" "}
-                  {q.explanation}
-                </p>
-              </div>
+                  {!correct && (
+                    <p className="text-sm text-muted-foreground pl-6">
+                      Correct:{" "}
+                      <span className="font-medium text-green-600 dark:text-green-400">
+                        {q.options[q.answer]}
+                      </span>
+                    </p>
+                  )}
+                  <p className="text-sm leading-relaxed whitespace-pre-line pl-6 text-muted-foreground">
+                    <span className="font-medium text-foreground">
+                      Explanation:
+                    </span>{" "}
+                    {q.explanation}
+                  </p>
+                </CardContent>
+              </Card>
             );
           })}
         </div>
@@ -169,28 +230,30 @@ export default function QuizPage() {
     );
   }
 
-  if (!questionList[currentQuestion]) {
-    return <div>Loading questions...</div>;
+  if (!currentQ) {
+    return (
+      <div className="max-w-3xl mx-auto text-center py-20 text-muted-foreground">
+        No questions found for &quot;{setName}&quot;.
+      </div>
+    );
   }
 
   return (
     <div className="max-w-3xl mx-auto space-y-8">
+      {/* Progress header */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold tracking-tight gradient-text">
             {setName} Quiz
           </h1>
-          <span className="text-xs text-muted">
-            {currentQuestion + 1}/{questionList.length}
-          </span>
+          <Badge variant="secondary">
+            {currentQuestion + 1} / {questionList.length}
+          </Badge>
         </div>
-        <div className="w-full h-2 bg-border rounded-full overflow-hidden">
-          <div
-            className="h-full bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] transition-all"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
+        <Progress value={progress} />
       </div>
+
+      {/* Question */}
       <div className="space-y-6">
         <h2 className="text-lg font-medium whitespace-pre-line leading-relaxed">
           {currentQ.question}
@@ -208,73 +271,95 @@ export default function QuizPage() {
             />
           </div>
         )}
+
+        {/* Answer options */}
         <div className="grid gap-3">
           {currentQ.options.map((option, idx) => {
             const isUserChoice =
               userAnswers[currentQuestion] === idx.toString();
             const isCorrectOption = idx === currentQ.answer;
-            let base =
-              "text-left px-4 py-3 rounded-lg border transition-all focus:outline-none focus:ring-2";
-            let styles = "";
-            if (isAnswered) {
-              if (isCorrectOption)
-                styles =
-                  "border-success bg-success/10 text-success font-medium";
-              else if (isUserChoice)
-                styles = "border-danger bg-danger/10 text-danger";
-              else styles = "border-border bg-background/60";
-            } else {
-              styles =
-                "border-border bg-card hover:border-accent hover:shadow-soft";
-            }
             return (
               <button
                 key={idx}
                 onClick={() => handleOptionSelect(idx)}
                 disabled={isAnswered}
-                className={`${base} ${styles}`}
+                className={cn(
+                  "w-full text-left px-4 py-3 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-ring",
+                  !isAnswered &&
+                    "bg-card hover:bg-accent hover:text-accent-foreground border-border",
+                  isAnswered && isCorrectOption && "answer-correct",
+                  isAnswered &&
+                    isUserChoice &&
+                    !isCorrectOption &&
+                    "answer-wrong",
+                  isAnswered &&
+                    !isUserChoice &&
+                    !isCorrectOption &&
+                    "answer-dimmed",
+                )}
               >
+                <span className="font-medium mr-2 text-muted-foreground">
+                  {idx + 1}.
+                </span>
                 {option}
               </button>
             );
           })}
-          <p className="text-xs text-muted">
+          <p className="text-xs text-muted-foreground">
             Press {currentQ.options.map((_, idx) => idx + 1).join("/")} to
             answer
           </p>
         </div>
       </div>
+
+      {/* Explanation card */}
       {isAnswered && (
-        <div className="space-y-4 p-4 rounded-lg border border-border bg-card">
-          <p
-            className={
-              isCorrect
-                ? "text-success font-semibold"
-                : "text-danger font-semibold"
-            }
-          >
-            {isCorrect ? "Correct!" : "Incorrect"}
-          </p>
-          {!isCorrect && (
-            <p className="text-sm">
-              Correct answer:{" "}
-              <span className="font-medium text-success">
-                {currentQ.options[currentQ.answer]}
-              </span>
-            </p>
+        <Card
+          className={cn(
+            isCorrect ? "border-green-500/40" : "border-red-500/40",
           )}
-          <p className="text-sm leading-relaxed whitespace-pre-line">
-            <span className="font-medium">Explanation:</span>{" "}
-            {currentQ.explanation}
-          </p>
-        </div>
+        >
+          <CardContent className="pt-4 space-y-2">
+            <div className="flex items-center gap-2">
+              {isCorrect ? (
+                <CheckCircle2 className="h-5 w-5 text-green-500" />
+              ) : (
+                <XCircle className="h-5 w-5 text-red-500" />
+              )}
+              <p
+                className={cn(
+                  "font-semibold",
+                  isCorrect
+                    ? "text-green-600 dark:text-green-400"
+                    : "text-red-600 dark:text-red-400",
+                )}
+              >
+                {isCorrect ? "Correct!" : "Incorrect"}
+              </p>
+            </div>
+            {!isCorrect && (
+              <p className="text-sm text-muted-foreground">
+                Correct answer:{" "}
+                <span className="font-medium text-green-600 dark:text-green-400">
+                  {currentQ.options[currentQ.answer]}
+                </span>
+              </p>
+            )}
+            <p className="text-sm leading-relaxed whitespace-pre-line text-muted-foreground">
+              <span className="font-medium text-foreground">Explanation:</span>{" "}
+              {currentQ.explanation}
+            </p>
+          </CardContent>
+        </Card>
       )}
+
+      {/* Next button */}
       {isAnswered && (
-        <button onClick={handleNext} className="btn-primary px-6 py-3">
+        <Button onClick={handleNext} size="lg" className="px-8">
           {currentQuestion < questionList.length - 1
             ? "Next Question"
             : "View Results"}
-        </button>
+        </Button>
       )}
     </div>
   );

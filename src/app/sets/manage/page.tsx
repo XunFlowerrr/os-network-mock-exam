@@ -1,16 +1,12 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import Button from "@/components/ui/Button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import {
-  FiArrowLeft,
-  FiEdit,
-  FiFileText,
-  FiFolder,
-  FiRefreshCw,
-  
-} from "react-icons/fi";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
+import { toast } from "sonner";
+import { ArrowLeft, Edit, FileText, Folder, RefreshCw } from "lucide-react";
 
 type FolderNode = {
   name: string;
@@ -22,7 +18,6 @@ type FolderNode = {
 
 export default function ManageSetsPage() {
   const [folders, setFolders] = useState<FolderNode[]>([]);
-  
 
   useEffect(() => {
     loadFolders();
@@ -35,7 +30,7 @@ export default function ManageSetsPage() {
       setFolders(data.folders || []);
     } catch (e) {
       console.error(e);
-      alert("Failed to load folders");
+      toast.error("Failed to load folders");
     }
   };
 
@@ -53,54 +48,61 @@ export default function ManageSetsPage() {
   }, [folders]);
 
   return (
-    <div className="max-w-6xl mx-auto p-6 space-y-6">
-      <div className="flex items-center gap-4">
+    <div className="max-w-6xl mx-auto space-y-6">
+      <div className="flex items-center gap-3">
         <Link href="/">
-          <Button variant="ghost" leftIcon={<FiArrowLeft />}>
+          <Button variant="ghost" leftIcon={<ArrowLeft className="h-4 w-4" />}>
             Back
           </Button>
         </Link>
+        <Separator orientation="vertical" className="h-5" />
         <h1 className="text-2xl font-semibold">Manage Question Sets</h1>
-        <Button
-          variant="outline"
-          leftIcon={<FiRefreshCw />}
-          onClick={loadFolders}
-        >
-          Refresh
-        </Button>
+        <div className="ml-auto">
+          <Button
+            variant="outline"
+            leftIcon={<RefreshCw className="h-4 w-4" />}
+            onClick={loadFolders}
+          >
+            Refresh
+          </Button>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-6">
-        <Card>
-          <CardHeader className="flex items-center gap-2">
-            <FiFolder className="text-accent" />
-            <CardTitle>Available Sets</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-2 max-h-[60vh] overflow-auto">
+      <Card>
+        <CardHeader className="flex flex-row items-center gap-2">
+          <Folder className="h-5 w-5 text-primary" />
+          <CardTitle>Available Sets</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ScrollArea className="h-[60vh]">
+            <div className="space-y-2 pr-3">
               {allFiles.map((f) => (
                 <div
                   key={f.path}
-                  className="w-full flex items-center gap-2 p-2 rounded border border-border"
+                  className="flex items-center gap-2 p-2 rounded-md border border-border hover:bg-accent/50 transition-colors"
                 >
-                  <div className="flex-1 flex items-center gap-2 text-left rounded px-1 py-0.5">
-                    <FiFileText className="text-muted" />
-                    <span className="truncate">{f.display}</span>
-                  </div>
+                  <FileText className="h-4 w-4 text-muted-foreground shrink-0" />
+                  <span className="flex-1 truncate text-sm">{f.display}</span>
                   <Link href={`/sets/edit/${encodeURI(f.path)}`}>
-                    <Button className="px-3 py-1 text-sm" leftIcon={<FiEdit />}>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      leftIcon={<Edit className="h-3.5 w-3.5" />}
+                    >
                       Edit
                     </Button>
                   </Link>
                 </div>
               ))}
               {allFiles.length === 0 && (
-                <p className="text-sm text-muted">No sets found.</p>
+                <p className="text-sm text-muted-foreground py-4 text-center">
+                  No sets found.
+                </p>
               )}
             </div>
-          </CardContent>
-        </Card>
-      </div>
+          </ScrollArea>
+        </CardContent>
+      </Card>
     </div>
   );
 }

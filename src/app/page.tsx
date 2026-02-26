@@ -1,22 +1,22 @@
 "use client";
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import Link from "next/link";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
-import Button from "@/components/ui/Button";
-import { ProgressBar } from "@/components/ui/ProgressBar";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
 import FolderItem from "@/components/FolderItem";
+import { countAllFiles, type FolderData } from "@/lib/folderUtils";
 import {
-  countAllFiles,
-  collectAllFiles,
-  type FolderData,
-} from "@/lib/folderUtils";
-import {
-  FiUploadCloud,
-  FiDatabase,
-  FiShuffle,
-  FiSearch,
-  FiGitBranch,
-} from "react-icons/fi";
+  UploadCloud,
+  Database,
+  Shuffle,
+  Search,
+  GitBranch,
+} from "lucide-react";
+import { toast } from "sonner";
 
 export default function Home() {
   const [folderStructure, setFolderStructure] = useState<FolderData[]>([]);
@@ -47,14 +47,16 @@ export default function Home() {
       const response = await fetch("/api/sync", { method: "POST" });
       const result = await response.json();
       if (response.ok) {
-        alert(result.message);
+        toast.success(result.message);
         fetchFolderStructure();
       } else {
-        alert(`Sync failed: ${result.message}`);
+        toast.error(`Sync failed: ${result.message}`);
       }
     } catch (error) {
       console.error("Sync error:", error);
-      alert("Failed to sync to GitHub. Please check the console for details.");
+      toast.error(
+        "Failed to sync to GitHub. Please check the console for details.",
+      );
     } finally {
       setSyncing(false);
     }
@@ -68,22 +70,6 @@ export default function Home() {
       return next;
     });
   }, []);
-
-  const filteredNoRandom = useMemo(
-    () =>
-      collectAllFiles(folderStructure, "no-random").filter((name) =>
-        name.toLowerCase().includes(query.toLowerCase()),
-      ),
-    [folderStructure, query],
-  );
-
-  const filteredRandom = useMemo(
-    () =>
-      collectAllFiles(folderStructure, "random").filter((name) =>
-        name.toLowerCase().includes(query.toLowerCase()),
-      ),
-    [folderStructure, query],
-  );
 
   const totalFiles = useMemo(
     () => countAllFiles(folderStructure),
@@ -100,8 +86,11 @@ export default function Home() {
     [randomFolder],
   );
 
+  const isLoading = folderStructure.length === 0;
+
   return (
     <div className="space-y-10">
+      {/* Header */}
       <div className="text-center space-y-4">
         <div className="flex items-center justify-center gap-4 mb-4">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -111,88 +100,109 @@ export default function Home() {
             onClick={handleSyncToGithub}
             loading={syncing}
             variant="outline"
-            leftIcon={<FiGitBranch className="text-accent" />}
-            className="px-3 py-2 text-sm"
+            leftIcon={<GitBranch className="h-4 w-4" />}
+            size="sm"
           >
             <span className="hidden sm:inline">
               {syncing ? "Syncing..." : "Sync"}
             </span>
           </Button>
         </div>
-        <p className="text-muted max-w-2xl mx-auto">
-          Practice Operating System & Networking concepts with structured and
-          randomized question sets.
+        <p className="text-muted-foreground max-w-2xl mx-auto">
+          Practice Operating System &amp; Networking concepts with structured
+          and randomized question sets.
         </p>
         <div className="relative max-w-md mx-auto">
-          <FiSearch className="absolute top-1/2 -translate-y-1/2 left-3 text-muted" />
-          <input
-            type="text"
+          <Search className="absolute top-1/2 -translate-y-1/2 left-3 h-4 w-4 text-muted-foreground" />
+          <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search sets..."
-            className="w-full pl-10 pr-4 py-2 rounded-md border border-border bg-card focus:outline-none focus:ring-2 focus:ring-accent"
+            className="pl-10"
           />
         </div>
       </div>
 
+      {/* Stats cards */}
       <div className="grid md:grid-cols-2 gap-8">
-        <Card>
-          <CardHeader className="flex items-center gap-2">
-            <FiUploadCloud className="text-accent" />
-            <CardTitle>Import Question Set</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted mb-4">
-              Create a new question set by entering the title and JSON content.
-            </p>
-            <Link href="/import">
-              <Button
-                className="w-full"
-                leftIcon={<FiUploadCloud className="text-accent" />}
-              >
-                Go to Import Page
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
+        {isLoading ? (
+          <>
+            <Skeleton className="h-44 rounded-xl" />
+            <Skeleton className="h-44 rounded-xl" />
+          </>
+        ) : (
+          <>
+            <Card>
+              <CardHeader className="flex flex-row items-center gap-2">
+                <UploadCloud className="h-5 w-5 text-primary" />
+                <CardTitle>Import Question Set</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Create a new question set by entering the title and JSON
+                  content.
+                </p>
+                <Link href="/import">
+                  <Button
+                    className="w-full"
+                    leftIcon={<UploadCloud className="h-4 w-4" />}
+                  >
+                    Go to Import Page
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
 
-        <Card>
-          <CardHeader className="flex items-center gap-2">
-            <FiDatabase className="text-accent" />
-            <CardTitle>Saved Sets Overview</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 gap-4 text-center">
-              <div className="p-3 rounded-lg border border-border bg-background/50">
-                <p className="text-2xl font-bold gradient-text">
-                  {randomSetCount}
-                </p>
-                <p className="text-xs uppercase tracking-wide text-muted">
-                  Random Sets
-                </p>
-              </div>
-            </div>
-            <div className="mt-6 space-y-2">
-              <p className="text-sm text-muted">Completion Tracker (demo)</p>
-              <ProgressBar value={Math.min(100, totalFiles * 3)} />
-            </div>
-            <div className="mt-6">
-              <Link href="/sets/manage">
-                <Button className="w-full">Manage Sets</Button>
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
+            <Card>
+              <CardHeader className="flex flex-row items-center gap-2">
+                <Database className="h-5 w-5 text-primary" />
+                <CardTitle>Saved Sets Overview</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between p-3 rounded-lg border bg-muted/40 mb-4">
+                  <span className="text-sm text-muted-foreground uppercase tracking-wide">
+                    Random Sets
+                  </span>
+                  <Badge
+                    variant="secondary"
+                    className="text-base font-bold px-3 py-1"
+                  >
+                    {randomSetCount}
+                  </Badge>
+                </div>
+                <div className="space-y-1.5">
+                  <p className="text-sm text-muted-foreground">
+                    Completion Tracker (demo)
+                  </p>
+                  <Progress value={Math.min(100, totalFiles * 3)} />
+                </div>
+                <div className="mt-4">
+                  <Link href="/sets/manage">
+                    <Button className="w-full" variant="outline">
+                      Manage Sets
+                    </Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </>
+        )}
       </div>
 
+      {/* Random Sets browser */}
       <div className="space-y-6">
-        {/* Random only (full width) */}
         <section className="space-y-4">
           <div className="flex items-center gap-2">
-            <FiShuffle className="text-accent" />
+            <Shuffle className="h-5 w-5 text-primary" />
             <h2 className="text-xl font-semibold">Random Sets</h2>
           </div>
-          {randomFolder ? (
+          {isLoading ? (
+            <div className="space-y-2">
+              <Skeleton className="h-10 rounded-lg" />
+              <Skeleton className="h-10 rounded-lg" />
+              <Skeleton className="h-10 rounded-lg" />
+            </div>
+          ) : randomFolder ? (
             <FolderItem
               folder={randomFolder}
               isRandom={true}
@@ -200,7 +210,9 @@ export default function Home() {
               onToggle={toggleFolder}
             />
           ) : (
-            <p className="text-sm text-muted">No random sets found.</p>
+            <p className="text-sm text-muted-foreground">
+              No random sets found.
+            </p>
           )}
         </section>
       </div>

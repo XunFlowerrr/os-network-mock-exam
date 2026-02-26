@@ -1,12 +1,10 @@
 "use client";
 import React, { memo } from "react";
 import Link from "next/link";
-import {
-  FiFileText,
-  FiFolder,
-  FiChevronRight,
-  FiChevronDown,
-} from "react-icons/fi";
+import { FileText, Folder, ChevronRight, ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 import { countAllFiles, type FolderData } from "@/lib/folderUtils";
 
 type FolderItemProps = {
@@ -26,41 +24,43 @@ const FolderItem = memo(function FolderItem({
 }: FolderItemProps) {
   const folderPath = basePath ? `${basePath}/${folder.name}` : folder.name;
   const isExpanded = expandedFolders.has(folderPath);
-  const hasChildren = folder.children && folder.children.length > 0;
-  const hasFiles = folder.files && folder.files.length > 0;
+  const hasChildren = (folder.children?.length ?? 0) > 0;
+  const hasFiles = (folder.files?.length ?? 0) > 0;
   const deepCount = countAllFiles([folder]);
 
   return (
-    <div className="space-y-2">
-      <button
+    <div className="space-y-1">
+      <Button
+        variant="ghost"
         onClick={() => onToggle(folderPath)}
-        className="flex items-center gap-2 w-full text-left p-3 rounded-lg border border-border bg-card hover:bg-accent/5 transition-colors group"
+        className="w-full justify-start gap-2 h-auto py-2.5 px-3 font-normal hover:bg-accent"
         aria-expanded={isExpanded}
       >
         {hasChildren || hasFiles ? (
           isExpanded ? (
-            <FiChevronDown className="text-accent" />
+            <ChevronDown className="h-4 w-4 text-primary shrink-0" />
           ) : (
-            <FiChevronRight className="text-accent" />
+            <ChevronRight className="h-4 w-4 text-muted-foreground shrink-0" />
           )
         ) : (
-          <FiChevronRight className="opacity-0" />
+          <ChevronRight className="h-4 w-4 opacity-0 shrink-0" />
         )}
-        <FiFolder
-          className={`shrink-0 ${isExpanded ? "text-accent" : "text-muted"}`}
+        <Folder
+          className={cn(
+            "h-4 w-4 shrink-0",
+            isExpanded ? "text-primary" : "text-muted-foreground"
+          )}
         />
-        <span className="font-medium group-hover:text-accent transition-colors">
-          {folder.name}
-        </span>
+        <span className="font-medium text-sm">{folder.name}</span>
         {(hasChildren || hasFiles) && (
-          <span className="ml-auto text-xs text-foreground/80 bg-muted/60 border border-border px-2 py-1 rounded">
-            {deepCount} sets
-          </span>
+          <Badge variant="secondary" className="ml-auto text-xs">
+            {deepCount}
+          </Badge>
         )}
-      </button>
+      </Button>
 
       {isExpanded && (
-        <div className="ml-6 space-y-2 border-l border-border/60 pl-4">
+        <div className="ml-8 space-y-1 border-l border-border pl-3">
           {folder.files.map((file) => {
             const trimmedPath = isRandom
               ? (file.path || "").replace(/^random\//, "")
@@ -72,39 +72,27 @@ const FolderItem = memo(function FolderItem({
               <Link
                 key={file.name}
                 href={href}
-                className="flex items-center justify-between gap-3 p-3 rounded-lg border border-border bg-background hover:bg-accent/5 hover:shadow-soft dark:hover:shadow-soft-dark transition group relative overflow-hidden"
+                className="group flex items-center justify-between gap-3 rounded-md px-3 py-2 text-sm transition-colors hover:bg-accent hover:text-accent-foreground"
               >
-                <div className="flex items-center gap-3 min-w-0">
-                  <FiFileText className="text-muted shrink-0" />
-                  <div className="min-w-0">
-                    <p className="font-medium truncate group-hover:text-accent transition-colors">
-                      {file.name}
-                    </p>
-                    <p className="text-xs text-muted truncate">{file.path}</p>
-                  </div>
+                <div className="flex items-center gap-2 min-w-0">
+                  <FileText className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
+                  <span className="truncate font-medium">{file.name}</span>
                 </div>
-                <div className="flex items-center gap-2 shrink-0">
-                  <span className="text-[10px] uppercase tracking-wide text-muted bg-muted/30 border border-border px-2 py-0.5 rounded">
-                    JSON
-                  </span>
-                  <FiChevronRight className="text-muted group-hover:text-accent transition-colors" />
-                </div>
-                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] scale-x-0 group-hover:scale-x-100 origin-left transition-transform" />
+                <ChevronRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
             );
           })}
 
-          {folder.children &&
-            folder.children.map((child) => (
-              <FolderItem
-                key={child.name}
-                folder={child}
-                basePath={folderPath}
-                isRandom={isRandom}
-                expandedFolders={expandedFolders}
-                onToggle={onToggle}
-              />
-            ))}
+          {folder.children?.map((child) => (
+            <FolderItem
+              key={child.name}
+              folder={child}
+              basePath={folderPath}
+              isRandom={isRandom}
+              expandedFolders={expandedFolders}
+              onToggle={onToggle}
+            />
+          ))}
         </div>
       )}
     </div>

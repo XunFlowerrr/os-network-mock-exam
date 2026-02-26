@@ -1,8 +1,14 @@
 "use client";
 import React, { useEffect, useState, useMemo } from "react";
-// Import useSearchParams
 import { usePathname, useSearchParams } from "next/navigation";
-import ExplanationSection from "@/components/ExplanationSection";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Input } from "@/components/ui/input";
+import { cn } from "@/components/utils/cn";
+import { CheckCircle2, XCircle } from "lucide-react";
 
 // Helper function to shuffle an array
 function shuffleArray<T>(array: T[]): T[] {
@@ -46,11 +52,11 @@ export default function RandomQuizPage() {
   const [isAnswered, setIsAnswered] = useState(false);
   const [showScore, setShowScore] = useState(false);
   const [textAnswer, setTextAnswer] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Try to load from different folders
     const loadQuestionSet = async () => {
-      // Attempt to import by nested path directly first (random/<path>.json)
+      setLoading(true);
       const candidates = [
         `@/data/random/${setName}.json`,
         `@/data/no-random/${setName}.json`,
@@ -59,35 +65,25 @@ export default function RandomQuizPage() {
         try {
           const data = await import(/* @vite-ignore */ candidate);
           let questions = data.default as RandomQuestion[];
-
-          // Conditionally randomize questions
           if (isRandomized) {
             questions = shuffleArray(questions);
-
-            // Conditionally randomize options for multiple-choice questions
             questions = questions.map((q) => {
               if (q.type === "multiple-choice" && q.options) {
-                const shuffledOptions = shuffleArray(q.options);
-                return {
-                  ...q,
-                  options: shuffledOptions,
-                };
+                return { ...q, options: shuffleArray(q.options) };
               }
               return q;
             });
           }
-          // If not randomized, questions and options remain in their original order
-
           setQuestionList(questions);
-          return; // Successfully loaded, exit the loop
-        } catch (error) {
-          // Continue to next folder
+          setLoading(false);
+          return;
+        } catch {
+          // continue
         }
       }
-      // If no folder contains the set, set empty array
       setQuestionList([]);
+      setLoading(false);
     };
-
     loadQuestionSet();
   }, [setName, isRandomized]);
 
@@ -174,26 +170,52 @@ export default function RandomQuizPage() {
   const progress = useMemo(
     () =>
       questionList.length ? (currentQuestion / questionList.length) * 100 : 0,
-    [currentQuestion, questionList.length]
+    [currentQuestion, questionList.length],
   );
+
+  if (loading) {
+    return (
+      <div className="max-w-3xl mx-auto space-y-6">
+        <Skeleton className="h-8 w-48" />
+        <Skeleton className="h-2 w-full rounded-full" />
+        <Skeleton className="h-24 w-full rounded-xl" />
+        <div className="grid gap-3">
+          {[...Array(4)].map((_, i) => (
+            <Skeleton key={i} className="h-14 rounded-lg" />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   if (showScore) {
     const finalScore = computeScore();
+    const pct = Math.round((finalScore / questionList.length) * 100);
     return (
       <div className="max-w-3xl mx-auto space-y-8">
-        <div className="text-center space-y-2">
+        <div className="text-center space-y-3">
           <h1 className="text-3xl font-bold gradient-text">Results</h1>
-          <p className="text-muted">
-            You scored {finalScore} / {questionList.length}
+          <p className="text-muted-foreground text-lg">
+            You scored{" "}
+            <span className="font-bold text-foreground">{finalScore}</span> /{" "}
+            {questionList.length}
           </p>
+          <Progress value={pct} className="max-w-sm mx-auto" />
+          <Badge
+            variant={
+              pct >= 80 ? "default" : pct >= 50 ? "secondary" : "destructive"
+            }
+            className="text-sm px-4 py-1"
+          >
+            {pct}%
+          </Badge>
         </div>
-        <div className="grid gap-6">
+        <div className="grid gap-4">
           {questionList.map((q, idx) => {
             const userAnswer = userAnswers[idx];
             let isCorrect = false;
             let userAnswerDisplay = "";
             let correctAnswerDisplay = "";
-
             if (q.type === "multiple-choice" && q.options) {
               userAnswerDisplay =
                 typeof userAnswer === "number" &&
@@ -201,10 +223,11 @@ export default function RandomQuizPage() {
                 userAnswer < q.options.length
                   ? q.options[userAnswer].statement
                   : "No answer";
-              const correctOption = q.options.find((o) => o.istrue);
-              correctAnswerDisplay = correctOption?.statement || "";
+              correctAnswerDisplay =
+                q.options.find((o) => o.istrue)?.statement || "";
               isCorrect =
-                typeof userAnswer === "number" && q.options[userAnswer]?.istrue;
+                typeof userAnswer === "number" &&
+                !!q.options[userAnswer]?.istrue;
             } else if (q.type === "fill-in-blank" && q.correctAnswer) {
               userAnswerDisplay =
                 typeof userAnswer === "string" ? userAnswer : "No answer";
@@ -213,49 +236,60 @@ export default function RandomQuizPage() {
                 typeof userAnswer === "string" &&
                 userAnswer.toLowerCase() === q.correctAnswer.toLowerCase();
             }
-
             return (
-              <div
+              <Card
                 key={idx}
-                className="p-5 rounded-lg border border-border bg-card"
+                className={cn(
+                  isCorrect ? "border-green-500/40" : "border-red-500/40",
+                )}
               >
-                <p className="font-semibold mb-2">
-                  Q{idx + 1}. {q.question}
-                </p>
-                {q.image && (
-                  <div>
+                <CardContent className="pt-5 space-y-2">
+                  <div className="flex items-start gap-2">
+                    {isCorrect ? (
+                      <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
+                    ) : (
+                      <XCircle className="h-4 w-4 text-red-500 mt-0.5 shrink-0" />
+                    )}
+                    <p className="font-medium leading-snug">
+                      Q{idx + 1}. {q.question}
+                    </p>
+                  </div>
+                  {q.image && (
                     <img
                       src={`/api/images-serve/${encodeURI(q.image)}`}
                       alt="question"
-                      className="max-h-64 rounded border border-border mt-2"
+                      className="max-h-48 rounded border border-border"
                     />
-                  </div>
-                )}
-                <p className="text-sm">
-                  Your answer:{" "}
-                  <span
-                    className={
-                      isCorrect
-                        ? "text-success font-medium"
-                        : "text-danger font-medium"
-                    }
-                  >
-                    {userAnswerDisplay}
-                  </span>
-                </p>
-                {!isCorrect && (
-                  <p className="text-sm mt-1">
-                    Correct answer:{" "}
-                    <span className="text-success font-medium">
-                      {correctAnswerDisplay}
+                  )}
+                  <p className="text-sm text-muted-foreground pl-6">
+                    Your answer:{" "}
+                    <span
+                      className={cn(
+                        "font-medium",
+                        isCorrect
+                          ? "text-green-600 dark:text-green-400"
+                          : "text-red-600 dark:text-red-400",
+                      )}
+                    >
+                      {userAnswerDisplay}
                     </span>
                   </p>
-                )}
-                <p className="mt-3 text-sm leading-relaxed whitespace-pre-line">
-                  <span className="font-medium">Explanation:</span>{" "}
-                  {q.explanation}
-                </p>
-              </div>
+                  {!isCorrect && (
+                    <p className="text-sm text-muted-foreground pl-6">
+                      Correct:{" "}
+                      <span className="font-medium text-green-600 dark:text-green-400">
+                        {correctAnswerDisplay}
+                      </span>
+                    </p>
+                  )}
+                  <p className="text-sm leading-relaxed whitespace-pre-line pl-6 text-muted-foreground">
+                    <span className="font-medium text-foreground">
+                      Explanation:
+                    </span>{" "}
+                    {q.explanation}
+                  </p>
+                </CardContent>
+              </Card>
             );
           })}
         </div>
@@ -264,145 +298,182 @@ export default function RandomQuizPage() {
   }
 
   if (!currentQ) {
-    return <div>Loading questions...</div>;
+    return (
+      <div className="max-w-3xl mx-auto text-center py-20 text-muted-foreground">
+        No questions found.
+      </div>
+    );
   }
+
+  const userChoiceIndex =
+    typeof userAnswers[currentQuestion] === "number"
+      ? (userAnswers[currentQuestion] as number)
+      : -1;
+  const isCorrectAnswer =
+    currentQ.type === "multiple-choice"
+      ? (currentQ.options?.[userChoiceIndex]?.istrue ?? false)
+      : typeof userAnswers[currentQuestion] === "string" &&
+        currentQ.correctAnswer?.toLowerCase() ===
+          (userAnswers[currentQuestion] as string).toLowerCase();
 
   return (
     <div className="max-w-3xl mx-auto space-y-8">
+      {/* Progress header */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold tracking-tight gradient-text">
-            {setName} Quiz {isRandomized ? "(Randomized)" : "(Sequential)"}
+            {setName} {isRandomized ? "(Randomized)" : "(Sequential)"}
           </h1>
-          <span className="text-xs text-muted">
-            {currentQuestion + 1}/{questionList.length}
-          </span>
+          <Badge variant="secondary">
+            {currentQuestion + 1} / {questionList.length}
+          </Badge>
         </div>
-        <div className="w-full h-2 bg-border rounded-full overflow-hidden">
-          <div
-            className="h-full bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] transition-all"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
+        <Progress value={progress} />
       </div>
+
+      {/* Question */}
       <div className="space-y-6">
         <h2 className="text-lg font-medium whitespace-pre-line leading-relaxed">
           {currentQ.question}
         </h2>
         {currentQ.image && (
-          <div>
-            <img
-              src={`/api/images-serve/${encodeURI(currentQ.image)}`}
-              alt="question"
-              className="max-h-64 rounded border border-border mt-2"
-            />
-          </div>
+          <img
+            src={`/api/images-serve/${encodeURI(currentQ.image)}`}
+            alt="question"
+            className="max-h-64 rounded border border-border"
+          />
         )}
 
         {currentQ.type === "multiple-choice" && currentQ.options ? (
           <div className="grid gap-3">
             {currentQ.options.map((option, idx) => {
-              const userChoice = userAnswers[currentQuestion] === idx;
-              const correctChoice = option.istrue;
-              let base =
-                "text-left px-4 py-3 rounded-lg border transition-all focus:outline-none focus:ring-2";
-              let styles = "";
-              if (isAnswered) {
-                if (correctChoice)
-                  styles =
-                    "border-success bg-success/10 text-success font-medium";
-                else if (userChoice)
-                  styles = "border-danger bg-danger/10 text-danger";
-                else styles = "border-border bg-background/60";
-              } else {
-                styles =
-                  "border-border bg-card hover:border-accent hover:shadow-soft";
-              }
+              const isUserChoice = userAnswers[currentQuestion] === idx;
+              const isCorrectOption = option.istrue;
               return (
                 <button
                   key={idx}
                   onClick={() => handleOptionSelect(idx)}
                   disabled={isAnswered}
-                  className={`${base} ${styles}`}
+                  className={cn(
+                    "w-full text-left px-4 py-3 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-ring",
+                    !isAnswered &&
+                      "bg-card hover:bg-accent hover:text-accent-foreground border-border",
+                    isAnswered && isCorrectOption && "answer-correct",
+                    isAnswered &&
+                      isUserChoice &&
+                      !isCorrectOption &&
+                      "answer-wrong",
+                    isAnswered &&
+                      !isUserChoice &&
+                      !isCorrectOption &&
+                      "answer-dimmed",
+                  )}
                 >
+                  <span className="font-medium mr-2 text-muted-foreground">
+                    {idx + 1}.
+                  </span>
                   {option.statement}
                 </button>
               );
             })}
-            <p className="text-xs text-muted">
+            <p className="text-xs text-muted-foreground">
               Press {currentQ.options.map((_, i) => i + 1).join("/")} to answer
             </p>
           </div>
         ) : (
           <form onSubmit={handleTextSubmit} className="space-y-3">
-            <input
-              type="text"
+            <Input
               value={textAnswer}
               onChange={(e) => setTextAnswer(e.target.value)}
               disabled={isAnswered}
               placeholder="Type your answer here..."
-              className="px-4 py-3 rounded-lg border border-border bg-card focus:outline-none focus:ring-2 focus:ring-accent w-full"
             />
-            {!isAnswered && (
-              <button type="submit" className="btn-primary px-6 py-3">
-                Submit Answer
-              </button>
-            )}
+            {!isAnswered && <Button type="submit">Submit Answer</Button>}
             {isAnswered && (
-              <div
-                className={`p-4 rounded-lg border ${
-                  typeof userAnswers[currentQuestion] === "string" &&
-                  currentQ.correctAnswer?.toLowerCase() ===
-                    (userAnswers[currentQuestion] as string).toLowerCase()
-                    ? "border-success bg-success/10"
-                    : "border-danger bg-danger/10"
-                }`}
+              <Card
+                className={cn(
+                  isCorrectAnswer ? "border-green-500/40" : "border-red-500/40",
+                )}
               >
-                <p className="font-medium">
-                  Your answer: {userAnswers[currentQuestion] as string}
-                </p>
-                {typeof userAnswers[currentQuestion] === "string" &&
-                  currentQ.correctAnswer?.toLowerCase() !==
-                    (userAnswers[currentQuestion] as string).toLowerCase() && (
-                    <p className="mt-2 text-sm">
-                      Correct answer:{" "}
-                      <span className="text-success font-medium">
+                <CardContent className="pt-3 text-sm">
+                  <p>
+                    Your answer:{" "}
+                    <span
+                      className={cn(
+                        "font-medium",
+                        isCorrectAnswer
+                          ? "text-green-600 dark:text-green-400"
+                          : "text-red-600 dark:text-red-400",
+                      )}
+                    >
+                      {userAnswers[currentQuestion] as string}
+                    </span>
+                  </p>
+                  {!isCorrectAnswer && (
+                    <p className="mt-1">
+                      Correct:{" "}
+                      <span className="font-medium text-green-600 dark:text-green-400">
                         {currentQ.correctAnswer}
                       </span>
                     </p>
                   )}
-              </div>
+                </CardContent>
+              </Card>
             )}
-            <p className="text-xs text-muted">Press Enter to submit</p>
+            <p className="text-xs text-muted-foreground">
+              Press Enter to submit
+            </p>
           </form>
         )}
       </div>
 
-      <ExplanationSection
-        correctStatement={
-          currentQ.type === "multiple-choice"
-            ? currentQ.options?.find((o) => o.istrue)?.statement || ""
-            : currentQ.correctAnswer || ""
-        }
-        isCorrect={
-          currentQ.type === "multiple-choice"
-            ? currentQ.options?.[userAnswers[currentQuestion] as number]
-                ?.istrue ?? false
-            : Boolean(
-                typeof userAnswers[currentQuestion] === "string" &&
-                  currentQ.correctAnswer?.toLowerCase() ===
-                    (userAnswers[currentQuestion] as string).toLowerCase()
-              )
-        }
-        explanation={currentQ.explanation}
-        isAnswered={isAnswered}
-      />
+      {/* Inline explanation */}
       {isAnswered && (
-        <button onClick={handleNext} className="btn-primary px-6 py-3">
+        <Card
+          className={cn(
+            isCorrectAnswer ? "border-green-500/40" : "border-red-500/40",
+          )}
+        >
+          <CardContent className="pt-4 space-y-2">
+            <div className="flex items-center gap-2">
+              {isCorrectAnswer ? (
+                <CheckCircle2 className="h-5 w-5 text-green-500" />
+              ) : (
+                <XCircle className="h-5 w-5 text-red-500" />
+              )}
+              <p
+                className={cn(
+                  "font-semibold",
+                  isCorrectAnswer
+                    ? "text-green-600 dark:text-green-400"
+                    : "text-red-600 dark:text-red-400",
+                )}
+              >
+                {isCorrectAnswer ? "Correct!" : "Incorrect"}
+              </p>
+            </div>
+            {!isCorrectAnswer && currentQ.type === "multiple-choice" && (
+              <p className="text-sm text-muted-foreground">
+                Correct answer:{" "}
+                <span className="font-medium text-green-600 dark:text-green-400">
+                  {currentQ.options?.find((o) => o.istrue)?.statement}
+                </span>
+              </p>
+            )}
+            <p className="text-sm leading-relaxed whitespace-pre-line text-muted-foreground">
+              <span className="font-medium text-foreground">Explanation:</span>{" "}
+              {currentQ.explanation}
+            </p>
+          </CardContent>
+        </Card>
+      )}
+
+      {isAnswered && (
+        <Button onClick={handleNext} size="lg" className="px-8">
           {currentQuestion < questionList.length - 1
             ? "Next Question"
             : "View Results"}
-        </button>
+        </Button>
       )}
     </div>
   );
