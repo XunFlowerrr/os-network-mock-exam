@@ -2,10 +2,8 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/components/utils/cn";
 import { CheckCircle2, XCircle } from "lucide-react";
@@ -32,11 +30,15 @@ export default function QuizPage() {
   useEffect(() => {
     const loadQuestionSet = async () => {
       setLoading(true);
-      const folders = ["random", "no-random"];
-      for (const folder of folders) {
+      const candidates = [
+        `/api/quiz-data?path=random/${setName}`,
+        `/api/quiz-data?path=no-random/${setName}`,
+      ];
+      for (const url of candidates) {
         try {
-          const data = await import(`@/data/${folder}/${setName}.json`);
-          setQuestionList(data.default as Question[]);
+          const res = await fetch(url);
+          if (!res.ok) continue;
+          setQuestionList((await res.json()) as Question[]);
           setLoading(false);
           return;
         } catch {
@@ -82,6 +84,14 @@ export default function QuizPage() {
     }
     return score;
   };
+
+  const decodedName = decodeURIComponent(setName);
+  const quizTitle = decodedName
+    .split("/")
+    .pop()!
+    .replace(/[-_]/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+  const breadcrumbParts = decodedName.split("/").slice(0, -1);
 
   const currentQ = questionList[currentQuestion];
   const userChoice = userAnswers[currentQuestion];
@@ -155,74 +165,67 @@ export default function QuizPage() {
     const pct = Math.round((finalScore / questionList.length) * 100);
     return (
       <div className="max-w-3xl mx-auto space-y-8">
-        <div className="text-center space-y-3">
-          <h1 className="text-3xl font-bold gradient-text">Results</h1>
-          <p className="text-muted-foreground text-lg">
-            You scored{" "}
-            <span className="font-bold text-foreground">{finalScore}</span>
-            {" / "}
-            {questionList.length}
+        <div className="text-center space-y-4">
+          <p className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground/40">
+            {quizTitle}
           </p>
-          <Progress value={pct} className="max-w-sm mx-auto" />
-          <Badge
-            variant={
-              pct >= 80 ? "default" : pct >= 50 ? "secondary" : "destructive"
-            }
-            className="text-sm px-4 py-1"
-          >
-            {pct}%
-          </Badge>
+          <div>
+            <p className="text-[3rem] font-black tabular-nums leading-none">
+              {pct}
+              <span className="text-2xl text-muted-foreground/40">%</span>
+            </p>
+            <p className="text-sm text-muted-foreground mt-1">
+              {finalScore} / {questionList.length} correct
+            </p>
+          </div>
+          <Progress value={pct} className="max-w-sm mx-auto h-1" />
         </div>
         <div className="grid gap-4">
           {questionList.map((q, idx) => {
             const correct = userAnswers[idx] === q.answer.toString();
             return (
-              <Card
+              <div
                 key={idx}
                 className={cn(
-                  correct ? "border-green-500/40" : "border-red-500/40",
+                  "rounded-lg border-l-2 bg-card px-4 py-3 space-y-2",
+                  correct ? "border-l-green-500" : "border-l-red-500",
                 )}
               >
-                <CardContent className="pt-5 space-y-2">
-                  <div className="flex items-start gap-2">
-                    {correct ? (
-                      <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                    ) : (
-                      <XCircle className="h-4 w-4 text-red-500 mt-0.5 shrink-0" />
+                <div className="flex items-start gap-2">
+                  {correct ? (
+                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
+                  ) : (
+                    <XCircle className="h-4 w-4 text-red-500 mt-0.5 shrink-0" />
+                  )}
+                  <p className="font-medium leading-snug text-sm">
+                    Q{idx + 1}. {q.question}
+                  </p>
+                </div>
+                <p className="text-sm text-muted-foreground pl-6">
+                  Your answer:{" "}
+                  <span
+                    className={cn(
+                      "font-medium",
+                      correct
+                        ? "text-green-600 dark:text-green-400"
+                        : "text-red-600 dark:text-red-400",
                     )}
-                    <p className="font-medium leading-snug">
-                      Q{idx + 1}. {q.question}
-                    </p>
-                  </div>
+                  >
+                    {q.options[parseInt(userAnswers[idx])]}
+                  </span>
+                </p>
+                {!correct && (
                   <p className="text-sm text-muted-foreground pl-6">
-                    Your answer:{" "}
-                    <span
-                      className={cn(
-                        "font-medium",
-                        correct
-                          ? "text-green-600 dark:text-green-400"
-                          : "text-red-600 dark:text-red-400",
-                      )}
-                    >
-                      {q.options[parseInt(userAnswers[idx])]}
+                    Correct:{" "}
+                    <span className="font-medium text-green-600 dark:text-green-400">
+                      {q.options[q.answer]}
                     </span>
                   </p>
-                  {!correct && (
-                    <p className="text-sm text-muted-foreground pl-6">
-                      Correct:{" "}
-                      <span className="font-medium text-green-600 dark:text-green-400">
-                        {q.options[q.answer]}
-                      </span>
-                    </p>
-                  )}
-                  <p className="text-sm leading-relaxed whitespace-pre-line pl-6 text-muted-foreground">
-                    <span className="font-medium text-foreground">
-                      Explanation:
-                    </span>{" "}
-                    {q.explanation}
-                  </p>
-                </CardContent>
-              </Card>
+                )}
+                <p className="text-sm leading-relaxed whitespace-pre-line pl-6 text-muted-foreground">
+                  {q.explanation}
+                </p>
+              </div>
             );
           })}
         </div>
@@ -240,24 +243,27 @@ export default function QuizPage() {
 
   return (
     <div className="max-w-3xl mx-auto space-y-8">
-      {/* Progress header */}
+      {/* Progress header — minimal */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold tracking-tight gradient-text">
-            {setName} Quiz
-          </h1>
-          <Badge variant="secondary">
+          <p className="text-[11px] text-muted-foreground/35 truncate max-w-[70%]">
+            {breadcrumbParts.length > 0
+              ? `${breadcrumbParts.join(" › ")} › `
+              : ""}
+            {quizTitle}
+          </p>
+          <span className="text-[11px] tabular-nums text-muted-foreground/40 shrink-0">
             {currentQuestion + 1} / {questionList.length}
-          </Badge>
+          </span>
         </div>
-        <Progress value={progress} />
+        <Progress value={progress} className="h-1" />
       </div>
 
       {/* Question */}
-      <div className="space-y-6">
-        <h2 className="text-lg font-medium whitespace-pre-line leading-relaxed">
+      <div className="space-y-6 pt-2">
+        <p className="text-[1.25rem] font-semibold leading-[1.75] tracking-[-0.01em] text-foreground whitespace-pre-line">
           {currentQ.question}
-        </h2>
+        </p>
         {currentQ.image && (
           <div>
             <Image
@@ -284,7 +290,7 @@ export default function QuizPage() {
                 onClick={() => handleOptionSelect(idx)}
                 disabled={isAnswered}
                 className={cn(
-                  "w-full text-left px-4 py-3 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-ring",
+                  "group w-full text-left px-4 py-3 rounded-lg border text-sm transition-all focus:outline-none focus:ring-2 focus:ring-ring flex items-start gap-3",
                   !isAnswered &&
                     "bg-card hover:bg-accent hover:text-accent-foreground border-border",
                   isAnswered && isCorrectOption && "answer-correct",
@@ -298,10 +304,27 @@ export default function QuizPage() {
                     "answer-dimmed",
                 )}
               >
-                <span className="font-medium mr-2 text-muted-foreground">
-                  {idx + 1}.
+                <span
+                  className={cn(
+                    "shrink-0 flex h-5 w-5 items-center justify-center rounded text-[10px] font-bold mt-0.5 transition-colors",
+                    !isAnswered &&
+                      "bg-muted text-muted-foreground group-hover:bg-primary/20 group-hover:text-primary",
+                    isAnswered &&
+                      isCorrectOption &&
+                      "bg-green-500/20 text-green-600 dark:text-green-400",
+                    isAnswered &&
+                      isUserChoice &&
+                      !isCorrectOption &&
+                      "bg-red-500/20 text-red-600 dark:text-red-400",
+                    isAnswered &&
+                      !isUserChoice &&
+                      !isCorrectOption &&
+                      "bg-muted/50 text-muted-foreground/40",
+                  )}
+                >
+                  {idx + 1}
                 </span>
-                {option}
+                <span>{option}</span>
               </button>
             );
           })}
@@ -312,45 +335,45 @@ export default function QuizPage() {
         </div>
       </div>
 
-      {/* Explanation card */}
+      {/* Explanation */}
       {isAnswered && (
-        <Card
+        <div
           className={cn(
-            isCorrect ? "border-green-500/40" : "border-red-500/40",
+            "rounded-lg border-l-2 bg-card px-4 py-3 space-y-2",
+            isCorrect ? "border-l-green-500" : "border-l-red-500",
           )}
         >
-          <CardContent className="pt-4 space-y-2">
-            <div className="flex items-center gap-2">
-              {isCorrect ? (
-                <CheckCircle2 className="h-5 w-5 text-green-500" />
-              ) : (
-                <XCircle className="h-5 w-5 text-red-500" />
-              )}
-              <p
-                className={cn(
-                  "font-semibold",
-                  isCorrect
-                    ? "text-green-600 dark:text-green-400"
-                    : "text-red-600 dark:text-red-400",
-                )}
-              >
-                {isCorrect ? "Correct!" : "Incorrect"}
-              </p>
-            </div>
-            {!isCorrect && (
-              <p className="text-sm text-muted-foreground">
-                Correct answer:{" "}
-                <span className="font-medium text-green-600 dark:text-green-400">
-                  {currentQ.options[currentQ.answer]}
-                </span>
-              </p>
+          <div className="flex items-center gap-2">
+            {isCorrect ? (
+              <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0" />
+            ) : (
+              <XCircle className="h-4 w-4 text-red-500 shrink-0" />
             )}
-            <p className="text-sm leading-relaxed whitespace-pre-line text-muted-foreground">
-              <span className="font-medium text-foreground">Explanation:</span>{" "}
+            <p
+              className={cn(
+                "text-sm font-semibold",
+                isCorrect
+                  ? "text-green-600 dark:text-green-400"
+                  : "text-red-600 dark:text-red-400",
+              )}
+            >
+              {isCorrect ? "Correct" : "Incorrect"}
+            </p>
+          </div>
+          {!isCorrect && (
+            <p className="text-sm text-muted-foreground">
+              Correct answer:{" "}
+              <span className="font-medium text-green-600 dark:text-green-400">
+                {currentQ.options[currentQ.answer]}
+              </span>
+            </p>
+          )}
+          {currentQ.explanation && (
+            <p className="text-sm leading-relaxed whitespace-pre-line text-muted-foreground border-t border-border/40 pt-2 mt-1">
               {currentQ.explanation}
             </p>
-          </CardContent>
-        </Card>
+          )}
+        </div>
       )}
 
       {/* Next button */}

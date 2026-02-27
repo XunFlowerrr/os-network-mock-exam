@@ -1,10 +1,8 @@
 "use client";
 import React, { useEffect, useState, useMemo } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/components/utils/cn";
@@ -43,6 +41,14 @@ export default function RandomQuizPage() {
       ? segments.slice(randomIdx + 1).join("/")
       : segments[segments.length - 1];
 
+  // Decode URL encoding (e.g. %20 → space) then split into breadcrumb + title
+  const decodedName = decodeURIComponent(setName);
+  const nameParts = decodedName.split("/");
+  const quizTitle = nameParts[nameParts.length - 1]
+    .replace(/[-_]/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+  const breadcrumbParts = nameParts.slice(0, -1);
+
   // Determine if randomization is enabled (default is true)
   const isRandomized = searchParams.get("randomize") !== "false";
 
@@ -58,13 +64,16 @@ export default function RandomQuizPage() {
     const loadQuestionSet = async () => {
       setLoading(true);
       const candidates = [
-        `@/data/random/${setName}.json`,
-        `@/data/no-random/${setName}.json`,
+        `/api/quiz-data?path=random/${setName}`,
+        `/api/quiz-data?path=no-random/${setName}`,
       ];
-      for (const candidate of candidates) {
+      for (const url of candidates) {
         try {
-          const data = await import(/* @vite-ignore */ candidate);
-          let questions = data.default as RandomQuestion[];
+          const res = await fetch(url);
+          if (!res.ok) continue;
+          let questions = ((await res.json()) as RandomQuestion[]).filter(
+            (q) => q.question && q.type,
+          );
           if (isRandomized) {
             questions = shuffleArray(questions);
             questions = questions.map((q) => {
@@ -193,22 +202,20 @@ export default function RandomQuizPage() {
     const pct = Math.round((finalScore / questionList.length) * 100);
     return (
       <div className="max-w-3xl mx-auto space-y-8">
-        <div className="text-center space-y-3">
-          <h1 className="text-3xl font-bold gradient-text">Results</h1>
-          <p className="text-muted-foreground text-lg">
-            You scored{" "}
-            <span className="font-bold text-foreground">{finalScore}</span> /{" "}
-            {questionList.length}
+        <div className="text-center space-y-4">
+          <p className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground/40">
+            {quizTitle}
           </p>
-          <Progress value={pct} className="max-w-sm mx-auto" />
-          <Badge
-            variant={
-              pct >= 80 ? "default" : pct >= 50 ? "secondary" : "destructive"
-            }
-            className="text-sm px-4 py-1"
-          >
-            {pct}%
-          </Badge>
+          <div>
+            <p className="text-[3rem] font-black tabular-nums leading-none">
+              {pct}
+              <span className="text-2xl text-muted-foreground/40">%</span>
+            </p>
+            <p className="text-sm text-muted-foreground mt-1">
+              {finalScore} / {questionList.length} correct
+            </p>
+          </div>
+          <Progress value={pct} className="max-w-sm mx-auto h-1" />
         </div>
         <div className="grid gap-4">
           {questionList.map((q, idx) => {
@@ -237,59 +244,55 @@ export default function RandomQuizPage() {
                 userAnswer.toLowerCase() === q.correctAnswer.toLowerCase();
             }
             return (
-              <Card
+              <div
                 key={idx}
                 className={cn(
-                  isCorrect ? "border-green-500/40" : "border-red-500/40",
+                  "rounded-lg border-l-2 bg-card px-4 py-3 space-y-2",
+                  isCorrect ? "border-l-green-500" : "border-l-red-500",
                 )}
               >
-                <CardContent className="pt-5 space-y-2">
-                  <div className="flex items-start gap-2">
-                    {isCorrect ? (
-                      <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                    ) : (
-                      <XCircle className="h-4 w-4 text-red-500 mt-0.5 shrink-0" />
-                    )}
-                    <p className="font-medium leading-snug">
-                      Q{idx + 1}. {q.question}
-                    </p>
-                  </div>
-                  {q.image && (
-                    <img
-                      src={`/api/images-serve/${encodeURI(q.image)}`}
-                      alt="question"
-                      className="max-h-48 rounded border border-border"
-                    />
+                <div className="flex items-start gap-2">
+                  {isCorrect ? (
+                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
+                  ) : (
+                    <XCircle className="h-4 w-4 text-red-500 mt-0.5 shrink-0" />
                   )}
+                  <p className="font-medium leading-snug text-sm">
+                    Q{idx + 1}. {q.question}
+                  </p>
+                </div>
+                {q.image && (
+                  <img
+                    src={`/api/images-serve/${encodeURI(q.image)}`}
+                    alt="question"
+                    className="max-h-48 rounded border border-border"
+                  />
+                )}
+                <p className="text-sm text-muted-foreground pl-6">
+                  Your answer:{" "}
+                  <span
+                    className={cn(
+                      "font-medium",
+                      isCorrect
+                        ? "text-green-600 dark:text-green-400"
+                        : "text-red-600 dark:text-red-400",
+                    )}
+                  >
+                    {userAnswerDisplay}
+                  </span>
+                </p>
+                {!isCorrect && (
                   <p className="text-sm text-muted-foreground pl-6">
-                    Your answer:{" "}
-                    <span
-                      className={cn(
-                        "font-medium",
-                        isCorrect
-                          ? "text-green-600 dark:text-green-400"
-                          : "text-red-600 dark:text-red-400",
-                      )}
-                    >
-                      {userAnswerDisplay}
+                    Correct:{" "}
+                    <span className="font-medium text-green-600 dark:text-green-400">
+                      {correctAnswerDisplay}
                     </span>
                   </p>
-                  {!isCorrect && (
-                    <p className="text-sm text-muted-foreground pl-6">
-                      Correct:{" "}
-                      <span className="font-medium text-green-600 dark:text-green-400">
-                        {correctAnswerDisplay}
-                      </span>
-                    </p>
-                  )}
-                  <p className="text-sm leading-relaxed whitespace-pre-line pl-6 text-muted-foreground">
-                    <span className="font-medium text-foreground">
-                      Explanation:
-                    </span>{" "}
-                    {q.explanation}
-                  </p>
-                </CardContent>
-              </Card>
+                )}
+                <p className="text-sm leading-relaxed whitespace-pre-line pl-6 text-muted-foreground">
+                  {q.explanation}
+                </p>
+              </div>
             );
           })}
         </div>
@@ -318,24 +321,27 @@ export default function RandomQuizPage() {
 
   return (
     <div className="max-w-3xl mx-auto space-y-8">
-      {/* Progress header */}
+      {/* Progress header — minimal, out of the way */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold tracking-tight gradient-text">
-            {setName} {isRandomized ? "(Randomized)" : "(Sequential)"}
-          </h1>
-          <Badge variant="secondary">
+          <p className="text-[11px] text-muted-foreground/35 truncate max-w-[70%]">
+            {breadcrumbParts.length > 0
+              ? `${breadcrumbParts.join(" › ")} › `
+              : ""}
+            {quizTitle}
+          </p>
+          <span className="text-[11px] tabular-nums text-muted-foreground/40 shrink-0">
             {currentQuestion + 1} / {questionList.length}
-          </Badge>
+          </span>
         </div>
-        <Progress value={progress} />
+        <Progress value={progress} className="h-1" />
       </div>
 
-      {/* Question */}
-      <div className="space-y-6">
-        <h2 className="text-lg font-medium whitespace-pre-line leading-relaxed">
+      {/* Question — the main focus */}
+      <div className="space-y-6 pt-2">
+        <p className="text-[1.25rem] font-semibold leading-[1.75] tracking-[-0.01em] text-foreground whitespace-pre-line">
           {currentQ.question}
-        </h2>
+        </p>
         {currentQ.image && (
           <img
             src={`/api/images-serve/${encodeURI(currentQ.image)}`}
@@ -355,7 +361,7 @@ export default function RandomQuizPage() {
                   onClick={() => handleOptionSelect(idx)}
                   disabled={isAnswered}
                   className={cn(
-                    "w-full text-left px-4 py-3 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-ring",
+                    "group w-full text-left px-4 py-3 rounded-lg border text-sm transition-all focus:outline-none focus:ring-2 focus:ring-ring flex items-start gap-3",
                     !isAnswered &&
                       "bg-card hover:bg-accent hover:text-accent-foreground border-border",
                     isAnswered && isCorrectOption && "answer-correct",
@@ -369,10 +375,27 @@ export default function RandomQuizPage() {
                       "answer-dimmed",
                   )}
                 >
-                  <span className="font-medium mr-2 text-muted-foreground">
-                    {idx + 1}.
+                  <span
+                    className={cn(
+                      "shrink-0 flex h-5 w-5 items-center justify-center rounded text-[10px] font-bold mt-0.5 transition-colors",
+                      !isAnswered &&
+                        "bg-muted text-muted-foreground group-hover:bg-primary/20 group-hover:text-primary",
+                      isAnswered &&
+                        isCorrectOption &&
+                        "bg-green-500/20 text-green-600 dark:text-green-400",
+                      isAnswered &&
+                        isUserChoice &&
+                        !isCorrectOption &&
+                        "bg-red-500/20 text-red-600 dark:text-red-400",
+                      isAnswered &&
+                        !isUserChoice &&
+                        !isCorrectOption &&
+                        "bg-muted/50 text-muted-foreground/40",
+                    )}
+                  >
+                    {idx + 1}
                   </span>
-                  {option.statement}
+                  <span>{option.statement}</span>
                 </button>
               );
             })}
@@ -390,35 +413,34 @@ export default function RandomQuizPage() {
             />
             {!isAnswered && <Button type="submit">Submit Answer</Button>}
             {isAnswered && (
-              <Card
+              <div
                 className={cn(
-                  isCorrectAnswer ? "border-green-500/40" : "border-red-500/40",
+                  "rounded-lg border-l-2 bg-card px-4 py-3 text-sm space-y-1",
+                  isCorrectAnswer ? "border-l-green-500" : "border-l-red-500",
                 )}
               >
-                <CardContent className="pt-3 text-sm">
+                <p>
+                  Your answer:{" "}
+                  <span
+                    className={cn(
+                      "font-medium",
+                      isCorrectAnswer
+                        ? "text-green-600 dark:text-green-400"
+                        : "text-red-600 dark:text-red-400",
+                    )}
+                  >
+                    {userAnswers[currentQuestion] as string}
+                  </span>
+                </p>
+                {!isCorrectAnswer && (
                   <p>
-                    Your answer:{" "}
-                    <span
-                      className={cn(
-                        "font-medium",
-                        isCorrectAnswer
-                          ? "text-green-600 dark:text-green-400"
-                          : "text-red-600 dark:text-red-400",
-                      )}
-                    >
-                      {userAnswers[currentQuestion] as string}
+                    Correct:{" "}
+                    <span className="font-medium text-green-600 dark:text-green-400">
+                      {currentQ.correctAnswer}
                     </span>
                   </p>
-                  {!isCorrectAnswer && (
-                    <p className="mt-1">
-                      Correct:{" "}
-                      <span className="font-medium text-green-600 dark:text-green-400">
-                        {currentQ.correctAnswer}
-                      </span>
-                    </p>
-                  )}
-                </CardContent>
-              </Card>
+                )}
+              </div>
             )}
             <p className="text-xs text-muted-foreground">
               Press Enter to submit
@@ -429,43 +451,43 @@ export default function RandomQuizPage() {
 
       {/* Inline explanation */}
       {isAnswered && (
-        <Card
+        <div
           className={cn(
-            isCorrectAnswer ? "border-green-500/40" : "border-red-500/40",
+            "rounded-lg border-l-2 bg-card px-4 py-3 space-y-2",
+            isCorrectAnswer ? "border-l-green-500" : "border-l-red-500",
           )}
         >
-          <CardContent className="pt-4 space-y-2">
-            <div className="flex items-center gap-2">
-              {isCorrectAnswer ? (
-                <CheckCircle2 className="h-5 w-5 text-green-500" />
-              ) : (
-                <XCircle className="h-5 w-5 text-red-500" />
-              )}
-              <p
-                className={cn(
-                  "font-semibold",
-                  isCorrectAnswer
-                    ? "text-green-600 dark:text-green-400"
-                    : "text-red-600 dark:text-red-400",
-                )}
-              >
-                {isCorrectAnswer ? "Correct!" : "Incorrect"}
-              </p>
-            </div>
-            {!isCorrectAnswer && currentQ.type === "multiple-choice" && (
-              <p className="text-sm text-muted-foreground">
-                Correct answer:{" "}
-                <span className="font-medium text-green-600 dark:text-green-400">
-                  {currentQ.options?.find((o) => o.istrue)?.statement}
-                </span>
-              </p>
+          <div className="flex items-center gap-2">
+            {isCorrectAnswer ? (
+              <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0" />
+            ) : (
+              <XCircle className="h-4 w-4 text-red-500 shrink-0" />
             )}
-            <p className="text-sm leading-relaxed whitespace-pre-line text-muted-foreground">
-              <span className="font-medium text-foreground">Explanation:</span>{" "}
+            <p
+              className={cn(
+                "text-sm font-semibold",
+                isCorrectAnswer
+                  ? "text-green-600 dark:text-green-400"
+                  : "text-red-600 dark:text-red-400",
+              )}
+            >
+              {isCorrectAnswer ? "Correct" : "Incorrect"}
+            </p>
+          </div>
+          {!isCorrectAnswer && currentQ.type === "multiple-choice" && (
+            <p className="text-sm text-muted-foreground">
+              Correct answer:{" "}
+              <span className="font-medium text-green-600 dark:text-green-400">
+                {currentQ.options?.find((o) => o.istrue)?.statement}
+              </span>
+            </p>
+          )}
+          {currentQ.explanation && (
+            <p className="text-sm leading-relaxed whitespace-pre-line text-muted-foreground border-t border-border/40 pt-2 mt-1">
               {currentQ.explanation}
             </p>
-          </CardContent>
-        </Card>
+          )}
+        </div>
       )}
 
       {isAnswered && (
