@@ -22,6 +22,31 @@ import {
   Plus,
   Play,
 } from "lucide-react";
+import {
+  FolderSearchResult,
+  type FileEntry,
+} from "@/components/FolderSearchResult";
+
+// ── Fuzzy search ──────────────────────────────────────────────────────────────
+function fuzzyScore(str: string, pattern: string): number {
+  if (!pattern) return 1;
+  const s = str.toLowerCase();
+  const p = pattern.toLowerCase();
+  if (s.includes(p)) return 1000 + p.length;
+  let pi = 0,
+    score = 0,
+    consec = 0;
+  for (let si = 0; si < s.length && pi < p.length; si++) {
+    if (s[si] === p[pi]) {
+      pi++;
+      consec++;
+      score += consec * 2;
+    } else {
+      consec = 0;
+    }
+  }
+  return pi === p.length ? score : -1;
+}
 
 type FolderNode = {
   name: string;
@@ -44,6 +69,7 @@ export default function ManageSetsPage() {
   );
   const [search, setSearch] = useState("");
   const [deleting, setDeleting] = useState<string | null>(null);
+  const [highlightedFile, setHighlightedFile] = useState<string | null>(null);
 
   const toggleSidebarFolder = (path: string) => {
     setExpandedFolders((prev) => {
@@ -97,25 +123,20 @@ export default function ManageSetsPage() {
   const currentItems = useMemo<TableItem[]>(() => {
     const node = getNode(selectedPath);
     if (!node) return [];
-    const q = search.toLowerCase();
     const items: TableItem[] = [];
     for (const c of node.children || []) {
-      if (!q || c.name.toLowerCase().includes(q)) {
-        items.push({
-          kind: "folder",
-          name: c.name,
-          path: c.path,
-          childCount: (c.children?.length || 0) + (c.files?.length || 0),
-        });
-      }
+      items.push({
+        kind: "folder",
+        name: c.name,
+        path: c.path,
+        childCount: (c.children?.length || 0) + (c.files?.length || 0),
+      });
     }
     for (const f of node.files || []) {
-      if (!q || f.name.toLowerCase().includes(q)) {
-        items.push({ kind: "file", name: f.name, path: f.path });
-      }
+      items.push({ kind: "file", name: f.name, path: f.path });
     }
     return items;
-  }, [selectedPath, search, getNode]);
+  }, [selectedPath, getNode]);
 
   // Breadcrumb segments are everything after "random/"
   const breadcrumbs = useMemo(() => {
@@ -125,6 +146,52 @@ export default function ManageSetsPage() {
 
   const navigateTo = (path: string) => {
     setSelectedPath(path);
+    setSearch("");
+    setHighlightedFile(null);
+  };
+
+  // ── Global flat file list for fuzzy search ─────────────────────────────────
+  const allFiles = useMemo<FileEntry[]>(() => {
+    const result: FileEntry[] = [];
+    function collect(node: FolderNode) {
+      for (const f of node.files || []) {
+        result.push({ name: f.name, path: f.path, parentPath: node.path });
+      }
+      for (const c of node.children || []) collect(c);
+    }
+    if (randomNode) collect(randomNode);
+    return result;
+  }, [randomNode]);
+
+  const searchResults = useMemo<(FileEntry & { score: number })[]>(() => {
+    if (!search) return [];
+    return allFiles
+      .map((f) => ({
+        ...f,
+        score: fuzzyScore(f.name.replace(/\.json$/, ""), search),
+      }))
+      .filter((f) => f.score >= 0)
+      .sort((a, b) => b.score - a.score);
+  }, [allFiles, search]);
+
+  const matchedFilePaths = useMemo(
+    () => new Set(searchResults.map((r) => r.path)),
+    [searchResults],
+  );
+
+  /**
+   * Expands every ancestor folder of `filePath` in the sidebar tree,
+   * navigates the main panel to `parentPath`, and highlights the file row.
+   */
+  const expandPathAndNavigate = (filePath: string, parentPath: string) => {
+    const parts = parentPath.split("/");
+    const newExpanded = new Set(expandedFolders);
+    for (let i = 1; i <= parts.length; i++) {
+      newExpanded.add(parts.slice(0, i).join("/"));
+    }
+    setExpandedFolders(newExpanded);
+    setHighlightedFile(filePath);
+    setSelectedPath(parentPath);
     setSearch("");
   };
 
@@ -204,12 +271,22 @@ export default function ManageSetsPage() {
               <Link key={f.path} href={`/sets/edit/${encodeURI(f.path)}`}>
                 <div
                   style={{ paddingLeft: `${28 + indent}px` }}
-                  className="flex items-center gap-1.5 pr-2 py-1 text-xs rounded-md text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors"
+                  className={cn(
+                    "flex items-center gap-1.5 pr-2 py-1 text-xs rounded-md transition-colors",
+                    f.path === highlightedFile
+                      ? "text-primary bg-primary/10 font-medium"
+                      : matchedFilePaths.has(f.path)
+                        ? "text-primary/70 bg-primary/5"
+                        : "text-muted-foreground hover:text-foreground hover:bg-accent/50",
+                  )}
                 >
                   <FileText className="h-3 w-3 shrink-0" />
-                  <span className="truncate">
+                  <span className="truncate flex-1">
                     {f.name.replace(/\.json$/, "")}
                   </span>
+                  {matchedFilePaths.has(f.path) && (
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60" />
+                  )}
                 </div>
               </Link>
             ))}
@@ -349,21 +426,50 @@ export default function ManageSetsPage() {
                 <Skeleton key={i} className="h-12 rounded-lg" />
               ))}
             </div>
+          ) : search ? (
+            /* ── Global fuzzy search results ── */
+            searchResults.length === 0 ? (
+              <div className="flex flex-col items-center justify-center h-48 gap-3 text-muted-foreground">
+                <Search className="h-10 w-10 opacity-25" />
+                <p className="text-sm">
+                  No results match &ldquo;{search}&rdquo;
+                </p>
+              </div>
+            ) : (
+              <div>
+                <div className="px-4 py-1.5 text-[10px] text-muted-foreground/40 font-bold uppercase tracking-widest border-b border-border bg-muted/20">
+                  {searchResults.length} result
+                  {searchResults.length !== 1 ? "s" : ""} &mdash; click to
+                  reveal in tree
+                </div>
+                {searchResults.map((item) => (
+                  <FolderSearchResult
+                    key={item.path}
+                    item={item}
+                    onSelect={expandPathAndNavigate}
+                    deleting={deleting}
+                    onDelete={handleDelete}
+                    highlighted={item.path === highlightedFile}
+                  />
+                ))}
+              </div>
+            )
           ) : currentItems.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-48 gap-3 text-muted-foreground">
               <FileText className="h-10 w-10 opacity-25" />
-              <p className="text-sm">
-                {search
-                  ? "No results match your search."
-                  : "This folder is empty."}
-              </p>
+              <p className="text-sm">This folder is empty.</p>
             </div>
           ) : (
             <div>
               {currentItems.map((item) => (
                 <div
                   key={item.path}
-                  className="grid grid-cols-[minmax(0,1fr)_72px_110px_180px] items-center px-4 py-3 border-b border-border hover:bg-accent/25 transition-colors group"
+                  className={cn(
+                    "grid grid-cols-[minmax(0,1fr)_72px_110px_180px] items-center px-4 py-3 border-b border-border hover:bg-accent/25 transition-colors group",
+                    item.kind === "file" &&
+                      item.path === highlightedFile &&
+                      "bg-primary/8 border-l-2 border-l-primary",
+                  )}
                 >
                   {/* Name */}
                   <div className="flex items-center gap-2 min-w-0">
