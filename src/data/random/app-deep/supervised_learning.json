@@ -594,6 +594,8 @@
     "explanation": "อิงจากตัวเลือกที่ถูกไฮไลต์ (โดยทั่วไป R-squared ปกติจะมีค่าไม่เกิน 1 แต่อาจติดลบได้ในบางบริบทการคำนวณ)"
   },
   {
+    "type": "multiple-choice",
+    "question": "",
     "options": [
       {
         "statement": "Tanh",
@@ -635,7 +637,8 @@
         "istrue": false
       }
     ],
-    "explanation": "สมการเชิงเส้นในการทำนายผลของ SVM คือ w^T * x + b"
+    "explanation": "สมการเชิงเส้นในการทำนายผลของ SVM คือ w^T * x + b",
+    "image": "random/app-deep/supervised_learning/appdeep_image2.png"
   },
   {
     "type": "multiple-choice",
@@ -658,7 +661,8 @@
         "istrue": false
       }
     ],
-    "explanation": "Loss function ที่ SVM ใช้งานหลักๆ คือ Hinge Loss"
+    "explanation": "Loss function ที่ SVM ใช้งานหลักๆ คือ Hinge Loss",
+    "image": "random/app-deep/supervised_learning/appdeep_image.png"
   },
   {
     "type": "multiple-choice",
@@ -684,6 +688,8 @@
     "explanation": "การปรับค่า Slack variable เป็นการควบคุมว่าจะอนุญาตให้มี Error ฝั่งตรงข้าม Margin มากน้อยแค่ไหน (ตามคำตอบที่เฉลย)"
   },
   {
+    "type": "multiple-choice",
+    "question": "",
     "options": [
       {
         "statement": "เพิ่มความลึกของต้นไม้",
