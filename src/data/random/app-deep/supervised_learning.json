@@ -886,29 +886,6 @@
   },
   {
     "type": "multiple-choice",
-    "question": "ตัวเลือกใดไม่ใช่จุดประสงค์ของการทำ Feature engineering",
-    "options": [
-      {
-        "statement": "เพื่อให้ข้อมูลมีความเหมาะสมในการเทรนโมเดลมากขึ้น",
-        "istrue": false
-      },
-      {
-        "statement": "เพื่อให้แปลความหมายได้เหมาะสมขึ้น",
-        "istrue": false
-      },
-      {
-        "statement": "เพื่อทำให้ความสัมพันธ์ระหว่าง Features กับ Target มีความซับซ้อนลดลง",
-        "istrue": false
-      },
-      {
-        "statement": "เพื่อแก้ปัญหา Overfitting",
-        "istrue": true
-      }
-    ],
-    "explanation": "การแก้ปัญหา Overfitting เป็นผลพลอยได้หรือเกิดจากการทำ Regularization / Feature Selection มากกว่า ไม่ใช่เป้าประสงค์หลักโดยตรงของการสร้าง Feature ใหม่"
-  },
-  {
-    "type": "multiple-choice",
     "question": "Mutual information ที่ใช้วัดความสัมพันธ์ของตัวแปรสองตัวใดๆ มีค่าอยู่ในช่วงใด",
     "options": [
       {
@@ -929,29 +906,6 @@
       }
     ],
     "explanation": "Mutual information เป็นการวัดปริมาณข้อมูลที่มีร่วมกัน จึงไม่มีค่าติดลบ"
-  },
-  {
-    "type": "multiple-choice",
-    "question": "ตัวเลือกใดไม่ใช่ตัวอย่างของการทำ Feature engineering",
-    "options": [
-      {
-        "statement": "การสร้าง Feature ใหม่ที่บ่งบอกอัตราส่วนการใช้บัตรเครดิตต่อวงเงินในแต่ละเดือน",
-        "istrue": false
-      },
-      {
-        "statement": "การนำ Features และ Target มาทำ Clustering และใช้ Cluster label เป็น Feature ใหม่",
-        "istrue": true
-      },
-      {
-        "statement": "การสร้าง Feature ใหม่ที่บ่งบอกว่านักศึกษาคนหนึ่งเรียนคณะอะไรจากรหัสนิสิต",
-        "istrue": false
-      },
-      {
-        "statement": "การสร้าง Feature ใหม่โดยการหาค่าเฉลี่ยการใช้นำ้ประปาในแต่ละสัปดาห์",
-        "istrue": false
-      }
-    ],
-    "explanation": "การนำค่า Target มาร่วมสร้าง Feature ในตอนต้นอาจทำให้เกิดปัญหา Data Leakage (Target Leakage) ซึ่งทำให้โมเดลทำงานบนข้อมูลจริงไม่ได้"
   },
   {
     "type": "multiple-choice",
