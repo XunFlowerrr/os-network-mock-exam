@@ -181,6 +181,29 @@
   },
   {
     "type": "multiple-choice",
+    "question": "ข้อใดคือชื่อของ Binary classifier",
+    "options": [
+      {
+        "statement": "Linear regression",
+        "istrue": false
+      },
+      {
+        "statement": "Lasso regression",
+        "istrue": false
+      },
+      {
+        "statement": "Ridge regression",
+        "istrue": false
+      },
+      {
+        "statement": "Logistic regression",
+        "istrue": true
+      }
+    ],
+    "explanation": "Logistic regression เป็น Algorithm ที่ชื่อมีคำว่า Regression แต่จริงๆ แล้วถูกใช้งานสำหรับแก้ปัญหา Classification โดยเฉพาะแบบ Binary classification"
+  },
+  {
+    "type": "multiple-choice",
     "question": "ข้อใดคือ Loss function ที่เหมาะสมในการทำ Binary classification",
     "options": [
       {
@@ -201,6 +224,52 @@
       }
     ],
     "explanation": "Cross entropy loss (หรือ Binary Cross Entropy / Log Loss) เป็น Loss function มาตรฐานที่ออกแบบมาสำหรับวัดความผิดพลาดของการทำนายความน่าจะเป็นในปัญหา Classification"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ถ้าต้องการทำ Multi-class classification ที่สามารถได้ 4 คลาส จะต้องสร้าง Binary classifier อย่างน้อยที่สุดกี่อัน โดยที่คำนึงถึง Unknown class ด้วย",
+    "options": [
+      {
+        "statement": "1",
+        "istrue": false
+      },
+      {
+        "statement": "3",
+        "istrue": false
+      },
+      {
+        "statement": "6",
+        "istrue": false
+      },
+      {
+        "statement": "4",
+        "istrue": true
+      }
+    ],
+    "explanation": "ในวิธีการแบบ One-vs-Rest (OvR) สำหรับจัดกลุ่ม 4 คลาสหลัก จะต้องสร้าง Binary classifier 4 ตัว เพื่อเช็คแต่ละคลาส หากทั้ง 4 ตัวทำนายผลเป็น Negative ทั้งหมด จะถูกจัดไปอยู่ใน Unknown class ได้พอดี"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ตัวเลือกใดไม่ควรใช้เป็น Evaluation metrics สำหรับปัญหา Classification ได้",
+    "options": [
+      {
+        "statement": "Mean Squared",
+        "istrue": true
+      },
+      {
+        "statement": "Confusion matrix",
+        "istrue": false
+      },
+      {
+        "statement": "Precision-recall และ F1-secore",
+        "istrue": false
+      },
+      {
+        "statement": "Accuracy",
+        "istrue": false
+      }
+    ],
+    "explanation": "Mean Squared Error (MSE) เป็นตัวชี้วัดสำหรับปัญหา Regression ที่ผลลัพธ์เป็นตัวเลขต่อเนื่อง ไม่สามารถนำมาใช้ประเมินผลลัพธ์ที่เป็นหมวดหมู่ (Classification) ได้"
   },
   {
     "type": "multiple-choice",
@@ -316,6 +385,29 @@
       }
     ],
     "explanation": "Feature engineering มุ่งเน้นเรื่องการสกัดตัวแปรเพื่อดึงเอาความสัมพันธ์ในข้อมูลออกมาให้โมเดลเรียนรู้ได้ดีที่สุด การแก้ปัญหา Overfitting มักเป็นหน้าที่ของการทำ Regularization หรือการสุ่มข้อมูลมากกว่า (การสร้าง feature ใหม่มากเกินไปกลับเป็นสาเหตุให้ overfit ได้ด้วยซ้ำ)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "โมเดลในตัวเลือกใดไม่จำเป็นต้องทำ Feature scaling",
+    "options": [
+      {
+        "statement": "Neural network",
+        "istrue": false
+      },
+      {
+        "statement": "Support vector machine",
+        "istrue": false
+      },
+      {
+        "statement": "Linear regression",
+        "istrue": false
+      },
+      {
+        "statement": "Tree-based models",
+        "istrue": true
+      }
+    ],
+    "explanation": "โมเดลที่ทำงานในรูปแบบของ Tree (เช่น Decision Tree, Random Forest, XGBoost) ใช้เงื่อนไขเปรียบเทียบค่าความมากกว่า-น้อยกว่า (Split) จึงไม่ได้รับผลกระทบจากขนาดสเกลของข้อมูล ไม่จำเป็นต้องแปลงสเกลให้เท่ากันแบบโมเดลที่คำนวณระยะห่าง (Distance-based)"
   },
   {
     "type": "multiple-choice",
@@ -502,8 +594,6 @@
     "explanation": "อิงจากตัวเลือกที่ถูกไฮไลต์ (โดยทั่วไป R-squared ปกติจะมีค่าไม่เกิน 1 แต่อาจติดลบได้ในบางบริบทการคำนวณ)"
   },
   {
-    "type": "multiple-choice",
-    "question": "ข้อใดเป็น Output activation function ที่เหมาะสมสำหรับ Binary classification",
     "options": [
       {
         "statement": "Tanh",
@@ -545,8 +635,7 @@
         "istrue": false
       }
     ],
-    "explanation": "สมการเชิงเส้นในการทำนายผลของ SVM คือ w^T * x + b",
-    "image": "random/app-deep/supervised_learning/appdeep_image2.png"
+    "explanation": "สมการเชิงเส้นในการทำนายผลของ SVM คือ w^T * x + b"
   },
   {
     "type": "multiple-choice",
@@ -569,8 +658,7 @@
         "istrue": false
       }
     ],
-    "explanation": "Loss function ที่ SVM ใช้งานหลักๆ คือ Hinge Loss",
-    "image": "random/app-deep/supervised_learning/appdeep_image.png"
+    "explanation": "Loss function ที่ SVM ใช้งานหลักๆ คือ Hinge Loss"
   },
   {
     "type": "multiple-choice",
@@ -596,8 +684,6 @@
     "explanation": "การปรับค่า Slack variable เป็นการควบคุมว่าจะอนุญาตให้มี Error ฝั่งตรงข้าม Margin มากน้อยแค่ไหน (ตามคำตอบที่เฉลย)"
   },
   {
-    "type": "multiple-choice",
-    "question": "ตัวเลือกใดเป็นวิธีการลดความซับซ้อนของ Decision tree เพื่อป้องกัน Overfitting",
     "options": [
       {
         "statement": "เพิ่มความลึกของต้นไม้",
@@ -682,6 +768,29 @@
       }
     ],
     "explanation": "ทั้ง Bagging (เช่น Random Forest), Boosting (เช่น XGBoost) และ Stacking ล้วนเป็นเทคนิค Ensemble"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดกล่าวถูกต้อง",
+    "options": [
+      {
+        "statement": "Bagging สามารถสร้างโมเดลหลายๆโมเดลแบบ Parallel ได้",
+        "istrue": false
+      },
+      {
+        "statement": "Boosting ไม่สามารถสร้างโมเดลหลายๆโมเดลแบบ Parallel ได้ เนื่องจากต้องพยายามแก้ไข Error ที่เกิดจากโมเดลก่อนหน้า",
+        "istrue": false
+      },
+      {
+        "statement": "Stacking มีการเทรนโมเดลอีกตัวหนึ่งเพื่อมารวบรวมคำตอบเพื่อเป็นคำตอบสุดท้าย",
+        "istrue": false
+      },
+      {
+        "statement": "ถูกทุกตัวเลือก",
+        "istrue": true
+      }
+    ],
+    "explanation": "ทุกตัวเลือกอธิบายลักษณะเฉพาะตัวของอัลกอริทึมกลุ่ม Ensemble ได้อย่างถูกต้อง"
   },
   {
     "type": "multiple-choice",
@@ -777,6 +886,29 @@
   },
   {
     "type": "multiple-choice",
+    "question": "ตัวเลือกใดไม่ใช่จุดประสงค์ของการทำ Feature engineering",
+    "options": [
+      {
+        "statement": "เพื่อให้ข้อมูลมีความเหมาะสมในการเทรนโมเดลมากขึ้น",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อให้แปลความหมายได้เหมาะสมขึ้น",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อทำให้ความสัมพันธ์ระหว่าง Features กับ Target มีความซับซ้อนลดลง",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อแก้ปัญหา Overfitting",
+        "istrue": true
+      }
+    ],
+    "explanation": "การแก้ปัญหา Overfitting เป็นผลพลอยได้หรือเกิดจากการทำ Regularization / Feature Selection มากกว่า ไม่ใช่เป้าประสงค์หลักโดยตรงของการสร้าง Feature ใหม่"
+  },
+  {
+    "type": "multiple-choice",
     "question": "Mutual information ที่ใช้วัดความสัมพันธ์ของตัวแปรสองตัวใดๆ มีค่าอยู่ในช่วงใด",
     "options": [
       {
@@ -797,6 +929,29 @@
       }
     ],
     "explanation": "Mutual information เป็นการวัดปริมาณข้อมูลที่มีร่วมกัน จึงไม่มีค่าติดลบ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ตัวเลือกใดไม่ใช่ตัวอย่างของการทำ Feature engineering",
+    "options": [
+      {
+        "statement": "การสร้าง Feature ใหม่ที่บ่งบอกอัตราส่วนการใช้บัตรเครดิตต่อวงเงินในแต่ละเดือน",
+        "istrue": false
+      },
+      {
+        "statement": "การนำ Features และ Target มาทำ Clustering และใช้ Cluster label เป็น Feature ใหม่",
+        "istrue": true
+      },
+      {
+        "statement": "การสร้าง Feature ใหม่ที่บ่งบอกว่านักศึกษาคนหนึ่งเรียนคณะอะไรจากรหัสนิสิต",
+        "istrue": false
+      },
+      {
+        "statement": "การสร้าง Feature ใหม่โดยการหาค่าเฉลี่ยการใช้นำ้ประปาในแต่ละสัปดาห์",
+        "istrue": false
+      }
+    ],
+    "explanation": "การนำค่า Target มาร่วมสร้าง Feature ในตอนต้นอาจทำให้เกิดปัญหา Data Leakage (Target Leakage) ซึ่งทำให้โมเดลทำงานบนข้อมูลจริงไม่ได้"
   },
   {
     "type": "multiple-choice",
@@ -1137,6 +1292,29 @@
   },
   {
     "type": "multiple-choice",
+    "question": "ข้อใดคือชื่อของ Binary classifier",
+    "options": [
+      {
+        "statement": "Ridge regression",
+        "istrue": false
+      },
+      {
+        "statement": "Linear regression",
+        "istrue": false
+      },
+      {
+        "statement": "Logistic regression",
+        "istrue": true
+      },
+      {
+        "statement": "Lasso regression",
+        "istrue": false
+      }
+    ],
+    "explanation": "แม้ว่า Logistic Regression จะมีคำว่า Regression อยู่ในชื่อ แต่อันที่จริงแล้วมันถูกใช้ในการทำ Classification แบบ Binary (การตัดสินความน่าจะเป็นระหว่าง 2 หมวดหมู่)"
+  },
+  {
+    "type": "multiple-choice",
     "question": "ถ้าต้องการทำ Multi-class classification ที่สามารถได้ 4 คลาส จะต้องสร้าง Binary classifier อย่างน้อยที่สุดกี่อัน โดยที่คำนึงถึง Unknown class ด้วย",
     "options": [
       {
@@ -1157,6 +1335,29 @@
       }
     ],
     "explanation": "ใช้วิธีแบบ One-vs-Rest โดยการเทรน Binary classifier เพื่อจับคู่กับคลาสหลักทั้ง 4 หากทุกตัวพยากรณ์ว่าไม่ใช่ ก็ตกไปอยู่ในกลุ่ม Unknown class ได้โดยไม่ต้องสร้างเพิ่ม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดคือ Loss function ที่เหมาะสมในการทำ Binary classification",
+    "options": [
+      {
+        "statement": "Root Mean Squared Error (RMSE)",
+        "istrue": false
+      },
+      {
+        "statement": "Mean Absolute Error (MAE)",
+        "istrue": false
+      },
+      {
+        "statement": "Cross entropy loss",
+        "istrue": true
+      },
+      {
+        "statement": "ถูกทุกข้อ",
+        "istrue": false
+      }
+    ],
+    "explanation": "Cross Entropy Loss (Log loss) ออกแบบมาเพื่อวัดค่าพยากรณ์ที่อยู่ในรูปแบบความน่าจะเป็น (Probability) ได้เหมาะสมที่สุด"
   },
   {
     "type": "multiple-choice",
