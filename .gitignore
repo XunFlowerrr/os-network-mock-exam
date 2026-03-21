@@ -41,3 +41,5 @@ yarn-error.log*
 next-env.d.ts
 
 src/scripts/*
+vite/mock-exam-vite/node_modules/*
+.next/**
