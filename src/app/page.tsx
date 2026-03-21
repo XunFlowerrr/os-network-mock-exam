@@ -374,7 +374,7 @@ export default function Home() {
           {/* Top meta row */}
           <div className="flex items-center justify-between">
             <p className="text-[11px] font-semibold tracking-[0.25em] uppercase text-muted-foreground/60">
-              OS · Network · Practice
+              Exam Practice
             </p>
             <Button
               variant="ghost"
@@ -398,10 +398,6 @@ export default function Home() {
                 <span className="gradient-text block">Master</span>
                 <span className="text-foreground block">the exam.</span>
               </h1>
-              <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
-                Operating Systems &amp; Networking — structured question sets
-                for deep practice.
-              </p>
             </div>
 
             {!isLoading && (
