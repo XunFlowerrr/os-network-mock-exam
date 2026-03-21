@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { RefreshCw, Upload, Settings } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
-import { Button } from "./ui/button";
+import { Button } from "./ui/Button";
 import { Separator } from "./ui/separator";
 import {
   Tooltip,
