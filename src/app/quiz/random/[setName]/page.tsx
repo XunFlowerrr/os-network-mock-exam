@@ -200,102 +200,263 @@ export default function RandomQuizPage() {
   if (showScore) {
     const finalScore = computeScore();
     const pct = Math.round((finalScore / questionList.length) * 100);
-    return (
-      <div className="max-w-3xl mx-auto space-y-8">
-        <div className="text-center space-y-4">
-          <p className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground/40">
-            {quizTitle}
-          </p>
-          <div>
-            <p className="text-[3rem] font-black tabular-nums leading-none">
-              {pct}
-              <span className="text-2xl text-muted-foreground/40">%</span>
-            </p>
-            <p className="text-sm text-muted-foreground mt-1">
-              {finalScore} / {questionList.length} correct
-            </p>
-          </div>
-          <Progress value={pct} className="max-w-sm mx-auto h-1" />
-        </div>
-        <div className="grid gap-4">
-          {questionList.map((q, idx) => {
-            const userAnswer = userAnswers[idx];
-            let isCorrect = false;
-            let userAnswerDisplay = "";
-            let correctAnswerDisplay = "";
-            if (q.type === "multiple-choice" && q.options) {
-              userAnswerDisplay =
-                typeof userAnswer === "number" &&
-                userAnswer >= 0 &&
-                userAnswer < q.options.length
-                  ? q.options[userAnswer].statement
-                  : "No answer";
-              correctAnswerDisplay =
-                q.options.find((o) => o.istrue)?.statement || "";
-              isCorrect =
-                typeof userAnswer === "number" &&
-                !!q.options[userAnswer]?.istrue;
-            } else if (q.type === "fill-in-blank" && q.correctAnswer) {
-              userAnswerDisplay =
-                typeof userAnswer === "string" ? userAnswer : "No answer";
-              correctAnswerDisplay = q.correctAnswer;
-              isCorrect =
-                typeof userAnswer === "string" &&
-                userAnswer.toLowerCase() === q.correctAnswer.toLowerCase();
+    const incorrect = questionList.length - finalScore;
+    const radius = 80;
+    const circumference = 2 * Math.PI * radius;
+    const offset = circumference - (pct / 100) * circumference;
+    const sc =
+      pct >= 80
+        ? {
+            ring: "#22c55e",
+            label: "Outstanding!",
+            tw: "from-green-500 to-emerald-400",
+          }
+        : pct >= 60
+          ? {
+              ring: "#3b82f6",
+              label: "Great Work!",
+              tw: "from-blue-500 to-indigo-400",
             }
-            return (
-              <div
-                key={idx}
+          : pct >= 40
+            ? {
+                ring: "#f59e0b",
+                label: "Keep Practicing",
+                tw: "from-amber-500 to-orange-400",
+              }
+            : {
+                ring: "#ef4444",
+                label: "Need More Study",
+                tw: "from-red-500 to-rose-400",
+              };
+    return (
+      <div className="max-w-4xl mx-auto space-y-8 pb-16 fade-in">
+        {/* ── Score Hero ── */}
+        <div className="rounded-2xl border border-border/60 bg-card">
+          <style>{`
+            @keyframes ring-fill-${pct}{from{stroke-dashoffset:${circumference.toFixed(2)}}to{stroke-dashoffset:${offset.toFixed(2)}}}
+            .ring-anim-${pct}{animation:ring-fill-${pct} 1.2s 0.2s cubic-bezier(0.4,0,0.2,1) both}
+          `}</style>
+          <div className="flex flex-col items-center gap-5 px-6 py-12">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground/40">
+              {quizTitle}
+            </p>
+            {/* Ring */}
+            <div className="relative">
+              <svg
+                width="180"
+                height="180"
+                className="-rotate-90"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="90"
+                  cy="90"
+                  r={radius}
+                  fill="none"
+                  strokeWidth="10"
+                  className="stroke-border/30"
+                />
+                <circle
+                  cx="90"
+                  cy="90"
+                  r={radius}
+                  fill="none"
+                  strokeWidth="10"
+                  stroke={sc.ring}
+                  strokeLinecap="round"
+                  strokeDasharray={circumference}
+                  className={`ring-anim-${pct}`}
+                  strokeDashoffset={offset}
+                />
+              </svg>
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <span
+                  className={cn(
+                    "text-[2.8rem] font-black tabular-nums leading-none bg-gradient-to-br bg-clip-text text-transparent",
+                    sc.tw,
+                  )}
+                >
+                  {pct}
+                </span>
+                <span className="text-xs font-medium text-muted-foreground/50">
+                  %
+                </span>
+              </div>
+            </div>
+            {/* Label */}
+            <div className="text-center -mt-1">
+              <p
                 className={cn(
-                  "rounded-lg border-l-2 bg-card px-4 py-3 space-y-2",
-                  isCorrect ? "border-l-green-500" : "border-l-red-500",
+                  "text-lg font-bold bg-gradient-to-r bg-clip-text text-transparent",
+                  sc.tw,
                 )}
               >
-                <div className="flex items-start gap-2">
-                  {isCorrect ? (
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                  ) : (
-                    <XCircle className="h-4 w-4 text-red-500 mt-0.5 shrink-0" />
-                  )}
-                  <p className="font-medium leading-snug text-sm">
-                    Q{idx + 1}. {q.question}
-                  </p>
-                </div>
-                {q.image && (
-                  <img
-                    src={`/api/images-serve/${encodeURI(q.image)}`}
-                    alt="question"
-                    className="max-h-48 rounded border border-border"
-                  />
-                )}
-                <p className="text-sm text-muted-foreground pl-6">
-                  Your answer:{" "}
-                  <span
-                    className={cn(
-                      "font-medium",
-                      isCorrect
-                        ? "text-green-600 dark:text-green-400"
-                        : "text-red-600 dark:text-red-400",
-                    )}
-                  >
-                    {userAnswerDisplay}
-                  </span>
-                </p>
-                {!isCorrect && (
-                  <p className="text-sm text-muted-foreground pl-6">
-                    Correct:{" "}
-                    <span className="font-medium text-green-600 dark:text-green-400">
-                      {correctAnswerDisplay}
-                    </span>
-                  </p>
-                )}
-                <p className="text-sm leading-relaxed whitespace-pre-line pl-6 text-muted-foreground">
-                  {q.explanation}
-                </p>
+                {sc.label}
+              </p>
+              <p className="text-sm text-muted-foreground mt-0.5">
+                {finalScore} correct out of {questionList.length}
+              </p>
+            </div>
+            {/* Stats */}
+            <div className="grid grid-cols-2 gap-3 w-full max-w-[16rem]">
+              <div className="flex flex-col items-center gap-1 rounded-xl border border-green-500/25 bg-green-500/5 py-3">
+                <CheckCircle2 className="h-4 w-4 text-green-500" />
+                <span className="text-2xl font-extrabold tabular-nums text-green-600 dark:text-green-400">
+                  {finalScore}
+                </span>
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/60">
+                  Correct
+                </span>
               </div>
-            );
-          })}
+              <div className="flex flex-col items-center gap-1 rounded-xl border border-red-500/25 bg-red-500/5 py-3">
+                <XCircle className="h-4 w-4 text-red-500" />
+                <span className="text-2xl font-extrabold tabular-nums text-red-600 dark:text-red-400">
+                  {incorrect}
+                </span>
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/60">
+                  Incorrect
+                </span>
+              </div>
+            </div>
+            {/* Actions */}
+            <div className="flex flex-wrap gap-3 justify-center mt-1">
+              <Button
+                onClick={() => {
+                  setUserAnswers([]);
+                  setCurrentQuestion(0);
+                  setIsAnswered(false);
+                  setShowScore(false);
+                  setTextAnswer("");
+                }}
+                className="px-6"
+              >
+                Try Again
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => (window.location.href = "/")}
+                className="px-6"
+              >
+                Back to Sets
+              </Button>
+            </div>
+          </div>
         </div>
+
+        {/* ── Question Review ── */}
+        <section className="space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/40">
+              Question Review
+            </span>
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+          </div>
+          <div className="grid gap-2">
+            {questionList.map((q, idx) => {
+              const userAnswer = userAnswers[idx];
+              let isCorrect = false;
+              let userAnswerDisplay = "";
+              let correctAnswerDisplay = "";
+              if (q.type === "multiple-choice" && q.options) {
+                userAnswerDisplay =
+                  typeof userAnswer === "number" &&
+                  userAnswer >= 0 &&
+                  userAnswer < q.options.length
+                    ? q.options[userAnswer].statement
+                    : "No answer";
+                correctAnswerDisplay =
+                  q.options.find((o) => o.istrue)?.statement || "";
+                isCorrect =
+                  typeof userAnswer === "number" &&
+                  !!q.options[userAnswer]?.istrue;
+              } else if (q.type === "fill-in-blank" && q.correctAnswer) {
+                userAnswerDisplay =
+                  typeof userAnswer === "string" ? userAnswer : "No answer";
+                correctAnswerDisplay = q.correctAnswer;
+                isCorrect =
+                  typeof userAnswer === "string" &&
+                  userAnswer.toLowerCase() === q.correctAnswer.toLowerCase();
+              }
+              return (
+                <div
+                  key={idx}
+                  className={cn(
+                    "rounded-xl border space-y-3 px-4 py-4",
+                    isCorrect
+                      ? "border-green-500/25 bg-green-500/5"
+                      : "border-red-500/25 bg-red-500/5",
+                  )}
+                >
+                  {/* Header */}
+                  <div className="flex items-start gap-3">
+                    <span
+                      className={cn(
+                        "flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-bold mt-0.5",
+                        isCorrect
+                          ? "bg-green-500 text-white"
+                          : "bg-red-500 text-white",
+                      )}
+                    >
+                      {idx + 1}
+                    </span>
+                    <p className="flex-1 text-sm font-medium leading-snug">
+                      {q.question}
+                    </p>
+                    {isCorrect ? (
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-green-500 mt-0.5" />
+                    ) : (
+                      <XCircle className="h-4 w-4 shrink-0 text-red-500 mt-0.5" />
+                    )}
+                  </div>
+                  {/* Image */}
+                  {q.image && (
+                    <img
+                      src={`/api/images-serve/${encodeURI(q.image)}`}
+                      alt="question"
+                      className="max-h-48 w-auto rounded-lg border border-border/60 object-contain"
+                    />
+                  )}
+                  {/* Answer pills */}
+                  <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                    <div
+                      className={cn(
+                        "rounded-lg border px-3 py-2 text-sm",
+                        isCorrect
+                          ? "border-green-500/30 bg-green-500/10 text-green-700 dark:text-green-400"
+                          : "border-red-500/30 bg-red-500/10 text-red-700 dark:text-red-400",
+                      )}
+                    >
+                      <span className="mb-0.5 block text-[10px] font-semibold uppercase tracking-wide opacity-60">
+                        Your answer
+                      </span>
+                      {userAnswerDisplay}
+                    </div>
+                    {!isCorrect && (
+                      <div className="rounded-lg border border-green-500/30 bg-green-500/10 px-3 py-2 text-sm text-green-700 dark:text-green-400">
+                        <span className="mb-0.5 block text-[10px] font-semibold uppercase tracking-wide opacity-60">
+                          Correct answer
+                        </span>
+                        {correctAnswerDisplay}
+                      </div>
+                    )}
+                  </div>
+                  {/* Explanation */}
+                  {q.explanation && (
+                    <div className="rounded-lg border border-border/40 bg-muted/20 px-3 py-2.5">
+                      <span className="mb-1 block text-[10px] font-semibold uppercase tracking-wide text-muted-foreground/50">
+                        Explanation
+                      </span>
+                      <p className="text-sm leading-relaxed whitespace-pre-line text-muted-foreground">
+                        {q.explanation}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
       </div>
     );
   }
@@ -415,8 +576,10 @@ export default function RandomQuizPage() {
             {isAnswered && (
               <div
                 className={cn(
-                  "rounded-lg border-l-2 bg-card px-4 py-3 text-sm space-y-1",
-                  isCorrectAnswer ? "border-l-green-500" : "border-l-red-500",
+                  "rounded-lg border-l-4 px-4 py-3 text-sm space-y-1",
+                  isCorrectAnswer
+                    ? "border-l-green-500 bg-green-50/60 dark:bg-green-950/25"
+                    : "border-l-red-500 bg-red-50/60 dark:bg-red-950/25",
                 )}
               >
                 <p>
@@ -453,8 +616,10 @@ export default function RandomQuizPage() {
       {isAnswered && (
         <div
           className={cn(
-            "rounded-lg border-l-2 bg-card px-4 py-3 space-y-2",
-            isCorrectAnswer ? "border-l-green-500" : "border-l-red-500",
+            "rounded-lg border-l-4 px-4 py-3 space-y-2",
+            isCorrectAnswer
+              ? "border-l-green-500 bg-green-50/60 dark:bg-green-950/25"
+              : "border-l-red-500 bg-red-50/60 dark:bg-red-950/25",
           )}
         >
           <div className="flex items-center gap-2">
