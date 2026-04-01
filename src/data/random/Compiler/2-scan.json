@@ -1,0 +1,692 @@
+[
+  {
+    "type": "multiple-choice",
+    "question": "ความแตกต่างในเชิงโครงสร้างระหว่าง Token และ Lexeme คืออะไร",
+    "options": [
+      {
+        "statement": "Token คือลำดับอักขระจริงที่ปรากฏในโค้ด ส่วน Lexeme คือชื่อเรียกหมวดหมู่",
+        "istrue": false
+      },
+      {
+        "statement": "Token คือหน่วยที่ระบุประเภททางไวยากรณ์ ส่วน Lexeme คือค่าของสายอักขระ (String) ที่ตรงตามรูปแบบของ Token นั้น",
+        "istrue": true
+      },
+      {
+        "statement": "Lexeme จะถูกสร้างขึ้นก่อนในขั้นตอน Parsing ส่วน Token จะถูกสร้างโดย Scanner",
+        "istrue": false
+      },
+      {
+        "statement": "ทั้งสองสิ่งคือสิ่งเดียวกันแต่เรียกต่างกันตามสถาปัตยกรรมของคอมไพเลอร์",
+        "istrue": false
+      }
+    ],
+    "explanation": "Token ทำหน้าที่เป็นสัญลักษณ์แทนประเภทของข้อมูล (Abstract category) ในขณะที่ Lexeme คือหน่วยข้อมูลจริง (Concrete instance) ที่สแกนเนอร์พบลำดับอักขระตรงตามรูปแบบที่กำหนด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในขั้นตอนการสร้าง Scanner หลังจากที่ได้นิยาม Regular Expressions (RE) แล้ว ขั้นตอนถัดไปตามลำดับมาตรฐานคืออะไร",
+    "options": [
+      {
+        "statement": "การเขียนโปรแกรมด้วยคำสั่ง switch-case ทันที",
+        "istrue": false
+      },
+      {
+        "statement": "การสร้าง Finite Automata (FA) เพื่อจำลองการทำงานจาก RE",
+        "istrue": true
+      },
+      {
+        "statement": "การทำ Code Optimization เพื่อลดจำนวนสถานะ",
+        "istrue": false
+      },
+      {
+        "statement": "การสร้าง Symbol Table เพื่อเก็บค่า Tokens",
+        "istrue": false
+      }
+    ],
+    "explanation": "ขั้นตอนมาตรฐานคือการเปลี่ยนนิยามในรูปแบบ RE ให้เป็นโมเดลเชิงคำนวณที่เรียกว่า Finite Automata ก่อนจะนำไปแปลงเป็น DFA และเขียนโค้ดตามลำดับ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สัญลักษณ์ Kleene Star (*) ใน Regular Expression มีความหมายทางคณิตศาสตร์อย่างไร",
+    "options": [
+      {
+        "statement": "มีตัวอักษรนั้นปรากฏอย่างน้อย 1 ตัวขึ้นไป",
+        "istrue": false
+      },
+      {
+        "statement": "มีตัวอักษรนั้นปรากฏ 0 ตัวหรือมากกว่า (0 to infinity)",
+        "istrue": true
+      },
+      {
+        "statement": "มีตัวอักษรนั้นปรากฏเพียงตัวเดียวหรือไม่มีเลยก็ได้",
+        "istrue": false
+      },
+      {
+        "statement": "ต้องไม่มีตัวอักษรนั้นปรากฏอยู่ในสตริงเลย",
+        "istrue": false
+      }
+    ],
+    "explanation": "Kleene Star (*) หมายถึงการทำซ้ำของสัญลักษณ์นั้นๆ ตั้งแต่ 0 ครั้งขึ้นไป ซึ่งรวมถึงกรณีที่เป็นสตริงว่าง (Lambda) ด้วย"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กฎ 'Maximal Munch' หรือ Longest Substring ถูกนำมาใช้แก้ปัญหาในสถานการณ์ใด",
+    "options": [
+      {
+        "statement": "เมื่อเครื่องหมายตัวดำเนินการมีความยาวมากกว่า 1 อักขระ เช่น '>='",
+        "istrue": true
+      },
+      {
+        "statement": "เมื่อคอมไพเลอร์ต้องการลดขนาดของตารางสัญลักษณ์",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อตัวแปรมีชื่อยาวเกินขนาดบัฟเฟอร์",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อมีการใช้คำสั่ง if-else ซ้อนกันหลายชั้น",
+        "istrue": false
+      }
+    ],
+    "explanation": "กฎนี้ใช้เพื่อระบุว่าเมื่อมีทางเลือกในการแยก Token ที่ทับซ้อนกัน ให้เลือกทางเลือกที่สามารถรวมอักขระได้ยาวที่สุดเพื่อให้ได้ความหมายที่สมบูรณ์ที่สุด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใด Reserved Word จึงมักถูกกำหนดให้ชนะ Identifier ในกฎการแก้ความกำกวม",
+    "options": [
+      {
+        "statement": "เพื่อให้คอมไพเลอร์ประมวลผลคำสั่งควบคุมได้ถูกต้องและไม่สับสนกับชื่อที่ผู้ใช้ตั้ง",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะ Reserved Word มักจะมีจำนวนอักขระมากกว่า Identifier",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะ Reserved Word ถูกเก็บไว้ใน Literal Table",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อให้ภาษาโปรแกรมมีความสวยงามในการอ่านมากขึ้น",
+        "istrue": false
+      }
+    ],
+    "explanation": "หากปล่อยให้ Identifier ชนะ Reserved Word ผู้ใช้อาจตั้งชื่อตัวแปรซ้ำกับคำสั่งควบคุม (เช่น int if = 0;) ซึ่งจะทำให้โครงสร้างภาษาเสียหายและวิเคราะห์ไวยากรณ์ไม่ได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในโครงสร้าง DFA ของ 'Identifier' เหตุใดสถานะสุดท้าย (Final State) จึงมักเป็นลูปที่รับได้ทั้ง letter และ digit",
+    "options": [
+      {
+        "statement": "เพื่อให้ชื่อตัวแปรสามารถขึ้นต้นด้วยตัวเลขได้",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อให้ชื่อตัวแปรประกอบด้วยตัวอักษรและตัวเลขต่อท้ายกี่ตัวก็ได้หลังจากขึ้นต้นด้วยตัวอักษรแล้ว",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อใช้ในการดักจับค่าคงที่ประเภทตัวเลขทศนิยม",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อทำหน้าที่ลบช่องว่าง (Whitespace) ระหว่างคำ",
+        "istrue": false
+      }
+    ],
+    "explanation": "กฎของ Identifier ส่วนใหญ่กำหนดให้ตัวแรกต้องเป็นตัวอักษร และตัวถัดไปเป็นอะไรก็ได้ (อักษร/ตัวเลข) การมีลูปในสถานะจบจึงเป็นการรองรับการทำซ้ำตามกฎ letter(letter|digit)*"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การใช้ 'Transition Table' (Array 2 มิติ) ในการสร้าง Scanner มีข้อได้เปรียบที่สำคัญกว่าวิธี 'Nested-IF' อย่างไร",
+    "options": [
+      {
+        "statement": "ทำงานได้เร็วกว่าในระดับฮาร์ดแวร์",
+        "istrue": false
+      },
+      {
+        "statement": "สามารถจัดการหน่วยความจำบัฟเฟอร์ได้โดยอัตโนมัติ",
+        "istrue": false
+      },
+      {
+        "statement": "ง่ายต่อการแก้ไขและปรับปรุงกฎ (Table-driven) โดยไม่ต้องแก้ไขโครงสร้างโค้ดหลัก",
+        "istrue": true
+      },
+      {
+        "statement": "ใช้พื้นที่ในหน่วยความจำน้อยกว่ามาก",
+        "istrue": false
+      }
+    ],
+    "explanation": "วิธีใช้ตารางทำให้แยกส่วนของ Logic (ตัวรัน DFA) ออกจาก Data (ผังการเปลี่ยนสถานะ) ทำให้เมื่อมีการเปลี่ยนไวยากรณ์ ผู้พัฒนาเพียงแค่เปลี่ยนค่าในตารางเท่านั้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เทคนิค 'Lookahead' มีความจำเป็นอย่างไรในกระบวนการ Lexical Analysis",
+    "options": [
+      {
+        "statement": "ใช้เพื่อพยากรณ์ว่าโปรแกรมเมอร์จะเขียนโค้ดอะไรต่อในอนาคต",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้เพื่อยืนยันจุดสิ้นสุดของ Token ปัจจุบันโดยตรวจสอบอักขระถัดไปก่อนตัดสินใจ",
+        "istrue": true
+      },
+      {
+        "statement": "ใช้สำหรับเพิ่มความเร็วในการอ่านข้อมูลจาก Hard Drive",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้ในการตรวจสอบว่ามีเซมิโคลอน (;) ปิดท้ายประโยคหรือไม่",
+        "istrue": false
+      }
+    ],
+    "explanation": "Scanner จำเป็นต้องดูอักขระถัดไป (เช่น ดูว่าหลัง 'i' 'f' มีตัวอักษรอื่นต่อหรือไม่) เพื่อตัดสินใจว่า Token ปัจจุบันสิ้นสุดลงที่จุดใดอย่างแม่นยำ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดอธิบายหลักการทำงานของ 'Sentinel' ในระบบ Buffering ได้ถูกต้องที่สุด",
+    "options": [
+      {
+        "statement": "เป็นตัวชี้ (Pointer) ที่วิ่งนำหน้าเพื่อตรวจสอบ Error",
+        "istrue": false
+      },
+      {
+        "statement": "เป็นอักขระพิเศษ (เช่น EOF) ที่วางไว้ท้ายบัฟเฟอร์เพื่อลดจำนวนการตรวจสอบเงื่อนไขขอบเขตในทุกอักขระ",
+        "istrue": true
+      },
+      {
+        "statement": "เป็นหน่วยความจำสำรองที่ใช้เก็บ Token ที่ยาวเกินขนาดปกติ",
+        "istrue": false
+      },
+      {
+        "statement": "เป็นอัลกอริทึมที่ใช้สลับข้อมูลระหว่าง Buffer Pairs",
+        "istrue": false
+      }
+    ],
+    "explanation": "Sentinel ช่วยลดการเช็คเงื่อนไขซ้ำซ้อน 'is end of buffer?' ในทุกๆ ตัวอักษรที่อ่าน โดยเปลี่ยนมาเช็คเมื่อเจออักขระ Sentinel เท่านั้น ทำให้ประสิทธิภาพการสแกนสูงขึ้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในกรณีของ Buffer Pairs ปัญหาหลักที่อาจเกิดขึ้นหากไม่ใช้ระบบ Sentinel คืออะไร",
+    "options": [
+      {
+        "statement": "ข้อมูลสูญหายเมื่อตัวชี้วิ่งเลยขอบบัฟเฟอร์ก้อนที่สอง",
+        "istrue": false
+      },
+      {
+        "statement": "ภาระการประมวลผล (Overhead) จากการต้องตรวจสอบ 'การสิ้นสุดบัฟเฟอร์' ในทุกอักขระที่อ่าน",
+        "istrue": true
+      },
+      {
+        "statement": "คอมไพเลอร์จะไม่สามารถตรวจสอบ Error State ได้",
+        "istrue": false
+      },
+      {
+        "statement": "การสลับก้อนบัฟเฟอร์จะทำให้ความเร็วในการเข้าถึง Register ลดลง",
+        "istrue": false
+      }
+    ],
+    "explanation": "หากไม่มี Sentinel ระบบต้องใช้คำสั่ง if เพื่อเช็คว่า 'forward pointer' ถึงขอบบัฟเฟอร์หรือยังในทุกๆ อักขระ ซึ่งเป็นการเสียรอบสัญญาณนาฬิกาโดยไม่จำเป็น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หาก Scanner พบสตริง '/* ...' ใน DFA ของ Comment และสถานะปัจจุบันอยู่ในลูปการอ่านเนื้อหา สิ่งใดคือเงื่อนไขเดียวที่จะทำให้ DFA นี้เข้าสู่สถานะยอมรับ (Accepting State)",
+    "options": [
+      {
+        "statement": "เมื่อเจออักขระตัวหนา",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อเจอเครื่องหมาย '*' ตามด้วย '/'",
+        "istrue": true
+      },
+      {
+        "statement": "เมื่อจบบรรทัด (New line character)",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อบัฟเฟอร์เต็ม",
+        "istrue": false
+      }
+    ],
+    "explanation": "ตามนิยามของ Multi-line comment ในภาษาโปรแกรมส่วนใหญ่ DFA จะต้องวนลูปค้างไว้จนกว่าจะพบลำดับอักขระสิ้นสุดคือ '*/' เท่านั้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในเทคนิค Error Recovery แบบ 'Transpose', Scanner จะจัดการกับ Input '=>' อย่างไรหากต้องการเครื่องหมายเปรียบเทียบที่ถูกต้อง",
+    "options": [
+      {
+        "statement": "ลบอักขระ '=' ทิ้ง",
+        "istrue": false
+      },
+      {
+        "statement": "สลับตำแหน่งอักขระที่อยู่ติดกันให้กลายเป็น '>='",
+        "istrue": true
+      },
+      {
+        "statement": "เปลี่ยน '=' เป็นอักขระว่าง (Lambda)",
+        "istrue": false
+      },
+      {
+        "statement": "เติมอักขระ '>' เพิ่มอีกหนึ่งตัว",
+        "istrue": false
+      }
+    ],
+    "explanation": "Transpose คือการสลับตำแหน่งอักขระที่อยู่ติดกัน ซึ่งเป็นความผิดพลาดที่พบบ่อยจากการพิมพ์ (Typo)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เมื่อ Scanner ประมวลผล Lexeme '12.34' ขั้นตอนการ 'คำนวณ Attributes' หมายถึงกิจกรรมใด",
+    "options": [
+      {
+        "statement": "การตรวจสอบว่า 12.34 เป็นเลขบวกหรือเลขลบ",
+        "istrue": false
+      },
+      {
+        "statement": "การแปลงสายอักขระ '1', '2', '.', '3', '4' ให้เป็นค่าเชิงตัวเลขในระบบ Floating Point",
+        "istrue": true
+      },
+      {
+        "statement": "การหาที่อยู่ในหน่วยความจำเพื่อเก็บค่า 12.34",
+        "istrue": false
+      },
+      {
+        "statement": "การส่งค่า 12.34 ไปยัง Code Generator โดยตรง",
+        "istrue": false
+      }
+    ],
+    "explanation": "Attributes คือข้อมูลเสริมของ Token เช่น สำหรับ Token ประเภทตัวเลข Attribute ที่สำคัญคือค่าเชิงปริมาณ (Numerical value) ที่แปลงมาจากตัวอักษร"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ใน Regular Expression การระบุส่วนของเลขยกกำลังด้วย `(E (+|-)? digit+)?` เครื่องหมาย '?' ตัวสุดท้ายมีหน้าที่อะไร",
+    "options": [
+      {
+        "statement": "ระบุว่าต้องมีส่วนยกกำลังเสมอ",
+        "istrue": false
+      },
+      {
+        "statement": "ระบุว่าส่วนของเลขยกกำลังจะมีหรือไม่มีก็ได้ (Optional)",
+        "istrue": true
+      },
+      {
+        "statement": "ระบุว่าสามารถมีเลขยกกำลังได้มากกว่าหนึ่งชุด",
+        "istrue": false
+      },
+      {
+        "statement": "ระบุว่าเลขยกกำลังต้องเป็นจำนวนเต็มเท่านั้น",
+        "istrue": false
+      }
+    ],
+    "explanation": "เครื่องหมาย '?' แทนการมี 0 หรือ 1 ครั้ง ซึ่งทำให้ส่วนนั้นเป็นส่วนเสริมที่ผู้เขียนโปรแกรมจะใส่หรือไม่ใส่ก็ได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "นิยาม RE ของ Identifier แบบ `letter (letter | digit)*` ไม่อนุญาตให้เกิดสิ่งใด",
+    "options": [
+      {
+        "statement": "ชื่อตัวแปรที่มีตัวเลขอยู่ตรงกลาง",
+        "istrue": false
+      },
+      {
+        "statement": "ชื่อตัวแปรที่มีความยาวเพียงอักขระเดียว",
+        "istrue": false
+      },
+      {
+        "statement": "ชื่อตัวแปรที่ขึ้นต้นด้วยตัวเลข",
+        "istrue": true
+      },
+      {
+        "statement": "ชื่อตัวแปรที่ใช้ตัวอักษรตัวพิมพ์ใหญ่",
+        "istrue": false
+      }
+    ],
+    "explanation": "เนื่องจากส่วนแรกของนิยามบังคับเป็น 'letter' เท่านั้น ทำให้การขึ้นต้นด้วย 'digit' ไม่ตรงตามรูปแบบ (Pattern mismatch)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในการทำ 'Error Handling' ของ Scanner หากเจออักขระที่ไม่สามารถเข้ากับ DFA ใดได้เลย คอมไพเลอร์ควรกระทำสิ่งใดเป็นอันดับแรก",
+    "options": [
+      {
+        "statement": "หยุดการทำงานทันทีและลบผลลัพธ์การแปลทั้งหมด",
+        "istrue": false
+      },
+      {
+        "statement": "รายงานตำแหน่งอักขระที่ผิดพลาดและประเภทของ Error (Panic Mode)",
+        "istrue": true
+      },
+      {
+        "statement": "ข้ามอักขระที่ผิดไปจนจบไฟล์",
+        "istrue": false
+      },
+      {
+        "statement": "แก้ไขอักขระนั้นให้เป็นช่องว่าง (Space) โดยอัตโนมัติ",
+        "istrue": false
+      }
+    ],
+    "explanation": "หน้าที่หลักของสแกนเนอร์เมื่อเจอข้อผิดพลาดคือการระบุตำแหน่งและรายงานเพื่อให้โปรแกรมเมอร์แก้ไขได้ถูกต้อง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สถาปัตยกรรมแบบ 'Single Buffer' ประสบปัญหาใดมากที่สุดเมื่อจัดการกับสตริงที่มีความยาวมาก",
+    "options": [
+      {
+        "statement": "เกิดความล่าช้าในการสลับหน้าจอ",
+        "istrue": false
+      },
+      {
+        "statement": "ข้อมูลส่วนต้นของ Token จะถูกเขียนทับเมื่อมีการโหลดข้อมูลชุดใหม่เข้าบัฟเฟอร์",
+        "istrue": true
+      },
+      {
+        "statement": "บัฟเฟอร์จะขยายขนาดตัวเองจนหน่วยความจำเต็ม",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่สามารถใช้ร่วมกับ Symbol Table ได้",
+        "istrue": false
+      }
+    ],
+    "explanation": "หาก Token มีความยาวเกินก้อนบัฟเฟอร์เดียว การโหลดข้อมูลใหม่จากดิสก์จะทับข้อมูลเดิมที่ยังอ่านไม่จบ ทำให้เสียข้อมูลส่วนแรกไป"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ใน DFA ของเลขทศนิยม หากพบลำดับอักขระ '12.' และอักขระถัดไปไม่ใช่ตัวเลข (digit) สแกนเนอร์ควรทำอย่างไรหากมีการใช้ 'Insert' recovery",
+    "options": [
+      {
+        "statement": "ลบเครื่องหมาย '.' ทิ้งเพื่อให้เป็นจำนวนเต็ม",
+        "istrue": false
+      },
+      {
+        "statement": "แทรก '0' ต่อท้ายเพื่อให้กลายเป็น '12.0' ซึ่งถูกต้องตามรูปแบบ",
+        "istrue": true
+      },
+      {
+        "statement": "รายงานว่าโปรแกรมพิมพ์ผิดและหยุดทำงาน",
+        "istrue": false
+      },
+      {
+        "statement": "เปลี่ยนสถานะกลับไปเป็น Identifier",
+        "istrue": false
+      }
+    ],
+    "explanation": "การแทรกอักขระที่ขาดหายไป (Insert) ช่วยให้รูปแบบของ Token สมบูรณ์และสามารถส่งต่อไปยัง Parser ได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความแตกต่างระหว่าง NFA (Non-deterministic) และ DFA (Deterministic) ในบริบทของ Scanner คืออะไร",
+    "options": [
+      {
+        "statement": "DFA สามารถอยู่ในหลายสถานะพร้อมกันได้",
+        "istrue": false
+      },
+      {
+        "statement": "DFA มีเส้นทางออกเพียงทางเดียวที่แน่นอนสำหรับแต่ละ Input ในแต่ละสถานะ ทำให้เขียนโปรแกรมได้ง่ายกว่า",
+        "istrue": true
+      },
+      {
+        "statement": "NFA ทำงานได้เร็วกว่า DFA เสมอ",
+        "istrue": false
+      },
+      {
+        "statement": "Scanner จริงไม่สามารถใช้ DFA ได้",
+        "istrue": false
+      }
+    ],
+    "explanation": "DFA ถูกนำมาใช้ในการเขียนโปรแกรมจริงเพราะไม่มีความกำกวมในการเปลี่ยนสถานะ (1 input = 1 next state)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดการ 'รวมร่าง' (Combining) FA ของหลายๆ Tokens เข้าด้วยกันจึงมีความสำคัญ",
+    "options": [
+      {
+        "statement": "เพื่อให้สแกนเนอร์สามารถประมวลผลได้หลายภาษาพร้อมกัน",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อลดการอ่านอักขระซ้ำซ้อนและทำให้สแกนเนอร์ตรวจสอบทุกความเป็นไปได้ในรอบเดียว",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อเพิ่มความปลอดภัยให้กับซอร์สโค้ด",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อลดจำนวนบรรทัดของโค้ดในส่วน Code Generator",
+        "istrue": false
+      }
+    ],
+    "explanation": "การรวม FA ทำให้สแกนเนอร์ไม่ต้องรัน DFA แยกกันทีละตัวสำหรับทุก Token แต่ใช้เครื่องจักรตัวเดียวที่ครอบคลุมทุกกฎในการกวาดอักขระเพียงรอบเดียว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในระบบ Buffer Pairs เมื่อ 'forward pointer' เคลื่อนที่ถึงจุดสิ้นสุดของบัฟเฟอร์ก้อนแรก จะเกิดเหตุการณ์ใดขึ้น",
+    "options": [
+      {
+        "statement": "ระบบจะหยุดรอจนกว่าบัฟเฟอร์ก้อนที่สองจะว่าง",
+        "istrue": false
+      },
+      {
+        "statement": "ระบบจะสลับตัวชี้ไปเริ่มอ่านที่จุดเริ่มต้นของบัฟเฟอร์ก้อนที่สอง",
+        "istrue": true
+      },
+      {
+        "statement": "คอมไพเลอร์จะแสดงผล Error 'Buffer Overflow'",
+        "istrue": false
+      },
+      {
+        "statement": "ข้อมูลในบัฟเฟอร์ก้อนแรกจะถูกลบทิ้งทั้งหมดทันที",
+        "istrue": false
+      }
+    ],
+    "explanation": "ระบบบัฟเฟอร์คู่ทำงานต่อเนื่องโดยใช้พื้นที่ก้อนที่สองรองรับข้อมูลในขณะที่ก้อนแรกถูกโหลดข้อมูลใหม่เข้ามาทดแทน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สัญลักษณ์ `~ (a | b)` ในนิยามส่วนเสริมของ Regular Expression หมายถึงสิ่งใด",
+    "options": [
+      {
+        "statement": "สตริงที่ประกอบด้วย a หรือ b เท่านั้น",
+        "istrue": false
+      },
+      {
+        "statement": "สตริงที่ห้ามมีอักขระ a และ b อยู่ในนั้น",
+        "istrue": true
+      },
+      {
+        "statement": "สตริงที่ต้องขึ้นต้นด้วย a และลงท้ายด้วย b",
+        "istrue": false
+      },
+      {
+        "statement": "การสลับที่ระหว่าง a และ b",
+        "istrue": false
+      }
+    ],
+    "explanation": "สัญลักษณ์ Tilde (~) แทนความหมายของส่วนเติมเต็ม (Complement) หรือ 'ไม่ใช่' สิ่งที่กำหนดในวงเล็บ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "บทบาทของ Symbol Table ที่มีต่อ Scanner คือข้อใด",
+    "options": [
+      {
+        "statement": "ใช้เก็บค่าผลลัพธ์จากการรันโปรแกรม",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้สำหรับบันทึกชื่อตัวแปร (Identifier) ที่พบเพื่อนำไปใช้ในขั้นตอนวิเคราะห์ไวยากรณ์และความหมาย",
+        "istrue": true
+      },
+      {
+        "statement": "ใช้เก็บประวัติการแก้ไขไฟล์ของผู้ใช้",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้สำหรับคำนวณเลขยกกำลังใน Lexeme",
+        "istrue": false
+      }
+    ],
+    "explanation": "Scanner เมื่อพบ Identifier จะตรวจสอบและบันทึกข้อมูลลงใน Symbol Table เพื่อเป็นฐานข้อมูลกลางให้กับขั้นตอนอื่นๆ ของคอมไพเลอร์"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในสถานการณ์ใดที่ Scanner จะต้องวิ่งเข้าสู่ 'Error State'",
+    "options": [
+      {
+        "statement": "เมื่อเจออักขระที่เป็นช่องว่าง (Space)",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่ออ่านเจออักขระที่ไม่ตรงกับเส้นทางใดๆ ใน DFA จากสถานะปัจจุบัน",
+        "istrue": true
+      },
+      {
+        "statement": "เมื่ออ่านเจอ Reserved Word",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อประมวลผลไฟล์เสร็จสิ้น",
+        "istrue": false
+      }
+    ],
+    "explanation": "Error State คือสถานะที่ออกแบบไว้รองรับ Input ที่ไม่ถูกต้องตามข้อกำหนดของภาษาโปรแกรม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คำว่า 'Lexical' ใน Lexical Analysis มีรากศัพท์ที่สื่อถึงสิ่งใด",
+    "options": [
+      {
+        "statement": "โครงสร้างประโยค",
+        "istrue": false
+      },
+      {
+        "statement": "ความหมายของคำ",
+        "istrue": false
+      },
+      {
+        "statement": "คำศัพท์หรือหน่วยของคำ",
+        "istrue": true
+      },
+      {
+        "statement": "ความเร็วในการประมวลผล",
+        "istrue": false
+      }
+    ],
+    "explanation": "Lexical สื่อถึงหน่วยที่เล็กที่สุดของภาษาที่มีความหมายในตัวเอง (Words) ซึ่งในคอมไพเลอร์คือ Tokens"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากใช้ RE `(a|b)+` สตริงใดต่อไปนี้ 'ไม่' ถูกยอมรับ",
+    "options": [
+      {
+        "statement": "a",
+        "istrue": false
+      },
+      {
+        "statement": "aba",
+        "istrue": false
+      },
+      {
+        "statement": "สตริงว่าง (Lambda)",
+        "istrue": true
+      },
+      {
+        "statement": "bbbb",
+        "istrue": false
+      }
+    ],
+    "explanation": "เครื่องหมาย '+' หมายถึงต้องมีอย่างน้อย 1 อักขระ ดังนั้นสตริงว่างจึงไม่สามารถยอมรับได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หน้าที่ของ 'Pointer' สองตัว (lexeme_start และ forward) ในการจัดการบัฟเฟอร์คืออะไร",
+    "options": [
+      {
+        "statement": "ตัวหนึ่งใช้เริ่มอ่านไฟล์ อีกตัวหนึ่งใช้ปิดไฟล์",
+        "istrue": false
+      },
+      {
+        "statement": "lexeme_start ชี้จุดเริ่มของคำ และ forward วิ่งหาจุดสิ้นสุดของคำเพื่อกำหนดขอบเขต Lexeme",
+        "istrue": true
+      },
+      {
+        "statement": "ใช้สำหรับเก็บที่อยู่ของ Symbol Table และ Literal Table",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้สำหรับสลับระหว่างภาษาต้นทางและภาษาปลายทาง",
+        "istrue": false
+      }
+    ],
+    "explanation": "การใช้ Pointer คู่ช่วยให้ Scanner สามารถกำหนดขอบเขตของสายอักขระที่ต้องการดึงออกมาเป็น Lexeme ได้อย่างถูกต้อง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดคือลักษณะสำคัญของ 'Deterministic' ใน DFA",
+    "options": [
+      {
+        "statement": "การที่มีสถานะเริ่มต้นได้หลายจุด",
+        "istrue": false
+      },
+      {
+        "statement": "การที่มีทางเลือกเพียงทางเดียวสำหรับแต่ละ Input ในทุกสถานะ",
+        "istrue": true
+      },
+      {
+        "statement": "การที่สามารถย้อนกลับไปยังอักขระก่อนหน้าได้เสมอ",
+        "istrue": false
+      },
+      {
+        "statement": "การที่ต้องใช้คอมพิวเตอร์แบบ Quantum ในการคำนวณ",
+        "istrue": false
+      }
+    ],
+    "explanation": "Deterministic หมายถึงผลลัพธ์ถูกกำหนดไว้แน่นอนแล้ว ไม่มีความสุ่มหรือทางเลือกที่คลุมเครือในการทำงาน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในการจำลอง DFA (Simulating) ขั้นตอนสุดท้ายหลังจากวนลูปอ่านอักขระจนไม่สามารถไปต่อได้แล้วคืออะไร",
+    "options": [
+      {
+        "statement": "ลบข้อมูลในบัฟเฟอร์ทิ้ง",
+        "istrue": false
+      },
+      {
+        "statement": "ตรวจสอบว่าสถานะปัจจุบันเป็น 'Final State' (สถานะยอมรับ) หรือไม่",
+        "istrue": true
+      },
+      {
+        "statement": "กลับไปเริ่มที่จุดเริ่มต้นของไฟล์ใหม่",
+        "istrue": false
+      },
+      {
+        "statement": "เปลี่ยนไปรันขั้นตอน Semantic Analysis ทันที",
+        "istrue": false
+      }
+    ],
+    "explanation": "การหยุดอ่านอักขระไม่ได้หมายความว่าได้ Token ที่ถูกต้องเสมอไป ต้องมีการเช็คว่าเป็นสถานะยอมรับตามกฎที่ตั้งไว้หรือไม่"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เป้าหมายหลักของการใช้เทคนิค Buffering ในคอมไพเลอร์คืออะไร",
+    "options": [
+      {
+        "statement": "เพื่อเพิ่มความสวยงามให้กับซอร์สโค้ด",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อลดความถี่ในการเข้าถึงอุปกรณ์เก็บข้อมูล (I/O) ที่มีความเร็วต่ำ",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อป้องกันไวรัสคอมพิวเตอร์",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อให้รองรับการประมวลผลแบบขนาน (Parallel Processing)",
+        "istrue": false
+      }
+    ],
+    "explanation": "การอ่านข้อมูลทีละบล็อกใหญ่ๆ มาไว้ในหน่วยความจำเร็วกว่าการอ่านทีละอักขระจากฮาร์ดไดรฟ์โดยตรงมหาศาล"
+  }
+]

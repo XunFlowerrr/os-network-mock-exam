@@ -1,0 +1,692 @@
+[
+  {
+    "type": "multiple-choice",
+    "question": "ในบริบทของตัวแปลภาษา Procedure Abstraction ให้ประโยชน์หลักในด้านใดที่เกี่ยวข้องกับขอบเขตของข้อมูล",
+    "options": [
+      {
+        "statement": "การทำให้ทุกตัวแปรเป็น Global เพื่อให้เข้าถึงได้เร็ว",
+        "istrue": false
+      },
+      {
+        "statement": "การสร้างพื้นที่เก็บข้อมูลส่วนตัว (Private Storage) ที่แยกขาดจากส่วนอื่นของโปรแกรม",
+        "istrue": true
+      },
+      {
+        "statement": "การยกเลิกการใช้ Stack เพื่อประหยัดหน่วยความจำ",
+        "istrue": false
+      },
+      {
+        "statement": "การลดจำนวน Register ที่ต้องใช้ใน CPU",
+        "istrue": false
+      }
+    ],
+    "explanation": "Procedure Abstraction ช่วยในการทำ Isolation โดยให้แต่ละ Procedure มีขอบเขตข้อมูล (Naming Environment) ของตัวเอง ทำให้การจัดการตัวแปรทำได้เป็นระเบียบและลดความขัดแย้งของชื่อตัวแปร"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "โครงสร้างข้อมูลใดที่ใช้จัดการ 'Control History' เพื่อจัดเก็บลำดับการเรียกใช้และจุดส่งคืน (Return Address) ของ Procedure",
+    "options": [
+      {
+        "statement": "Queue",
+        "istrue": false
+      },
+      {
+        "statement": "Linked List ใน Heap",
+        "istrue": false
+      },
+      {
+        "statement": "Stack",
+        "istrue": true
+      },
+      {
+        "statement": "Hash Table",
+        "istrue": false
+      }
+    ],
+    "explanation": "Stack เป็นโครงสร้างที่เหมาะสมที่สุดสำหรับ Control History เนื่องจากลักษณะการเรียกฟังก์ชันซ้อนกันมีพฤติกรรมแบบ Last-In-First-Out (LIFO)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Activation Record (AR) หรือ Stack Frame จะถูกสร้างขึ้นในขั้นตอนใดของการรันโปรแกรม",
+    "options": [
+      {
+        "statement": "สร้างขึ้นเพียงครั้งเดียวเมื่อเริ่มรันโปรแกรม (Load time)",
+        "istrue": false
+      },
+      {
+        "statement": "สร้างขึ้นทุกครั้งที่มีการเรียกใช้ Procedure (Run time)",
+        "istrue": true
+      },
+      {
+        "statement": "สร้างขึ้นในขณะที่ Compiler กำลังตรวจสอบไวยากรณ์ (Compile time)",
+        "istrue": false
+      },
+      {
+        "statement": "สร้างขึ้นเมื่อโปรแกรมเกิดข้อผิดพลาด (Exception time)",
+        "istrue": false
+      }
+    ],
+    "explanation": "AR เป็นโครงสร้างแบบ Dynamic ที่ถูกสร้างและทำลายตามการเรียกใช้ฟังก์ชันจริงในขณะที่โปรแกรมทำงาน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "องค์ประกอบใดใน Activation Record ที่ทำหน้าที่เชื่อมโยงกลับไปยัง AR ของผู้เรียก (Caller) เพื่อรักษาลำดับการทำงาน",
+    "options": [
+      {
+        "statement": "Local Data",
+        "istrue": false
+      },
+      {
+        "statement": "Control Link (หรือ Dynamic Link)",
+        "istrue": true
+      },
+      {
+        "statement": "Actual Parameters",
+        "istrue": false
+      },
+      {
+        "statement": "Access Link",
+        "istrue": false
+      }
+    ],
+    "explanation": "Control Link ทำหน้าที่เก็บพอยน์เตอร์ที่ชี้กลับไปยัง Stack Frame ของฟังก์ชันที่เป็นคนเรียก (Caller) เพื่อให้สามารถย้อนกลับไปทำงานต่อได้ถูกตำแหน่งเมื่อฟังก์ชันปัจจุบันจบลง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การอ้างอิงตำแหน่งตัวแปร Local ใน Activation Record โดยใช้ Frame Pointer (fp) มักกระทำในลักษณะใด",
+    "options": [
+      {
+        "statement": "ใช้อะเดรสแบบสมบูรณ์ (Absolute Address)",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้ค่าคงที่บวกกับค่าใน Stack Pointer (sp) เสมอ",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้ระยะห่างสัมพัทธ์ (Offset) จากค่าใน fp เช่น -8(%rbp)",
+        "istrue": true
+      },
+      {
+        "statement": "ใช้การค้นหาชื่อในตารางสัญลักษณ์ (Symbol Table) ขณะรัน",
+        "istrue": false
+      }
+    ],
+    "explanation": "เพื่อให้ AR มีความยืดหยุ่นไม่ว่าจะอยู่ที่ตำแหน่งใดในหน่วยความจำ ตัวแปรภายในจะถูกอ้างอิงผ่าน Offset ที่คงที่เมื่อเทียบกับฐานของเฟรม (Frame Pointer)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ขั้นตอน 'Prolog' ของ Procedure เป็นหน้าที่ของฝ่ายใดและมีภารกิจหลักคืออะไร",
+    "options": [
+      {
+        "statement": "เป็นหน้าที่ของ Caller เพื่อส่งค่า Parameters",
+        "istrue": false
+      },
+      {
+        "statement": "เป็นหน้าที่ของ Callee เพื่อจองพื้นที่สำหรับ Local Data และเซฟค่า Register ที่จำเป็น",
+        "istrue": true
+      },
+      {
+        "statement": "เป็นหน้าที่ของ Caller เพื่อรับค่า Return Value",
+        "istrue": false
+      },
+      {
+        "statement": "เป็นหน้าที่ของ Callee เพื่อกระโดดกลับไปยังจุดเรียก",
+        "istrue": false
+      }
+    ],
+    "explanation": "Prolog คือชุดคำสั่งเริ่มต้นของฟังก์ชันที่ถูกเรียก (Callee) เพื่อเตรียมสภาพแวดล้อมภายใน AR ของตัวเองก่อนเริ่มประมวลผลตรรกะของโปรแกรม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในกลไก 'Caller-saves registers' หากฟังก์ชันผู้เรียกต้องการใช้ค่าใน Register หลังจากที่ฟังก์ชันลูกทำงานเสร็จ ผู้เรียกต้องทำอย่างไร",
+    "options": [
+      {
+        "statement": "ไม่ต้องทำอะไรเพราะฟังก์ชันลูกจะเซฟให้เอง",
+        "istrue": false
+      },
+      {
+        "statement": "บันทึกค่าใน Register ลงใน Stack ของตัวเองก่อนทำการเรียก (Call)",
+        "istrue": true
+      },
+      {
+        "statement": "ส่งค่า Register นั้นไปเป็น Parameter",
+        "istrue": false
+      },
+      {
+        "statement": "ล้างค่าใน Register ทิ้งเพื่อความปลอดภัย",
+        "istrue": false
+      }
+    ],
+    "explanation": "Caller-saves เป็นนโยบายที่ผู้เรียกต้องรับผิดชอบรักษาข้อมูลของตัวเองก่อนที่จะส่งต่อการควบคุมไปยังฟังก์ชันอื่นที่อาจเขียนทับ Register นั้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "พื้นที่หน่วยความจำ 'Heap' แตกต่างจาก 'Stack' อย่างไรในบริบทของ Runtime Environment",
+    "options": [
+      {
+        "statement": "Heap ใช้เก็บคำสั่ง Code ส่วน Stack เก็บข้อมูล",
+        "istrue": false
+      },
+      {
+        "statement": "Heap จัดการข้อมูลแบบ LIFO ส่วน Stack จัดการแบบสุ่ม",
+        "istrue": false
+      },
+      {
+        "statement": "Heap ใช้เก็บข้อมูลที่มีอายุการใช้งานไม่แน่นอนหรือมีขนาดเปลี่ยนแปลงได้ ส่วน Stack เก็บข้อมูลที่มีอายุตามการเรียก Procedure",
+        "istrue": true
+      },
+      {
+        "statement": "Heap โตจากล่างขึ้นบน ส่วน Stack โตจากบนลงล่างเสมอ",
+        "istrue": false
+      }
+    ],
+    "explanation": "Heap ออกแบบมาเพื่อการจัดการหน่วยความจำแบบพลวัต (Dynamic Allocation) ที่ไม่ได้ถูกจำกัดด้วยลำดับการเข้า-ออกของฟังก์ชันเหมือน Stack"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การจัดการตัวแปรที่มีขนาดไม่คงที่ (Variable-length data) ภายใน Activation Record มักใช้เทคนิคใดเพื่อไม่ให้กระทบตำแหน่งของตัวแปรอื่น",
+    "options": [
+      {
+        "statement": "การขยายขนาด AR ไปเรื่อยๆ จนกว่าจะจบโปรแกรม",
+        "istrue": false
+      },
+      {
+        "statement": "การเก็บ Descriptor หรือ Pointer ไว้ใน AR และวางข้อมูลจริงไว้ที่ท้ายเฟรมหรือใน Heap",
+        "istrue": true
+      },
+      {
+        "statement": "การบังคับให้โปรแกรมเมอร์ใช้เฉพาะตัวแปรขนาดคงที่",
+        "istrue": false
+      },
+      {
+        "statement": "การเก็บข้อมูลไว้ใน Register แทน",
+        "istrue": false
+      }
+    ],
+    "explanation": "การใช้ตัวชี้ (Indirection) ช่วยให้ตำแหน่ง Offset ของตัวแปรอื่นๆ ใน AR ยังคงที่และเข้าถึงได้ง่ายในขณะที่ข้อมูลขนาดใหญ่ถูกแยกออกไป"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Access Link (หรือ Lexical Link) มีความสำคัญอย่างไรในการเข้าถึงข้อมูล (Addressability)",
+    "options": [
+      {
+        "statement": "ใช้สำหรับส่งค่ากลับไปยังฟังก์ชันหลัก",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้สำหรับอ้างอิงข้อมูลในหน่วยความจำ Static",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้สำหรับเข้าถึงตัวแปรของฟังก์ชันที่เป็น Lexical Ancestor (ฟังก์ชันที่ครอบอยู่ตามโครงสร้างโค้ด)",
+        "istrue": true
+      },
+      {
+        "statement": "ใช้สำหรับสลับการทำงานระหว่าง Thread",
+        "istrue": false
+      }
+    ],
+    "explanation": "Access Link ช่วยให้ฟังก์ชันที่ซ้อนกัน (Nested Functions) สามารถเข้าถึงตัวแปรของฟังก์ชันชั้นนอกได้โดยการเดินตาม Link ไปยัง AR ของบรรพบุรุษตามลำดับชั้นของ Static Scope"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "พิกัดสถิต (Static Coordinate) ในรูปแบบ <level, offset> ตัวแปร 'level' หมายถึงสิ่งใด",
+    "options": [
+      {
+        "statement": "ตำแหน่งบรรทัดในซอร์สโค้ด",
+        "istrue": false
+      },
+      {
+        "statement": "จำนวนชั้นที่ต้องเดินย้อนตาม Access Link เพื่อไปยัง AR ที่ตัวแปรนั้นประกาศไว้",
+        "istrue": true
+      },
+      {
+        "statement": "ลำดับความสำคัญของตัวแปรในการคำนวณ",
+        "istrue": false
+      },
+      {
+        "statement": "ขนาดของตัวแปรในหน่วยไบต์",
+        "istrue": false
+      }
+    ],
+    "explanation": "level (หรือ nesting depth) ระบุระยะห่างเชิงโครงสร้างของฟังก์ชัน ทำให้คอมไพเลอร์รู้ว่าต้องไล่สาย Access Link ไปกี่ระดับเพื่อหาที่อยู่ของข้อมูล"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในโครงสร้างผังหน่วยความจำ (Virtual Address Space) เหตุใด Stack และ Heap จึงมักถูกวางให้โตเข้าหากัน",
+    "options": [
+      {
+        "statement": "เพื่อให้ข้อมูลใน Stack และ Heap ผสมกันได้",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อให้เกิดความสวยงามในแผนผังหน่วยความจำ",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อให้ใช้พื้นที่ว่างที่เหลืออยู่ตรงกลางร่วมกันได้อย่างมีประสิทธิภาพสูงสุด",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อป้องกันไม่ให้โปรแกรมอื่นเข้าถึงหน่วยความจำได้",
+        "istrue": false
+      }
+    ],
+    "explanation": "การวางไว้คนละฝั่งช่วยให้พื้นที่ว่างตรงกลางสามารถถูกจัดสรรให้กับ Stack หรือ Heap ฝั่งใดฝั่งหนึ่งที่ต้องการขยายตัวได้ตามสถานการณ์จริงขณะรัน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ภารกิจใดที่ต้องทำในขั้นตอน 'Epilog' ของ Callee ก่อนที่จะส่งการควบคุมคืนให้ Caller",
+    "options": [
+      {
+        "statement": "จองพื้นที่เพิ่มสำหรับ Temporaries",
+        "istrue": false
+      },
+      {
+        "statement": "ก๊อปปี้ Parameters มาวางใน AR",
+        "istrue": false
+      },
+      {
+        "statement": "คืนค่า Register (Restore) ให้กลับเป็นสภาพเดิมก่อนการเรียกใช้",
+        "istrue": true
+      },
+      {
+        "statement": "สร้าง Access Link ใหม่",
+        "istrue": false
+      }
+    ],
+    "explanation": "Epilog ต้องทำการคืนสภาพแวดล้อม (เช่น Register และ Frame Pointer) เพื่อให้ Caller สามารถทำงานต่อได้โดยไม่ผิดเพี้ยน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความแตกต่างพื้นฐานระหว่าง Control Link และ Access Link คือข้อใด",
+    "options": [
+      {
+        "statement": "Control Link ขึ้นอยู่กับลำดับการเรียก (Dynamic) ส่วน Access Link ขึ้นอยู่กับโครงสร้างโค้ด (Static)",
+        "istrue": true
+      },
+      {
+        "statement": "Control Link ใช้ใน Heap ส่วน Access Link ใช้ใน Stack",
+        "istrue": false
+      },
+      {
+        "statement": "Access Link ใช้เก็บค่าตัวเลข ส่วน Control Link เก็บค่าบูลีน",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่มีความแตกต่างกันในเชิงการทำงาน",
+        "istrue": false
+      }
+    ],
+    "explanation": "Control Link ชี้ไปยังฟังก์ชันที่เป็นผู้เรียกจริง (Caller) ในขณะที่ Access Link ชี้ไปยังฟังก์ชันที่ครอบอยู่ตามกฎของ Static Scoping"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในขั้นตอน Post-return หน้าที่หลักของ Caller หลังจากได้รับค่าผลลัพธ์คือข้อใด",
+    "options": [
+      {
+        "statement": "สร้าง Activation Record ใหม่ให้ Callee",
+        "istrue": false
+      },
+      {
+        "statement": "คืนพื้นที่ (Free) ใน Stack ที่ Callee เคยใช้ไป",
+        "istrue": true
+      },
+      {
+        "statement": "เริ่มต้นการทำงานของ Prolog",
+        "istrue": false
+      },
+      {
+        "statement": "ลบข้อมูลในหน่วยความจำ Static",
+        "istrue": false
+      }
+    ],
+    "explanation": "หลังจากฟังก์ชันลูกจบการทำงานและส่งค่าคืนมาแล้ว ผู้เรียกต้องทำการปรับ Stack Pointer เพื่อคืนพื้นที่เฟรมที่ไม่ใช้งานแล้ว (Deallocation)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดตัวแปรประเภท Global จึงไม่ถูกจัดเก็บไว้ใน Activation Record",
+    "options": [
+      {
+        "statement": "เพราะมีขนาดใหญ่เกินไปสำหรับ Stack",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะต้องการให้ตัวแปรมีอายุการใช้งานคงอยู่ตลอดระยะเวลาที่โปรแกรมรัน ไม่ขึ้นกับสถานะของ Procedure",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะระบบไม่อนุญาตให้ AR เข้าถึงหน่วยความจำภายนอก",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะ Global variable ต้องถูกเก็บใน Register เสมอ",
+        "istrue": false
+      }
+    ],
+    "explanation": "Activation Record มีวงจรชีวิตตามการเรียกและจบฟังก์ชัน แต่ตัวแปร Global ต้องคงค่าไว้ตลอดอายุของกระบวนการ (Process) จึงต้องอยู่ในพื้นที่แยกต่างหาก (Static Area)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในการจัดการ Linkage ข้อมูล 'Returned Value' มักถูกจัดวางไว้ในตำแหน่งใดเพื่อให้เกิดความสะดวกในการสื่อสาร",
+    "options": [
+      {
+        "statement": "ในส่วนลึกที่สุดของ Stack",
+        "istrue": false
+      },
+      {
+        "statement": "ในพื้นที่ที่ตกลงกันไว้ (เช่น Register เฉพาะ หรือตำแหน่งที่กำหนดใน AR)",
+        "istrue": true
+      },
+      {
+        "statement": "ในหน่วยความจำของโปรแกรมอื่น",
+        "istrue": false
+      },
+      {
+        "statement": "ในส่วนท้ายสุดของ Code segment",
+        "istrue": false
+      }
+    ],
+    "explanation": "ข้อกำหนดการเรียกฟังก์ชัน (Calling Convention) จะระบุตำแหน่งที่แน่นอนเพื่อให้ทั้ง Caller และ Callee เข้าใจตรงกันในการรับ-ส่งข้อมูล"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความหมายของ 'Lexical Ancestor' ในบริบทของการหาพิกัดข้อมูลคืออะไร",
+    "options": [
+      {
+        "statement": "ฟังก์ชันที่เป็นผู้เรียกใช้ (Caller) ในขณะรัน",
+        "istrue": false
+      },
+      {
+        "statement": "ฟังก์ชันที่ถูกประกาศไว้ภายในฟังก์ชันปัจจุบัน",
+        "istrue": false
+      },
+      {
+        "statement": "ฟังก์ชันที่ครอบฟังก์ชันปัจจุบันอยู่ตามลำดับชั้นของซอร์สโค้ด",
+        "istrue": true
+      },
+      {
+        "statement": "คลาสแม่ในภาษา Object-Oriented",
+        "istrue": false
+      }
+    ],
+    "explanation": "Lexical Ancestor คือความสัมพันธ์เชิงพื้นที่ในซอร์สโค้ด ซึ่งกำหนดขอบเขตการมองเห็นตัวแปร (Static Scoping)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ใน Activation Record พื้นที่ 'Temporaries' มีไว้เพื่อจุดประสงค์ใด",
+    "options": [
+      {
+        "statement": "เก็บชื่อผู้ใช้โปรแกรม",
+        "istrue": false
+      },
+      {
+        "statement": "เก็บผลลัพธ์ย่อยระหว่างการคำนวณนิพจน์ที่ซับซ้อนซึ่ง Register ไม่เพียงพอจะจัดเก็บ",
+        "istrue": true
+      },
+      {
+        "statement": "เก็บที่อยู่ของไฟล์บนดิสก์",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้สำหรับบันทึก Log ของระบบ",
+        "istrue": false
+      }
+    ],
+    "explanation": "ในการประมวลผลนิพจน์ที่ยาวหรือซับซ้อน คอมไพเลอร์อาจต้องพักค่ากลางไว้ในหน่วยความจำชั่วคราวภายใน Stack Frame"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การทำ 'Controlled Environment' ผ่าน Procedure Abstraction ช่วยแก้ปัญหาใดในการพัฒนาซอฟต์แวร์ขนาดใหญ่",
+    "options": [
+      {
+        "statement": "ช่วยให้โปรแกรมรันได้โดยไม่ต้องมีระบบปฏิบัติการ",
+        "istrue": false
+      },
+      {
+        "statement": "ช่วยให้สามารถจัดการชื่อตัวแปรที่ซ้ำกันในคนละส่วนของโปรแกรมได้โดยไม่เกิดผลกระทบข้างเคียง",
+        "istrue": true
+      },
+      {
+        "statement": "ช่วยให้คอมพิวเตอร์ประมวลผลเลขฐานสิบได้แม่นยำขึ้น",
+        "istrue": false
+      },
+      {
+        "statement": "ช่วยลดขนาดของไฟล์ executable",
+        "istrue": false
+      }
+    ],
+    "explanation": "สภาพแวดล้อมที่มีการควบคุมช่วยจำกัดขอบเขตของข้อผิดพลาดและการมองเห็นตัวแปร ทำให้การพัฒนาโปรแกรมร่วมกันทำได้ง่ายขึ้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ค่า %rsp (Stack Pointer) ในสถาปัตยกรรม x86-64 มักชี้ไปที่ตำแหน่งใดของ Stack",
+    "options": [
+      {
+        "statement": "ชี้ที่จุดเริ่มต้นของ Static Data",
+        "istrue": false
+      },
+      {
+        "statement": "ชี้ที่โหนดบนสุด (ค่าอะเดรสน้อยที่สุด) ของข้อมูลที่ถูกใช้งานอยู่ใน Stack",
+        "istrue": true
+      },
+      {
+        "statement": "ชี้ที่จุดศูนย์กลางของ Heap",
+        "istrue": false
+      },
+      {
+        "statement": "ชี้ที่ตำแหน่งคงที่ใน Code Segment",
+        "istrue": false
+      }
+    ],
+    "explanation": "Stack Pointer ทำหน้าที่ติดตามจุดยอดของ Stack ที่มีการขยายตัวและหดตัวตลอดเวลาตามการ Push และ Pop ข้อมูล"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ภารกิจในส่วน 'Pre-call' ของ Caller รวมถึงข้อใดต่อไปนี้",
+    "options": [
+      {
+        "statement": "การเคลียร์ Local Data ของ Callee",
+        "istrue": false
+      },
+      {
+        "statement": "การคำนวณและวาง Actual Parameters ลงในพื้นที่ที่กำหนด",
+        "istrue": true
+      },
+      {
+        "statement": "การคืนค่า Register ให้ Callee",
+        "istrue": false
+      },
+      {
+        "statement": "การอ่านค่าผลลัพธ์จาก Heap",
+        "istrue": false
+      }
+    ],
+    "explanation": "ก่อนการเรียกฟังก์ชัน ผู้เรียกต้องรับผิดชอบในการจัดเตรียมข้อมูลที่จะส่งผ่าน (Arguments) ให้พร้อมสำหรับฟังก์ชันลูก"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "นโยบาย 'Callee-saves registers' มีข้อตกลงพื้นฐานอย่างไร",
+    "options": [
+      {
+        "statement": "ผู้เรียกต้องจ่ายเงินให้ผู้ถูกเรียก",
+        "istrue": false
+      },
+      {
+        "statement": "ฟังก์ชันลูกต้องบันทึกค่า Register เดิมไว้หากตนเองต้องการนำ Register นั้นไปใช้งาน",
+        "istrue": true
+      },
+      {
+        "statement": "ห้ามใช้ Register ในฟังก์ชันลูกเด็ดขาด",
+        "istrue": false
+      },
+      {
+        "statement": "Register ทั้งหมดจะถูกล้างค่าทุกครั้งที่มีการเปลี่ยน Procedure",
+        "istrue": false
+      }
+    ],
+    "explanation": "Callee-saves เป็นการให้เกียรติสภาพแวดล้อมของผู้เรียก โดยฟังก์ชันที่ถูกเรียกจะรับผิดชอบคืนค่า Register ให้เหมือนเดิมก่อนจบงาน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "พิกัด <level, offset> ช่วยให้คอมไพเลอร์สร้างคำสั่งโหลดข้อมูลอย่างไรในกรณีที่ระดับ level มากกว่า 0",
+    "options": [
+      {
+        "statement": "ต้องใช้คำสั่งไล่ตามสาย Access Link ไปตามจำนวน level ที่ระบุ",
+        "istrue": true
+      },
+      {
+        "statement": "ต้องกระโดดไปยังที่อยู่คงที่ทันที",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่ต้องทำอะไรเพราะข้อมูลอยู่ในเฟรมปัจจุบัน",
+        "istrue": false
+      },
+      {
+        "statement": "ต้องขอหน่วยความจำใหม่จาก Heap",
+        "istrue": false
+      }
+    ],
+    "explanation": "หากตัวแปรไม่ได้อยู่ในฟังก์ชันปัจจุบัน (level > 0) โปรแกรมต้องใช้ Indirection เพื่อไล่สายพอยน์เตอร์ไปยัง AR ของบรรพบุรุษตามจำนวนระดับที่กำหนด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดคอมไพเลอร์จึงต้องเก็บค่า 'Return Address' ไว้ใน Stack Frame",
+    "options": [
+      {
+        "statement": "เพื่อให้ฟังก์ชันรู้ว่าต้องกระโดดไปเริ่มงานที่ตรงไหน",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อให้โปรแกรมสามารถส่งการควบคุมกลับไปทำงานที่คำสั่งถัดจากจุดที่มีการ Call ได้อย่างถูกต้อง",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อใช้ในการเข้าถึงตัวแปร Global",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อป้องกันความผิดพลาดของ ALU",
+        "istrue": false
+      }
+    ],
+    "explanation": "Return Address คือข้อมูลที่บอกตำแหน่งใน Code Segment ที่โปรแกรมต้องกลับไปดำเนินงานต่อหลังจากฟังก์ชันลูกทำงานเสร็จสิ้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หน่วยความจำประเภท 'Static Data' เหมาะสำหรับจัดเก็บข้อมูลใดมากที่สุด",
+    "options": [
+      {
+        "statement": "ตัวแปรพารามิเตอร์",
+        "istrue": false
+      },
+      {
+        "statement": "ค่าคงที่ (Constants) และตัวแปร Global ที่เข้าถึงได้จากทุกส่วนของโปรแกรม",
+        "istrue": true
+      },
+      {
+        "statement": "ผลลัพธ์ชั่วคราวจากการคำนวณ",
+        "istrue": false
+      },
+      {
+        "statement": "Activation Records ของฟังก์ชันแบบ Recursive",
+        "istrue": false
+      }
+    ],
+    "explanation": "ข้อมูลที่มีสถานะคงที่และเข้าถึงได้ตลอดอายุโปรแกรมจะถูกจองพื้นที่ไว้ในส่วน Static ตั้งแต่ตอนโหลดโปรแกรม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในระบบที่ใช้ 'Stack-based allocation' การทำ Recursion สามารถทำงานได้เนื่องจากสาเหตุใด",
+    "options": [
+      {
+        "statement": "เพราะมีการจำกัดจำนวนครั้งในการเรียก",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะแต่ละการเรียกใช้ (Activation) จะมี Activation Record ของตัวเองแยกกันบน Stack",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะตัวแปรทั้งหมดถูกเก็บใน Heap",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะ Compiler จะทำการคลี่ลูป (Unrolling) ให้โดยอัตโนมัติ",
+        "istrue": false
+      }
+    ],
+    "explanation": "หัวใจของ Recursion คือการที่ฟังก์ชันเรียกตัวเองแล้วได้พื้นที่เก็บข้อมูลชุดใหม่ (New Stack Frame) ทำให้ข้อมูลของแต่ละรอบการเรียกไม่ปะปนกัน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความหมายของ 'Lexical Scoping' ที่เกี่ยวข้องกับการออกแบบคอมไพเลอร์คือข้อใด",
+    "options": [
+      {
+        "statement": "กฎที่ระบุว่าชื่อตัวแปรจะถูกผูกติดกับลำดับการเรียกฟังก์ชันขณะรัน",
+        "istrue": false
+      },
+      {
+        "statement": "กฎที่ระบุขอบเขตการมองเห็นชื่อตัวแปรตามตำแหน่งการประกาศในโครงสร้างซอร์สโค้ด",
+        "istrue": true
+      },
+      {
+        "statement": "การตั้งชื่อตัวแปรให้สอดคล้องกับพจนานุกรม",
+        "istrue": false
+      },
+      {
+        "statement": "การลดจำนวนอักขระในซอร์สโค้ด",
+        "istrue": false
+      }
+    ],
+    "explanation": "Lexical (หรือ Static) Scoping ช่วยให้คอมไพเลอร์สามารถวิเคราะห์และกำหนดที่อยู่ของตัวแปรได้ตั้งแต่ตอน Compile โดยดูจากโครงสร้างการซ้อนกันของฟังก์ชัน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คำสั่ง `loadAI r0, -4 => r1` เป็นตัวอย่างของการเข้าถึงข้อมูลประเภทใดในระดับรหัสภาษาเครื่อง (ILOC)",
+    "options": [
+      {
+        "statement": "การเข้าถึงตัวแปร Global",
+        "istrue": false
+      },
+      {
+        "statement": "การเข้าถึงตัวแปร Local ที่อ้างอิงผ่าน Offset จาก Frame Pointer",
+        "istrue": true
+      },
+      {
+        "statement": "การอ่านข้อมูลจากฮาร์ดไดรฟ์",
+        "istrue": false
+      },
+      {
+        "statement": "การสร้างฟังก์ชันใหม่",
+        "istrue": false
+      }
+    ],
+    "explanation": "คำสั่งนี้เป็นการเข้าถึงข้อมูลโดยใช้ที่อยู่ฐาน (r0) และปรับตำแหน่งด้วยค่าคงที่ (-4) ซึ่งเป็นรูปแบบมาตรฐานของการอ่านค่าตัวแปรใน Stack Frame"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดการแบ่งงานใน Linkage จึงต้องระบุหน้าที่ระหว่าง Caller และ Callee ให้ชัดเจน",
+    "options": [
+      {
+        "statement": "เพื่อป้องกันความสับสนในการจัดการทรัพยากรร่วมกัน เช่น Register และพื้นที่บน Stack",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อลดความร้อนของ CPU",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อให้โปรแกรมสามารถรันได้บนระบบปฏิบัติการที่ต่างกัน",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อให้นักพัฒนาเขียนโค้ดได้น้อยลง",
+        "istrue": false
+      }
+    ],
+    "explanation": "การกำหนด 'สัญญา' (Calling Convention) ที่ชัดเจนช่วยให้ Compiler สามารถสร้างโค้ดที่ฟังก์ชันต่างๆ สามารถทำงานร่วมกันได้อย่างถูกต้องโดยไม่ทำลายข้อมูลของกันและกัน"
+  }
+]

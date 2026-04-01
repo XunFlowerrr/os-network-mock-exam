@@ -1,0 +1,692 @@
+[
+  {
+    "type": "multiple-choice",
+    "question": "ปัญหา 'Memory Leak' ในการจัดการหน่วยความจำแบบ Manual เกิดจากสาเหตุใด",
+    "options": [
+      {
+        "statement": "การเข้าถึงหน่วยความจำที่ถูกคืนค่าไปแล้ว",
+        "istrue": false
+      },
+      {
+        "statement": "การจองหน่วยความจำใน Heap แล้วไม่ได้ทำการคืนค่า (Free) เมื่อเลิกใช้งาน",
+        "istrue": true
+      },
+      {
+        "statement": "การใช้ตัวแปร Local มากเกินไปใน Stack",
+        "istrue": false
+      },
+      {
+        "statement": "การที่ Program Counter ชี้ไปผิดตำแหน่ง",
+        "istrue": false
+      }
+    ],
+    "explanation": "Memory Leak เกิดขึ้นเมื่อโปรแกรมจองหน่วยความจำใน Heap แต่ไม่มีการสั่งคืนทรัพยากรกลับสู่ระบบ ทำให้หน่วยความจำถูกใช้งานเพิ่มขึ้นเรื่อยๆ จนเต็ม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดอธิบายปรากฏการณ์ 'Dangling Pointer' ได้ถูกต้องที่สุด",
+    "options": [
+      {
+        "statement": "พอยน์เตอร์ที่ชี้ไปยังตำแหน่งหน่วยความจำที่ถูกคืนค่า (Deallocated) ไปแล้ว",
+        "istrue": true
+      },
+      {
+        "statement": "พอยน์เตอร์ที่ไม่มีค่าเริ่มต้น (Null Pointer)",
+        "istrue": false
+      },
+      {
+        "statement": "พอยน์เตอร์ที่ชี้ไปยังตัวแปร Global",
+        "istrue": false
+      },
+      {
+        "statement": "พอยน์เตอร์ที่ถูกใช้ใน Recursive Function",
+        "istrue": false
+      }
+    ],
+    "explanation": "Dangling Pointer คือพอยน์เตอร์ที่ยังคงถือที่อยู่ของหน่วยความจำเดิมหลังจากที่พื้นที่นั้นถูกคืนให้ระบบไปแล้ว การเข้าถึงผ่านพอยน์เตอร์นี้อาจทำให้โปรแกรมทำงานผิดพลาดหรือ Crash"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในอัลกอริทึม 'Mark and Sweep' ขั้นตอนการ 'Mark' ตรวจสอบความมีชีวิต (Liveness) ของข้อมูลจากแหล่งใดเป็นอันดับแรก",
+    "options": [
+      {
+        "statement": "ข้อมูลทั้งหมดใน Heap",
+        "istrue": false
+      },
+      {
+        "statement": "Root set ซึ่งประกอบด้วยตัวแปรใน Activation Records (Stack) และ Static Data",
+        "istrue": true
+      },
+      {
+        "statement": "ข้อมูลใน Hard Drive",
+        "istrue": false
+      },
+      {
+        "statement": "ข้อมูลใน Register ของ ALU",
+        "istrue": false
+      }
+    ],
+    "explanation": "GC จะเริ่มตรวจสอบจาก Root set เพื่อดูว่ามีพอยน์เตอร์ตัวใดที่โปรแกรมยังสามารถเข้าถึงได้โดยตรง (Reachable) แล้วจึงไล่ตามพอยน์เตอร์เหล่านั้นไปยังโหนดอื่นๆ ใน Heap"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดขั้นตอน 'Sweep & Reallocate' ใน Mark and Sweep จึงต้องมีการย้ายที่อยู่ข้อมูล (Compaction)",
+    "options": [
+      {
+        "statement": "เพื่อลดจำนวนตัวแปรในโปรแกรม",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อแก้ปัญหาการกระจายตัวของหน่วยความจำ (Fragmentation) และรวมพื้นที่ว่างให้เป็นก้อนใหญ่",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อเปลี่ยนประเภทข้อมูลจาก Integer เป็น Float",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อให้ข้อมูลรันได้เร็วขึ้นใน Cache",
+        "istrue": false
+      }
+    ],
+    "explanation": "การย้ายข้อมูลที่ยังมีชีวิตอยู่มากองรวมกันช่วยลดช่องว่างขนาดเล็กที่แทรกอยู่ (External Fragmentation) ทำให้การจองหน่วยความจำครั้งต่อไปทำได้ง่ายและต่อเนื่อง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ปรากฏการณ์ 'Stop the World' ส่งผลกระทบต่อการทำงานของโปรแกรมอย่างไร",
+    "options": [
+      {
+        "statement": "ทำให้โปรแกรมทำงานเร็วขึ้นเป็น 2 เท่า",
+        "istrue": false
+      },
+      {
+        "statement": "โปรแกรมจะหยุดการประมวลผลตรรกะปกติชั่วคราวเพื่อรอให้ GC จัดการหน่วยความจำจนเสร็จ",
+        "istrue": true
+      },
+      {
+        "statement": "ทำให้ข้อมูลในไฟล์สูญหาย",
+        "istrue": false
+      },
+      {
+        "statement": "ทำให้คอมพิวเตอร์ Restart อัตโนมัติ",
+        "istrue": false
+      }
+    ],
+    "explanation": "ในขณะที่ GC ทำการ Mark หรือย้ายที่อยู่ข้อมูล โปรแกรมหลักต้องหยุดทำงานเพื่อป้องกันไม่ให้มีการแก้ไขพอยน์เตอร์ในระหว่างที่ GC กำลังประมวลผล ซึ่งอาจทำให้เกิดอาการหน่วง (Latency)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กลไก 'Reference Counting' จะตัดสินใจทำลายข้อมูลใน Heap เมื่อใด",
+    "options": [
+      {
+        "statement": "เมื่อหน่วยความจำในระบบเหลือต่ำกว่า 10%",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อค่า Counter ของข้อมูลนั้นกลายเป็น 0 (ไม่มีตัวแปรใดชี้มาที่ข้อมูลนี้แล้ว)",
+        "istrue": true
+      },
+      {
+        "statement": "เมื่อจบการทำงานของโปรแกรมหลัก",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อโปรแกรมเมอร์สั่ง Free",
+        "istrue": false
+      }
+    ],
+    "explanation": "Reference Counting ติดตามจำนวนการอ้างอิงข้อมูล หากไม่มีการอ้างอิงเหลืออยู่ (Counter = 0) ข้อมูลนั้นจะถูกทำลายและคืนหน่วยความจำทันที"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ปัญหาหลักที่ Reference Counting ไม่สามารถจัดการได้คือข้อใด",
+    "options": [
+      {
+        "statement": "การจัดการตัวเลขจำนวนเต็ม",
+        "istrue": false
+      },
+      {
+        "statement": "การอ้างอิงแบบวงกลม (Circular Reference)",
+        "istrue": true
+      },
+      {
+        "statement": "การจองพื้นที่ใน Stack",
+        "istrue": false
+      },
+      {
+        "statement": "การประมวลผลแบบ Multithreading",
+        "istrue": false
+      }
+    ],
+    "explanation": "หากออบเจกต์สองตัวชี้หากันเอง ค่า Counter จะไม่มีวันลดลงเป็น 0 แม้ว่าโปรแกรมหลักจะเลิกใช้งานออบเจกต์ทั้งคู่ไปแล้วก็ตาม ทำให้เกิด Memory Leak"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สมมติฐานหลัก (Weak Generational Hypothesis) ของ 'Generational Collector' คืออะไร",
+    "options": [
+      {
+        "statement": "ข้อมูลที่มีขนาดใหญ่มักจะอยู่นาน",
+        "istrue": false
+      },
+      {
+        "statement": "ออบเจกต์ที่เพิ่งถูกสร้างขึ้นมักจะมีอายุการใช้งานสั้น (Die young)",
+        "istrue": true
+      },
+      {
+        "statement": "ข้อมูลใน Stack สำคัญกว่าข้อมูลใน Heap",
+        "istrue": false
+      },
+      {
+        "statement": "การสแกนหน่วยความจำทั้งหมดให้ผลลัพธ์ที่แม่นยำกว่า",
+        "istrue": false
+      }
+    ],
+    "explanation": "Generational GC อาศัยข้อเท็จจริงที่ว่าออบเจกต์ส่วนใหญ่เป็นตัวแปรชั่วคราว จึงมุ่งเน้นการทำความสะอาดในพื้นที่ Young Generation บ่อยๆ เพื่อความรวดเร็ว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ใน Generational Collector ข้อมูลจะถูกย้ายจาก Young Generation ไปยัง Old Generation เมื่อใด",
+    "options": [
+      {
+        "statement": "เมื่อข้อมูลมีขนาดเกินที่กำหนด",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อข้อมูลสามารถรอดพ้นจากการทำความสะอาด (Collection cycle) มาได้หลายครั้ง",
+        "istrue": true
+      },
+      {
+        "statement": "เมื่อโปรแกรมเปลี่ยนไปรันฟังก์ชันอื่น",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อมีการ Restart โปรแกรม",
+        "istrue": false
+      }
+    ],
+    "explanation": "ออบเจกต์ที่อยู่นานจนถึงเกณฑ์ที่กำหนดจะถูกมองว่ามีความมั่นคง (Tenured) และจะถูกย้ายไปเก็บใน Old Generation เพื่อลดภาระการตรวจสอบของ GC"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดเป็นข้อเสียของการใช้ Reference Counting เมื่อเทียบกับ Mark and Sweep",
+    "options": [
+      {
+        "statement": "ต้องรอเวลา Sweep นานเกินไป",
+        "istrue": false
+      },
+      {
+        "statement": "มี Overhead สูงจากการต้องอัปเดตค่า Counter ทุกครั้งที่มีการเปลี่ยนแปลงพอยน์เตอร์",
+        "istrue": true
+      },
+      {
+        "statement": "ไม่รองรับภาษาโปรแกรมระดับสูง",
+        "istrue": false
+      },
+      {
+        "statement": "ทำให้โปรแกรมค้างเป็นเวลานาน",
+        "istrue": false
+      }
+    ],
+    "explanation": "Reference Counting มีภาระงานเพิ่มขึ้นในทุกๆ คำสั่งที่มีการกำหนดค่าพอยน์เตอร์ใหม่ (Assignment) ซึ่งอาจส่งผลต่อประสิทธิภาพโดยรวมของแอปพลิเคชัน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ขั้นตอน 'Update Address' ใน Mark and Sweep มีความสำคัญอย่างไร",
+    "options": [
+      {
+        "statement": "เพื่อเปลี่ยนชื่อตัวแปรให้สั้นลง",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อให้พอยน์เตอร์ใน Stack ชี้ไปยังตำแหน่งใหม่ของข้อมูลหลังจากที่มีการย้ายที่อยู่ใน Heap",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อบันทึกข้อมูลลงในไฟล์ Log",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อคำนวณหาค่าเฉลี่ยการใช้หน่วยความจำ",
+        "istrue": false
+      }
+    ],
+    "explanation": "เมื่อมีการทำ Compaction ข้อมูลจะถูกย้ายที่อยู่ ดังนั้นพอยน์เตอร์เดิมที่อ้างอิงที่อยู่เก่าจะต้องถูกแก้ไขให้ชี้ไปยังที่อยู่ใหม่ ไม่เช่นนั้นจะเกิดข้อผิดพลาดในการเข้าถึงข้อมูล"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ส่วนหัวของข้อมูล (Object Header) ในระบบ GC มักใช้พื้นที่เพื่อเก็บข้อมูลใด",
+    "options": [
+      {
+        "statement": "ชื่อของผู้เขียนโปรแกรม",
+        "istrue": false
+      },
+      {
+        "statement": "Mark bits สำหรับระบุสถานะ Liveness หรือค่า Reference Counter",
+        "istrue": true
+      },
+      {
+        "statement": "ซอร์สโค้ดของฟังก์ชันที่เรียกใช้",
+        "istrue": false
+      },
+      {
+        "statement": "ค่าทางคณิตศาสตร์ที่เป็นผลลัพธ์",
+        "istrue": false
+      }
+    ],
+    "explanation": "Header เป็นพื้นที่เสริมที่คอมไพเลอร์จัดเตรียมไว้เพื่อเก็บข้อมูล Metadata ที่จำเป็นสำหรับอัลกอริทึม GC ในการจัดการออบเจกต์นั้นๆ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในภาษาโปรแกรมที่ใช้ Manual Memory Management (เช่น C) หน้าที่การคืนหน่วยความจำเป็นของใคร",
+    "options": [
+      {
+        "statement": "ระบบปฏิบัติการ",
+        "istrue": false
+      },
+      {
+        "statement": "Garbage Collector",
+        "istrue": false
+      },
+      {
+        "statement": "โปรแกรมเมอร์ (ผู้พัฒนาโปรแกรม)",
+        "istrue": true
+      },
+      {
+        "statement": "Hardware (CPU)",
+        "istrue": false
+      }
+    ],
+    "explanation": "ในภาษาที่ไม่มี GC โปรแกรมเมอร์ต้องรับผิดชอบในการเรียกใช้คำสั่งคืนหน่วยความจำเองอย่างเคร่งครัด มิเช่นนั้นจะเกิดปัญหาหน่วยความจำรั่วไหล"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อดีของการใช้ GC ในการพัฒนาซอฟต์แวร์คือข้อใด",
+    "options": [
+      {
+        "statement": "ช่วยลดความผิดพลาดด้านความปลอดภัยและการเข้าถึงหน่วยความจำที่ผิดกฎ (Memory Safety)",
+        "istrue": true
+      },
+      {
+        "statement": "ทำให้โปรแกรมใช้หน่วยความจำน้อยลงกว่าปกติ",
+        "istrue": false
+      },
+      {
+        "statement": "ทำให้โปรแกรมรันได้โดยไม่ต้องมี RAM",
+        "istrue": false
+      },
+      {
+        "statement": "ลดขนาดของไฟล์ Executable",
+        "istrue": false
+      }
+    ],
+    "explanation": "GC ช่วยป้องกันความผิดพลาดพื้นฐาน เช่น Dangling Pointer และ Double Free ซึ่งเป็นช่องโหว่ด้านความปลอดภัยที่สำคัญในโปรแกรม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใด Young Generation จึงมีการทำ Collection บ่อยกว่า Old Generation",
+    "options": [
+      {
+        "statement": "เพราะมีพื้นที่ขนาดใหญ่กว่า",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะอัตราการเกิด 'ขยะ' (Garbage) ในพื้นที่นี้สูงมากเนื่องจากเป็นออบเจกต์อายุสั้น",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะต้องการประหยัดพลังงาน CPU",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะเป็นที่เก็บตัวแปร Global",
+        "istrue": false
+      }
+    ],
+    "explanation": "ออบเจกต์ใหม่ๆ มักถูกสร้างและทำลายทิ้งอย่างรวดเร็ว การกวาดล้างบ่อยครั้งในพื้นที่ขนาดเล็กนี้จึงมีประสิทธิภาพและใช้เวลาน้อย"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "พอยน์เตอร์ที่เป็น 'Root' ของระบบ GC คือพอยน์เตอร์ที่อยู่ในตำแหน่งใด",
+    "options": [
+      {
+        "statement": "อยู่ใน Heap เท่านั้น",
+        "istrue": false
+      },
+      {
+        "statement": "อยู่ใน Stack, Registers, และ Global Static Area",
+        "istrue": true
+      },
+      {
+        "statement": "อยู่ใน Hard Drive",
+        "istrue": false
+      },
+      {
+        "statement": "อยู่ในคำสั่ง Code Segment",
+        "istrue": false
+      }
+    ],
+    "explanation": "Root คือจุดเริ่มต้นที่โปรแกรมเข้าถึงได้โดยตรง ซึ่งจะนำไปสู่การหาออบเจกต์อื่นๆ ที่เชื่อมโยงกันอยู่ใน Heap"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความแตกต่างสำคัญระหว่างการจัดการหน่วยความจำแบบ Stack และ Heap คือข้อใด",
+    "options": [
+      {
+        "statement": "Stack มีอายุการใช้งานจำกัดตามขอบเขตฟังก์ชัน ส่วน Heap มีอายุตามการอ้างอิง",
+        "istrue": true
+      },
+      {
+        "statement": "Heap ทำงานเร็วกว่า Stack",
+        "istrue": false
+      },
+      {
+        "statement": "Stack ต้องใช้ GC ในการจัดการ",
+        "istrue": false
+      },
+      {
+        "statement": "Heap ใช้เก็บเฉพาะค่าคงที่",
+        "istrue": false
+      }
+    ],
+    "explanation": "Stack จัดการหน่วยความจำอัตโนมัติตามการเรียก Procedure (LIFO) แต่ Heap ต้องการกลไกพิเศษ (Manual หรือ GC) ในการตัดสินใจว่าจะคืนหน่วยความจำเมื่อใด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "อัลกอริทึมใดที่สามารถคืนหน่วยความจำได้ทันทีที่ข้อมูลนั้นกลายเป็นขยะ (Garbage)",
+    "options": [
+      {
+        "statement": "Mark and Sweep",
+        "istrue": false
+      },
+      {
+        "statement": "Generational GC",
+        "istrue": false
+      },
+      {
+        "statement": "Reference Counting",
+        "istrue": true
+      },
+      {
+        "statement": "Compaction GC",
+        "istrue": false
+      }
+    ],
+    "explanation": "Reference Counting ทำงานแบบ Real-time เมื่อ Counter กลายเป็นศูนย์จะทำการ Deallocate ทันที ต่างจากวิธีอื่นที่ต้องรอรอบการสแกน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในการทำ 'Sweep' ข้อมูลประเภทใดจะถูกกำจัดทิ้ง",
+    "options": [
+      {
+        "statement": "ข้อมูลที่มี Mark bits เป็น True",
+        "istrue": false
+      },
+      {
+        "statement": "ข้อมูลที่ไม่มีการทำเครื่องหมาย (Marked) ในขั้นตอนก่อนหน้า",
+        "istrue": true
+      },
+      {
+        "statement": "ข้อมูลที่อยู่ใน Stack",
+        "istrue": false
+      },
+      {
+        "statement": "ข้อมูลที่มีขนาดใหญ่เกินไป",
+        "istrue": false
+      }
+    ],
+    "explanation": "ข้อมูลที่ไม่ถูกทำเครื่องหมายแสดงว่าไม่สามารถเข้าถึงได้จาก Root set (Unreachable) จึงถือว่าเป็นขยะที่ต้องคืนพื้นที่ให้ระบบ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากใช้ระบบ Manual และสั่งคืนหน่วยความจำเดิมซ้ำสองครั้ง (Double Free) จะส่งผลอย่างไร",
+    "options": [
+      {
+        "statement": "ทำให้หน่วยความจำเพิ่มขึ้นเป็นสองเท่า",
+        "istrue": false
+      },
+      {
+        "statement": "อาจทำให้โครงสร้างการจัดการหน่วยความจำเสียหายและเกิดช่องโหว่ด้านความปลอดภัย",
+        "istrue": true
+      },
+      {
+        "statement": "โปรแกรมจะทำงานเร็วขึ้น",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่มีผลใดๆ ต่อระบบ",
+        "istrue": false
+      }
+    ],
+    "explanation": "Double Free เป็นข้อผิดพลาดร้ายแรงที่อาจทำให้ Metadata ของระบบจัดการหน่วยความจำพัง ส่งผลให้โปรแกรม Crash หรือถูกโจมตีทางไซเบอร์ได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดเป็นลักษณะเฉพาะของข้อมูลที่อาศัยอยู่ใน Old Generation",
+    "options": [
+      {
+        "statement": "เป็นข้อมูลที่เปลี่ยนค่าบ่อยมาก",
+        "istrue": false
+      },
+      {
+        "statement": "เป็นข้อมูลที่ถูกสแกนบ่อยที่สุด",
+        "istrue": false
+      },
+      {
+        "statement": "เป็นข้อมูลที่มีอายุการใช้งานยาวนานและไม่ค่อยกลายเป็นขยะ",
+        "istrue": true
+      },
+      {
+        "statement": "เป็นข้อมูลที่เก็บเฉพาะรหัสผ่าน",
+        "istrue": false
+      }
+    ],
+    "explanation": "Old Generation เก็บออบเจกต์ที่ 'รอดตาย' มายาวนาน ทำให้ GC ไม่จำเป็นต้องตรวจสอบบ่อยครั้ง ช่วยลดภาระการประมวลผล"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในระบบ GC การติดตามความสัมพันธ์แบบ 'Graph' ของพอยน์เตอร์มีจุดประสงค์เพื่ออะไร",
+    "options": [
+      {
+        "statement": "เพื่อวาดภาพโครงสร้างโปรแกรม",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อระบุออบเจกต์ทั้งหมดที่สามารถเข้าถึงได้ (Reachable) จาก Root",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อคำนวณความเร็วของเครือข่าย",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อหาตัวแปรที่มีชื่อยาวที่สุด",
+        "istrue": false
+      }
+    ],
+    "explanation": "GC มองหน่วยความจำใน Heap เป็นกราฟที่มีพอยน์เตอร์เป็นเส้นเชื่อม การสำรวจกราฟช่วยให้แยกแยะระหว่าง 'ข้อมูลที่ยังใช้งานได้' กับ 'ขยะ' ได้อย่างแม่นยำ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คำสั่ง Assignment เช่น `P = Q` ส่งผลต่อระบบ Reference Counting อย่างไร",
+    "options": [
+      {
+        "statement": "ลดค่า Counter ของออบเจกต์เดิมที่ P ชี้อยู่ และเพิ่มค่า Counter ของออบเจกต์ที่ Q ชี้อยู่",
+        "istrue": true
+      },
+      {
+        "statement": "เพิ่มค่า Counter ของทั้ง P และ Q",
+        "istrue": false
+      },
+      {
+        "statement": "ลบออบเจกต์ P ทิ้งทันที",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่มีผลต่อค่า Counter",
+        "istrue": false
+      }
+    ],
+    "explanation": "การเปลี่ยนที่อยู่ของพอยน์เตอร์หมายถึงออบเจกต์เก่ามีการอ้างอิงลดลง และออบเจกต์ใหม่มีการอ้างอิงเพิ่มขึ้น ระบบจึงต้องอัปเดต Counter ทั้งสองจุด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เทคนิค 'Compaction' ช่วยเพิ่มประสิทธิภาพในการ Allocate หน่วยความจำในอนาคตได้อย่างไร",
+    "options": [
+      {
+        "statement": "ลดการตรวจสอบพอยน์เตอร์",
+        "istrue": false
+      },
+      {
+        "statement": "ทำให้การจองพื้นที่ใหม่ทำได้เพียงแค่การเลื่อนตัวชี้ (Pointer bumping) บนพื้นที่ว่างก้อนเดียวขนาดใหญ่",
+        "istrue": true
+      },
+      {
+        "statement": "ลบพอยน์เตอร์ที่ไม่จำเป็นออกทั้งหมด",
+        "istrue": false
+      },
+      {
+        "statement": "ลดความร้อนของหน่วยความจำ RAM",
+        "istrue": false
+      }
+    ],
+    "explanation": "เมื่อพื้นที่ว่างถูกรวมเป็นก้อนเดียว พาร์เซอร์ไม่จำเป็นต้องค้นหาช่องว่างในตาราง (Free list) แต่สามารถจองพื้นที่ต่อท้ายกันไปได้เลยซึ่งรวดเร็วกว่ามาก"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความถี่ในการทำงานของ GC (GC Frequency) ควรถูกตั้งค่าอย่างไรเพื่อความสมดุล",
+    "options": [
+      {
+        "statement": "รันตลอดเวลาทุกวินาที",
+        "istrue": false
+      },
+      {
+        "statement": "รันเฉพาะเมื่อหน่วยความจำใกล้จะเต็มเพื่อให้รบกวนโปรแกรมหลักน้อยที่สุด",
+        "istrue": true
+      },
+      {
+        "statement": "รันเฉพาะเมื่อผู้ใช้ปิดเครื่อง",
+        "istrue": false
+      },
+      {
+        "statement": "รันเฉพาะเมื่อมีการพิมพ์เอกสาร",
+        "istrue": false
+      }
+    ],
+    "explanation": "การรัน GC มีต้นทุนด้านเวลา หากรันบ่อยเกินไปโปรแกรมจะช้า หากรันห่างเกินไปหน่วยความจำอาจเต็ม ดังนั้นจึงต้องรันเมื่อมีความจำเป็น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "พฤติกรรม 'Tenuring' ใน Generational GC หมายถึงอะไร",
+    "options": [
+      {
+        "statement": "การลบข้อมูลทิ้งอย่างถาวร",
+        "istrue": false
+      },
+      {
+        "statement": "กระบวนการเลื่อนขั้นออบเจกต์จาก Young Generation ไปยัง Old Generation",
+        "istrue": true
+      },
+      {
+        "statement": "การเปลี่ยนขนาดของ Heap",
+        "istrue": false
+      },
+      {
+        "statement": "การจำกัดจำนวนตัวแปรใน Stack",
+        "istrue": false
+      }
+    ],
+    "explanation": "Tenuring คือการระบุว่าออบเจกต์นั้นมีอายุยืนนานเพียงพอที่จะถูกมองว่าเป็นส่วนหนึ่งของโครงสร้างโปรแกรมระยะยาว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในอัลกอริทึม GC สัญลักษณ์ '$\\lambda$' หรือสตริงว่างที่เกี่ยวข้องกับหน่วยความจำหมายถึงอะไร",
+    "options": [
+      {
+        "statement": "ข้อมูลที่มีค่าความจริงเป็นเท็จ",
+        "istrue": false
+      },
+      {
+        "statement": "การไม่มีพอยน์เตอร์หรือไม่มีข้อมูลจองอยู่ในพื้นที่นั้น",
+        "istrue": true
+      },
+      {
+        "statement": "รหัสคำสั่งสำหรับทำลายข้อมูล",
+        "istrue": false
+      },
+      {
+        "statement": "ชื่อของตัวแปรเริ่มต้น",
+        "istrue": false
+      }
+    ],
+    "explanation": "ในทางทฤษฎีสตริงว่างหมายถึงความว่างเปล่า ซึ่งในบริบทของหน่วยความจำคือการที่ไม่มีข้อมูลใดๆ จองครองพื้นที่อยู่"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ทำไมภาษาเช่น Java หรือ C# จึงเลือกใช้ Garbage Collection แทนการ Free แบบ Manual",
+    "options": [
+      {
+        "statement": "เพื่อให้โปรแกรมรันได้เร็วกว่า C",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อเพิ่มเสถียรภาพและลดภาระของผู้พัฒนาในการจัดการหน่วยความจำที่ซับซ้อน",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะการใช้ Manual Deallocation ผิดกฎหมายซอฟต์แวร์",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อให้โค้ดสามารถเขียนด้วยมือได้ยากขึ้น",
+        "istrue": false
+      }
+    ],
+    "explanation": "GC ช่วยลดความซับซ้อนและป้องกันข้อผิดพลาดที่เกิดขึ้นบ่อยครั้งจากการจัดการหน่วยความจำด้วยมือ ซึ่งช่วยเพิ่มเสถียรภาพให้กับแอปพลิเคชัน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดเป็นข้อเสียของการใช้ Generational GC",
+    "options": [
+      {
+        "statement": "ไม่สามารถคืนหน่วยความจำได้เลย",
+        "istrue": false
+      },
+      {
+        "statement": "มีความซับซ้อนในการจัดการความสัมพันธ์ระหว่างออบเจกต์ในคนละ Generation (Inter-generational references)",
+        "istrue": true
+      },
+      {
+        "statement": "ใช้กับตัวเลขจำนวนเต็มไม่ได้",
+        "istrue": false
+      },
+      {
+        "statement": "ทำให้ไฟล์ภาพเสียหาย",
+        "istrue": false
+      }
+    ],
+    "explanation": "คอมไพเลอร์ต้องใช้เทคนิคพิเศษ (เช่น Write Barriers) เพื่อติดตามพอยน์เตอร์ที่ชี้จาก Old Gen กลับมายัง Young Gen ซึ่งเพิ่มความซับซ้อนให้กับระบบ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ผลลัพธ์สุดท้ายที่พึงประสงค์ที่สุดของกระบวนการ Garbage Collection คืออะไร",
+    "options": [
+      {
+        "statement": "การใช้หน่วยความจำให้เต็มความจุเสมอ",
+        "istrue": false
+      },
+      {
+        "statement": "การทำให้หน่วยความจำ Heap พร้อมสำหรับการจองใหม่โดยไม่มีการรั่วไหลหรือการกระจายตัว",
+        "istrue": true
+      },
+      {
+        "statement": "การลบไฟล์ที่ไม่สำคัญออกจาก Hard Drive",
+        "istrue": false
+      },
+      {
+        "statement": "การตรวจสอบไวรัสในระบบ",
+        "istrue": false
+      }
+    ],
+    "explanation": "เป้าหมายของ GC คือการจัดการทรัพยากรหน่วยความจำให้โปรแกรมสามารถทำงานต่อเนื่องได้อย่างมีประสิทธิภาพและปลอดภัย"
+  }
+]
