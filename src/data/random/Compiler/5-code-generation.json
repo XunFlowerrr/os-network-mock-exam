@@ -1,0 +1,692 @@
+[
+  {
+    "type": "multiple-choice",
+    "question": "ในกระบวนการ Code Generation ขั้นตอน 'Abstract Interpretation' มีวัตถุประสงค์หลักเพื่ออะไร",
+    "options": [
+      {
+        "statement": "เพื่อสร้างคำสั่งภาษาเครื่องโดยตรง",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อทดสอบการทำงานของ Parse Tree โดยการจำลองการรันความหมายของโครงสร้างนั้น",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อลดขนาดของซอร์สโค้ด",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อตรวจสอบข้อผิดพลาดทางไวยากรณ์ (Syntax Error)",
+        "istrue": false
+      }
+    ],
+    "explanation": "Abstract Interpretation คือการสร้าง Interpreter เพื่อตรวจสอบและยืนยันว่าโครงสร้างต้นไม้ที่ได้จากการ Parse ทำงานได้ถูกต้องตามความหมายที่กำหนดก่อนจะนำไปสร้างเป็น Code จริง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "โครงสร้างข้อมูลแบบ 'Dot-pair' ในหน่วยความจำที่ใช้เก็บ Parse Tree ประกอบด้วยส่วนประกอบสำคัญใดบ้าง",
+    "options": [
+      {
+        "statement": "Integer และ String",
+        "istrue": false
+      },
+      {
+        "statement": "Head และ Tail (หรือ Car และ Cdr)",
+        "istrue": true
+      },
+      {
+        "statement": "Stack และ Queue",
+        "istrue": false
+      },
+      {
+        "statement": "Register และ ALU",
+        "istrue": false
+      }
+    ],
+    "explanation": "Dot-pair เป็นหน่วยพื้นฐานในโครงสร้างแบบ Linked List ที่ใช้เก็บ Parse Tree โดยส่วน Head เก็บข้อมูลหรือพอยน์เตอร์ตัวปัจจุบัน และ Tail เก็บพอยน์เตอร์ไปยังโหนดถัดไป"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สถาปัตยกรรมแบบ 'Stack-based machine' ของ S-code มีลักษณะเด่นอย่างไรในเชิงการประมวลผลคำสั่ง",
+    "options": [
+      {
+        "statement": "ต้องระบุ Address ของ Register ทุกครั้งในทุกคำสั่ง",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้คำสั่งแบบ Zero-address โดยกระทำกับข้อมูลที่อยู่บนสุดของ Stack (Top of Stack)",
+        "istrue": true
+      },
+      {
+        "statement": "ทำงานได้เฉพาะกับข้อมูลประเภท Global เท่านั้น",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่รองรับการทำงานแบบ Recursive",
+        "istrue": false
+      }
+    ],
+    "explanation": "Stack-based machine ไม่จำเป็นต้องระบุที่อยู่ของตัวถูกดำเนินการ (Operand) ในคำสั่งคำนวณส่วนใหญ่ เพราะคำสั่งเหล่านั้นจะดึงข้อมูลจากส่วนบนสุดของ Stack มาประมวลผลโดยอัตโนมัติ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คำสั่ง 'lit.v' ในชุดคำสั่ง S-code มีหน้าที่อะไร",
+    "options": [
+      {
+        "statement": "โหลดค่าจากตัวแปร Local",
+        "istrue": false
+      },
+      {
+        "statement": "นำค่าคงที่ (Literal constant) ค่า v วางลงบน Stack",
+        "istrue": true
+      },
+      {
+        "statement": "กระโดดไปยังตำแหน่งที่ v",
+        "istrue": false
+      },
+      {
+        "statement": "ส่งค่ากลับจากฟังก์ชัน",
+        "istrue": false
+      }
+    ],
+    "explanation": "คำสั่ง lit (Literal) ใช้สำหรับผลักค่าตัวเลขคงที่เข้าไปใน Stack เพื่อใช้ในการคำนวณถัดไป"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความแตกต่างระหว่างคำสั่ง 'get.n' และ 'ld.b' ในการเข้าถึงข้อมูลคือข้อใด",
+    "options": [
+      {
+        "statement": "get.n เข้าถึงตัวแปร Global ส่วน ld.b เข้าถึงตัวแปร Local",
+        "istrue": false
+      },
+      {
+        "statement": "get.n เข้าถึงข้อมูลใน Stack ตามดัชนีสัมพัทธ์ (Local) ส่วน ld.b เข้าถึงที่อยู่หน่วยความจำแบบเจาะจง (Global)",
+        "istrue": true
+      },
+      {
+        "statement": "get.n ใช้สำหรับตัวเลข ส่วน ld.b ใช้สำหรับข้อความ",
+        "istrue": false
+      },
+      {
+        "statement": " ld.b ทำงานเร็วกว่า get.n เสมอ",
+        "istrue": false
+      }
+    ],
+    "explanation": "get.n เป็นคำสั่งจัดการตัวแปร Local ที่อ้างอิงตำแหน่งตามความลึกของ Stack Frame ปัจจุบัน ในขณะที่ ld (Load) มักใช้อ้างอิงตัวแปร Global ผ่านที่อยู่คงที่"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในกระบวนการสร้างรหัสสำหรับเงื่อนไข (Control Flow) คำสั่ง 'jf xx' (Jump if False) จะทำงานเมื่อใด",
+    "options": [
+      {
+        "statement": "เมื่อค่าบนสุดของ Stack เป็นจริง",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อค่าบนสุดของ Stack เป็นเท็จ (ศูนย์) จะกระโดดไปยังตำแหน่งเป้าหมาย xx",
+        "istrue": true
+      },
+      {
+        "statement": "กระโดดเสมอโดยไม่ตรวจสอบเงื่อนไข",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อ Stack ว่างเปล่า",
+        "istrue": false
+      }
+    ],
+    "explanation": "jf (Jump if False) ใช้สำหรับควบคุมทิศทางของโปรแกรม โดยจะข้ามบล็อกคำสั่งที่เป็นจริงไปยังส่วน Else หรือจุดจบของเงื่อนไขหากผลลัพธ์การตรวจสอบเงื่อนไขเป็นเท็จ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เทคนิค 'Backpatching' ถูกนำมาใช้แก้ปัญหาใดในขั้นตอน Code Generation",
+    "options": [
+      {
+        "statement": "การคำนวณเลขทศนิยมผิดพลาด",
+        "istrue": false
+      },
+      {
+        "statement": "การไม่ทราบตำแหน่งที่อยู่ (Address) ของเป้าหมายการ Jump ในขณะที่กำลังสร้างคำสั่งนั้น",
+        "istrue": true
+      },
+      {
+        "statement": "การที่หน่วยความจำ Stack เต็ม",
+        "istrue": false
+      },
+      {
+        "statement": "การลบตัวแปรที่ไม่ได้ใช้งานออกจาก Symbol Table",
+        "istrue": false
+      }
+    ],
+    "explanation": "เมื่อสร้างคำสั่ง Jump คอมไพเลอร์อาจยังไม่ทราบที่อยู่ของ Label เป้าหมายที่อยู่ถัดไป จึงต้องเว้นช่องว่างไว้และย้อนกลับมาเติม (Patch) ที่อยู่นั้นเมื่อทราบตำแหน่งที่แน่นอนแล้ว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ฟังก์ชัน 'eval(e)' ในการทำงานของ Interpreter จัดการกับโหนดประเภท 'Atom' อย่างไร",
+    "options": [
+      {
+        "statement": "ข้ามไปทำโหนดถัดไปทันที",
+        "istrue": false
+      },
+      {
+        "statement": "คืนค่าคงที่โดยตรง หรือค้นหาค่าจากที่อยู่ของตัวแปร (Local/Global) ที่ระบุใน Atom นั้น",
+        "istrue": true
+      },
+      {
+        "statement": "แตกกิ่งก้านของ Atom ออกเป็นต้นไม้ย่อย",
+        "istrue": false
+      },
+      {
+        "statement": "ลบ Atom ออกจากหน่วยความจำ",
+        "istrue": false
+      }
+    ],
+    "explanation": "Atom คือหน่วยย่อยที่สุด (Leaf node) ของ Parse Tree ซึ่งอาจเป็นค่าคงที่หรือตัวแปร ระบบจึงต้องดึงค่าจริงที่ผูกติดอยู่กับ Atom นั้นออกมาเพื่อใช้ประมวลผล"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากต้องการสร้าง Code สำหรับนิพจน์ 'a = b + c' โดยกำหนดให้เป็นตัวแปร Local ทั้งหมด ลำดับคำสั่ง S-code ที่ถูกต้องคือข้อใด",
+    "options": [
+      {
+        "statement": "get.b, get.c, add, put.a",
+        "istrue": true
+      },
+      {
+        "statement": "add, get.b, get.c, put.a",
+        "istrue": false
+      },
+      {
+        "statement": "ld.b, ld.c, add, st.a",
+        "istrue": false
+      },
+      {
+        "statement": "put.a, add, get.b, get.c",
+        "istrue": false
+      }
+    ],
+    "explanation": "ในระบบ Stack ต้องนำตัวถูกดำเนินการ (b และ c) ขึ้นไปวางบน Stack ก่อนด้วย get แล้วจึงเรียกคำสั่ง add เพื่อบวกค่าบนสุดสองตัว และสุดท้ายนำผลลัพธ์ลงมาเก็บที่ตัวแปรเป้าหมาย (a) ด้วย put"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในการสร้างฟังก์ชัน (Function Definition) คำสั่ง 'ret' มีบทบาทสำคัญอย่างไร",
+    "options": [
+      {
+        "statement": "เริ่มการทำงานของฟังก์ชัน",
+        "istrue": false
+      },
+      {
+        "statement": "ส่งค่าผลลัพธ์ที่อยู่บนสุดของ Stack กลับไปยังผู้เรียก และคืนค่าที่อยู่โปรแกรม (Program Counter) เพื่อทำงานต่อ",
+        "istrue": true
+      },
+      {
+        "statement": "ใช้สำหรับประกาศชื่อฟังก์ชัน",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้สำหรับหยุดการทำงานของ CPU",
+        "istrue": false
+      }
+    ],
+    "explanation": "ret (Return) ทำหน้าที่จบการทำงานของฟังก์ชันปัจจุบันและย้อนกลับไปยังตำแหน่งถัดจากคำสั่ง call ของผู้เรียก พร้อมนำค่าผลลัพธ์กลับไปด้วย"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "โครงสร้างคำสั่ง S-code ขนาด 32-bit ถูกแบ่งสัดส่วนอย่างไร",
+    "options": [
+      {
+        "statement": "Opcode 16 bit และ Data 16 bit",
+        "istrue": false
+      },
+      {
+        "statement": "Opcode 8 bit และ Data 24 bit",
+        "istrue": true
+      },
+      {
+        "statement": "Opcode 24 bit และ Data 8 bit",
+        "istrue": false
+      },
+      {
+        "statement": "Data ทั้งหมด 32 bit",
+        "istrue": false
+      }
+    ],
+    "explanation": "S-code ออกแบบให้ 8 bit แรกเป็น Opcode เพื่อระบุชนิดของคำสั่ง และ 24 bit ที่เหลือเป็นส่วนขยายสำหรับเก็บค่าคงที่ หรือที่อยู่ (Address/Offset)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ฟังก์ชัน 'gen(e)' ที่ทำหน้าที่สร้าง Code แตกต่างจากฟังก์ชัน 'eval(e)' ที่ทำหน้าที่ตีความอย่างไร",
+    "options": [
+      {
+        "statement": "gen(e) ทำงานเร็วกว่า eval(e)",
+        "istrue": false
+      },
+      {
+        "statement": "eval(e) ทำการคำนวณทันที แต่ gen(e) พ่นคำสั่งเครื่องจักรออกมาเพื่อให้เครื่องจักรทำงานในภายหลัง",
+        "istrue": true
+      },
+      {
+        "statement": "gen(e) ใช้กับตัวแปร Global เท่านั้น",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่มีความแตกต่างกันในเชิงตรรกะ",
+        "istrue": false
+      }
+    ],
+    "explanation": "Interpreter (eval) ประมวลผลค่าทันทีที่อ่านโหนด แต่ Compiler/Generator (gen) จะผลิตชุดคำสั่งเครื่องที่สอดคล้องกับความหมายของโหนดนั้นออกมาเป็นไฟล์รหัสเป้าหมาย"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การจัดการกับ Recursive Function ใน Code Generation ต้องอาศัยกลไกใดของ S-code เป็นหลัก",
+    "options": [
+      {
+        "statement": "การขยายพื้นที่หน่วยความจำ Global",
+        "istrue": false
+      },
+      {
+        "statement": "การใช้ Stack Frame เพื่อเก็บ Parameter และตัวแปร Local ในแต่ละชั้นของการเรียกใช้",
+        "istrue": true
+      },
+      {
+        "statement": "การใช้คำสั่ง jmp แทนคำสั่ง call",
+        "istrue": false
+      },
+      {
+        "statement": "การลบต้นไม้ Parse Tree ทิ้งหลังการเรียกครั้งแรก",
+        "istrue": false
+      }
+    ],
+    "explanation": "ระบบ Stack รองรับการเรียกซ้อนกันได้โดยธรรมชาติ เพราะแต่ละครั้งที่เรียกฟังก์ชันจะมีการสร้างพื้นที่เก็บข้อมูล (Local/Parameter) ชุดใหม่ซ้อนทับกันไปบน Stack"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในการแปลง 'if (a == 0) return 1' เป็น S-code ขั้นตอนแรกหลังจากโหลดค่า a และ 0 ขึ้น Stack คือคำสั่งใด",
+    "options": [
+      {
+        "statement": "jmp",
+        "istrue": false
+      },
+      {
+        "statement": "eq (เพื่อเปรียบเทียบค่าทั้งสอง)",
+        "istrue": true
+      },
+      {
+        "statement": "ret",
+        "istrue": false
+      },
+      {
+        "statement": "put.1",
+        "istrue": false
+      }
+    ],
+    "explanation": "ต้องใช้คำสั่งเปรียบเทียบ (Logic operation) เช่น eq เพื่อตรวจสอบเงื่อนไขก่อนที่จะใช้คำสั่ง Jump เพื่อกำหนดทิศทางของโปรแกรม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในภาษา Lisp หรือโครงสร้าง Parse Tree ที่ระบุว่า '(= a (+ b c))' โหนดระดับบนสุด (Root) คืออะไร",
+    "options": [
+      {
+        "statement": "a",
+        "istrue": false
+      },
+      {
+        "statement": "เครื่องหมายกำหนดค่า (=)",
+        "istrue": true
+      },
+      {
+        "statement": "เครื่องหมายบวก (+)",
+        "istrue": false
+      },
+      {
+        "statement": "ค่าคงที่ c",
+        "istrue": false
+      }
+    ],
+    "explanation": "ในการเขียนโปรแกรมระดับคอมไพเลอร์ เครื่องหมายกำหนดค่า (Assignment) คือการดำเนินการหลักที่ครอบคลุมนิพจน์ทั้งหมด จึงจัดเป็นโหนดรากของต้นไม้นี้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คำสั่ง 'call.x' ใน S-code ทำงานอย่างไรเมื่อเริ่มเข้าสู่ฟังก์ชัน x",
+    "options": [
+      {
+        "statement": "ล้างข้อมูลทั้งหมดบน Stack",
+        "istrue": false
+      },
+      {
+        "statement": "บันทึกที่อยู่ถัดไป (Return Address) และย้ายการทำงานไปยังตำแหน่งเริ่มต้นของฟังก์ชัน x",
+        "istrue": true
+      },
+      {
+        "statement": "ทำการบวกเลขใน Register",
+        "istrue": false
+      },
+      {
+        "statement": "เปลี่ยนสถานะตัวแปรเป็น Global",
+        "istrue": false
+      }
+    ],
+    "explanation": "call ทำหน้าที่โอนย้ายการประมวลผลไปยังจุดหมายที่ระบุ พร้อมบันทึกที่อยู่ปัจจุบันเพื่อให้คำสั่ง ret สามารถย้อนกลับมาทำงานต่อได้ถูกต้อง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การเรียกใช้ฟังก์ชันแบบ 'Recursive' เช่น sum(n-1) ใน S-code จะต้องทำสิ่งใดก่อนคำสั่ง 'call'",
+    "options": [
+      {
+        "statement": "ใช้คำสั่ง ret",
+        "istrue": false
+      },
+      {
+        "statement": "เตรียมค่าพารามิเตอร์ (เช่น n-1) ไว้บน Stack",
+        "istrue": true
+      },
+      {
+        "statement": "ใช้คำสั่ง st.global",
+        "istrue": false
+      },
+      {
+        "statement": "หยุดการทำงานของ Scanner",
+        "istrue": false
+      }
+    ],
+    "explanation": "ก่อนเรียกฟังก์ชัน ผู้เรียกต้องเตรียมอาร์กิวเมนต์ที่จำเป็นไว้บนส่วนบนสุดของ Stack เพื่อให้ฟังก์ชันที่ถูกเรียกสามารถหยิบไปใช้เป็นตัวแปร Local ได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในตารางคำสั่ง S-code หมวดหมู่ 'Arith' และ 'Logic' แตกต่างกันอย่างไร",
+    "options": [
+      {
+        "statement": "Arith ใช้กับตัวเลข Logic ใช้กับตัวแปร",
+        "istrue": false
+      },
+      {
+        "statement": "Arith ให้ผลลัพธ์เป็นค่าจำนวนหลัก Logic ให้ผลลัพธ์เป็นค่าความจริง (Boolean)",
+        "istrue": true
+      },
+      {
+        "statement": "Logic ทำงานบนหน่วยความจำ Global เท่านั้น",
+        "istrue": false
+      },
+      {
+        "statement": "Arith ไม่สามารถใช้ใน Parse Tree ได้",
+        "istrue": false
+      }
+    ],
+    "explanation": "Arith (Arithmetic) คือการคำนวณทางคณิตศาสตร์ เช่น add, sub ในขณะที่ Logic คือการเปรียบเทียบ เช่น eq, gt ซึ่งมักใช้เป็นเงื่อนไขในการตัดสินใจ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากคอมไพเลอร์พบโหนดประเภท 'PLUS' ในฟังก์ชัน gen(e) ขั้นตอนที่ถูกต้องคืออะไร",
+    "options": [
+      {
+        "statement": "เรียก gen กับลูกซ้าย, เรียก gen กับลูกขวา, แล้วเขียนคำสั่ง 'add' ลงในไฟล์",
+        "istrue": true
+      },
+      {
+        "statement": "เขียนคำสั่ง 'add' ก่อน แล้วค่อยเรียก gen กับลูกๆ",
+        "istrue": false
+      },
+      {
+        "statement": "บวกลูกซ้ายและขวาเข้าด้วยกันทันที",
+        "istrue": false
+      },
+      {
+        "statement": "ส่งโหนดไปยัง Symbol Table",
+        "istrue": false
+      }
+    ],
+    "explanation": "การสร้าง Code สำหรับ Stack machine ต้องสร้าง Code เพื่อนำตัวถูกดำเนินการขึ้น Stack ก่อน (Post-order traversal) จึงค่อยเขียนคำสั่งดำเนินการตามหลัง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความสำคัญของการ 'Machine Abstraction' ในกระบวนการคอมไพล์คืออะไร",
+    "options": [
+      {
+        "statement": "เพื่อให้โปรแกรมเขียนได้สั้นลง",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อกำหนดโครงสร้างและชุดคำสั่งของเครื่องจักรเป้าหมายที่จะนำโปรแกรมไปรัน",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อแปลง Parse Tree ให้เป็นภาพกราฟิก",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อให้รองรับการประมวลผลแบบ Cloud",
+        "istrue": false
+      }
+    ],
+    "explanation": "คอมไพเลอร์ต้องทราบว่าสถาปัตยกรรมเป้าหมายทำงานอย่างไร (เช่น Stack vs Register) เพื่อจะผลิตชุดคำสั่งที่เครื่องจักรนั้นเข้าใจและประมวลผลได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดการ Copy a parse tree ในสไลด์ที่ 6 จึงต้องใช้ฟังก์ชันแบบ Recursive",
+    "options": [
+      {
+        "statement": "เพราะโครงสร้างต้นไม้มีลักษณะเป็นชั้นและมีความสัมพันธ์แบบกิ่งก้าน (Nested structure)",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะทำงานได้เร็วกว่าการใช้ลูป",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะต้องการประหยัดพื้นที่ Register",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะคำสั่ง S-code บังคับไว้",
+        "istrue": false
+      }
+    ],
+    "explanation": "ต้นไม้ประกอบด้วยกิ่งย่อยๆ ที่มีโครงสร้างเหมือนกัน การใช้ฟังก์ชันเรียกตัวเอง (Recursion) จึงเป็นวิธีที่ตรงไปตรงมาที่สุดในการไล่ผ่านทุกโหนดของต้นไม้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คำสั่งใดในกลุ่ม S-code ที่ใช้สำหรับย้ายข้อมูลจากยอด Stack ไปเก็บในตัวแปร Global",
+    "options": [
+      {
+        "statement": "get",
+        "istrue": false
+      },
+      {
+        "statement": "st (Store)",
+        "istrue": true
+      },
+      {
+        "statement": "ld (Load)",
+        "istrue": false
+      },
+      {
+        "statement": "lit",
+        "istrue": false
+      }
+    ],
+    "explanation": "st หรือ Store ทำหน้าที่นำค่าผลลัพธ์จากการประมวลผลบน Stack ไปบันทึกไว้ในตำแหน่งหน่วยความจำที่กำหนดถาวร (Global)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในฟังก์ชัน eval(e) หากเจอคำสั่งประเภท 'IF' ลำดับการทำงานที่ถูกต้องคืออะไร",
+    "options": [
+      {
+        "statement": "ทำทุกกิ่งพร้อมกัน",
+        "istrue": false
+      },
+      {
+        "statement": "คำนวณเงื่อนไขก่อน หากเป็นจริงค่อยคำนวณกิ่ง Then หากเป็นเท็จค่อยคำนวณกิ่ง Else",
+        "istrue": true
+      },
+      {
+        "statement": "ทำกิ่ง Else ก่อนเสมอ",
+        "istrue": false
+      },
+      {
+        "statement": "คำนวณเฉพาะผลลัพธ์สุดท้าย",
+        "istrue": false
+      }
+    ],
+    "explanation": "Interpreter ต้องเลือกรันเฉพาะกิ่งที่ตรงตามเงื่อนไขที่ประเมินได้จริง ณ ขณะนั้นเพื่อความถูกต้องของตรรกะโปรแกรม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ชุดคำสั่ง S-code ทั้งหมดมีประมาณกี่คำสั่งที่ระบุในเนื้อหา",
+    "options": [
+      {
+        "statement": "10 คำสั่ง",
+        "istrue": false
+      },
+      {
+        "statement": "36 คำสั่ง",
+        "istrue": true
+      },
+      {
+        "statement": "256 คำสั่ง",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่จำกัดจำนวน",
+        "istrue": false
+      }
+    ],
+    "explanation": "เนื้อหาระบุว่า S-code มีชุดคำสั่งมาตรฐาน 36 คำสั่ง ซึ่งครอบคลุมการทำงานพื้นฐานทั้งหมดที่จำเป็นสำหรับภาษาโปรแกรมทั่วไป"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "บทบาทของ 'Program Counter' ในเครื่องจักรจำลอง S-code คืออะไร",
+    "options": [
+      {
+        "statement": "เก็บค่าตัวเลขที่ใช้บวก",
+        "istrue": false
+      },
+      {
+        "statement": "เก็บตำแหน่ง (Index) ของคำสั่งถัดไปที่จะถูกดึงมาประมวลผล",
+        "istrue": true
+      },
+      {
+        "statement": "นับจำนวนตัวแปรในโปรแกรม",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้สำหรับส่งค่ากลับจากฟังก์ชัน",
+        "istrue": false
+      }
+    ],
+    "explanation": "Program Counter (PC) เป็นตัวชี้ลำดับการทำงานของโปรแกรม ซึ่งจะขยับไปทีละตำแหน่ง หรือกระโดดข้ามตำแหน่งเมื่อเจอคำสั่งควบคุมทิศทาง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เมื่อสร้างรหัสสำหรับ 'return a + 1' ในฟังก์ชันที่มี a เป็นพารามิเตอร์ตัวที่ 1 ลำดับที่ถูกต้องคือข้อใด",
+    "options": [
+      {
+        "statement": "get.1, lit.1, add, ret",
+        "istrue": true
+      },
+      {
+        "statement": "lit.1, get.1, ret, add",
+        "istrue": false
+      },
+      {
+        "statement": "ret, get.1, lit.1, add",
+        "istrue": false
+      },
+      {
+        "statement": "add, ret, lit.1, get.1",
+        "istrue": false
+      }
+    ],
+    "explanation": "ต้องโหลดค่าพารามิเตอร์ a (get.1) และค่าคงที่ 1 (lit.1) ขึ้นมาบวกกันก่อน (add) แล้วจึงเรียกคำสั่งคืนค่า (ret) เพื่อส่งผลลัพธ์บนยอด Stack กลับไป"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ลักษณะสำคัญของ 'Cell' ในการจัดเก็บโครงสร้างต้นไม้คืออะไร",
+    "options": [
+      {
+        "statement": "ต้องเก็บเฉพาะตัวเลขเท่านั้น",
+        "istrue": false
+      },
+      {
+        "statement": "เป็นพื้นที่หน่วยความจำที่แบ่งเป็นสองส่วนเพื่อเก็บข้อมูลและจุดเชื่อมโยง",
+        "istrue": true
+      },
+      {
+        "statement": "มีความจุไม่จำกัด",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่สามารถแก้ไขข้อมูลภายในได้",
+        "istrue": false
+      }
+    ],
+    "explanation": "Cell เป็นหน่วยความจำขนาดคงที่ที่ใช้ใน Linked List เพื่อสร้างความสัมพันธ์แบบ Node ต่อ Node ซึ่งเหมาะสมกับการเก็บโครงสร้างที่มีลำดับชั้นอย่าง Parse Tree"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในคำสั่ง S-code การ Jump แบบ 'jmp yy' แตกต่างจาก 'jf xx' อย่างไร",
+    "options": [
+      {
+        "statement": "jmp กระโดดแบบไม่มีเงื่อนไข ส่วน jf กระโดดเมื่อเงื่อนไขเป็นเท็จ",
+        "istrue": true
+      },
+      {
+        "statement": "jf ทำงานเร็วกว่า jmp",
+        "istrue": false
+      },
+      {
+        "statement": "jmp ใช้ในฟังก์ชัน ส่วน jf ใช้ในลูป",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่มีความแตกต่างกัน",
+        "istrue": false
+      }
+    ],
+    "explanation": "jmp (Jump unconditionally) จะบังคับให้ข้ามไปยังตำแหน่งเป้าหมายเสมอ ในขณะที่ jf (Jump if False) จะตัดสินใจกระโดดตามค่าเงื่อนไขบน Stack"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ขั้นตอนสุดท้ายของ Code Generation เมื่อทำการคอมไพล์ฟังก์ชันสำเร็จคือข้อใด",
+    "options": [
+      {
+        "statement": "การลบ Symbol Table",
+        "istrue": false
+      },
+      {
+        "statement": "การเขียนคำสั่ง ret เพื่อจบขอบเขตของฟังก์ชันนั้น",
+        "istrue": true
+      },
+      {
+        "statement": "การเรียกใช้ฟังก์ชัน main ทันที",
+        "istrue": false
+      },
+      {
+        "statement": "การรีเซ็ตค่า Program Counter เป็นศูนย์",
+        "istrue": false
+      }
+    ],
+    "explanation": "ทุกฟังก์ชันต้องปิดท้ายด้วยคำสั่งคืนค่า (ret) เพื่อให้เครื่องจักรจำลองทราบจุดสิ้นสุดการทำงานของบล็อกนั้นและสามารถย้อนกลับไปยังผู้เรียกได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ทำไมการเขียนคอมไพเลอร์จึงต้องเปลี่ยน 'a = b + c' เป็นโครงสร้างต้นไม้แทนที่จะแปลเป็นบรรทัดเดียว",
+    "options": [
+      {
+        "statement": "เพื่อให้โปรแกรมเมอร์อ่านโค้ดได้ง่ายขึ้น",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อรักษาสถาปัตยกรรมความสัมพันธ์และลำดับความสำคัญของการดำเนินการ (Operator Precedence)",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะ CPU ไม่รองรับการทำงานแบบเส้นตรง",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อเพิ่มจำนวนบรรทัดของโค้ด",
+        "istrue": false
+      }
+    ],
+    "explanation": "โครงสร้างต้นไม้ช่วยให้คอมไพเลอร์ทราบว่าสิ่งใดต้องทำก่อน-หลังอย่างชัดเจน (เช่น คูณก่อนบวก) แม้ประโยคซอร์สโค้ดจะเขียนเรียงกันเป็นเส้นตรงก็ตาม"
+  }
+]

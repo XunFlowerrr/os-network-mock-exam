@@ -1,0 +1,1152 @@
+[
+  {
+    "type": "multiple-choice",
+    "question": "ความแตกต่างในเชิงทิศทางการสร้างโครงสร้างต้นไม้ระหว่าง Top-down และ Bottom-up Parsing คือข้อใด",
+    "options": [
+      {
+        "statement": "Top-down เริ่มจาก Terminals ขึ้นไปหา Start Symbol",
+        "istrue": false
+      },
+      {
+        "statement": "Top-down เริ่มจาก Root (Start Symbol) แตกกิ่งลงไปหา Leaves (Terminals) ในขณะที่ Bottom-up ทำในทิศทางตรงกันข้าม",
+        "istrue": true
+      },
+      {
+        "statement": "ทั้งสองแบบเริ่มจากกิ่งกลางต้นไม้เหมือนกันแต่ใช้ Algorithm ต่างกัน",
+        "istrue": false
+      },
+      {
+        "statement": "Top-down ใช้ Postorder traversal ส่วน Bottom-up ใช้ Preorder traversal",
+        "istrue": false
+      }
+    ],
+    "explanation": "Top-down parsing เป็นการพยายามหาการอนุพัทธ์ (Derivation) จากสัญลักษณ์เริ่มต้นลงไปหาประโยคจริง ส่วน Bottom-up เป็นการลดทอน (Reduction) จากประโยคจริงกลับไปหาสัญลักษณ์เริ่มต้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในเทคนิค Recursive-Descent Parsing 'Match Procedure' มีหน้าที่หลักอย่างไร",
+    "options": [
+      {
+        "statement": "ตรวจสอบว่า Token ปัจจุบันตรงกับ Terminal ที่คาดหวังหรือไม่ และเลื่อนตัวอ่านไปยัง Token ถัดไป",
+        "istrue": true
+      },
+      {
+        "statement": "เปรียบเทียบความเร็วระหว่าง Scanner และ Parser",
+        "istrue": false
+      },
+      {
+        "statement": "ค้นหาชื่อตัวแปรใน Symbol Table",
+        "istrue": false
+      },
+      {
+        "statement": "ตรวจสอบว่า Nonterminal นั้นมี Left Recursion หรือไม่",
+        "istrue": false
+      }
+    ],
+    "explanation": "ฟังก์ชัน match ทำหน้าที่ยืนยันความถูกต้องของ Terminal ในตำแหน่งนั้นๆ ตามกฎไวยากรณ์ หากถูกต้องจะเรียก getToken() เพื่ออ่านข้อมูลชุดถัดไป"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ตัวเลข '1' ในชื่อเรียก LL(1) Parsing มีความหมายทางเทคนิคอย่างไร",
+    "options": [
+      {
+        "statement": "ใช้ Stack เพียง 1 อันในการทำงาน",
+        "istrue": false
+      },
+      {
+        "statement": "อ่าน Input จากซ้ายไปขวาเพียง 1 รอบ",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้ Lookahead symbol จำนวน 1 ตัวเพื่อตัดสินใจเลือกกฎการผลิต",
+        "istrue": true
+      },
+      {
+        "statement": "รองรับภาษาโปรแกรมได้เพียง 1 ภาษาเท่านั้น",
+        "istrue": false
+      }
+    ],
+    "explanation": "เลข 1 หมายถึงการมองข้ามช็อตไปที่ Token ถัดไปเพียงตัวเดียว (1-symbol lookahead) เพื่อใช้ตัดสินใจเลือกกฎการผลิตในตาราง Parsing Table"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เงื่อนไขใดที่ทำให้กฎการผลิต $A \\to \\alpha$ ถูกบรรจุลงในช่องตาราง LL(1) Parsing Table ที่คอลัมน์ $a$ (เมื่อ $a$ เป็น Terminal)",
+    "options": [
+      {
+        "statement": "เมื่อ $a$ อยู่ในเซต Follow(A)",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อ $a$ อยู่ในเซต First($\\alpha$)",
+        "istrue": true
+      },
+      {
+        "statement": "เมื่อ $a$ เป็นสัญลักษณ์เริ่มต้นของโปรแกรม",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อ $\\alpha$ เป็นสตริงว่าง ($\\lambda$)",
+        "istrue": false
+      }
+    ],
+    "explanation": "ตามอัลกอริทึมการสร้างตาราง LL(1) กฎ $A \\to \\alpha$ จะถูกเลือกใช้เมื่อเครื่องหมายตัวถัดไป (Lookahead) เป็นตัวที่สามารถปรากฏเป็นตัวแรกสุดที่แผ่ออกมาจาก $\\alpha$ ได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในการคำนวณ Follow Set ข้อใดคือสัญลักษณ์ที่จะถูกบรรจุลงใน Follow(S) โดยอัตโนมัติ (เมื่อ S คือ Start Symbol)",
+    "options": [
+      {
+        "statement": "$\\lambda$ (Lambda)",
+        "istrue": false
+      },
+      {
+        "statement": "$ (End of File/Input)",
+        "istrue": true
+      },
+      {
+        "statement": "+ (Plus operator)",
+        "istrue": false
+      },
+      {
+        "statement": "( (Open parenthesis)",
+        "istrue": false
+      }
+    ],
+    "explanation": "สัญลักษณ์ $ แทนจุดสิ้นสุดของสายอักขระขาเข้า ซึ่งต้องตามหลังสัญลักษณ์เริ่มต้นของไวยากรณ์เสมอตามกฎการหา Follow Set"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ลักษณะของ 'Conflict' ใน LL(1) Parsing Table ที่ระบุว่าไวยากรณ์ไม่เป็น LL(1) คือข้อใด",
+    "options": [
+      {
+        "statement": "มีช่องว่างในตารางมากเกินไป",
+        "istrue": false
+      },
+      {
+        "statement": "มีกฎการผลิตมากกว่าหนึ่งข้อปรากฏอยู่ในช่องเดียวกันของตาราง",
+        "istrue": true
+      },
+      {
+        "statement": "ไม่มีสัญลักษณ์ $ ในตาราง",
+        "istrue": false
+      },
+      {
+        "statement": "ตารางมีจำนวนแถวมากกว่าจำนวนหลัก",
+        "istrue": false
+      }
+    ],
+    "explanation": "หากในช่องตารางมีกฎซ้อนกัน (Multiple entries) Parser จะไม่สามารถตัดสินใจได้แบบ Deterministic ว่าควรเลือกใช้กฎข้อใด ทำให้ไวยากรณ์นั้นไม่เป็น LL(1)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การทำ 'Left Factoring' มีวัตถุประสงค์หลักเพื่อแก้ปัญหาใดในไวยากรณ์",
+    "options": [
+      {
+        "statement": "การเรียกตัวเองทางซ้าย (Left Recursion)",
+        "istrue": false
+      },
+      {
+        "statement": "การที่มีกฎหลายข้อเริ่มต้นด้วยสัญลักษณ์ชุดเดียวกัน (Common Prefixes)",
+        "istrue": true
+      },
+      {
+        "statement": "การลดจำนวน Nonterminals ในไวยากรณ์",
+        "istrue": false
+      },
+      {
+        "statement": "การเปลี่ยนจาก BNF เป็น EBNF",
+        "istrue": false
+      }
+    ],
+    "explanation": "Left Factoring คือการดึงตัวร่วมที่เหมือนกันในส่วนหน้าของกฎออกมา เพื่อให้ Parser สามารถตัดสินใจเลือกทางเดินที่ต่างกันได้หลังจากผ่านสัญลักษณ์ร่วมนั้นไปแล้ว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ไวยากรณ์ $A \\to A\\alpha \\mid \\beta$ มีปัญหาใดที่ทำให้ไม่สามารถใช้เทคนิค Top-down Parsing ได้โดยตรง",
+    "options": [
+      {
+        "statement": "Dangling Else",
+        "istrue": false
+      },
+      {
+        "statement": "Immediate Left Recursion",
+        "istrue": true
+      },
+      {
+        "statement": "Ambiguity",
+        "istrue": false
+      },
+      {
+        "statement": "Lack of Terminals",
+        "istrue": false
+      }
+    ],
+    "explanation": "กฎที่ Nonterminal ฝั่งซ้ายเรียกตัวเองเป็นตัวแรกสุดในฝั่งขวาจะทำให้ Recursive-descent parser วนลูปไม่รู้จบ (Infinite Loop) เนื่องจากไม่มีการเปลี่ยนสภาวะก่อนเรียกตัวเอง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในอัลกอริทึม LL(1) การจัดการกับสัญลักษณ์บน Stack เมื่อเจอ Nonterminal $A$ ที่หัว Stack และ Input $a$ คือข้อใด",
+    "options": [
+      {
+        "statement": "ดึง $A$ ออกจาก Stack และเลื่อนตำแหน่ง Input",
+        "istrue": false
+      },
+      {
+        "statement": "แทนที่ $A$ บน Stack ด้วยส่วนขวาของกฎการผลิต $A \\to X_1X_2...X_n$ โดยใส่ลงไปในลำดับย้อนกลับ",
+        "istrue": true
+      },
+      {
+        "statement": "หยุดการทำงานและรายงาน Error",
+        "istrue": false
+      },
+      {
+        "statement": "ใส่ $a$ ลงไปทับบน $A$",
+        "istrue": false
+      }
+    ],
+    "explanation": "การใส่ส่วนขวาของกฎลงไปแบบย้อนกลับ (Reverse order) เพื่อให้สัญลักษณ์ตัวซ้ายสุดของกฎนั้นอยู่ที่บนสุดของ Stack และพร้อมที่จะถูกนำมาประมวลผลเป็นตัวถัดไป"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กฎ $A \\to \\lambda$ จะถูกใส่ลงในตาราง LL(1) Parsing Table ณ คอลัมน์ที่เป็นสมาชิกของเซตใด",
+    "options": [
+      {
+        "statement": "First(A)",
+        "istrue": false
+      },
+      {
+        "statement": "Follow(A)",
+        "istrue": true
+      },
+      {
+        "statement": "Terminals ทั้งหมดในไวยากรณ์",
+        "istrue": false
+      },
+      {
+        "statement": "เฉพาะสัญลักษณ์ $ เท่านั้น",
+        "istrue": false
+      }
+    ],
+    "explanation": "หากกฎการผลิตสามารถกลายเป็นสตริงว่าง ($\\lambda$) ได้ Parser จะเลือกใช้กฎนี้ก็ต่อเมื่อ Input ตัวถัดไปเป็นสัญลักษณ์ที่สามารถตามหลัง $A$ ได้ (Follow Set)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กระบวนการ 'Removal of Left Recursion' เปลี่ยนกฎ $E \\to E + T \\mid T$ ให้เป็นรูปแบบใดที่รองรับ LL(1)",
+    "options": [
+      {
+        "statement": "ใช้โครงสร้าง EBNF $E \\to T \\{+ T\\}$ หรือสร้าง Nonterminal ใหม่ $E \\to T E'$ และ $E' \\to + T E' \\mid \\lambda$",
+        "istrue": true
+      },
+      {
+        "statement": "เปลี่ยนเป็น $E \\to T + E \\mid T$",
+        "istrue": false
+      },
+      {
+        "statement": "เปลี่ยนเป็น $E \\to (E) + T$",
+        "istrue": false
+      },
+      {
+        "statement": "ลบกฎ $E \\to E + T$ ทิ้งไป",
+        "istrue": false
+      }
+    ],
+    "explanation": "การแปลง Left Recursion ให้เป็น Right Recursion หรือการใช้ลูปวนซ้ำ (Iteration) ช่วยป้องกันการเรียกตัวเองไม่รู้จบในเทคนิค Top-down"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในการประยุกต์ใช้ Stack 2 อัน (Argument และ Operator) เพื่อสร้าง AST เมื่อพบ Operator ขั้นตอนถัดไปคืออะไร",
+    "options": [
+      {
+        "statement": "Pop เครื่องหมายออกจาก Operator Stack ทันที",
+        "istrue": false
+      },
+      {
+        "statement": "Push เครื่องหมายลงใน Operator Stack และรอจังหวะที่เหมาะสมเพื่อเรียกฟังก์ชันประกอบต้นไม้ (เช่น makebintree)",
+        "istrue": true
+      },
+      {
+        "statement": "ส่งเครื่องหมายไปให้ Scanner ตรวจสอบใหม่",
+        "istrue": false
+      },
+      {
+        "statement": "สร้าง Node รากของต้นไม้ทันที",
+        "istrue": false
+      }
+    ],
+    "explanation": "Operator Stack ทำหน้าที่พักเครื่องหมายไว้เพื่อรอลำดับความสำคัญที่ถูกต้องก่อนจะดึงออกมาประกอบกับ operands ใน Argument Stack"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ฟังก์ชัน 'makebintree' ทำการ Pop ข้อมูลจาก Argument Stack จำนวนกี่ครั้งเพื่อสร้างโหนดใหม่",
+    "options": [
+      {
+        "statement": "1 ครั้ง",
+        "istrue": false
+      },
+      {
+        "statement": "2 ครั้ง (เพื่อใช้เป็นลูกซ้ายและลูกขวาของ Operator)",
+        "istrue": true
+      },
+      {
+        "statement": "3 ครั้ง",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่ต้อง Pop เลย",
+        "istrue": false
+      }
+    ],
+    "explanation": "สำหรับ Binary Operator (เช่น +, -, *, /) ฟังก์ชันจำเป็นต้องมี Operands สองตัวจาก Argument Stack เพื่อสร้างโครงสร้างต้นไม้แบบสองกิ่ง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในไวยากรณ์สำหรับคำสั่ง 'if-else' ปัญหา Conflict มักเกิดขึ้นที่สัญลักษณ์ใดในตาราง LL(1)",
+    "options": [
+      {
+        "statement": "if",
+        "istrue": false
+      },
+      {
+        "statement": "(",
+        "istrue": false
+      },
+      {
+        "statement": "else",
+        "istrue": true
+      },
+      {
+        "statement": "$",
+        "istrue": false
+      }
+    ],
+    "explanation": "เมื่อ Parser เจอ 'else' มันจะเกิดความคลุมเครือว่าควรเลือกกฎที่จับคู่ 'else' กับ 'if' ก่อนหน้า หรือเลือกกฎที่เป็น $\\lambda$ เพื่อจบคำสั่ง 'if' เดิม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใด First(A) จึงมีความสำคัญในการสร้าง Parsing Table",
+    "options": [
+      {
+        "statement": "ช่วยระบุว่า Nonterminal นั้นสามารถสิ้นสุดประโยคได้หรือไม่",
+        "istrue": false
+      },
+      {
+        "statement": "ช่วยให้ Parser รู้ว่าหากเจอ Input $a$ ควรจะเลือกเดินตามกฎการผลิตข้อใดที่แผ่ออกมาเป็น $a$ ได้",
+        "istrue": true
+      },
+      {
+        "statement": "ใช้สำหรับคำนวณพื้นที่ในหน่วยความจำ",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้สำหรับตรวจสอบประเภทข้อมูล (Type Checking)",
+        "istrue": false
+      }
+    ],
+    "explanation": "First Set เป็นตัวบอกขอบเขตเริ่มต้นของสัญลักษณ์ต่างๆ ทำให้ Parser ตัดสินใจเลือกเส้นทางได้ถูกต้องเมื่อเห็น Input ตัวแรก"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดกล่าวถึงข้อจำกัดของ LL(1) Parsing ได้ถูกต้องที่สุด",
+    "options": [
+      {
+        "statement": "ไม่สามารถทำงานร่วมกับเครื่องคอมพิวเตอร์สมัยใหม่ได้",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่สามารถ Parse ไวยากรณ์ที่มีความกำกวม (Ambiguous) หรือมี Left Recursion ได้",
+        "istrue": true
+      },
+      {
+        "statement": "ต้องการหน่วยความจำมหาศาลในการรัน",
+        "istrue": false
+      },
+      {
+        "statement": "ทำงานได้เฉพาะกับตัวเลขเท่านั้น",
+        "istrue": false
+      }
+    ],
+    "explanation": "เทคนิค LL(1) เป็นเทคนิคแบบ Deterministic ที่อาศัยการตัดสินใจล่วงหน้าเพียง 1 ขั้นตอน ดังนั้นไวยากรณ์ที่ซับซ้อนเกินไปหรือมีความกำกวมจะทำให้เกิด Conflict ในตาราง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในขั้นตอนการสร้าง AST โหนดที่ถูกสร้างเสร็จแล้วจาก 'makebintree' จะถูกนำไปเก็บไว้ที่ใดต่อ",
+    "options": [
+      {
+        "statement": "ทิ้งไปเพราะประมวลผลเสร็จแล้ว",
+        "istrue": false
+      },
+      {
+        "statement": "Push กลับลงไปใน Argument Stack เพื่อรอเป็นลูกของ Operator ตัวถัดไป",
+        "istrue": true
+      },
+      {
+        "statement": "เก็บไว้ใน Operator Stack",
+        "istrue": false
+      },
+      {
+        "statement": "ส่งกลับไปให้ Scanner",
+        "istrue": false
+      }
+    ],
+    "explanation": "การ Push กิ่งไม้ที่ประกอบเสร็จแล้วกลับลงใน Argument Stack ทำให้เราสามารถสร้างต้นไม้ที่ซับซ้อนขึ้นไปได้เรื่อยๆ แบบ Recursive"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เงื่อนไข 'Fixed Point' ในอัลกอริทึมการหา First และ Follow Set หมายถึงอะไร",
+    "options": [
+      {
+        "statement": "การที่ค่าในเซตไม่มีการเปลี่ยนแปลงเพิ่มขึ้นอีกหลังจากวนลูปซ้ำ",
+        "istrue": true
+      },
+      {
+        "statement": "การเจอข้อผิดพลาดในโปรแกรม",
+        "istrue": false
+      },
+      {
+        "statement": "การหยุดทำงานของคอมไพเลอร์",
+        "istrue": false
+      },
+      {
+        "statement": "การที่เซตมีสมาชิกเพียงตัวเดียว",
+        "istrue": false
+      }
+    ],
+    "explanation": "เนื่องจากเซตมีขนาดจำกัดและอัลกอริทึมเป็นการเพิ่มสมาชิกเข้าไปเรื่อยๆ เมื่อถึงจุดที่ไม่มีสมาชิกใหม่เพิ่มเข้ามาอีก แสดงว่าเราได้ผลลัพธ์ที่สมบูรณ์แล้ว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในการออกแบบภาษา Assembly ของ Tawan ฟังก์ชัน 'oprnd()' ใช้ตรรกะใดในการตรวจสอบพารามิเตอร์แบบ 'reg, num'",
+    "options": [
+      {
+        "statement": "ตรวจสอบคอมม่าก่อนแล้วค่อยตรวจสอบรีจิสเตอร์",
+        "istrue": false
+      },
+      {
+        "statement": "ตรวจสอบรีจิสเตอร์ก่อน แล้วใช้ Lookahead เพื่อเช็คว่าอักขระถัดไปคือคอมม่าหรือไม่",
+        "istrue": true
+      },
+      {
+        "statement": "วนลูปอ่านทุกลักขระจนจบไฟล์",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่จำเป็นต้องตรวจสอบเพราะ ASM ไม่มีพารามิเตอร์",
+        "istrue": false
+      }
+    ],
+    "explanation": "ตรรกะของ Parser ต้องอ่าน 'reg' ก่อนตามลำดับไวยากรณ์ และใช้การแอบดู (Lookahead) เพื่อตัดสินใจว่าจะมีส่วนของคอมม่าและตัวเลขตามมาหรือไม่"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สัญลักษณ์ 'Prime' (เช่น E') ในการปรับปรุงไวยากรณ์สื่อถึงสิ่งใด",
+    "options": [
+      {
+        "statement": "สัญลักษณ์ที่เป็นเลขจำนวนเฉพาะ",
+        "istrue": false
+      },
+      {
+        "statement": "Nonterminal ใหม่ที่สร้างขึ้นเพื่อช่วยในการกระจายกฎแทนที่เดิมที่ผิดกฎ LL(1)",
+        "istrue": true
+      },
+      {
+        "statement": "ส่วนของโค้ดที่มีความสำคัญสูงสุด",
+        "istrue": false
+      },
+      {
+        "statement": "จุดสิ้นสุดของประโยค",
+        "istrue": false
+      }
+    ],
+    "explanation": "การสร้าง Nonterminal ใหม่ (เช่น A') เป็นเทคนิคมาตรฐานในการกำจัด Left Recursion และการทำ Left Factoring เพื่อให้ไวยากรณ์สอดคล้องกับ LL(1)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากไวยากรณ์มีกฎ $A \\to \\alpha \\mid \\beta$ และ First($\\alpha$) ตัดกับ First($\\beta$) ไม่เป็นเซตว่าง จะเกิดผลอย่างไร",
+    "options": [
+      {
+        "statement": "ตาราง Parsing จะไม่มีค่า",
+        "istrue": false
+      },
+      {
+        "statement": "เกิด First/First Conflict ในช่องตารางของ LL(1)",
+        "istrue": true
+      },
+      {
+        "statement": "ไวยากรณ์นั้นจะทำงานได้เร็วขึ้น",
+        "istrue": false
+      },
+      {
+        "statement": "Parser จะรายงานผลว่าสำเร็จทันที",
+        "istrue": false
+      }
+    ],
+    "explanation": "หาก First Set ของสองทางเลือกมีสมาชิกซ้ำกัน เมื่อ Parser เจอสมาชิกที่ซ้ำนั้น จะไม่สามารถตัดสินใจได้ว่าจะเลือกเดินตามกฎ $\\alpha$ หรือ $\\beta$"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในภาษาโปรแกรมจริง เหตุใดปัญหา 'General Left Recursion' จึงไม่ค่อยถูกนำมาพิจารณามากนัก",
+    "options": [
+      {
+        "statement": "เพราะคอมพิวเตอร์สมัยใหม่จัดการได้อัตโนมัติ",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะโครงสร้างภาษาโปรแกรมส่วนใหญ่ออกแบบมาให้หลีกเลี่ยงความสัมพันธ์วนรอบทางอ้อมอยู่แล้ว",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะไวยากรณ์แบบนั้นเขียนยากเกินไปสำหรับมนุษย์",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะไม่มีประโยชน์ทางธุรกิจ",
+        "istrue": false
+      }
+    ],
+    "explanation": "ความซับซ้อนของ General Left Recursion มักไม่ปรากฏในนิยามมาตรฐานของภาษาคอมพิวเตอร์ทั่วไป ซึ่งมักใช้เพียง Immediate Left Recursion เป็นหลัก"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การใช้ 'while loop' ในฟังก์ชัน ex() แทนการเรียกตัวเองมีข้อดีอย่างไร",
+    "options": [
+      {
+        "statement": "ช่วยลดขนาดของโปรแกรม",
+        "istrue": false
+      },
+      {
+        "statement": "ป้องกันปัญหา Stack Overflow จากการเรียกฟังก์ชันซ้อนกันไม่สิ้นสุด",
+        "istrue": true
+      },
+      {
+        "statement": "ทำให้ Parser รองรับภาษาเครื่องได้หลายแบบ",
+        "istrue": false
+      },
+      {
+        "statement": "ทำให้ไม่ต้องใช้ Scanner",
+        "istrue": false
+      }
+    ],
+    "explanation": "การเปลี่ยนโครงสร้างจาก Recursion เป็น Iteration (Loop) เป็นวิธีที่มีประสิทธิภาพในการจัดการกับโครงสร้างที่มีการทำซ้ำต่อเนื่องในทางซ้าย"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากต้องการ Parse นิพจน์ $1 + 2 + 3$ ให้ถูกต้องตามหลัก Left-associative ตาราง LL(1) ต้องบังคับให้ลำดับการสร้างโหนดเป็นอย่างไร",
+    "options": [
+      {
+        "statement": "คำนวณ $2 + 3$ ก่อนแล้วค่อยบวก $1$",
+        "istrue": false
+      },
+      {
+        "statement": "คำนวณ $1 + 2$ ก่อนแล้วนำผลลัพธ์ไปบวกกับ $3$",
+        "istrue": true
+      },
+      {
+        "statement": "คำนวณตัวเลขทั้งหมดพร้อมกัน",
+        "istrue": false
+      },
+      {
+        "statement": "สุ่มเลือกคู่บวก",
+        "istrue": false
+      }
+    ],
+    "explanation": "Left-associative หมายถึงลำดับการดำเนินการจากซ้ายไปขวา ซึ่งไวยากรณ์ที่ปรับปรุงแล้วสำหรับ LL(1) จะต้องจำลองลำดับนี้ให้ถูกต้องผ่านโครงสร้างต้นไม้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หน้าที่ของสัญลักษณ์ 'EOF' ในฟังก์ชัน asm() คืออะไร",
+    "options": [
+      {
+        "statement": "ใช้ระบุว่าคำสั่งนั้นผิดพลาด",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้เป็นเงื่อนไขหยุดการทำงานของลูปการ Parse เมื่ออ่านถึงจุดสิ้นสุดของไฟล์",
+        "istrue": true
+      },
+      {
+        "statement": "ใช้สำหรับล้างค่าในรีจิสเตอร์",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้เก็บที่อยู่ของหน่วยความจำ",
+        "istrue": false
+      }
+    ],
+    "explanation": "EOF (End of File) เป็น Terminal สำคัญที่ใช้บอกขอบเขตสุดท้ายของซอร์สโค้ด เพื่อให้ Parser ทราบว่าควรสิ้นสุดกระบวนการตรวจสอบ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในโครงสร้าง `A -> XY | XZ` การทำ Left Factoring จะสร้าง Nonterminal ใหม่เพื่อเก็บส่วนใด",
+    "options": [
+      {
+        "statement": "ส่วนร่วม $X$",
+        "istrue": false
+      },
+      {
+        "statement": "ส่วนที่แตกต่างกันคือ $Y$ และ $Z$",
+        "istrue": true
+      },
+      {
+        "statement": "ทั้ง $X, Y, Z$",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่สร้างสัญลักษณ์ใหม่",
+        "istrue": false
+      }
+    ],
+    "explanation": "ผลลัพธ์จะได้ $A \\to XA'$ และ $A' \\to Y \\mid Z$ โดย $A'$ จะทำหน้าที่เลือกส่วนที่แตกต่างหลังจากที่ Parser ตัดสินใจผ่านส่วนร่วม $X$ มาแล้ว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อความผิดพลาด 'Syntax Error' จาก Parser มักเกิดขึ้นเมื่อใดในระบบ LL(1)",
+    "options": [
+      {
+        "statement": "เมื่อ Stack ว่างแต่ Input ยังไม่หมด",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อเปิดตาราง Parsing Table แล้วเจอช่องว่าง (ไม่มีกฎระบุไว้)",
+        "istrue": true
+      },
+      {
+        "statement": "เมื่อชื่อตัวแปรซ้ำกัน",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อมีการหารด้วยศูนย์",
+        "istrue": false
+      }
+    ],
+    "explanation": "ช่องว่างในตาราง LL(1) สื่อถึงลำดับของ Token ที่ไม่สอดคล้องกับกฎไวยากรณ์ใดๆ ของภาษา ซึ่งเป็นจุดที่ Parser จะรายงานความผิดพลาดทางไวยากรณ์"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความสัมพันธ์ระหว่าง First Set ของ Nonterminal $A$ และ Follow Set ของ $A$ จะถูกนำมาใช้พร้อมกันเมื่อใด",
+    "options": [
+      {
+        "statement": "เมื่อต้องการตรวจสอบ Left Recursion",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อ Nonterminal $A$ สามารถแผ่ออกมาเป็นสตริงว่าง ($\\lambda$) ได้",
+        "istrue": true
+      },
+      {
+        "statement": "เมื่อโปรแกรมทำงานเสร็จสมบูรณ์",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อมีการใช้ Stack 2 อัน",
+        "istrue": false
+      }
+    ],
+    "explanation": "หาก $A \\Rightarrow^* \\lambda$ สัญลักษณ์ที่สามารถตามหลัง $A$ (Follow Set) จะกลายเป็น Lookahead ที่ถูกต้องในการเลือกใช้กฎที่นำไปสู่ $\\lambda$"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในไวยากรณ์ $exp \\to term \\{addop \\ term\\}$ ส่วนในวงเล็บปีกกา { } เทียบเท่ากับเครื่องหมายใดใน Regular Expression",
+    "options": [
+      {
+        "statement": "+ (อย่างน้อย 1 ครั้ง)",
+        "istrue": false
+      },
+      {
+        "statement": "* (Kleene Star - 0 ครั้งหรือมากกว่า)",
+        "istrue": true
+      },
+      {
+        "statement": "? (0 หรือ 1 ครั้ง)",
+        "istrue": false
+      },
+      {
+        "statement": "| (ทางเลือก)",
+        "istrue": false
+      }
+    ],
+    "explanation": "ในรูปแบบ EBNF วงเล็บปีกกาใช้แทนการทำซ้ำศูนย์ครั้งหรือมากกว่า ซึ่งช่วยในการแปลงโครงสร้างแบบ Recursion ให้เป็น Iteration"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การหา Follow Set ของ $A$ จากกฎ $B \\to \\alpha A \\beta$ สมาชิกของเซตใดจะถูกนำมาใส่ใน Follow(A)",
+    "options": [
+      {
+        "statement": "Follow(B)",
+        "istrue": false
+      },
+      {
+        "statement": "First($\\beta$) (ยกเว้น $\\lambda$)",
+        "istrue": true
+      },
+      {
+        "statement": "First(A)",
+        "istrue": false
+      },
+      {
+        "statement": "Terminals ทั้งหมดใน $\\alpha$",
+        "istrue": false
+      }
+    ],
+    "explanation": "ตามกฎการหา Follow Set สิ่งใดก็ตามที่สามารถเริ่มต้นสตริงที่แผ่ออกมาจาก $\\beta$ (ซึ่งอยู่ตามหลัง $A$) ย่อมเป็นสิ่งที่ตามหลัง $A$ ได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หาก Stack ของ LL(1) Parser มีค่าเป็น [+, T, E', $] และ Input คือ '+' ขั้นตอนต่อไปคือข้อใด",
+    "options": [
+      {
+        "statement": "รายงาน Error เพราะเจอ '+' ซ้ำ",
+        "istrue": false
+      },
+      {
+        "statement": "Pop '+' ออกจาก Stack และเลื่อน Input ไปยังตำแหน่งถัดไป (Match)",
+        "istrue": true
+      },
+      {
+        "statement": "แตกกิ่งสัญลักษณ์ '+' ออกเป็นโหนดลูก",
+        "istrue": false
+      },
+      {
+        "statement": "Push สัญลักษณ์ $ ลงไปเพิ่ม",
+        "istrue": false
+      }
+    ],
+    "explanation": "เมื่อ Terminal ที่หัว Stack ตรงกับ Input ตัวปัจจุบัน Parser จะทำการยืนยัน (Match) โดยการดึงออกจาก Stack และอ่าน Token ถัดไป"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในไวยากรณ์ใหม่ $E \\to T E'$ และ $E' \\to + T E' \\mid \\lambda$ สัญลักษณ์ $E'$ ทำหน้าที่แทนส่วนใดของนิพจน์เดิม",
+    "options": [
+      {
+        "statement": "ส่วนเริ่มต้นของนิพจน์",
+        "istrue": false
+      },
+      {
+        "statement": "ส่วนต่อขยายที่ประกอบด้วยเครื่องหมายบวกและเทอมถัดไป",
+        "istrue": true
+      },
+      {
+        "statement": "ส่วนของวงเล็บ",
+        "istrue": false
+      },
+      {
+        "statement": "ส่วนของตัวแปรเดี่ยว",
+        "istrue": false
+      }
+    ],
+    "explanation": "$E'$ ถูกสร้างขึ้นเพื่อรองรับส่วนท้ายของนิพจน์ที่อาจมีการบวกเพิ่มไปเรื่อยๆ หรือจบลงที่ความว่างเปล่า เพื่อกำจัดปัญหา Left Recursion"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การทำงานของ 'Argument Stack' ในช่วงที่มีการ Parse นิพจน์ซ้อนกัน (เช่น 1 + (2 * 3)) มีลักษณะอย่างไร",
+    "options": [
+      {
+        "statement": "เก็บเฉพาะผลลัพธ์สุดท้ายเพียงอย่างเดียว",
+        "istrue": false
+      },
+      {
+        "statement": "เก็บโหนดของต้นไม้ย่อย (Sub-trees) ที่รอการเชื่อมต่อด้วย Operator ที่มีลำดับความสำคัญต่ำกว่า",
+        "istrue": true
+      },
+      {
+        "statement": "เก็บเฉพาะเครื่องหมายวงเล็บ",
+        "istrue": false
+      },
+      {
+        "statement": "ล้างค่าทุครั้งที่เจอเครื่องหมายคูณ",
+        "istrue": false
+      }
+    ],
+    "explanation": "Argument Stack ทำหน้าที่เป็นหน่วยความจำชั่วคราวเพื่อรอให้พาร์เซอร์รวบรวมชิ้นส่วนของต้นไม้ให้ครบตามลำดับความสำคัญของตัวดำเนินการ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ถ้าช่องตาราง Parsing Table สำหรับ Nonterminal $A$ และ Input $a$ เป็นช่องว่าง (Empty) พาร์เซอร์ควรแสดงพฤติกรรมอย่างไร",
+    "options": [
+      {
+        "statement": "ข้าม Input ตัวนั้นไป",
+        "istrue": false
+      },
+      {
+        "statement": "เข้าสู่ Error Recovery routine เพื่อรายงาน Syntax Error และพยายามฟื้นตัว",
+        "istrue": true
+      },
+      {
+        "statement": "หยุดการทำงานของคอมพิวเตอร์",
+        "istrue": false
+      },
+      {
+        "statement": "สุ่มเลือกกฎการผลิตจากแถวอื่น",
+        "istrue": false
+      }
+    ],
+    "explanation": "ช่องว่างในตารางหมายถึงกรณีที่ไวยากรณ์ไม่อนุญาตให้เกิดเหตุการณ์นี้ขึ้น ซึ่งเป็นจุดเริ่มต้นของกระบวนการจัดการข้อผิดพลาดทางไวยากรณ์"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในฟังก์ชัน reg() ของภาษา ASM การเรียก match('R') และ num() ตามลำดับสื่อถึงสิ่งใด",
+    "options": [
+      {
+        "statement": "การตรวจสอบประเภทข้อมูล String",
+        "istrue": false
+      },
+      {
+        "statement": "โครงสร้างของรีจิสเตอร์ที่ต้องขึ้นต้นด้วยอักขระ 'R' และตามด้วยหมายเลข",
+        "istrue": true
+      },
+      {
+        "statement": "การคำนวณผลลัพธ์ในหน่วยประมวลผล",
+        "istrue": false
+      },
+      {
+        "statement": "การจองพื้นที่ในหน่วยความจำ RAM",
+        "istrue": false
+      }
+    ],
+    "explanation": "นี่คือการจำลองกฎไวยากรณ์ `reg = 'R' num` เข้าสู่การเขียนโปรแกรมแบบ Recursive Descent"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความแตกต่างสำคัญระหว่าง First Set และ Lookahead ในบริบทของ LL(1) คืออะไร",
+    "options": [
+      {
+        "statement": "ไม่มีความแตกต่างกัน",
+        "istrue": false
+      },
+      {
+        "statement": "First Set คือคุณสมบัติของไวยากรณ์ ส่วน Lookahead คืออักขระจริงที่พาร์เซอร์เห็นขณะรัน",
+        "istrue": true
+      },
+      {
+        "statement": "First Set ใช้กับตัวเลข Lookahead ใช้กับตัวอักษร",
+        "istrue": false
+      },
+      {
+        "statement": "Lookahead คือจุดจบของไฟล์",
+        "istrue": false
+      }
+    ],
+    "explanation": "First Set เป็นการวิเคราะห์กฎเกณฑ์ล่วงหน้าเพื่อสร้างตาราง ส่วน Lookahead เป็นข้อมูลจริงที่ได้จาก Scanner เพื่อนำมาเปรียบเทียบกับตารางนั้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดเป็นคุณสมบัติของไวยากรณ์ที่เป็น LL(1)",
+    "options": [
+      {
+        "statement": "ต้องไม่มี Left Recursion และต้องผ่านการทำ Left Factoring แล้ว",
+        "istrue": true
+      },
+      {
+        "statement": "ต้องมีความกำกวมเพื่อให้พาร์เซอร์เลือกทางเดินได้หลายทาง",
+        "istrue": false
+      },
+      {
+        "statement": "ต้องมีจำนวนกฎการผลิตไม่เกิน 10 ข้อ",
+        "istrue": false
+      },
+      {
+        "statement": "ต้องไม่มีสัญลักษณ์ Terminal เลย",
+        "istrue": false
+      }
+    ],
+    "explanation": "ไวยากรณ์ LL(1) ต้องมีความชัดเจนในทุกขั้นตอนการตัดสินใจ การเรียกตัวเองทางซ้ายและทางเลือกที่ทับซ้อนกันจึงต้องถูกกำจัดออกไป"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในการทำ Left Factoring กฎ $elsePart \\to else \\ st \\mid \\lambda$ ช่วยแก้ปัญหาใด",
+    "options": [
+      {
+        "statement": "ปัญหาการบวกเลขผิดพลาด",
+        "istrue": false
+      },
+      {
+        "statement": "ปัญหาความคลุมเครือว่าคำสั่ง if จะมี else หรือไม่ (Dangling else/Common prefix)",
+        "istrue": true
+      },
+      {
+        "statement": "ปัญหาความเร็วในการคอมไพล์",
+        "istrue": false
+      },
+      {
+        "statement": "ปัญหาการลืมประกาศตัวแปร",
+        "istrue": false
+      }
+    ],
+    "explanation": "การแยกส่วน else ออกมาเป็นกฎใหม่ช่วยให้พาร์เซอร์ประมวลผลส่วน if ที่เหมือนกันไปก่อน แล้วค่อยมาตัดสินใจในภายหลังว่าจะประมวลผล else หรือไม่"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ถ้าพาร์เซอร์กำลังทำงานบน Stack และพบว่า Stack ว่างเปล่าพร้อมกับ Input หมดพอดี หมายถึงสถานะใด",
+    "options": [
+      {
+        "statement": "Syntax Error",
+        "istrue": false
+      },
+      {
+        "statement": "Parsing Successful (การตรวจสอบสำเร็จ)",
+        "istrue": true
+      },
+      {
+        "statement": "Infinite Loop",
+        "istrue": false
+      },
+      {
+        "statement": "หน่วยความจำเต็ม",
+        "istrue": false
+      }
+    ],
+    "explanation": "ความว่างเปล่าของทั้ง Stack และ Input แสดงว่าทุกกฎการผลิตได้รับการจับคู่กับ Token ในซอร์สโค้ดจนครบถ้วนและถูกต้องตามลำดับ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในการคำนวณ Follow(A) หากมีกฎ $B \\to \\alpha A$ (A อยู่ท้ายสุด) สิ่งใดจะถูกนำมาใส่ใน Follow(A)",
+    "options": [
+      {
+        "statement": "First(B)",
+        "istrue": false
+      },
+      {
+        "statement": "Follow(B)",
+        "istrue": true
+      },
+      {
+        "statement": "First(A)",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่มีสมาชิกใดเพิ่มเข้ามา",
+        "istrue": false
+      }
+    ],
+    "explanation": "เนื่องจากไม่มีสิ่งใดตามหลัง $A$ ในกฎนี้ สิ่งที่จะตามหลัง $A$ ได้จึงต้องเป็นสิ่งเดียวกับที่สามารถตามหลังตัวแม่คือ $B$ ได้นั่นเอง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดพาร์เซอร์แบบ Recursive Descent จึงเขียนได้ง่ายในภาษาโปรแกรมที่รองรับ Recursion",
+    "options": [
+      {
+        "statement": "เพราะไม่ต้องใช้ฟังก์ชัน match",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะสามารถแทนที่สัญลักษณ์ Nonterminal แต่ละตัวด้วย 1 ฟังก์ชันได้โดยตรงตามโครงสร้างไวยากรณ์",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะทำงานเร็วกว่าภาษาอื่น 10 เท่า",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะไม่ต้องมี Scanner",
+        "istrue": false
+      }
+    ],
+    "explanation": "โครงสร้างการเรียกฟังก์ชันซ้อนกันสอดคล้องกับธรรมชาติของการอนุพัทธ์ในไวยากรณ์แบบ Context-free ทำให้การเขียนโค้ดเป็นไปอย่างตรงไปตรงมา"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความแตกต่างระหว่าง 'Immediate' และ 'General' Left Recursion คืออะไร",
+    "options": [
+      {
+        "statement": "Immediate เรียกตัวเองโดยตรงในกฎเดียว General เรียกตัวเองผ่าน Nonterminal อื่นเป็นทอดๆ",
+        "istrue": true
+      },
+      {
+        "statement": "Immediate ทำงานเร็วกว่า General",
+        "istrue": false
+      },
+      {
+        "statement": "General ใช้เฉพาะกับภาษา C เท่านั้น",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่มีความแตกต่างกันในเชิงโปรแกรม",
+        "istrue": false
+      }
+    ],
+    "explanation": "Immediate (A -> A...) ตรวจสอบได้ง่ายกว่า ขณะที่ General (A -> B..., B -> A...) ต้องใช้อัลกอริทึมที่ซับซ้อนกว่าในการตรวจจับและกำจัด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในขั้นตอนการสร้าง AST โหนดใบ (Leaf Nodes) มักจะเก็บข้อมูลประเภทใด",
+    "options": [
+      {
+        "statement": "ตัวดำเนินการบวกลบ",
+        "istrue": false
+      },
+      {
+        "statement": "ค่าคงที่ (Literals) หรือชื่อตัวแปร (Identifiers)",
+        "istrue": true
+      },
+      {
+        "statement": "กฎไวยากรณ์ทั้งหมด",
+        "istrue": false
+      },
+      {
+        "statement": "ที่อยู่ของ Stack",
+        "istrue": false
+      }
+    ],
+    "explanation": "โหนดใบคือจุดสิ้นสุดของโครงสร้าง ซึ่งในนิพจน์คณิตศาสตร์หรือคำสั่งโปรแกรม คือค่าข้อมูลจริงที่จะถูกนำไปประมวลผล"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดกล่าวถึงความสัมพันธ์ของ 'First' และ 'Follow' ในการสร้างตาราง LL(1) ได้ถูกต้อง",
+    "options": [
+      {
+        "statement": "First ใช้หาแถว Follow ใช้หาหลัก",
+        "istrue": false
+      },
+      {
+        "statement": "First ใช้ระบุช่องสำหรับกฎทั่วไป Follow ใช้ระบุช่องสำหรับกฎ $\\lambda$",
+        "istrue": true
+      },
+      {
+        "statement": "First และ Follow ต้องมีสมาชิกที่เหมือนกันเสมอ",
+        "istrue": false
+      },
+      {
+        "statement": "Follow มีความสำคัญมากกว่า First",
+        "istrue": false
+      }
+    ],
+    "explanation": "First Set ครอบคลุมกรณีที่กฎแผ่ออกเป็นตัวอักษรจริง ส่วน Follow Set ถูกนำมาใช้เมื่อกฎนั้นแผ่ออกเป็นสตริงว่างเพื่อให้พาร์เซอร์รู้ว่าควรหยุดแผ่ที่จุดใด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในโค้ด C ของพาร์เซอร์ ASM สัญลักษณ์ 'EOF' มักจะถูกแทนด้วยค่าคงที่ใดเพื่อให้ระบุจุดสิ้นสุดได้ชัดเจน",
+    "options": [
+      {
+        "statement": "0",
+        "istrue": false
+      },
+      {
+        "statement": "ค่าพิเศษที่ได้จาก Scanner (เช่น -1 หรือสัญลักษณ์ $) ที่สื่อถึงจุดจบของข้อมูล",
+        "istrue": true
+      },
+      {
+        "statement": "100",
+        "istrue": false
+      },
+      {
+        "statement": "ตัวอักษร 'Z'",
+        "istrue": false
+      }
+    ],
+    "explanation": "พาร์เซอร์ต้องการค่าที่เป็นเอกลักษณ์จาก Scanner เพื่อทำหน้าที่เป็น Sentinel สำหรับการปิดลูปการประมวลผล"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การใช้โครงสร้างข้อมูล Stack ใน LL(1) มีความสำคัญอย่างไรต่อทฤษฎีออโตมาตา",
+    "options": [
+      {
+        "statement": "ทำให้มันกลายเป็นเครื่อง Finite State Machine",
+        "istrue": false
+      },
+      {
+        "statement": "ทำให้มันกลายเป็นเครื่อง Pushdown Automata (PDA) ที่สามารถจดจำภาษา Context-free ได้",
+        "istrue": true
+      },
+      {
+        "statement": "ทำให้มันสามารถคำนวณเลขยกกำลังได้",
+        "istrue": false
+      },
+      {
+        "statement": "ทำให้มันไม่ต้องใช้หน่วยความจำ RAM",
+        "istrue": false
+      }
+    ],
+    "explanation": "พาร์เซอร์สำหรับภาษาที่นิยามด้วย CFG จำเป็นต้องมีหน่วยความจำแบบ Stack เพื่อรองรับความสัมพันธ์แบบซ้อนชั้น (Nested structures)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากมีการเปลี่ยนแปลงกฎไวยากรณ์จาก BNF เป็น EBNF ในฟังก์ชัน ex() จะเกิดการเปลี่ยนแปลงโครงสร้างโค้ดอย่างไร",
+    "options": [
+      {
+        "statement": "ต้องเพิ่มพารามิเตอร์ในฟังก์ชัน",
+        "istrue": false
+      },
+      {
+        "statement": "เปลี่ยนจากลำดับคำสั่งแบบเรียงลำดับเป็นการใช้ลูปวนรอบ (เช่น while หรือ for)",
+        "istrue": true
+      },
+      {
+        "statement": "ไม่ต้องแก้ไขโค้ดใดๆ",
+        "istrue": false
+      },
+      {
+        "statement": "ต้องลบฟังก์ชัน ex() ทิ้ง",
+        "istrue": false
+      }
+    ],
+    "explanation": "EBNF สื่อถึงการทำซ้ำซึ่งในทางการโปรแกรมคือการใช้ลูปควบคุม แทนที่จะเรียกฟังก์ชันตัวเองซ้ำไปมา"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในกระบวนการ `makebintree(op)` ลำดับการ Pop operands $a$ และ $b$ จาก Stack เพื่อนำไปเป็นลูกของโหนด $op$ มีความสำคัญอย่างไร",
+    "options": [
+      {
+        "statement": "ไม่มีความสำคัญ",
+        "istrue": false
+      },
+      {
+        "statement": "สำคัญมาก เพราะตัวที่ Pop ออกมาตัวแรกจะเป็นลูกขวา (Right child) และตัวที่สองจะเป็นลูกซ้าย (Left child)",
+        "istrue": true
+      },
+      {
+        "statement": "ตัวที่ Pop ตัวแรกต้องเป็นลูกซ้ายเสมอ",
+        "istrue": false
+      },
+      {
+        "statement": "ต้องสลับที่กันตลอดเวลา",
+        "istrue": false
+      }
+    ],
+    "explanation": "เนื่องจาก Stack เป็นโครงสร้างแบบ LIFO ตัวที่ถูก Push เข้าไปทีหลัง (ตัวขวาในนิพจน์) จะถูก Pop ออกมาเป็นตัวแรก"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ทำไมการทำ 'Fixed Point' iteration จึงรับประกันว่าจะได้ผลลัพธ์ของ First Set เสมอ",
+    "options": [
+      {
+        "statement": "เพราะคอมพิวเตอร์ทำงานได้รวดเร็ว",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะเซตของ Terminal มีขนาดจำกัด และสมาชิกในเซตเพิ่มขึ้นอย่างเดียว (Monotonic) ไม่มีการลดลง",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะกฎไวยากรณ์ห้ามมีความซับซ้อน",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะเป็นกฎของวิชาคณิตศาสตร์",
+        "istrue": false
+      }
+    ],
+    "explanation": "คุณสมบัติการเพิ่มขึ้นของสมาชิกในพื้นที่จำกัดรับประกันว่าอัลกอริทึมจะลู่เข้าสู่จุดอิ่มตัวและหยุดทำงานได้เอง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เป้าหมายสุดท้ายของการทำ Parsing ในคอมไพเลอร์แบบมาตรฐานคือการเตรียมข้อมูลเพื่อสิ่งใด",
+    "options": [
+      {
+        "statement": "เพื่อให้โปรแกรมเมอร์อ่านโค้ดได้ง่ายขึ้น",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อสร้างโครงสร้างตัวแทนโปรแกรม (เช่น AST) ที่พร้อมสำหรับการวิเคราะห์ความหมายและการสร้างโค้ด",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อลบไฟล์ซอร์สโค้ดทิ้ง",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อพิมพ์รายงานการใช้พลังงาน",
+        "istrue": false
+      }
+    ],
+    "explanation": "Parsing คือการจัดระเบียบข้อมูลดิบให้กลายเป็นโครงสร้างที่มีตรรกะ เพื่อให้ส่วนอื่นๆ ของคอมไพเลอร์ทำงานต่อไปได้"
+  }
+]

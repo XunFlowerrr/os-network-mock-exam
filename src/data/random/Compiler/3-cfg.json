@@ -1,0 +1,692 @@
+[
+  {
+    "type": "multiple-choice",
+    "question": "ในกระบวนการคอมไพล์ Parser มีปฏิสัมพันธ์กับ Scanner ในลักษณะใดเพื่อรวบรวมข้อมูลเข้าสู่ระบบ",
+    "options": [
+      {
+        "statement": "Parser ส่งสายอักขระ (Characters) ให้ Scanner แปลงเป็นประโยค",
+        "istrue": false
+      },
+      {
+        "statement": "Parser เรียกขอ Token จาก Scanner ทีละตัวเพื่อนำมาตรวจสอบตามกฎไวยากรณ์",
+        "istrue": true
+      },
+      {
+        "statement": "Scanner สร้าง Parse Tree แล้วส่งให้ Parser ตรวจสอบความถูกต้อง",
+        "istrue": false
+      },
+      {
+        "statement": "ทั้งสองส่วนทำงานแยกกันโดยสิ้นเชิงและติดต่อกันผ่านทาง Hard Drive เท่านั้น",
+        "istrue": false
+      }
+    ],
+    "explanation": "Parser ทำหน้าที่ควบคุมการไหลของข้อมูลโดยการเรียกใช้ Scanner เพื่อขอรับ Token มาวิเคราะห์โครงสร้างตามลำดับ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "องค์ประกอบใดใน Quintuple ของไวยากรณ์ (V, T, P, S) ที่แสดงถึง 'สัญลักษณ์สิ้นสุด' หรือคำที่ปรากฏจริงในซอร์สโค้ด",
+    "options": [
+      {
+        "statement": "V (Nonterminals)",
+        "istrue": false
+      },
+      {
+        "statement": "P (Production rules)",
+        "istrue": false
+      },
+      {
+        "statement": "T (Terminals)",
+        "istrue": true
+      },
+      {
+        "statement": "S (Start symbol)",
+        "istrue": false
+      }
+    ],
+    "explanation": "Terminals (T) คือสัญลักษณ์ที่ไม่สามารถถูกแทนที่หรือกระจายต่อได้อีก เปรียบได้กับคำสั่งหรือเครื่องหมายจริงในภาษาโปรแกรม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อกำหนดที่สำคัญที่สุดของ Context-Free Grammar (CFG) ในส่วนของกฎการผลิต (Production Rules) คืออะไร",
+    "options": [
+      {
+        "statement": "ฝั่งซ้ายของกฎต้องมี Nonterminal เพียงตัวเดียวเท่านั้น",
+        "istrue": true
+      },
+      {
+        "statement": "ฝั่งขวาของกฎต้องประกอบด้วย Terminals เท่านั้น",
+        "istrue": false
+      },
+      {
+        "statement": "ต้องไม่มีการเรียกตัวเอง (Recursion) ในกฎ",
+        "istrue": false
+      },
+      {
+        "statement": "ฝั่งซ้ายต้องมีทั้ง Terminal และ Nonterminal ผสมกัน",
+        "istrue": false
+      }
+    ],
+    "explanation": "นิยามของ CFG ระบุว่ากฎต้องอยู่ในรูป A → β โดยที่ A เป็น Nonterminal ตัวเดียว ซึ่งหมายความว่าการแทนที่สัญลักษณ์นั้นจะไม่ขึ้นกับบริบท (Context-free)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สัญลักษณ์ '::=' ในรูปแบบ BNF (Backus-Naur Form) มีความหมายตรงกับข้อใด",
+    "options": [
+      {
+        "statement": "มีค่าเท่ากับในทางคณิตศาสตร์",
+        "istrue": false
+      },
+      {
+        "statement": "ถูกนิยามว่า หรือ สามารถแทนที่ด้วย",
+        "istrue": true
+      },
+      {
+        "statement": "เป็นคำสั่งสำหรับประกาศตัวแปรใหม่",
+        "istrue": false
+      },
+      {
+        "statement": "แสดงจุดสิ้นสุดของไฟล์ข้อมูล",
+        "istrue": false
+      }
+    ],
+    "explanation": "สัญลักษณ์ ::= ใช้เชื่อมระหว่างสัญลักษณ์ฝั่งซ้าย (Nonterminal) กับรูปแบบการแทนที่ฝั่งขวาในกฎไวยากรณ์"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากไวยากรณ์หนึ่งมีทั้ง Leftmost และ Rightmost Derivation สำหรับสตริงเดียวกัน ข้อใดกล่าวถูกต้องที่สุด",
+    "options": [
+      {
+        "statement": "ไวยากรณ์นั้นต้องมีความกำกวมแน่นอน",
+        "istrue": false
+      },
+      {
+        "statement": "ผลลัพธ์สุดท้ายที่เป็น Terminals ของทั้งสองวิธีต้องเหมือนกัน",
+        "istrue": true
+      },
+      {
+        "statement": "Leftmost Derivation จะให้ผลลัพธ์ที่ถูกต้องกว่าเสมอ",
+        "istrue": false
+      },
+      {
+        "statement": "การใช้ทั้งสองวิธีจะทำให้เกิด Parse Tree สองแบบที่ต่างกัน",
+        "istrue": false
+      }
+    ],
+    "explanation": "ความแตกต่างระหว่าง Leftmost และ Rightmost เป็นเพียงลำดับการเลือกแทนที่สัญลักษณ์ตัวแปร แต่สตริงที่เป็นผลลัพธ์สุดท้าย (Yield) จะต้องตรงกันตามกฎไวยากรณ์"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ปัญหา 'Infinite Loop' ใน Top-down Parser มักเกิดจากการออกแบบไวยากรณ์ในลักษณะใด",
+    "options": [
+      {
+        "statement": "Right Recursive",
+        "istrue": false
+      },
+      {
+        "statement": "Left Recursive",
+        "istrue": true
+      },
+      {
+        "statement": "การใช้สัญลักษณ์ Lambda (λ)",
+        "istrue": false
+      },
+      {
+        "statement": "การมีกฎการผลิตมากเกินไป",
+        "istrue": false
+      }
+    ],
+    "explanation": "Top-down Parser จะพยายามแทนที่สัญลักษณ์จากซ้ายไปขวา หากเจอ Left Recursive (เช่น E → E + T) มันจะเรียกตัวเองซ้ำที่ตำแหน่งเดิมโดยไม่ขยับไปข้างหน้า ทำให้เกิดลูปไม่รู้จบ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "โครงสร้าง Parse Tree มีลักษณะการจัดเก็บข้อมูลในแต่ละโหนดอย่างไร",
+    "options": [
+      {
+        "statement": "โหนดภายใน (Interior) คือ Terminals และใบ (Leaves) คือ Nonterminals",
+        "istrue": false
+      },
+      {
+        "statement": "โหนดภายใน (Interior) คือ Nonterminals และใบ (Leaves) คือ Terminals",
+        "istrue": true
+      },
+      {
+        "statement": "ทุกโหนดต้องเป็นสัญลักษณ์สิ้นสุดเท่านั้น",
+        "istrue": false
+      },
+      {
+        "statement": "โหนดราก (Root) ต้องเป็นสัญลักษณ์ λ เสมอ",
+        "istrue": false
+      }
+    ],
+    "explanation": "ปมภายในของ Parse Tree แสดงถึงกฎที่ถูกนำมาใช้ (Nonterminals) ในขณะที่ใบไม้คือผลลัพธ์อักขระจริง (Terminals) ที่เรียงต่อกันเป็นประโยค"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดคอมไพเลอร์จึงนิยมใช้ Abstract Syntax Tree (AST) มากกว่า Parse Tree ในขั้นตอนการวิเคราะห์ระดับสูง",
+    "options": [
+      {
+        "statement": "เพราะ AST เก็บข้อมูลทางไวยากรณ์ได้ละเอียดกว่า",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะ AST ตัดส่วนประกอบทางไวยากรณ์ที่ไม่จำเป็นออก และเหลือเพียงโครงสร้างการดำเนินการที่สำคัญ",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะ AST สามารถแสดงผลเป็นรูปภาพได้สวยงามกว่า",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะ AST ไม่ต้องใช้หน่วยความจำในการจัดเก็บ",
+        "istrue": false
+      }
+    ],
+    "explanation": "AST เป็นรูปแบบที่ย่อส่วนจาก Parse Tree โดยตัดโหนดที่เป็นทางผ่านทางไวยากรณ์ออก เหลือเพียง Operators และ Operands ทำให้ประมวลผลต่อได้มีประสิทธิภาพ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความกำกวม (Ambiguity) ในไวยากรณ์ส่งผลเสียอย่างไรต่อการทำงานของคอมพิวเตอร์",
+    "options": [
+      {
+        "statement": "ทำให้ใช้เวลาในการคอมไพล์นานขึ้นเล็กน้อย",
+        "istrue": false
+      },
+      {
+        "statement": "ทำให้คอมพิวเตอร์เลือกโครงสร้างการคำนวณที่ต่างกันสำหรับโค้ดชุดเดิม ซึ่งอาจให้ผลลัพธ์ที่ผิดพลาด",
+        "istrue": true
+      },
+      {
+        "statement": "ทำให้โค้ดภาษาเครื่องมีขนาดใหญ่เกินไป",
+        "istrue": false
+      },
+      {
+        "statement": "ทำให้ไม่สามารถใช้ตัวแปรประเภท Integer ได้",
+        "istrue": false
+      }
+    ],
+    "explanation": "ความกำกวมทำให้เกิด Parse Tree ได้มากกว่า 1 แบบสำหรับสตริงเดียว ซึ่งหมายถึงความหมายของโปรแกรมอาจถูกตีความได้หลายทาง (Semantic inconsistency)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การกำหนดลำดับความสำคัญ (Precedence) ในไวยากรณ์ทำได้อย่างไร",
+    "options": [
+      {
+        "statement": "เขียนกฎสำหรับตัวที่มีความสำคัญสูงกว่าไว้ที่จุดเริ่มต้น (Start Symbol)",
+        "istrue": false
+      },
+      {
+        "statement": "ออกแบบให้ตัวที่มีความสำคัญสูงกว่าอยู่ลึกลงไปในสายการอนุพัทธ์ (ไกลจาก Start Symbol)",
+        "istrue": true
+      },
+      {
+        "statement": "ใช้สัญลักษณ์ตัวใหญ่สำหรับตัวที่มีความสำคัญสูงเท่านั้น",
+        "istrue": false
+      },
+      {
+        "statement": "เรียงลำดับกฎตามตัวอักษร A-Z",
+        "istrue": false
+      }
+    ],
+    "explanation": "ในการสร้าง Parse Tree การดำเนินการที่อยู่ลึกกว่าจะถูกคำนวณก่อน ดังนั้นการแยกชั้นของกฎ (Leveling) จึงเป็นการบังคับลำดับความสำคัญโดยปริยาย"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในนิพจน์คณิตศาสตร์ทั่วไป หากต้องการให้การบวก (+) มีลักษณะแบบ 'Left-associativity' กฎไวยากรณ์ควรเป็นอย่างไร",
+    "options": [
+      {
+        "statement": "E → E + F | F",
+        "istrue": true
+      },
+      {
+        "statement": "E → F + E | F",
+        "istrue": false
+      },
+      {
+        "statement": "E → F + F | E",
+        "istrue": false
+      },
+      {
+        "statement": "E → (E + F)",
+        "istrue": false
+      }
+    ],
+    "explanation": "กฎแบบ Left Recursive (E → E + F) บังคับให้การแตกกิ่งขยายตัวออกทางด้านซ้าย ทำให้การประมวลผลเกิดขึ้นจากซ้ายไปขวา"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ปัญหา 'Dangling Else' มักถูกแก้ไขด้วยวิธีการใดในทางปฏิบัติของคอมไพเลอร์",
+    "options": [
+      {
+        "statement": "ห้ามใช้คำสั่ง else ในโปรแกรม",
+        "istrue": false
+      },
+      {
+        "statement": "กำหนดให้ else จับคู่กับ if ตัวที่อยู่ใกล้ที่สุดที่ยังไม่มีคู่",
+        "istrue": true
+      },
+      {
+        "statement": "บังคับให้โปรแกรมเมอร์ใส่ปีกกา {} ทุกครั้ง",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้การสุ่มเลือกคู่ if-else",
+        "istrue": false
+      }
+    ],
+    "explanation": "กฎ Matched/Unmatched Statements ถูกนำมาใช้เพื่อบังคับให้โครงสร้างการวิเคราะห์เลือกจับคู่ else กับ if ตัวที่ใกล้ที่สุดเสมอเพื่อลดความกำกวม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ประโยชน์ที่โดดเด่นที่สุดของ EBNF (Extended BNF) เมื่อเทียบกับ BNF ปกติคืออะไร",
+    "options": [
+      {
+        "statement": "ช่วยให้ Parser ทำงานเร็วขึ้น",
+        "istrue": false
+      },
+      {
+        "statement": "ใช้สัญลักษณ์ที่สื่อสารกับ CPU ได้โดยตรง",
+        "istrue": false
+      },
+      {
+        "statement": "ช่วยลดความซับซ้อนและจำนวนบรรทัดของกฎไวยากรณ์ด้วยสัญลักษณ์ทำซ้ำและทางเลือก",
+        "istrue": true
+      },
+      {
+        "statement": "ทำให้ไม่จำเป็นต้องใช้สัญลักษณ์ Lambda (λ)",
+        "istrue": false
+      }
+    ],
+    "explanation": "EBNF มีสัญลักษณ์เช่น { } สำหรับการทำซ้ำ และ [ ] สำหรับส่วนที่เป็นทางเลือก ทำให้การเขียนไวยากรณ์กระชับและอ่านง่ายขึ้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ใน AST สำหรับ 'If Statement' โหนดลูก (Children) ของโหนด 'if' มักประกอบด้วยข้อมูลส่วนใดบ้าง",
+    "options": [
+      {
+        "statement": "เฉพาะเครื่องหมายวงเล็บเปิดและปิด",
+        "istrue": false
+      },
+      {
+        "statement": "ส่วนของเงื่อนไข (Condition) และส่วนของคำสั่งที่จะทำงาน (Statement)",
+        "istrue": true
+      },
+      {
+        "statement": "ชื่อของผู้เขียนโค้ดและวันที่",
+        "istrue": false
+      },
+      {
+        "statement": "รายการ Tokens ทั้งหมดที่พบในไฟล์",
+        "istrue": false
+      }
+    ],
+    "explanation": "AST มุ่งเน้นเก็บเฉพาะความสัมพันธ์เชิงปฏิบัติการ โครงสร้าง 'if' จึงต้องการเพียงเงื่อนไขและชุดคำสั่งเพื่อนำไปประมวลผลต่อ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "นิยามของภาษา L(G) คือเซตของสิ่งใด",
+    "options": [
+      {
+        "statement": "เซตของกฎการผลิตทั้งหมดในไวยากรณ์",
+        "istrue": false
+      },
+      {
+        "statement": "เซตของสตริง Terminals ทั้งหมดที่สามารถสร้างขึ้นได้จาก Start Symbol ของไวยากรณ์นั้น",
+        "istrue": true
+      },
+      {
+        "statement": "เซตของข้อผิดพลาดที่อาจเกิดขึ้นในโปรแกรม",
+        "istrue": false
+      },
+      {
+        "statement": "เซตของตัวแปร Nonterminals ทั้งหมด",
+        "istrue": false
+      }
+    ],
+    "explanation": "ภาษา L(G) คือผลผลิตทั้งหมดที่เป็นไปได้ตามกฎของไวยากรณ์ G โดยต้องเป็นสายอักขระที่ประกอบด้วย Terminals เท่านั้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สัญลักษณ์ λ (Lambda) ในกฎไวยากรณ์หมายถึงสิ่งใด",
+    "options": [
+      {
+        "statement": "การวนลูปไม่รู้จบ",
+        "istrue": false
+      },
+      {
+        "statement": "สตริงว่าง หรือ การไม่แทนที่ด้วยสัญลักษณ์ใดเลย",
+        "istrue": true
+      },
+      {
+        "statement": "ตัวแปรประเภทตัวเลขทศนิยม",
+        "istrue": false
+      },
+      {
+        "statement": "จุดเริ่มต้นของฟังก์ชันหลัก",
+        "istrue": false
+      }
+    ],
+    "explanation": "λ ใช้เพื่อแสดงว่าส่วนนั้นของไวยากรณ์สามารถหายไปได้ (Nullable) ซึ่งมีประโยชน์ในการสร้างส่วนที่เป็นทางเลือกหรือรายการที่สิ้นสุดลง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในการออกแบบไวยากรณ์สำหรับพารามิเตอร์ของฟังก์ชัน เช่น `(a, b, c)` ทำไมจึงมักมีการแยกกฎสำหรับพารามิเตอร์ตัวแรกออกไป",
+    "options": [
+      {
+        "statement": "เพื่อให้ตัวแปรตัวแรกมีความสำคัญมากกว่าตัวอื่น",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อป้องกันปัญหาคอมม่า (,) เกิน หรือโครงสร้างที่ผิดพลาดในกรณีที่มีพารามิเตอร์หลายตัว",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะตัวแปรตัวแรกต้องเป็นตัวพิมพ์ใหญ่เสมอ",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อลดการใช้หน่วยความจำใน Symbol Table",
+        "istrue": false
+      }
+    ],
+    "explanation": "การแยกกฎช่วยให้กำหนดได้ว่าพารามิเตอร์ตัวถัดไปต้องมีคอมม่าคั่น ในขณะที่ตัวแรกไม่ต้องมี ทำให้ได้รูปแบบ (id, id, id) ที่ถูกต้อง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความสัมพันธ์แบบ 'Preorder Traversal' บน Parse Tree ตรงกับการอนุพัทธ์รูปแบบใด",
+    "options": [
+      {
+        "statement": "Rightmost Derivation",
+        "istrue": false
+      },
+      {
+        "statement": "Leftmost Derivation",
+        "istrue": true
+      },
+      {
+        "statement": "Bottom-up Parsing",
+        "istrue": false
+      },
+      {
+        "statement": "Code Generation",
+        "istrue": false
+      }
+    ],
+    "explanation": "การไล่ลำดับแบบ Preorder (โหนดแม่ก่อนโหนดลูกจากซ้ายไปขวา) สอดคล้องกับกระบวนการขยาย Nonterminal ที่อยู่ซ้ายสุดก่อนเสมอ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กฎไวยากรณ์ `<St> ::= { <St> } <St> | s; <St> | λ` ถูกออกแบบมาเพื่อรองรับโครงสร้างแบบใด",
+    "options": [
+      {
+        "statement": "การคำนวณทางคณิตศาสตร์เพียงอย่างเดียว",
+        "istrue": false
+      },
+      {
+        "statement": "การซ้อนกันของบล็อกคำสั่ง (Nested Blocks)",
+        "istrue": true
+      },
+      {
+        "statement": "การประกาศตัวแปรระดับ Global",
+        "istrue": false
+      },
+      {
+        "statement": "การจัดการหน่วยความจำแบบ Stack",
+        "istrue": false
+      }
+    ],
+    "explanation": "กฎนี้อนุญาตให้มีปีกกาครอบชุดคำสั่ง และภายในปีกกานั้นสามารถมีชุดคำสั่งอื่นซ้อนลงไปได้อีกไม่จำกัดชั้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากประโยค $1 + 2 * 3$ ถูกวิเคราะห์ด้วยไวยากรณ์ที่ไม่มีการแยกชั้น Precedence ผลลัพธ์ที่ผิดพลาดจะเป็นอย่างไร",
+    "options": [
+      {
+        "statement": "คอมไพเลอร์จะหยุดทำงานทันที",
+        "istrue": false
+      },
+      {
+        "statement": "อาจมีการคำนวณการบวกก่อนการคูณ ทำให้ได้ผลลัพธ์เป็น 9 แทนที่จะเป็น 7",
+        "istrue": true
+      },
+      {
+        "statement": "เลข 1 2 และ 3 จะถูกมองเป็น Identifier",
+        "istrue": false
+      },
+      {
+        "statement": "ผลลัพธ์จะถูกเปลี่ยนเป็นเลขฐานสอง",
+        "istrue": false
+      }
+    ],
+    "explanation": "ความกำกวมในนิพจน์คณิตศาสตร์จะทำให้ลำดับการคำนวณผิดเพี้ยนไปจากมาตรฐานสากลหากไม่กำหนดลำดับความสำคัญในไวยากรณ์ให้ชัดเจน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ใน EBNF สัญลักษณ์ `{ A }` มีความหมายตรงกับข้อใดในนิยามปกติ",
+    "options": [
+      {
+        "statement": "มี A ได้เพียงครั้งเดียวเท่านั้น",
+        "istrue": false
+      },
+      {
+        "statement": "มี A ปรากฏ 0 ครั้งหรือมากกว่า (0 or more times)",
+        "istrue": true
+      },
+      {
+        "statement": "ต้องไม่มี A ปรากฏอยู่เลย",
+        "istrue": false
+      },
+      {
+        "statement": "A เป็นส่วนเสริมที่ไม่จำเป็นต้องมี",
+        "istrue": false
+      }
+    ],
+    "explanation": "เครื่องหมายปีกกาใน EBNF แทนความหมายของ Kleene Star ในทางทฤษฎี ซึ่งคือการทำซ้ำกี่ครั้งก็ได้รวมถึงไม่ปรากฏเลย"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "โครงสร้างข้อมูล Symbol Table ในช่วงการ Parsing มีหน้าที่หลักอย่างไร",
+    "options": [
+      {
+        "statement": "เก็บประวัติการรันโปรแกรมของผู้ใช้",
+        "istrue": false
+      },
+      {
+        "statement": "เก็บข้อมูลของชื่อเรียก (Identifiers) เช่น ชื่อตัวแปรและชื่อฟังก์ชันที่พบระหว่างตรวจสอบไวยากรณ์",
+        "istrue": true
+      },
+      {
+        "statement": "ใช้ในการคำนวณลอการิทึมของตัวเลข",
+        "istrue": false
+      },
+      {
+        "statement": "เก็บคำอธิบายภาพประกอบในซอร์สโค้ด",
+        "istrue": false
+      }
+    ],
+    "explanation": "ระหว่างการตรวจสอบไวยากรณ์ Parser ต้องบันทึกชื่อต่างๆ ที่พบเพื่อใช้ตรวจสอบในขั้นการวิเคราะห์ความหมาย (Semantic Analysis) ต่อไป"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดการจัดกลุ่มแบบ Right-associativity จึงมักใช้กับการดำเนินการยกกำลัง (Power)",
+    "options": [
+      {
+        "statement": "เพื่อให้คำนวณได้เร็วขึ้น",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะเป็นมาตรฐานสากลที่การยกกำลังซ้อนกันต้องทำจากขวามาซ้าย (เช่น $2^{3^2}$)",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อให้เขียนไวยากรณ์ได้สั้นลง",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะภาษาคอมพิวเตอร์ส่วนใหญ่ไม่รองรับการบวกจากขวา",
+        "istrue": false
+      }
+    ],
+    "explanation": "Associativity ถูกออกแบบมาเพื่อให้สอดคล้องกับตรรกะทางคณิตศาสตร์ของเครื่องหมายนั้นๆ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "โหนดประเภท 'Operator' ใน Abstract Syntax Tree มักจะอยู่ในตำแหน่งใด",
+    "options": [
+      {
+        "statement": "Leaf nodes เสมอ",
+        "istrue": false
+      },
+      {
+        "statement": "Interior nodes เพื่อเชื่อมโยง Operands เข้าด้วยกัน",
+        "istrue": true
+      },
+      {
+        "statement": "เป็นโหนด Root เพียงโหนดเดียวเท่านั้น",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่ปรากฏใน AST",
+        "istrue": false
+      }
+    ],
+    "explanation": "ใน AST เครื่องหมายดำเนินการทำหน้าที่เป็นโหนดแม่ที่เชื่อมโยงค่าที่ต้องการประมวลผลเข้าด้วยกันเพื่อแสดงลำดับการทำงาน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สัญลักษณ์ `[ ... ]` ใน EBNF เหมาะสำหรับการเขียนไวยากรณ์ส่วนใดมากที่สุด",
+    "options": [
+      {
+        "statement": "ส่วนที่มีการเรียกซ้ำไม่รู้จบ",
+        "istrue": false
+      },
+      {
+        "statement": "ส่วนของเงื่อนไข Optional เช่น 'else' ในคำสั่ง 'if'",
+        "istrue": true
+      },
+      {
+        "statement": "ส่วนที่เป็นจุดเริ่มต้นของโปรแกรม",
+        "istrue": false
+      },
+      {
+        "statement": "ส่วนของเครื่องหมายคอมม่า (,) ในรายการ",
+        "istrue": false
+      }
+    ],
+    "explanation": "เครื่องหมายก้ามปูใน EBNF ใช้ระบุส่วนที่ 'จะมีหรือไม่มีก็ได้' (0 or 1 time)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความสัมพันธ์แบบ `A -> α | β` ใน BNF สื่อถึงตรรกะใด",
+    "options": [
+      {
+        "statement": "การบวกกันของ α และ β",
+        "istrue": false
+      },
+      {
+        "statement": "ทางเลือก (Choice) ว่า A สามารถแทนที่ด้วย α หรือ β อย่างใดอย่างหนึ่ง",
+        "istrue": true
+      },
+      {
+        "statement": "การคูณกันของสัญลักษณ์",
+        "istrue": false
+      },
+      {
+        "statement": "การจบการทำงานของ Parser",
+        "istrue": false
+      }
+    ],
+    "explanation": "สัญลักษณ์ท่อ (Vertical bar) ใช้แสดงทางเลือกที่เป็นไปได้ทั้งหมดสำหรับ Nonterminal ตัวนั้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากโหนดแม่ใน Parse Tree คือกฎ `E -> E + T` ใบไม้ที่เรียงจากซ้ายไปขวาของโหนดนี้จะได้อะไร",
+    "options": [
+      {
+        "statement": "E, T, +",
+        "istrue": false
+      },
+      {
+        "statement": "E, +, T",
+        "istrue": true
+      },
+      {
+        "statement": "+, E, T",
+        "istrue": false
+      },
+      {
+        "statement": "E, E, T",
+        "istrue": false
+      }
+    ],
+    "explanation": "ลำดับของโหนดลูกใน Parse Tree ต้องสะท้อนลำดับของสัญลักษณ์ที่ปรากฏในกฎการผลิตจากซ้ายไปขวาอย่างเคร่งครัด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การใช้เครื่องหมายวงเล็บ `( )` ในไวยากรณ์คณิตศาสตร์มักถูกออกแบบให้อยู่ในชั้นใด",
+    "options": [
+      {
+        "statement": "ชั้นนอกสุดเพื่อคลุมนิพจน์ทั้งหมด",
+        "istrue": false
+      },
+      {
+        "statement": "ชั้นลึกที่สุด (เช่น ระดับ Factor) เพื่อให้มีลำดับความสำคัญสูงสุด",
+        "istrue": true
+      },
+      {
+        "statement": "ไม่อยู่ในชั้นใดเลยเพราะเป็นส่วนเสริม",
+        "istrue": false
+      },
+      {
+        "statement": "ชั้นเดียวกับการบวกและลบ",
+        "istrue": false
+      }
+    ],
+    "explanation": "วงเล็บต้องมีความสำคัญสูงที่สุดเพื่อใช้บังคับลำดับการคำนวณใหม่ ดังนั้นจึงต้องอยู่ในระดับลึกที่สุดของสายการแทนที่"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ขั้นตอนใดที่ Parser ทำหน้าที่ 'Error Reporting'",
+    "options": [
+      {
+        "statement": "เมื่อ Scanner ส่ง Token ผิดประเภทมาให้",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อ Tokens เรียงลำดับไม่ตรงตามกฎไวยากรณ์ที่กำหนดไว้",
+        "istrue": true
+      },
+      {
+        "statement": "เมื่อโปรแกรมเมอร์ตั้งชื่อตัวแปรยาวเกินไป",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อผลลัพธ์การคำนวณเกินค่าสูงสุดของระบบ",
+        "istrue": false
+      }
+    ],
+    "explanation": "Parser ตรวจสอบโครงสร้าง (Syntax) หากลำดับของ Tokens ขัดกับกฎไวยากรณ์ Parser จะแจ้งข้อผิดพลาดทันที"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความแตกต่างระหว่าง 'Interior nodes' ของ Parse Tree และ AST ในเรื่องการดำเนินการ (Operation) คืออะไร",
+    "options": [
+      {
+        "statement": "Parse Tree เก็บ Nonterminals ส่วน AST เก็บ Operator จริง เช่น + หรือ *",
+        "istrue": true
+      },
+      {
+        "statement": "Parse Tree เก็บเฉพาะตัวเลข ส่วน AST เก็บตัวแปร",
+        "istrue": false
+      },
+      {
+        "statement": "ไม่มีความแตกต่างกัน",
+        "istrue": false
+      },
+      {
+        "statement": "AST ไม่สามารถมี Interior nodes ได้",
+        "istrue": false
+      }
+    ],
+    "explanation": "AST ยุบรวมโครงสร้างทางไวยากรณ์ที่ซับซ้อนให้เหลือเพียงตัวกระทำ (Operator) เป็นโหนดแม่เพื่อความสะดวกในการประมวลผล"
+  }
+]

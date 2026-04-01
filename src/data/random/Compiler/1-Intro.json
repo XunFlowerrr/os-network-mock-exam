@@ -1,0 +1,692 @@
+[
+  {
+    "type": "multiple-choice",
+    "question": "หากคอมไพเลอร์ถูกเปรียบเทียบว่าเป็น 'ล่าม' ภาษาต้นทาง (Source Program) และภาษาปลายทาง (Target Program) เปรียบได้กับสิ่งใดตามลำดับ",
+    "options": [
+      {
+        "statement": "สูตรอาหารต้นฉบับ และ อาหารที่ปรุงสำเร็จแล้ว",
+        "istrue": false
+      },
+      {
+        "statement": "ภาษาที่เชฟเข้าใจ และ สูตรอาหารต้นฉบับ",
+        "istrue": false
+      },
+      {
+        "statement": "สูตรอาหารที่เป็นภาษาไทย และ สูตรอาหารที่ถูกแปลเป็นภาษาฝรั่งเศสเพื่อให้เชฟใช้งาน",
+        "istrue": true
+      },
+      {
+        "statement": "ความหิวของผู้บริโภค และ ขั้นตอนการล้างผัก",
+        "istrue": false
+      }
+    ],
+    "explanation": "คอมไพเลอร์ทำหน้าที่แปลโปรแกรมจากภาษาหนึ่งไปเป็นอีกภาษาหนึ่งโดยคงความหมายเดิมไว้ เปรียบเหมือนการแปลสูตรอาหารจากภาษาหนึ่งไปเป็นอีกภาษาหนึ่งเพื่อให้ผู้ปฏิบัติงาน (เชฟหรือคอมพิวเตอร์) นำไปใช้งานต่อได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในกระบวนการคอมไพล์ ขั้นตอนใดที่ทำหน้าที่เปลี่ยน 'สายอักขระ' (Stream of characters) ให้กลายเป็น 'คำ' (Tokens)",
+    "options": [
+      {
+        "statement": "Parser",
+        "istrue": false
+      },
+      {
+        "statement": "Scanner",
+        "istrue": true
+      },
+      {
+        "statement": "Semantic Analyzer",
+        "istrue": false
+      },
+      {
+        "statement": "Code Optimizer",
+        "istrue": false
+      }
+    ],
+    "explanation": "Scanner หรือ Lexical Analysis คือขั้นตอนแรกที่อ่านอักขระทีละตัวแล้วจัดกลุ่มให้เป็นหน่วยที่มีความหมายทางภาษาที่เรียกว่า Tokens"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความแตกต่างที่สำคัญที่สุดระหว่าง Parser และ Semantic Analyzer คืออะไร",
+    "options": [
+      {
+        "statement": "Parser ตรวจสอบความหมาย แต่ Semantic Analyzer ตรวจสอบไวยากรณ์",
+        "istrue": false
+      },
+      {
+        "statement": "Parser ตรวจสอบโครงสร้างตามกฎไวยากรณ์ แต่ Semantic Analyzer ตรวจสอบความสมเหตุสมผลของประเภทข้อมูล",
+        "istrue": true
+      },
+      {
+        "statement": "Parser ทำงานหลังจาก Semantic Analyzer",
+        "istrue": false
+      },
+      {
+        "statement": "Parser ไม่จำเป็นต้องใช้ Tokens จาก Scanner",
+        "istrue": false
+      }
+    ],
+    "explanation": "Parser เน้นการตรวจสอบความถูกต้องของโครงสร้าง (Syntax) ในขณะที่ Semantic Analyzer เน้นการตรวจสอบความถูกต้องของเนื้อหาหรือความหมาย (Semantics) เช่น การตรวจสอบประเภทข้อมูล (Type Checking)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดโครงสร้างข้อมูล Symbol Table จึงมักถูกออกแบบโดยใช้ Hash Table",
+    "options": [
+      {
+        "statement": "เพื่อให้สามารถเก็บข้อมูลได้จำนวนจำกัด",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อให้ง่ายต่อการสร้างแผนภาพ Parse Tree",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อเพิ่มประสิทธิภาพในการค้นหาและเข้าถึงข้อมูลชื่อตัวแปรที่รวดเร็ว",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อใช้ในการเก็บค่าคงที่ประเภทข้อความเพียงอย่างเดียว",
+        "istrue": false
+      }
+    ],
+    "explanation": "Hash Table ช่วยให้การค้นหาข้อมูลในตารางสัญลักษณ์มีความเร็วสูง ซึ่งจำเป็นมากสำหรับโปรแกรมขนาดใหญ่ที่มีตัวแปรและชื่อต่างๆ จำนวนมาก"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คอมไพเลอร์ใช้กลไกใดใน Literal Table เพื่อช่วยประหยัดพื้นที่ในหน่วยความจำ",
+    "options": [
+      {
+        "statement": "การลบค่าคงที่ทิ้งทันทีหลังใช้งาน",
+        "istrue": false
+      },
+      {
+        "statement": "การนำค่าคงที่หรือข้อความที่ซ้ำกันกลับมาใช้ใหม่ (Reusing)",
+        "istrue": true
+      },
+      {
+        "statement": "การเปลี่ยนข้อความให้กลายเป็นตัวเลขทั้งหมด",
+        "istrue": false
+      },
+      {
+        "statement": "การเก็บค่าคงที่ไว้ใน Register ของ CPU เท่านั้น",
+        "istrue": false
+      }
+    ],
+    "explanation": "Literal Table ช่วยลดการใช้หน่วยความจำโดยการเก็บค่าคงที่ที่เหมือนกันไว้เพียงที่เดียว และใช้วิธีการชี้ตำแหน่ง (Pointer) ไปยังค่าเดิมเมื่อมีการเรียกใช้งานซ้ำ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากโปรแกรมเมอร์เขียนโค้ด 'float x = \"hello\" * 5;' ข้อผิดพลาดนี้จะถูกตรวจพบในขั้นตอนใดของคอมไพเลอร์",
+    "options": [
+      {
+        "statement": "Scanning",
+        "istrue": false
+      },
+      {
+        "statement": "Parsing",
+        "istrue": false
+      },
+      {
+        "statement": "Semantic Analysis",
+        "istrue": true
+      },
+      {
+        "statement": "Code Generation",
+        "istrue": false
+      }
+    ],
+    "explanation": "การตรวจสอบว่าการดำเนินการระหว่างประเภทข้อมูล (เช่น String คูณ Integer) มีความหมายที่เป็นไปได้หรือไม่ เป็นหน้าที่ของ Semantic Analyzer ในส่วนของ Type Checking"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การสร้าง Intermediate Code มีประโยชน์หลักในด้านใดสำหรับนักพัฒนาคอมไพเลอร์",
+    "options": [
+      {
+        "statement": "ทำให้โปรแกรมรันได้โดยไม่ต้องมี CPU",
+        "istrue": false
+      },
+      {
+        "statement": "ช่วยให้สามารถปรับแต่งโค้ด (Optimization) ได้ง่ายและรองรับหลายแพลตฟอร์ม",
+        "istrue": true
+      },
+      {
+        "statement": "ลดความจำเป็นในการมี Scanner และ Parser",
+        "istrue": false
+      },
+      {
+        "statement": "ทำให้ภาษาเครื่องมีความหมายเหมือนภาษาคนมากขึ้น",
+        "istrue": false
+      }
+    ],
+    "explanation": "รหัสกลาง (IR) ช่วยให้ส่วนหน้า (Front-end) และส่วนหลัง (Back-end) ของคอมไพเลอร์แยกออกจากกันได้ ทำให้สามารถนำส่วนหน้าไปใช้กับฮาร์ดแวร์ที่หลากหลายได้ง่ายขึ้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การทำ 'Constant Folding' เช่น เปลี่ยนจาก 'x = 10 * 2' เป็น 'x = 20' จัดอยู่ในขั้นตอนใด",
+    "options": [
+      {
+        "statement": "Code Generation",
+        "istrue": false
+      },
+      {
+        "statement": "Error Handling",
+        "istrue": false
+      },
+      {
+        "statement": "Code Optimization",
+        "istrue": true
+      },
+      {
+        "statement": "Lexical Analysis",
+        "istrue": false
+      }
+    ],
+    "explanation": "Code Optimization คือกระบวนการปรับปรุงรหัสให้ทำงานมีประสิทธิภาพขึ้น โดยการคำนวณค่าคงที่ล่วงหน้าตั้งแต่ตอนคอมไพล์เป็นตัวอย่างหนึ่งของเทคนิคนี้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความแตกต่างระหว่าง Static Errors และ Dynamic Errors คืออะไร",
+    "options": [
+      {
+        "statement": "Static เกิดขึ้นตอนรันโปรแกรม Dynamic เกิดขึ้นตอนแปลโปรแกรม",
+        "istrue": false
+      },
+      {
+        "statement": "Static ตรวจพบโดยคอมไพเลอร์ขณะแปลโค้ด ส่วน Dynamic เกิดขึ้นขณะที่โปรแกรมกำลังทำงาน",
+        "istrue": true
+      },
+      {
+        "statement": "Static คือการพิมพ์ผิดไวยากรณ์ Dynamic คือการลืมประกาศตัวแปร",
+        "istrue": false
+      },
+      {
+        "statement": "คอมไพเลอร์สามารถจัดการ Dynamic Errors ได้ทั้งหมด",
+        "istrue": false
+      }
+    ],
+    "explanation": "Static Errors หรือ Compile-time errors คือสิ่งที่คอมไพเลอร์ตรวจพบก่อนการรันโปรแกรม ส่วน Dynamic Errors หรือ Run-time errors จะเกิดขึ้นเมื่อโปรแกรมถูกนำไปประมวลผลจริง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "โครงสร้างของ Parse Tree มีลักษณะการเชื่อมโยงข้อมูลแบบใด",
+    "options": [
+      {
+        "statement": "แถวลำดับ (Array)",
+        "istrue": false
+      },
+      {
+        "statement": "ตารางฐานข้อมูลเชิงสัมพันธ์",
+        "istrue": false
+      },
+      {
+        "statement": "โครงสร้างแบบใช้พอยเตอร์ชี้ไปยังโหนดต่างๆ (Pointer-based structure)",
+        "istrue": true
+      },
+      {
+        "statement": "ข้อมูลแบบข้อความต่อเนื่องกัน (Flat text file)",
+        "istrue": false
+      }
+    ],
+    "explanation": "Parse Tree เป็นโครงสร้างแบบไดนามิกที่ใช้พอยเตอร์ในการเชื่อมโยงความสัมพันธ์ระหว่างโหนดต่างๆ เพื่อแสดงโครงสร้างทางไวยากรณ์ของคำสั่ง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Symbol Table จัดเก็บข้อมูลใดบ้างที่เกี่ยวข้องกับ 'ฟังก์ชัน'",
+    "options": [
+      {
+        "statement": "ชื่อฟังก์ชัน, จำนวนพารามิเตอร์, และประเภทของค่าที่ส่งกลับ",
+        "istrue": true
+      },
+      {
+        "statement": "เฉพาะชื่อฟังก์ชันเท่านั้น",
+        "istrue": false
+      },
+      {
+        "statement": "เฉพาะโค้ดภาษาเครื่องของฟังก์ชันนั้น",
+        "istrue": false
+      },
+      {
+        "statement": "ชื่อฟังก์ชันและรหัสผ่านของผู้เขียนโปรแกรม",
+        "istrue": false
+      }
+    ],
+    "explanation": "สำหรับฟังก์ชัน ตารางสัญลักษณ์จะเก็บข้อมูลระบุตัวตนที่สำคัญ เช่น ชื่อ ประเภทค่าคืนกลับ (Return type) และรายละเอียดพารามิเตอร์เพื่อใช้ในการตรวจสอบความถูกต้อง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ทำไมการทำ 'Dead Code Elimination' จึงถือเป็นส่วนหนึ่งของ Code Optimization",
+    "options": [
+      {
+        "statement": "เพราะทำให้โปรแกรมมีสีสันมากขึ้น",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะช่วยลดขนาดของโปรแกรมและประหยัดทรัพยากรโดยลบส่วนที่ไม่ได้ใช้งานออก",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะเป็นการช่วยแก้ไขข้อผิดพลาดในการคำนวณ",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะช่วยให้คอมไพเลอร์แปลโค้ดได้ช้าลง",
+        "istrue": false
+      }
+    ],
+    "explanation": "การกำจัดโค้ดที่ไม่มีทางถูกเรียกใช้งาน (Dead Code) ช่วยลดขนาดของ Target Code และอาจทำให้การประมวลผลมีประสิทธิภาพมากขึ้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ใน Three-address code รูปแบบคำสั่งที่มักจะพบคือรูปแบบใด",
+    "options": [
+      {
+        "statement": "คำสั่งที่มีตัวแปรได้ไม่จำกัดจำนวนในบรรทัดเดียว",
+        "istrue": false
+      },
+      {
+        "statement": "x = y op z",
+        "istrue": true
+      },
+      {
+        "statement": "การเขียนคำสั่ง Assembly โดยตรง",
+        "istrue": false
+      },
+      {
+        "statement": "การใช้เครื่องหมายปีกกาครอบคำสั่งทั้งหมด",
+        "istrue": false
+      }
+    ],
+    "explanation": "Three-address code เป็นรูปแบบรหัสกลางยอดนิยมที่มีตัวแปรไม่เกิน 3 ตัวต่อคำสั่ง เพื่อให้ง่ายต่อการแปลเป็นภาษาเครื่องในภายหลัง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ขั้นตอนใดของคอมไพเลอร์ที่ทำหน้าที่ตัดสินใจเลือกใช้ Register ของ CPU ให้เหมาะสมที่สุด",
+    "options": [
+      {
+        "statement": "Scanner",
+        "istrue": false
+      },
+      {
+        "statement": "Parser",
+        "istrue": false
+      },
+      {
+        "statement": "Code Generation",
+        "istrue": true
+      },
+      {
+        "statement": "Semantic Analyzer",
+        "istrue": false
+      }
+    ],
+    "explanation": "Code Generator มีหน้าที่รับผิดชอบในการแปลงรหัสกลางเป็นภาษาเครื่อง ซึ่งรวมถึงการจัดสรรทรัพยากรในระดับฮาร์ดแวร์ เช่น Register"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากเปรียบเทียบการวิเคราะห์ประโยค 'แมวกินปลา' การระบุว่า 'แมว' เป็นคำนาม และ 'กิน' เป็นคำกริยา เทียบได้กับขั้นตอนใด",
+    "options": [
+      {
+        "statement": "Scanning",
+        "istrue": true
+      },
+      {
+        "statement": "Parsing",
+        "istrue": false
+      },
+      {
+        "statement": "Optimization",
+        "istrue": false
+      },
+      {
+        "statement": "Intermediate Code Generation",
+        "istrue": false
+      }
+    ],
+    "explanation": "การแยกแยะประเภทของคำ (Tokens) ในเบื้องต้นเป็นหน้าที่ของ Scanner หรือ Lexical Analysis"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Annotated Tree คือผลผลิตที่ได้จากขั้นตอนใด",
+    "options": [
+      {
+        "statement": "Scanner",
+        "istrue": false
+      },
+      {
+        "statement": "Semantic Analyzer",
+        "istrue": true
+      },
+      {
+        "statement": "Parser",
+        "istrue": false
+      },
+      {
+        "statement": "Code Generator",
+        "istrue": false
+      }
+    ],
+    "explanation": "Semantic Analyzer จะนำ Parse Tree มาเพิ่มข้อมูล (Annotate) เช่น ประเภทข้อมูลของแต่ละโหนด เพื่อให้มีความหมายสมบูรณ์ขึ้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในกรณีที่คอมไพเลอร์ตรวจพบข้อผิดพลาด สิ่งที่คอมไพเลอร์ 'ควร' ทำเพื่อให้มีประสิทธิภาพดีที่สุดคืออะไร",
+    "options": [
+      {
+        "statement": "หยุดการทำงานทันทีที่เจอข้อผิดพลาดแรก",
+        "istrue": false
+      },
+      {
+        "statement": "ลบไฟล์ Source Code ทิ้งเพื่อความปลอดภัย",
+        "istrue": false
+      },
+      {
+        "statement": "รายงานข้อผิดพลาดและพยายามฟื้นตัว (Recover) เพื่อหาจุดผิดจุดอื่นต่อ",
+        "istrue": true
+      },
+      {
+        "statement": "แก้ไขโค้ดให้ผู้ใช้โดยอัตโนมัติโดยไม่แจ้งเตือน",
+        "istrue": false
+      }
+    ],
+    "explanation": "คอมไพเลอร์ที่ดีควรพยายามตรวจหาข้อผิดพลาดให้ได้มากที่สุดในการทำงานครั้งเดียว เพื่อให้โปรแกรมเมอร์แก้ไขได้ทั้งหมดในคราวเดียว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ทำไมขั้นตอน Code Optimization จึงสามารถเกิดขึ้นได้หลายรอบในกระบวนการคอมไพล์",
+    "options": [
+      {
+        "statement": "เพราะคอมไพเลอร์ทำงานผิดพลาดบ่อย",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะสามารถปรับแต่งได้ทั้งในระดับรหัสกลาง (IR) และระดับภาษาเครื่อง (Machine Code)",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะต้องรอให้โปรแกรมเมอร์อนุญาตก่อน",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะแต่ละรอบจะทำให้โปรแกรมทำงานช้าลง",
+        "istrue": false
+      }
+    ],
+    "explanation": "การปรับแต่งโค้ดทำได้ในหลายระดับ ตั้งแต่ระดับตรรกะในรหัสกลางไปจนถึงระดับคำสั่งเฉพาะของฮาร์ดแวร์ในภาษาเครื่อง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อมูลประเภทใดที่ Semantic Analyzer จะเรียกดูจาก Symbol Table มากที่สุด",
+    "options": [
+      {
+        "statement": "ลำดับอักขระในไฟล์",
+        "istrue": false
+      },
+      {
+        "statement": "การประกาศตัวแปรและประเภทข้อมูล (Declarations and Types)",
+        "istrue": true
+      },
+      {
+        "statement": "สีของตัวอักษรใน Editor",
+        "istrue": false
+      },
+      {
+        "statement": "จำนวนบรรทัดของโค้ดทั้งหมด",
+        "istrue": false
+      }
+    ],
+    "explanation": "Semantic Analyzer ต้องตรวจสอบว่าตัวแปรถูกประกาศหรือยัง และมีประเภทข้อมูลที่สอดคล้องกับการใช้งานหรือไม่ ซึ่งข้อมูลเหล่านี้ถูกเก็บไว้ใน Symbol Table"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดคือคำจำกัดความที่ถูกต้องที่สุดของ 'Target Program' ในบริบทของคอมไพเลอร์ทั่วไป",
+    "options": [
+      {
+        "statement": "โปรแกรมที่โปรแกรมเมอร์กำลังเขียน",
+        "istrue": false
+      },
+      {
+        "statement": "โปรแกรมในภาษาเครื่องหรือภาษาปลายทางที่ถูกแปลมาแล้ว",
+        "istrue": true
+      },
+      {
+        "statement": "ข้อความแสดงข้อผิดพลาดที่แสดงบนหน้าจอ",
+        "istrue": false
+      },
+      {
+        "statement": "คู่มือการใช้งานโปรแกรม",
+        "istrue": false
+      }
+    ],
+    "explanation": "Target Program คือผลลัพธ์สุดท้ายของการคอมไพล์ ซึ่งมักจะเป็นภาษาเครื่องที่พร้อมให้คอมพิวเตอร์ประมวลผล"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หาก Scanner พบเครื่องหมาย '+' มันจะระบุว่าเป็น Token ประเภทใด",
+    "options": [
+      {
+        "statement": "Keyword",
+        "istrue": false
+      },
+      {
+        "statement": "Identifier",
+        "istrue": false
+      },
+      {
+        "statement": "Operator",
+        "istrue": true
+      },
+      {
+        "statement": "Literal",
+        "istrue": false
+      }
+    ],
+    "explanation": "เครื่องหมายทางคณิตศาสตร์หรือตรรกะ เช่น +, -, *, / ถูกจัดอยู่ในกลุ่ม Operators ในขั้นตอน Lexical Analysis"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ส่วนใดของคอมไพเลอร์ที่มักจะใช้ 'Context-free grammar' เป็นกฎในการตรวจสอบ",
+    "options": [
+      {
+        "statement": "Scanner",
+        "istrue": false
+      },
+      {
+        "statement": "Parser",
+        "istrue": true
+      },
+      {
+        "statement": "Code Optimizer",
+        "istrue": false
+      },
+      {
+        "statement": "Literal Table",
+        "istrue": false
+      }
+    ],
+    "explanation": "Parser ใช้กฎของ Context-free grammar เพื่อตรวจสอบว่าลำดับของ Tokens เรียงกันถูกต้องตามโครงสร้างไวยากรณ์ของภาษานั้นๆ หรือไม่"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ลำดับขั้นตอน (Phase) ของคอมไพเลอร์ที่ถูกต้องคือข้อใด",
+    "options": [
+      {
+        "statement": "Scanner -> Parser -> Semantic Analyzer -> Code Gen",
+        "istrue": true
+      },
+      {
+        "statement": "Code Gen -> Parser -> Scanner -> Semantic Analyzer",
+        "istrue": false
+      },
+      {
+        "statement": "Parser -> Scanner -> Semantic Analyzer -> Code Gen",
+        "istrue": false
+      },
+      {
+        "statement": "Semantic Analyzer -> Scanner -> Parser -> Code Gen",
+        "istrue": false
+      }
+    ],
+    "explanation": "กระบวนการคอมไพล์เริ่มจากการแยกคำ (Scanning) ตรวจโครงสร้าง (Parsing) ตรวจความหมาย (Semantic) และสร้างรหัส (Code Generation)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใด Parse Tree จึงถือเป็นกระดูกสันหลังของการแปลโปรแกรม",
+    "options": [
+      {
+        "statement": "เพราะมันเก็บข้อมูลชื่อตัวแปรทั้งหมด",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะมันแสดงความสัมพันธ์เชิงโครงสร้างของคำสั่งทั้งหมดในโปรแกรม",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะมันทำหน้าที่พิมพ์ผลลัพธ์ออกทางหน้าจอ",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะมันช่วยให้ผู้ใช้เขียนโปรแกรมได้เร็วขึ้น",
+        "istrue": false
+      }
+    ],
+    "explanation": "Parse Tree เป็นตัวแทนของโครงสร้างโปรแกรมที่ผ่านการตรวจสอบไวยากรณ์แล้ว ซึ่งจะถูกนำไปใช้ต่อในขั้นตอนการวิเคราะห์ความหมายและการสร้างรหัส"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากคอมไพเลอร์ไม่มีขั้นตอน Semantic Analysis จะเกิดปัญหาใดมากที่สุด",
+    "options": [
+      {
+        "statement": "คอมไพเลอร์จะแยกคำไม่ได้",
+        "istrue": false
+      },
+      {
+        "statement": "โปรแกรมจะรันไม่ได้เพราะพิมพ์ผิดไวยากรณ์",
+        "istrue": false
+      },
+      {
+        "statement": "โปรแกรมอาจถูกแปลผ่านแม้ว่าจะมีการนำตัวแปรคนละประเภทมาใช้งานผิดวิธี",
+        "istrue": true
+      },
+      {
+        "statement": "ไฟล์โปรแกรมจะมีขนาดใหญ่เกินไป",
+        "istrue": false
+      }
+    ],
+    "explanation": "Semantic Analysis ทำหน้าที่ตรวจสอบตรรกะและความหมายที่ลึกกว่าไวยากรณ์ หากขาดขั้นตอนนี้ไป ความผิดพลาดด้านประเภทข้อมูลจะไม่ถูกตรวจพบ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ตารางสัญลักษณ์ (Symbol Table) เก็บข้อมูล 'Scope' เพื่อวัตถุประสงค์ใด",
+    "options": [
+      {
+        "statement": "เพื่อระบุว่าตัวแปรนั้นใช้งานได้ในส่วนใดของโปรแกรม",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อเก็บความยาวของชื่อตัวแปร",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อระบุความเร็วของ CPU",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อบันทึกวันเวลาที่เขียนโปรแกรม",
+        "istrue": false
+      }
+    ],
+    "explanation": "Scope ใน Symbol Table ช่วยให้คอมไพเลอร์แยกแยะตัวแปรที่มีชื่อซ้ำกันแต่อยู่คนละส่วนของโปรแกรมได้ (เช่น Local vs Global variables)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในการออกแบบโหนดของ Parse Tree มักใช้โครงสร้างข้อมูลแบบ 'Variant records' เพื่ออะไร",
+    "options": [
+      {
+        "statement": "เพื่อประหยัดหน่วยความจำในการเก็บข้อมูลเพียงชนิดเดียว",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อให้โหนดแต่ละโหนดสามารถเก็บข้อมูลที่แตกต่างกันได้ตามประเภทของโหนดนั้นๆ",
+        "istrue": true
+      },
+      {
+        "statement": "เพื่อใช้ในการคำนวณเลขทศนิยมให้แม่นยำขึ้น",
+        "istrue": false
+      },
+      {
+        "statement": "เพื่อป้องกันไม่ให้มีการใช้ Pointer",
+        "istrue": false
+      }
+    ],
+    "explanation": "เนื่องจากโหนดใน Parse Tree มีหลายประเภท (เช่น โหนดเครื่องหมาย, โหนดตัวแปร, โหนดค่าคงที่) Variant records จึงช่วยให้จัดเก็บข้อมูลที่เหมาะสมกับแต่ละประเภทในโหนดเดียวได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เป้าหมายสูงสุดของวิชาคอมไพเลอร์ ตามที่กล่าวไว้ในบทนำคือการเชื่อมโยงโลกใดเข้าด้วยกัน",
+    "options": [
+      {
+        "statement": "โลกของธุรกิจและโลกของศิลปะ",
+        "istrue": false
+      },
+      {
+        "statement": "โลกของฮาร์ดแวร์และโลกของเน็ตเวิร์ก",
+        "istrue": false
+      },
+      {
+        "statement": "โลกของคณิตศาสตร์ (ตรรกะ) และโลกของวิทยาการคอมพิวเตอร์ (การประยุกต์ใช้)",
+        "istrue": true
+      },
+      {
+        "statement": "โลกของมนุษย์และโลกของหุ่นยนต์",
+        "istrue": false
+      }
+    ],
+    "explanation": "วิชาคอมไพเลอร์เน้นการนำทฤษฎีทางตรรกะและคณิตศาสตร์มาสร้างเครื่องมือที่ใช้งานได้จริงในทางคอมพิวเตอร์"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดเป็นหน้าที่ของ Code Generator",
+    "options": [
+      {
+        "statement": "การแปลโปรแกรมจากภาษา Assembly กลับเป็นภาษา C++",
+        "istrue": false
+      },
+      {
+        "statement": "การสร้างรหัสที่จำเพาะเจาะจงต่อสถาปัตยกรรมของคอมพิวเตอร์เป้าหมาย",
+        "istrue": true
+      },
+      {
+        "statement": "การตรวจสอบว่าผู้ใช้พิมพ์ชื่อฟังก์ชันถูกหรือไม่",
+        "istrue": false
+      },
+      {
+        "statement": "การออกแบบหน้าจอ User Interface",
+        "istrue": false
+      }
+    ],
+    "explanation": "Code Generator มีหน้าที่สร้างคำสั่งที่เครื่องเป้าหมายเข้าใจ ซึ่งต้องพิจารณาถึงชุดคำสั่งและทรัพยากรของเครื่องนั้นๆ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หนังสือที่เป็น Reading Assignment ในตอนท้ายมีชื่อว่าอะไรและแต่งโดยใคร",
+    "options": [
+      {
+        "statement": "Compiler Construction: Principles and Practice โดย Kenneth C. Louden",
+        "istrue": true
+      },
+      {
+        "statement": "The C Programming Language โดย Ritchie",
+        "istrue": false
+      },
+      {
+        "statement": "Algorithms โดย Robert Sedgewick",
+        "istrue": false
+      },
+      {
+        "statement": "Modern Operating Systems โดย Tanenbaum",
+        "istrue": false
+      }
+    ],
+    "explanation": "หนังสือหลักที่แนะนำสำหรับการศึกษาเพิ่มเติมในวิชานี้คือ Compiler Construction: Principles and Practice โดย Kenneth C. Louden"
+  }
+]
