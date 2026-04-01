@@ -1,4 +1,5 @@
 import React from "react";
+import { FiCheckCircle, FiXCircle } from "react-icons/fi";
 
 interface ExplanationSectionProps {
   correctStatement: string;
@@ -17,27 +18,46 @@ export const ExplanationSection: React.FC<ExplanationSectionProps> = ({
 
   return (
     <div
-      className={`mb-4 p-4 bg-background border-l-4 ${
-        isCorrect ? "border-green-500" : "border-red-500"
-      } rounded`}
+      className={`mb-4 rounded-xl border-l-4 p-4 ${
+        isCorrect
+          ? "border-green-500 bg-green-50/60 dark:bg-green-950/25"
+          : "border-red-500 bg-red-50/60 dark:bg-red-950/25"
+      }`}
     >
-      <h2
-        className={`text-lg font-semibold pb-2 ${
-          isCorrect ? "text-green-500" : "text-red-500"
-        }`}
-      >
-        {isCorrect ? "Correct!" : "Incorrect!"}
-      </h2>
-      <h2 className="font-semibold text-lg text-foreground mb-1 pb-2">
-        {!isCorrect && (
-          <>
-            Correct Answer:{" "}
-            <span className="text-green-500">{correctStatement}</span>
-          </>
+      <div className="flex items-center gap-2 mb-2">
+        {isCorrect ? (
+          <FiCheckCircle className="h-4 w-4 text-green-500 shrink-0" />
+        ) : (
+          <FiXCircle className="h-4 w-4 text-red-500 shrink-0" />
         )}
-      </h2>
-      <h3 className="font-semibold text-lg text-foreground mb-1">Explanation</h3>
-      <p style={{ whiteSpace: "pre-line" }}>{explanation}</p>
+        <span
+          className={`font-semibold text-sm ${
+            isCorrect
+              ? "text-green-600 dark:text-green-400"
+              : "text-red-600 dark:text-red-400"
+          }`}
+        >
+          {isCorrect ? "Correct!" : "Incorrect!"}
+        </span>
+      </div>
+      {!isCorrect && correctStatement && (
+        <p className="text-sm mb-2">
+          Correct Answer:{" "}
+          <span className="text-green-600 dark:text-green-400 font-medium">
+            {correctStatement}
+          </span>
+        </p>
+      )}
+      {explanation && (
+        <div className="border-t border-border pt-2 mt-1">
+          <p
+            className="text-sm leading-relaxed whitespace-pre-line"
+            style={{ color: "var(--muted)" }}
+          >
+            {explanation}
+          </p>
+        </div>
+      )}
     </div>
   );
 };
