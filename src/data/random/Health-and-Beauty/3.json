@@ -1,0 +1,690 @@
+[
+  {
+    "type": "multiple-choice",
+    "question": "ชั้นบรรยากาศ Stratosphere มีบทบาทสำคัญที่สุดในการปกป้องสิ่งมีชีวิตจากรังสีชนิดใด",
+    "options": [
+      { "statement": "รังสี UVA ทั้งหมด", "istrue": false },
+      { "statement": "รังสี UVB ทั้งหมด", "istrue": false },
+      { "statement": "รังสี UVC เกือบทั้งหมด", "istrue": true },
+      { "statement": "รังสีอินฟราเรดทั้งหมด", "istrue": false }
+    ],
+    "explanation": "ชั้นโอโซนในบรรยากาศชั้นสตราโตสเฟียร์ทำหน้าที่ดูดซับรังสี UVC ซึ่งมีพลังงานสูงสุดไว้ได้เกือบทั้งหมดก่อนถึงพื้นโลก"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากบุคคลหนึ่งใช้ชีวิตอยู่ภายในอาคารที่มีกระจกใสทั้งวัน รังสีชนิดใดที่ยังคงเป็นปัจจัยหลักที่ทำให้ผิวเกิดริ้วรอยก่อนวัย",
+    "options": [
+      { "statement": "UVA", "istrue": true },
+      { "statement": "UVB", "istrue": false },
+      { "statement": "UVC", "istrue": false },
+      { "statement": "รังสีเอกซ์", "istrue": false }
+    ],
+    "explanation": "รังสี UVA มีความยาวคลื่นยาวที่สามารถทะลุผ่านกระจกใสและเข้าทำลายคอลลาเจนในผิวชั้นหนังแท้ได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กลไกการเกิด Thymine Dimer จากรังสี UV ส่งผลกระทบต่อเซลล์อย่างไรในระดับโมเลกุล",
+    "options": [
+      { "statement": "ทำให้การสังเคราะห์โปรตีนหยุดชะงักถาวร", "istrue": false },
+      {
+        "statement": "ทำให้รหัสพันธุกรรมบิดเบี้ยวและเกิดการกลายพันธุ์ระหว่างการจำลอง DNA",
+        "istrue": true
+      },
+      { "statement": "ทำให้ผนังเซลล์เกิดการแข็งตัว", "istrue": false },
+      { "statement": "ยับยั้งการไหลเวียนของเลือดในเนื้อเยื่อ", "istrue": false }
+    ],
+    "explanation": "รังสี UV ทำให้เบสไทมีนที่อยู่ติดกันเชื่อมตัวกันเอง ส่งผลให้โครงสร้าง DNA ผิดปกติและนำไปสู่การกลายพันธุ์"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "อาการของโรค Xeroderma pigmentosum (XP) สะท้อนให้เห็นถึงความบกพร่องของกลไกใดในร่างกาย",
+    "options": [
+      { "statement": "การผลิตเม็ดสีเมลานิน", "istrue": false },
+      { "statement": "ระบบภูมิคุ้มกันในการทำลายเชื้อโรค", "istrue": false },
+      {
+        "statement": "ระบบการซ่อมแซม DNA แบบ Nucleotide-excision repair",
+        "istrue": true
+      },
+      { "statement": "การผลิตวิตามินดีจากแสงแดด", "istrue": false }
+    ],
+    "explanation": "ผู้ป่วยโรค XP ขาดโปรตีนที่จำเป็นในการซ่อมแซม DNA ที่เสียหายจากรังสี UV ทำให้ผิวอักเสบรุนแรงและเป็นมะเร็งได้ง่าย"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดการสังเคราะห์วิตามินดีจึงต้องการรังสี UVB แทนที่จะเป็นรังสี UVA",
+    "options": [
+      {
+        "statement": "เพราะ UVB มีพลังงานที่เหมาะสมในการกระตุ้นสารตั้งต้น Provitamin D",
+        "istrue": true
+      },
+      { "statement": "เพราะ UVA ถูกชั้นบรรยากาศดูดซับไว้หมด", "istrue": false },
+      {
+        "statement": "เพราะ UVB สามารถทะลุลงไปถึงกระดูกได้โดยตรง",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะ UVA ยับยั้งการทำงานของลำไส้ในการดูดซึมแคลเซียม",
+        "istrue": false
+      }
+    ],
+    "explanation": "รังสี UVB ทำหน้าที่เป็นพลังงานกระตุ้นเพื่อเปลี่ยน Provitamin D ที่ผิวหนังให้กลายเป็น Previtamin D"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดอธิบายความแตกต่างระหว่างผลกระทบของ UVA และ UVB ได้ถูกต้องที่สุด",
+    "options": [
+      {
+        "statement": "UVA ทำให้ผิวไหม้แดด ส่วน UVB ทำให้เกิดริ้วรอย",
+        "istrue": false
+      },
+      {
+        "statement": "UVA ทำลายชั้นกำพร้า ส่วน UVB ทำลายชั้นหนังแท้",
+        "istrue": false
+      },
+      {
+        "statement": "UVA เกี่ยวข้องกับความแก่ชรา ส่วน UVB เกี่ยวข้องกับการไหม้แดดและมะเร็งผิวหนัง",
+        "istrue": true
+      },
+      { "statement": "UVA มีความยาวคลื่นสั้นกว่า UVB", "istrue": false }
+    ],
+    "explanation": "UVA (Aging) ทะลุลงลึกทำลายโครงสร้างผิว ส่วน UVB (Burning) มีพลังงานสูงทำลายผิวชั้นนอกและ DNA โดยตรง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กลไกการทำงานของ Hydroquinone ในการทำให้ผิวขาวคือข้อใด",
+    "options": [
+      {
+        "statement": "การกัดลอกเซลล์ผิวชั้นนอกออกอย่างรวดเร็ว",
+        "istrue": false
+      },
+      {
+        "statement": "การยับยั้งเอนไซม์ Tyrosinase เพื่อลดการผลิตเมลานิน",
+        "istrue": true
+      },
+      { "statement": "การทำลายเซลล์เมลาโนโซมถาวร", "istrue": false },
+      { "statement": "การสะท้อนรังสี UV ออกจากผิวหนัง", "istrue": false }
+    ],
+    "explanation": "ไฮโดรควิโนนยับยั้งการเปลี่ยน Tyrosine เป็นเม็ดสีเมลานินโดยขัดขวางการทำงานของเอนไซม์ไทโรซิเนส"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ผลข้างเคียงที่เรียกว่า Exogenous Ochronosis เกิดจากการใช้สารใดต่อเนื่องเป็นเวลานาน",
+    "options": [
+      { "statement": "วิตามินซีเข้มข้น", "istrue": false },
+      { "statement": "ปรอท (Mercury)", "istrue": false },
+      { "statement": "ไฮโดรควิโนน (Hydroquinone)", "istrue": true },
+      { "statement": "สารสกัดจากชะเอมเทศ", "istrue": false }
+    ],
+    "explanation": "การใช้ไฮโดรควิโนนเข้มข้นสูงเกินไปหรือนานเกินไปอาจทำให้เกิดการสะสมสารสีน้ำเงินดำในชั้นผิวซึ่งรักษายาก"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ทำไมสารปรอทในเครื่องสำอางจึงเป็นอันตรายต่อทารกในครรภ์มารดา",
+    "options": [
+      { "statement": "เพราะทำให้มารดาเกิดอาการแพ้ท้องรุนแรง", "istrue": false },
+      {
+        "statement": "เพราะปรอทสามารถซึมผ่านรกและทำลายพัฒนาการของสมองทารกได้",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะปรอทขัดขวางการดูดซึมธาตุเหล็กของมารดา",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะปรอททำให้มารดาเป็นโรคเบาหวานขณะตั้งครรภ์",
+        "istrue": false
+      }
+    ],
+    "explanation": "ปรอทเป็นโลหะหนักที่ซึมผ่านรกเข้าสู่กระแสเลือดทารก ส่งผลทำลายระบบประสาทและลดระดับ IQ ของเด็ก"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การใช้ 'น้ำยาปิดผมขาวแบบค่อยเป็นค่อยไป' มีความเสี่ยงต่อการได้รับสารพิษชนิดใดหากใช้ผิดวิธี",
+    "options": [
+      { "statement": "สารหนู", "istrue": false },
+      { "statement": "แคดเมียม", "istrue": false },
+      { "statement": "ตะกั่ว (Lead)", "istrue": true },
+      { "statement": "ฟลูออไรด์", "istrue": false }
+    ],
+    "explanation": "น้ำยาเปลี่ยนสีผมชนิดนี้มักมี Lead Acetate เป็นส่วนประกอบ ซึ่งเป็นโลหะหนักที่มีพิษต่อระบบประสาทและทางเดินอาหาร"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สารชนิดใดในสเปรย์ฉีดผมที่อาจก่อให้เกิดอันตรายต่อระบบทางเดินหายใจหากสูดดมเข้าไปบ่อยๆ",
+    "options": [
+      { "statement": "Polyvinylpyrrolidone (PVP)", "istrue": true },
+      { "statement": "Ascorbic Acid", "istrue": false },
+      { "statement": "Glycerin", "istrue": false },
+      { "statement": "Sodium Chloride", "istrue": false }
+    ],
+    "explanation": "PVP เป็นสารสร้างฟิล์มที่ช่วยให้ผมคงรูป แต่หากสูดดมไอระเหยสะสมจะส่งผลเสียต่อปอดและระบบทางเดินหายใจ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดการได้รับ Hexachlorophene ในปริมาณมากจึงอาจทำให้เกิดอาการชัก",
+    "options": [
+      { "statement": "เพราะส่งผลต่อการเต้นของหัวใจ", "istrue": false },
+      {
+        "statement": "เพราะสารนี้มีพิษโดยตรงต่อระบบประสาทส่วนกลาง (CNS)",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะทำให้ระดับน้ำตาลในเลือดลดลงอย่างรวดเร็ว",
+        "istrue": false
+      },
+      { "statement": "เพราะทำให้ร่างกายขาดแคลเซียมเฉียบพลัน", "istrue": false }
+    ],
+    "explanation": "เฮกซะคลอโรฟีนสามารถดูดซึมผ่านผิวหนังและพุ่งเป้าไปที่การทำงานของสมองและไขสันหลังจนเกิดอาการทางประสาทรุนแรง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กลไกที่สเตียรอยด์ (Corticosteroids) ใช้ในการยับยั้งการอักเสบในระดับยีนคือข้อใด",
+    "options": [
+      {
+        "statement": "การกระตุ้นเอนไซม์ HAT เพื่อขยายสาย DNA",
+        "istrue": false
+      },
+      {
+        "statement": "การยับยั้งเอนไซม์ HDAC2 เพื่อเพิ่มการผลิตโปรตีนอักเสบ",
+        "istrue": false
+      },
+      {
+        "statement": "การเรียกใช้เอนไซม์ HDAC2 เพื่อปิดการทำงานของยีนที่สร้างสารอักเสบ",
+        "istrue": true
+      },
+      { "statement": "การทำลายเซลล์เม็ดเลือดขาวโดยตรง", "istrue": false }
+    ],
+    "explanation": "สเตียรอยด์ออกฤทธิ์ผ่านการปรับเปลี่ยนโครงสร้างโครมาตินโดยใช้ HDAC2 เพื่อสกัดกั้นการอ่านรหัสยีนที่เกี่ยวข้องกับการอักเสบ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กลุ่มอาการ 'หน้าพระจันทร์ยิ้ม' (Moon face) และ 'หนอกคอควาย' (Buffalo hump) เป็นลักษณะเด่นของภาวะใด",
+    "options": [
+      { "statement": "ภาวะขาดสารไอโอดีน", "istrue": false },
+      { "statement": "กลุ่มอาการคุชชิ่ง (Cushing's Syndrome)", "istrue": true },
+      { "statement": "โรคเบาหวานชนิดที่ 1", "istrue": false },
+      { "statement": "ภาวะตับแข็งระยะเริ่มต้น", "istrue": false }
+    ],
+    "explanation": "ลักษณะเหล่านี้เกิดจากการสะสมไขมันผิดที่เนื่องจากร่างกายได้รับฮอร์โมนสเตียรอยด์มากเกินความจำเป็น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สารนิโคตินในบุหรี่ส่งผลกระทบต่อความอ่อนเยาว์ของผิวหนังอย่างไร",
+    "options": [
+      { "statement": "เพิ่มการไหลเวียนโลหิตทำให้ผิวแดงฝาด", "istrue": false },
+      {
+        "statement": "ทำลายเส้นใยคอลลาเจนและอีลาสตินในผิวหนัง",
+        "istrue": true
+      },
+      {
+        "statement": "กระตุ้นการสร้างไฮยาลูโรแนนให้ผิวชุ่มชื้น",
+        "istrue": false
+      },
+      { "statement": "ยับยั้งการเกิดอนุมูลอิสระในเซลล์", "istrue": false }
+    ],
+    "explanation": "ควันบุหรี่มีสารพิษที่ทำลายโครงสร้างพยุงผิว ทำให้ผิวหย่อนคล้อยและเกิดริ้วรอยลึกกว่าคนปกติ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดบุหรี่ไฟฟ้าจึงยังคงมีความเสี่ยงต่อการเกิดมะเร็งแม้จะไม่มีการเผาไหม้เหมือนบุหรี่มวน",
+    "options": [
+      {
+        "statement": "เพราะมีสารก่อมะเร็ง เช่น ฟอร์มาลดีไฮด์ ในไอระเหย",
+        "istrue": true
+      },
+      { "statement": "เพราะไอน้ำทำให้ปอดอักเสบจากการสะสมน้ำ", "istrue": false },
+      {
+        "statement": "เพราะรสหวานในบุหรี่ไฟฟ้าเปลี่ยนเป็นน้ำตาลในเลือด",
+        "istrue": false
+      },
+      { "statement": "เพราะแบตเตอรี่ปล่อยรังสีแกมมาออกมา", "istrue": false }
+    ],
+    "explanation": "ไอระเหยของบุหรี่ไฟฟ้ามีสารเคมีและโลหะหนักที่เป็น Carcinogens ซึ่งสามารถกระตุ้นการกลายพันธุ์ของเซลล์ได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ปฏิกิริยา Glycation ในร่างกายเกิดขึ้นเมื่อใด",
+    "options": [
+      {
+        "statement": "เมื่อออกกำลังกายอย่างหนักจนกล้ามเนื้อฉีกขาด",
+        "istrue": false
+      },
+      {
+        "statement": "เมื่อน้ำตาลในกระแสเลือดเข้ายึดเกาะกับโมเลกุลโปรตีนโดยไม่ใช้เอนไซม์",
+        "istrue": true
+      },
+      { "statement": "เมื่อร่างกายขาดน้ำอย่างรุนแรง", "istrue": false },
+      { "statement": "เมื่อทานวิตามินซีเกินขนาด", "istrue": false }
+    ],
+    "explanation": "ไกลเคชั่นเป็นปฏิกิริยาทางเคมีที่น้ำตาลเข้าทำลายโปรตีน เช่น คอลลาเจน ทำให้เสียสภาพและเกิดความเสื่อม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สาร AGEs (Advanced Glycation End products) ส่งผลเสียต่อผิวหนังอย่างไร",
+    "options": [
+      { "statement": "ทำให้สีผิวดูขาวซีดผิดปกติ", "istrue": false },
+      {
+        "statement": "ทำให้เส้นใยคอลลาเจนแข็งกระด้างและขาดความยืดหยุ่น",
+        "istrue": true
+      },
+      { "statement": "เพิ่มการผลิตน้ำมันใต้ผิวหนัง", "istrue": false },
+      { "statement": "ช่วยสมานแผลให้หายเร็วขึ้น", "istrue": false }
+    ],
+    "explanation": "AGEs ทำให้เกิดการเชื่อมไขว้ (Cross-link) ของเส้นใยโปรตีน ส่งผลให้ผิวหย่อนคล้อยหรือที่เรียกว่า Sugar Sag"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "High Fructose Corn Syrup (HFCS) จัดเป็น 'น้ำตาลเร่งแก่' เพราะสาเหตุใด",
+    "options": [
+      { "statement": "เพราะมีราคาแพงคนจึงบริโภคมาก", "istrue": false },
+      {
+        "statement": "เพราะกระตุ้นการเกิด AGEs และการอักเสบในเซลล์ได้รุนแรง",
+        "istrue": true
+      },
+      { "statement": "เพราะทำให้ฟันผุเร็วกว่าน้ำตาลชนิดอื่น", "istrue": false },
+      { "statement": "เพราะทำให้สมองหลั่งฮอร์โมนความเครียด", "istrue": false }
+    ],
+    "explanation": "HFCS ส่งผลเสียต่อระบบเผาผลาญและเร่งปฏิกิริยาไกลเคชั่นในร่างกายมากกว่าน้ำตาลธรรมชาติบางชนิด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความหวานสัมพัทธ์ (Relative Sweetness) ของ Sucralose เมื่อเทียบกับน้ำตาลทรายเป็นอย่างไร",
+    "options": [
+      { "statement": "หวานน้อยกว่าครึ่งหนึ่ง", "istrue": false },
+      { "statement": "หวานเท่ากับน้ำตาลทรายพอดี", "istrue": false },
+      { "statement": "หวานกว่าประมาณ 600 เท่า", "istrue": true },
+      { "statement": "หวานกว่า 2,000 เท่า", "istrue": false }
+    ],
+    "explanation": "ซูคราโลสเป็นสารให้ความหวานสังเคราะห์ที่มีความเข้มข้นของความหวานสูงกว่าน้ำตาลทรายในช่วง 550-750 เท่า"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดเป็นคำแนะนำขององค์การอนามัยโลก (WHO) เกี่ยวกับการบริโภคน้ำตาลทรายใน 1 วัน",
+    "options": [
+      { "statement": "ไม่เกิน 2 ช้อนชา", "istrue": false },
+      { "statement": "ไม่เกิน 6 ช้อนชา (24 กรัม)", "istrue": true },
+      { "statement": "ไม่เกิน 12 ช้อนชา (48 กรัม)", "istrue": false },
+      { "statement": "ไม่ควรทานน้ำตาลทรายเลยแม้แต่นิดเดียว", "istrue": false }
+    ],
+    "explanation": "WHO แนะนำให้จำกัดปริมาณน้ำตาลที่เติมเพิ่ม (Added sugar) ไว้ไม่เกิน 6 ช้อนชาต่อวันเพื่อสุขภาพที่ดี"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การเลือกทานผลไม้อบแห้งแทนผลไม้สดมีความเสี่ยงในเรื่องใดมากที่สุด",
+    "options": [
+      {
+        "statement": "ความเข้มข้นของน้ำตาลที่สูงมากต่อปริมาณการกิน",
+        "istrue": true
+      },
+      { "statement": "การขาดหายไปของวิตามินดี", "istrue": false },
+      { "statement": "ปริมาณไขมันทรานส์ที่เพิ่มขึ้น", "istrue": false },
+      { "statement": "การสะสมของโซเดียมจากอากาศ", "istrue": false }
+    ],
+    "explanation": "เมื่อน้ำระเหยออกไป ความเข้มข้นของน้ำตาลในผลไม้อบแห้งจะสูงขึ้นมหาศาลเมื่อเทียบกับน้ำหนักที่เท่ากับผลไม้สด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ไขมันทรานส์ (Trans Fat) ส่งผลเสียต่อระดับคอเลสเตอรอลในเลือดอย่างไร",
+    "options": [
+      { "statement": "เพิ่มทั้ง HDL และ LDL", "istrue": false },
+      { "statement": "ลดทั้ง HDL และ LDL", "istrue": false },
+      { "statement": "เพิ่ม LDL และ ลด HDL", "istrue": true },
+      { "statement": "ลด LDL และ เพิ่ม HDL", "istrue": false }
+    ],
+    "explanation": "ไขมันทรานส์เป็นอันตรายที่สุดเพราะเพิ่มไขมันเลว (LDL) ที่อุดตันหลอดเลือดและลดไขมันดี (HDL) ที่ช่วยกำจัดขยะในเลือด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การทอดอาหารด้วยความร้อนสูงกว่า 100 องศาเซลเซียสซ้ำๆ จะก่อให้เกิดสารอันตรายชนิดใด",
+    "options": [
+      { "statement": "วิตามินอีส่วนเกิน", "istrue": false },
+      { "statement": "Lipid Oxidation Products (LOPs)", "istrue": true },
+      { "statement": "กรดไขมันจำเป็น", "istrue": false },
+      { "statement": "คลอโรฟิลล์สังเคราะห์", "istrue": false }
+    ],
+    "explanation": "ความร้อนและออกซิเจนทำลายโครงสร้างน้ำมันจนเกิดสาร LOPs ที่เป็นพิษต่อเซลล์และ DNA"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ฮอร์โมน Cortisol ที่หลั่งออกมาเมื่อเกิดความเครียดเรื้อรัง ส่งผลกระทบต่อผิวหนังอย่างไร",
+    "options": [
+      { "statement": "เพิ่มการสร้างคอลลาเจนใหม่", "istrue": false },
+      {
+        "statement": "ยับยั้งการสังเคราะห์ไฮยาลูโรแนนและคอลลาเจน",
+        "istrue": true
+      },
+      { "statement": "ทำให้ผิวมีความชุ่มชื้นสูงขึ้น", "istrue": false },
+      { "statement": "ช่วยเร่งการสมานแผลอักเสบ", "istrue": false }
+    ],
+    "explanation": "คอร์ติซอลมีฤทธิ์สลาย (Catabolic) ซึ่งไปขัดขวางกระบวนการสร้างและบำรุงรักษาโครงสร้างผิวหนัง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "วงจร 'เครียดแล้วกิน' (Stress Eating) มักเกี่ยวข้องกับการเพิ่มขึ้นของฮอร์โมนหิวชนิดใด",
+    "options": [
+      { "statement": "อินซูลิน", "istrue": false },
+      { "statement": "เลปติน", "istrue": false },
+      { "statement": "เกรลิน (Ghrelin)", "istrue": true },
+      { "statement": "เมลาโทนิน", "istrue": false }
+    ],
+    "explanation": "ความเครียดกระตุ้นให้คอร์ติซอลสูงขึ้น ซึ่งไปส่งผลให้ฮอร์โมนเกรลินเพิ่มขึ้นทำให้รู้สึกหิวตลอดเวลา"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดการนอนหลับในช่วง Stage 3 (Deep Sleep) จึงมีความสำคัญต่อความอ่อนเยาว์",
+    "options": [
+      {
+        "statement": "เพราะเป็นช่วงที่ร่างกายหลั่งคอร์ติซอลมากที่สุด",
+        "istrue": false
+      },
+      {
+        "statement": "เพราะมีการหลั่ง Growth Hormone เพื่อซ่อมแซมส่วนที่สึกหรอ",
+        "istrue": true
+      },
+      { "statement": "เพราะสมองจะใช้พลังงานจากน้ำตาลทั้งหมด", "istrue": false },
+      {
+        "statement": "เพราะความดันโลหิตจะพุ่งสูงเพื่อไล่สารพิษ",
+        "istrue": false
+      }
+    ],
+    "explanation": "ช่วงหลับลึกเป็นเวลาทองที่ร่างกายผลิตโกรทฮอร์โมนมาใช้ในการบูรณะเซลล์และเผาผลาญไขมัน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สาร Acetaldehyde ซึ่งเป็นพิษต่อเซลล์ตับ เกิดจากกระบวนการใดในร่างกาย",
+    "options": [
+      { "statement": "การย่อยสลายน้ำตาลฟรักโทส", "istrue": false },
+      { "statement": "การเผาผลาญไขมันอิ่มตัว", "istrue": false },
+      { "statement": "การย่อยสลายแอลกอฮอล์โดยตับ", "istrue": true },
+      { "statement": "การสังเคราะห์โปรตีนในกล้ามเนื้อ", "istrue": false }
+    ],
+    "explanation": "ตับจะเปลี่ยนเอทานอลจากเครื่องดื่มแอลกอฮอล์เป็นอะซิทัลดีไฮด์ ซึ่งเป็นสารพิษก่อนจะถูกขับออกไป"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "โรค NCDs (โรคไม่ติดต่อเรื้อรัง) มีลักษณะเด่นที่แตกต่างจากโรคติดเชื้ออย่างไร",
+    "options": [
+      { "statement": "เกิดจากเชื้อไวรัสที่ซ่อนตัวนาน", "istrue": false },
+      {
+        "statement": "เกิดจากนิสัยและพฤติกรรมสะสมเป็นระยะเวลานาน",
+        "istrue": true
+      },
+      { "statement": "สามารถรักษาให้หายขาดได้ด้วยยาปฏิชีวนะ", "istrue": false },
+      { "statement": "ติดต่อกันได้ผ่านการสัมผัสใกล้ชิด", "istrue": false }
+    ],
+    "explanation": "NCDs เช่น เบาหวาน โรคหัวใจ และมะเร็ง มีสาเหตุหลักจากวิถีชีวิตที่ไม่เหมาะสมสะสมจนระบบร่างกายพัง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กลไกพื้นฐานที่ทำให้ผู้ป่วย Werner Syndrome แก่เร็วกว่าคนปกติคือข้อใด",
+    "options": [
+      {
+        "statement": "การได้รับรังสี UV มากเกินไปตั้งแต่เด็ก",
+        "istrue": false
+      },
+      {
+        "statement": "ความบกพร่องของยีน WRN ที่ใช้ซ่อมแซมและจำลอง DNA",
+        "istrue": true
+      },
+      {
+        "statement": "การกินอาหารที่มีน้ำตาลสูงตั้งแต่อยู่ในครรภ์",
+        "istrue": false
+      },
+      { "statement": "การขาดวิตามินดีอย่างรุนแรง", "istrue": false }
+    ],
+    "explanation": "ความผิดปกติของยีน WRN ทำให้ร่างกายขาดโปรตีนในการรักษาเสถียรภาพของรหัสพันธุกรรม เซลล์จึงเสื่อมสภาพอย่างรวดเร็ว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "รังสี UV ช่วงความยาวคลื่นใดที่มีบทบาทสำคัญในการฆ่าเชื้อโรค (Germicidal)",
+    "options": [
+      { "statement": "100 - 280 nm (UVC)", "istrue": true },
+      { "statement": "280 - 315 nm (UVB)", "istrue": false },
+      { "statement": "315 - 400 nm (UVA)", "istrue": false },
+      { "statement": "400 - 700 nm (Visible Light)", "istrue": false }
+    ],
+    "explanation": "UVC มีพลังงานและความยาวคลื่นที่เหมาะสมในการทำลายโครงสร้าง DNA/RNA ของแบคทีเรียและไวรัส"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ภาวะ 'อนุมูลอิสระ' (Free Radicals) เปรียบได้กับสิ่งใดในร่างกายมนุษย์ตามคำอธิบายในเนื้อหา",
+    "options": [
+      { "statement": "น้ำมันหล่อลื่นเครื่องยนต์", "istrue": false },
+      {
+        "statement": "ขยะมีพิษหรือลูกไฟที่ทำลายโครงสร้างเซลล์",
+        "istrue": true
+      },
+      { "statement": "เกราะกำบังรังสี", "istrue": false },
+      { "statement": "ตัวกระตุ้นการสร้างคอลลาเจน", "istrue": false }
+    ],
+    "explanation": "อนุมูลอิสระเป็นโมเลกุลไม่เสถียรที่เข้าโจมตีองค์ประกอบต่างๆ ของเซลล์ทำให้เกิดความเสียหายสะสม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดการสูบบุหรี่จึงทำให้แผลผ่าตัดหรือแผลสดหายช้ากว่าปกติ",
+    "options": [
+      { "statement": "เพราะบุหรี่ทำให้เลือดข้นขึ้น", "istrue": false },
+      {
+        "statement": "เพราะนิโคตินทำให้หลอดเลือดหดตัวและลดออกซิเจนในเนื้อเยื่อ",
+        "istrue": true
+      },
+      {
+        "statement": "เพราะควันบุหรี่เคลือบผิวหนังไม่ให้อากาศเข้า",
+        "istrue": false
+      },
+      { "statement": "เพราะบุหรี่ทำลายธาตุเหล็กในร่างกาย", "istrue": false }
+    ],
+    "explanation": "สารพิษในบุหรี่ขัดขวางการลำเลียงสารอาหารและออกซิเจนที่จำเป็นต่อการซ่อมแซมเซลล์บริเวณบาดแผล"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การทานผลไม้ในปริมาณมากโดยไม่คัดกรอง อาจทำให้ร่างกายได้รับน้ำตาลชนิดใดมากเกินไป",
+    "options": [
+      { "statement": "Lactose", "istrue": false },
+      { "statement": "Maltose", "istrue": false },
+      { "statement": "Fructose", "istrue": true },
+      { "statement": "Galactose", "istrue": false }
+    ],
+    "explanation": "ฟรักโทสคือน้ำตาลหลักในผลไม้ ซึ่งหากได้รับมากเกินไปจะส่งผลเสียต่อตับและเร่งภาวะไกลเคชั่น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สารต้านอนุมูลอิสระ (Antioxidants) มีบทบาทสำคัญอย่างไรต่อตาชั่งความเครียดในเซลล์",
+    "options": [
+      { "statement": "เพิ่มปริมาณ ROS เพื่อฆ่าเชื้อโรค", "istrue": false },
+      {
+        "statement": "รักษาสมดุลโดยการกำจัดอนุมูลอิสระส่วนเกิน",
+        "istrue": true
+      },
+      { "statement": "เร่งการทำงานของน้ำตาลในกระแสเลือด", "istrue": false },
+      { "statement": "ช่วยให้ผิวหนังทนต่อแรงกระแทกได้ดีขึ้น", "istrue": false }
+    ],
+    "explanation": "แอนตี้ออกซิแดนท์ทำหน้าที่เป็นตัวลดความเครียดออกซิเดชันโดยการทำให้โมเลกุลที่ไม่เสถียรเป็นกลาง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "อาการ 'Arc eye' หรือกระจกตาอักเสบ มักเกิดจากการได้รับรังสีชนิดใดเข้าสู่ดวงตาโดยตรง",
+    "options": [
+      { "statement": "UVA", "istrue": false },
+      { "statement": "UVB", "istrue": true },
+      { "statement": "Infrared", "istrue": false },
+      { "statement": "Microwave", "istrue": false }
+    ],
+    "explanation": "รังสี UVB มีพลังงานสูงที่สามารถทำความเสียหายเฉียบพลันต่อเซลล์กระจกตาได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "น้ำมันชนิดใดที่ควรหลีกเลี่ยงในการนำมาทอดอาหารซ้ำหลายครั้ง",
+    "options": [
+      {
+        "statement": "น้ำมันที่มีกรดไขมันไม่อิ่มตัวหลายตำแหน่ง (PUFAs) สูง",
+        "istrue": true
+      },
+      { "statement": "น้ำมันมะพร้าวสกัดเย็น", "istrue": false },
+      { "statement": "น้ำมันหมู", "istrue": false },
+      { "statement": "น้ำมันปาล์ม", "istrue": false }
+    ],
+    "explanation": "PUFAs มีความไวต่อความร้อนและออกซิเจนสูง ทำให้เกิดสารพิษ LOPs ได้ง่ายกว่าน้ำมันชนิดอื่น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "อนุสัญญามินามาตะ (Minamata Convention) มีเป้าหมายหลักในการควบคุมสารพิษชนิดใด",
+    "options": [
+      { "statement": "ตะกั่ว", "istrue": false },
+      { "statement": "สารกักเก็บความเย็น", "istrue": false },
+      { "statement": "ปรอท (Mercury)", "istrue": true },
+      { "statement": "ก๊าซเรือนกระจก", "istrue": false }
+    ],
+    "explanation": "เป็นข้อตกลงสากลเพื่อลดการปล่อยและใช้ปรอททั่วโลกเพื่อปกป้องสุขภาพมนุษย์และสิ่งแวดล้อม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สารก่อมะเร็ง 'ฟอร์มาลดีไฮด์' มีโอกาสพบได้ในพฤติกรรมใดมากที่สุด",
+    "options": [
+      { "statement": "การนอนน้อย", "istrue": false },
+      { "statement": "การใช้บุหรี่ไฟฟ้า", "istrue": true },
+      { "statement": "การกินทุเรียนน้ำตาลสูง", "istrue": false },
+      { "statement": "การทาครีมกันแดด SPF ต่ำ", "istrue": false }
+    ],
+    "explanation": "น้ำยาและไอระเหยในบุหรี่ไฟฟ้าเมื่อได้รับความร้อนจะเกิดปฏิกิริยากลายเป็นสารก่อมะเร็งชนิดนี้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากต้องการตรวจเช็คว่าเรากำลังเผชิญกับ 'การอักเสบเรื้อรัง' หรือไม่ สัญญาณเตือนใดที่เห็นได้ชัดจากผิวหนัง",
+    "options": [
+      { "statement": "ผิวหน้าเนียนใสไร้รูขุมขน", "istrue": false },
+      { "statement": "แผลหายช้าและผิวสูญเสียความยืดหยุ่น", "istrue": true },
+      { "statement": "เส้นเลือดฝอยที่ปลายนิ้วเต้นแรง", "istrue": false },
+      { "statement": "การมีไฝเพิ่มขึ้นตามร่างกาย", "istrue": false }
+    ],
+    "explanation": "การอักเสบเรื้อรังขัดขวางกระบวนการซ่อมแซมเซลล์และทำลายโครงสร้างคอลลาเจนอย่างต่อเนื่อง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดการ 'อดนอนเพียงคืนเดียว' จึงสามารถส่งผลต่อความแก่ของเซลล์ได้ทันที",
+    "options": [
+      { "statement": "เพราะทำให้ร่างกายขาดออกซิเจน 50%", "istrue": false },
+      {
+        "statement": "เพราะกระตุ้นภาวะเซลล์แก่ตัว (Senescence) ในระดับยีน",
+        "istrue": true
+      },
+      { "statement": "เพราะทำให้น้ำหนักตัวลดลงอย่างรวดเร็ว", "istrue": false },
+      { "statement": "เพราะระบบย่อยอาหารหยุดทำงาน", "istrue": false }
+    ],
+    "explanation": "งานวิจัยชี้ว่าการขาดการนอนที่เพียงพอจะเร่งกระบวนการเสื่อมสภาพของเซลล์ในระดับชีวภาพทันที"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สารให้ความหวานชนิดใดที่มีค่าความหวานสูงที่สุดถึง 2,000 เท่าของน้ำตาลทราย",
+    "options": [
+      { "statement": "Aspartame", "istrue": false },
+      { "statement": "Saccharin", "istrue": false },
+      { "statement": "Alitame", "istrue": true },
+      { "statement": "Xylitol", "istrue": false }
+    ],
+    "explanation": "Alitame จัดเป็นสารให้ความหวานที่มีความเข้มข้นสูงสุดตัวหนึ่งในกลุ่มสารสังเคราะห์"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในรังสี UV ทั้งหมดที่ส่องถึงผิวเรา รังสีช่วงใดที่มีสัดส่วนสูงสุดถึง 75% และทะลุลงลึกที่สุด",
+    "options": [
+      { "statement": "Long UVA (UVA-I)", "istrue": true },
+      { "statement": "Short UVA (UVA-II)", "istrue": false },
+      { "statement": "UVB", "istrue": false },
+      { "statement": "UVC", "istrue": false }
+    ],
+    "explanation": "UVA-I คือตัวการหลักที่สะสมความเสียหายในชั้นหนังแท้ได้ลึกที่สุดและมีปริมาณมากที่สุดในบรรดา UV ทั้งหมด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การทำงานของเอนไซม์ HDAC2 ที่ถูกเรียกใช้โดยสเตียรอยด์มีเป้าหมายเพื่อสิ่งใด",
+    "options": [
+      { "statement": "เพื่อตัดทำลายสาย DNA ของไวรัส", "istrue": false },
+      {
+        "statement": "เพื่อถอดหมู่ Acetyl ออกจากฮิสโตนและปิดยีนอักเสบ",
+        "istrue": true
+      },
+      { "statement": "เพื่อเร่งการแบ่งตัวของเซลล์ผิวหนัง", "istrue": false },
+      { "statement": "เพื่อผลิตน้ำตาลเข้าสู่กระแสเลือด", "istrue": false }
+    ],
+    "explanation": "HDAC2 ทำหน้าที่ปรับเปลี่ยนโครงสร้างที่พันรอบ DNA ให้แน่นขึ้นเพื่อไม่ให้ยีนที่สร้างความอักเสบถูกอ่านได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สารประกอบตะกั่ว (Lead Acetate) เมื่อทำปฏิกิริยากับสิ่งใดในเส้นผมจะกลายเป็นสีดำ",
+    "options": [
+      { "statement": "น้ำมันจากหนังศีรษะ", "istrue": false },
+      { "statement": "ซัลเฟอร์ (Sulfur) ในโปรตีนเคราติน", "istrue": true },
+      { "statement": "เม็ดสีเมลานินเดิม", "istrue": false },
+      { "statement": "ออกซิเจนในอากาศ", "istrue": false }
+    ],
+    "explanation": "ตะกั่วจะสร้างพันธะกับกัมมะถันในโครงสร้างผมจนเกิดเป็นสารประกอบที่มีสีเข้มเคลือบเส้นผมไว้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ภาวะดื้ออินซูลิน (Insulin Resistance) จากการบริโภคน้ำตาล HFCS สูง ส่งผลทางอ้อมต่อผิวอย่างไร",
+    "options": [
+      { "statement": "ทำให้ผิวหนาขึ้นและทนแดด", "istrue": false },
+      {
+        "statement": "ส่งเสริมการอักเสบเรื้อรังและเร่งการเกิด AGEs",
+        "istrue": true
+      },
+      { "statement": "ลดการสะสมไขมันใต้ชั้นผิว", "istrue": false },
+      { "statement": "เพิ่มการผลิตวิตามินอีในเลือด", "istrue": false }
+    ],
+    "explanation": "ภาวะดื้ออินซูลินทำให้ระดับน้ำตาลและสารอักเสบในเลือดสูง ซึ่งเป็นสภาพแวดล้อมที่ทำลายโครงสร้างคอลลาเจน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การดื่มน้ำมากๆ หลังการดื่มแอลกอฮอล์ช่วยปกป้องผิวได้อย่างไร",
+    "options": [
+      { "statement": "ช่วยสลาย Acetaldehyde ได้ทันที", "istrue": false },
+      {
+        "statement": "ลดภาวะขาดน้ำ (Dehydration) ซึ่งเป็นตัวเร่งริ้วรอย",
+        "istrue": true
+      },
+      { "statement": "ช่วยเปลี่ยนแอลกอฮอล์เป็นโปรตีน", "istrue": false },
+      { "statement": "ยับยั้งไม่ให้แอลกอฮอล์ซึมเข้าสู่สมอง", "istrue": false }
+    ],
+    "explanation": "แอลกอฮอล์มีฤทธิ์ขับปัสสาวะทำให้ผิวแห้งกร้าน การเติมน้ำช่วยลดความเสียหายจากการขาดความชุ่มชื้นสะสม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในระดับโมเลกุล โปรตีนชนิดใดที่เสมือนเป็น 'เสาเข็ม' ให้ความแข็งแรงแก่ผิวหนัง",
+    "options": [
+      { "statement": "อีลาสติน (Elastin)", "istrue": false },
+      { "statement": "เคราติน (Keratin)", "istrue": false },
+      { "statement": "คอลลาเจน (Collagen)", "istrue": true },
+      { "statement": "ฮีโมโกลบิน (Hemoglobin)", "istrue": false }
+    ],
+    "explanation": "คอลลาเจนคือโปรตีนโครงสร้างหลักที่ให้ความแน่นและคงรูปแก่เนื้อเยื่อผิวหนัง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ผลกระทบต่อสังคมที่สำคัญที่สุดจากกลุ่มโรค NCDs คือข้อใด",
+    "options": [
+      { "statement": "การเพิ่มขึ้นของประชากรวัยแรงงาน", "istrue": false },
+      {
+        "statement": "ภาระค่ารักษาพยาบาลมหาศาลและการสูญเสียกำลังหลักในการพัฒนาประเทศ",
+        "istrue": true
+      },
+      {
+        "statement": "การที่คนในชุมชนต้องย้ายที่อยู่อาศัยเพื่อหนีโรค",
+        "istrue": false
+      },
+      { "statement": "ความต้องการวัคซีนที่เพิ่มมากขึ้น", "istrue": false }
+    ],
+    "explanation": "NCDs บั่นทอนทั้งสุขภาพส่วนบุคคลและเศรษฐกิจระดับชาติเนื่องจากเป็นโรคเรื้อรังที่ใช้ค่ารักษาพยาบาลสูง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "รังสีชนิดใดจากดวงอาทิตย์ที่มีความยาวคลื่นสั้นที่สุดและมีพลังงานทำลายล้างสูงสุด",
+    "options": [
+      { "statement": "UVA", "istrue": false },
+      { "statement": "UVB", "istrue": false },
+      { "statement": "UVC", "istrue": true },
+      { "statement": "แสงสีม่วง", "istrue": false }
+    ],
+    "explanation": "UVC (100-280 nm) มีความถี่และพลังงานสูงที่สุดในกลุ่มรังสีอัลตราไวโอเลต"
+  }
+]
