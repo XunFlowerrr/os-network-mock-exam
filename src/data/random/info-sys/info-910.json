@@ -1,0 +1,662 @@
+[
+  {
+    "type": "multiple-choice",
+    "question": "แนวทางการตรวจสอบข่าวปลอมด้วยวิธี 'Check Date' มีเหตุผลหลักเชิงจิตวิทยาและพฤติกรรมศาสตร์อย่างไร (การวิเคราะห์)",
+    "options": [
+      { "statement": "เพื่อหาว่าใครเป็นคนเขียนข่าวคนแรกในระบบฐานข้อมูลของรัฐ", "istrue": false },
+      { "statement": "เพราะข่าวปลอมมักจะนำข่าวหรือเหตุการณ์เก่าๆ ในอดีตมารีไซเคิลและเผยแพร่ใหม่เพื่อสร้างความตื่นตระหนกให้เข้ากับสถานการณ์ปัจจุบัน", "istrue": true },
+      { "statement": "เพื่อตรวจสอบว่าเซิร์ฟเวอร์ที่ใช้ปล่อยข่าวตั้งอยู่ในประเทศหรือต่างประเทศ", "istrue": false },
+      { "statement": "เพราะโซเชียลมีเดียมักจะลบข่าวที่เก่ากว่า 1 ปีทิ้งโดยอัตโนมัติ", "istrue": false }
+    ],
+    "explanation": "Misinformation มักจะใช้ข่าวเก่า (Old news recycled) นำมาปั่นกระแสใหม่เพื่อสร้างความแพนิค การตรวจสอบวันที่ (Check Date) จึงเป็นขั้นตอนแรกๆ ในการจับผิด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากคุณพบเห็นข้อความแชร์ลูกโซ่ทาง LINE ที่อ้างถึงยารักษาโรคชนิดใหม่ที่ไม่ได้ผ่านการรับรอง แพลตฟอร์มใดในประเทศไทยที่เหมาะสมที่สุดและเปิดโอกาสให้ภาคประชาชนร่วมตรวจสอบ (Collaborative platform) (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "Anti-Fake News Center Thailand (AFNC)", "istrue": false },
+      { "statement": "Fake Check (NCSA)", "istrue": false },
+      { "statement": "Cofact Thailand", "istrue": true },
+      { "statement": "Thai PBS Verify", "istrue": false }
+    ],
+    "explanation": "Cofact Thailand เป็น Collaborative platform ที่เน้นให้ผู้ใช้ร่วมกันตรวจสอบและรายงานข่าวที่น่าสงสัย โดยเฉพาะเรื่องสุขภาพและสังคม (Health misinformation)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คุณได้รับ SMS ที่มีลิงก์หลอกให้กรอกข้อมูลบัตรเครดิต (SMS Phishing) หน่วยงานใดที่มีขอบเขตหน้าที่ (Focus) ในการจัดการและให้ข้อมูลตรวจสอบภัยคุกคามทางไซเบอร์ประเภทนี้โดยตรง (ความเข้าใจ)",
+    "options": [
+      { "statement": "Thai PBS Verify", "istrue": false },
+      { "statement": "Anti-Fake News Center Thailand (AFNC)", "istrue": false },
+      { "statement": "Cofact Thailand", "istrue": false },
+      { "statement": "Fake Check (NCSA)", "istrue": true }
+    ],
+    "explanation": "Fake Check โดย NCSA (National Cyber Security Agency) มีจุดเน้นหลักที่กลโกงออนไลน์ (Online scams), SMS phishing และภัยคุกคามทางไซเบอร์"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดคือความแตกต่างทางเทคนิคที่เป็นหัวใจสำคัญระหว่าง Deepfakes และ Shallowfakes (การวิเคราะห์)",
+    "options": [
+      { "statement": "Deepfakes เป็นข่าวที่เป็นข้อความยาวๆ ส่วน Shallowfakes เป็นรูปภาพนิ่ง", "istrue": false },
+      { "statement": "Deepfakes ถูกสร้างโดยรัฐบาลเพื่อจุดประสงค์ด้านความมั่นคง ส่วน Shallowfakes สร้างโดยแฮ็กเกอร์", "istrue": false },
+      { "statement": "Deepfakes ใช้เทคโนโลยีปัญญาประดิษฐ์ (AI) สังเคราะห์วิดีโอขึ้นมาใหม่ทั้งหมด ขณะที่ Shallowfakes ใช้เทคนิคตัดต่อพื้นฐาน เช่น สปีดภาพหรือตัดต่อสลับฉาก", "istrue": true },
+      { "statement": "ทั้งสองอย่างใช้ AI แต่ Deepfakes เผยแพร่บน Dark web เท่านั้น", "istrue": false }
+    ],
+    "explanation": "Deepfakes อาศัย AI ในการสร้างหรือจำลองใบหน้า/เสียงให้เหมือนจริงในเหตุการณ์ที่ไม่ได้เกิดจริง ส่วน Shallowfakes (Cheapfakes) ใช้เทคนิคการแก้ไขวิดีโอแบบพื้นฐานทั่วไป"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กลไก Randomly scheduled rewards ของแพลตฟอร์มโซเชียลมีเดีย ออกแบบมาเพื่อกระตุ้นพฤติกรรมใดของผู้ใช้ และอาศัยกลไกใดของร่างกาย (การประเมินค่า)",
+    "options": [
+      { "statement": "กระตุ้นให้ผู้ใช้บริจาคเงินให้แพลตฟอร์ม โดยอาศัยสารเซโรโทนิน", "istrue": false },
+      { "statement": "กระตุ้นให้ผู้ใช้อ่านข่าวที่มีสาระมากขึ้น โดยอาศัยสารคอร์ติซอล", "istrue": false },
+      { "statement": "กระตุ้นให้ผู้ใช้กลับมาเช็คแอปพลิเคชันซ้ำๆ อย่างคาดเดาไม่ได้ โดยอาศัยการหลั่งสารโดพามีน (Dopamine) ทุกครั้งที่ได้รับการกดไลก์หรือแชร์", "istrue": true },
+      { "statement": "กระตุ้นให้ผู้ใช้เลิกเล่นโซเชียลมีเดีย โดยอาศัยสารเมลาโทนินเพื่อให้นอนหลับ", "istrue": false }
+    ],
+    "explanation": "Randomly scheduled rewards ให้รางวัล (เช่น ยอดไลก์ ข้อความ) ในเวลาที่ไม่แน่นอน ทำให้สมองหลั่ง Dopamine เกิดเป็นความพึงพอใจและนำไปสู่การเสพติดแอปพลิเคชัน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "พฤติกรรม Doomscrolling มีความเชื่อมโยงกับฟีเจอร์การออกแบบ UX/UI ใดมากที่สุด และสร้างผลลัพธ์อย่างไร (การวิเคราะห์)",
+    "options": [
+      { "statement": "Pagination; ทำให้ผู้ใช้ต้องหยุดคิดก่อนกดเปลี่ยนหน้า", "istrue": false },
+      { "statement": "Infinite scroll; ขจัดการคลิกเพื่อโหลดหน้าใหม่ ทำให้ผู้ใช้เลื่อนดูข่าวสารด้านลบไปเรื่อยๆ อย่างไม่มีที่สิ้นสุด", "istrue": true },
+      { "statement": "Dark mode; ทำให้สายตาไม่ล้า จึงอ่านข่าวเชิงบวกได้นานขึ้น", "istrue": false },
+      { "statement": "Push notifications; แจ้งเตือนข่าวร้ายเฉพาะเวลาเช้า", "istrue": false }
+    ],
+    "explanation": "Doomscrolling คือการเสพข่าวลบอย่างต่อเนื่อง ซึ่งเป็นผลมาจากฟีเจอร์ Infinite scroll ที่โหลดคอนเทนต์อัตโนมัติ ทำให้ผู้ใช้ไม่มีจังหวะให้หยุดคิดหรือปิดแอป"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากองค์กรของคุณต้องการสืบค้นข้อมูล (Query) จากหลายเซิร์ฟเวอร์ที่อยู่คนละที่บนอินเทอร์เน็ตพร้อมๆ กัน เทคโนโลยี SPARQL มีความสามารถใดที่ตอบโจทย์นี้ (ความจำ)",
+    "options": [
+      { "statement": "Property Paths", "istrue": false },
+      { "statement": "Federated Queries", "istrue": true },
+      { "statement": "No Fixed Schema", "istrue": false },
+      { "statement": "Relational Joins", "istrue": false }
+    ],
+    "explanation": "Federated Queries ในเทคโนโลยี SPARQL อนุญาตให้คำสั่ง Query เพียงชุดเดียวสามารถดึงข้อมูลข้ามเซิร์ฟเวอร์หลายๆ ตัวบนอินเทอร์เน็ตมารวมกันได้ในคราวเดียว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "จุดเด่นของเทคโนโลยีฐานข้อมูลเชิงความหมายที่รองรับ SPARQL คือ 'No Fixed Schema' สิ่งนี้สร้างข้อได้เปรียบเหนือฐานข้อมูลแบบ SQL แบบดั้งเดิมอย่างไร (การวิเคราะห์)",
+    "options": [
+      { "statement": "สามารถเก็บข้อมูลได้เร็วกว่า SQL 100 เท่า", "istrue": false },
+      { "statement": "ไม่ต้องกำหนดโครงสร้างตาราง (Tables) หรือคอลัมน์ล่วงหน้า สามารถสืบค้นข้อมูลได้แม้จะยังไม่รู้โครงสร้างที่แน่ชัด", "istrue": true },
+      { "statement": "ใช้พื้นที่เก็บข้อมูล (Storage) น้อยกว่าแบบ SQL", "istrue": false },
+      { "statement": "ข้อมูลทุกตัวถูกเข้ารหัสลับและไม่สามารถแฮ็กได้", "istrue": false }
+    ],
+    "explanation": "ไม่เหมือน SQL ที่ต้องสร้าง Table และ Column ก่อนใส่ข้อมูล ระบบที่ใช้ SPARQL เป็น No Fixed Schema จึงยืดหยุ่นสูง รองรับข้อมูลที่โครงสร้างไม่ชัดเจนได้ทันที"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ฟีเจอร์ 'Property Paths' ของ SPARQL ถูกนำมาประยุกต์ใช้แก้ปัญหาใดในการสืบค้นข้อมูลที่มีความสัมพันธ์ซับซ้อน (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "เพื่อช่วยแปลภาษาจากฐานข้อมูลต่างประเทศอัตโนมัติ", "istrue": false },
+      { "statement": "เพื่อป้องกันปัญหาฐานข้อมูลล่มเมื่อมีการเรียกดูพร้อมกันหลายคน", "istrue": false },
+      { "statement": "เพื่อบีบอัดขนาดของข้อมูลภาพและวิดีโอ", "istrue": false },
+      { "statement": "เพื่อค้นหาความสัมพันธ์แบบหลายทอด เช่น 'เพื่อนของเพื่อนของเพื่อน' ได้สำเร็จด้วยโค้ดเพียงบรรทัดเดียวโดยไม่ต้อง Join หลายรอบ", "istrue": true }
+    ],
+    "explanation": "Property Paths ยอมให้ผู้ใช้กำหนดรูปแบบเส้นทางความสัมพันธ์ (multi-step relationships) ได้ลึกๆ ในคำสั่งเดียว ทำให้จัดการกราฟเครือข่ายสังคม (เช่น เพื่อนของเพื่อน) ได้ง่ายมาก"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความน่าเชื่อถือของข่าวสาร (Authentic news) นอกจากแหล่งที่มาและวันที่แล้ว ควรพิจารณาจากสิ่งใดเป็นสำคัญเพื่อแยกแยะออกจากบทความที่จงใจปั่นกระแส (ความเข้าใจ)",
+    "options": [
+      { "statement": "จำนวนยอดไลก์และการแชร์", "istrue": false },
+      { "statement": "มีข้อเท็จจริงและหลักฐานที่ตรวจสอบได้ (Verifiable facts) สนับสนุนเนื้อหา มากกว่าการใช้พาดหัวข่าวที่เน้นอารมณ์ (Emotional headlines)", "istrue": true },
+      { "statement": "ผู้เขียนต้องเป็นอินฟลูเอนเซอร์ที่มีผู้ติดตามเกิน 1 ล้านคน", "istrue": false },
+      { "statement": "เว็บไซต์ต้องลงท้ายด้วย .com เสมอ", "istrue": false }
+    ],
+    "explanation": "ข่าวของจริงจะมีข้อมูลพยานหลักฐานอ้างอิงที่ตรวจสอบได้ (Look for Evidence) ไม่ได้พึ่งพาแค่พาดหัวข่าวเรียกแขก (Clickbait) ที่กระตุ้นอารมณ์เพียงอย่างเดียว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เหตุใดกระบวนการจัดซื้อ (Procurement process) จึงถูกจำแนกให้เป็น Intraorganizational processes ทั้งที่ต้องมีการติดต่อซื้อของจากซัพพลายเออร์ (Suppliers) (การวิเคราะห์)",
+    "options": [
+      { "statement": "เพราะซัพพลายเออร์ถือเป็นพนักงานขององค์กรด้วย", "istrue": false },
+      { "statement": "เพราะระบบบัญชีไม่ได้บันทึกยอดเงินที่จ่ายให้ซัพพลายเออร์", "istrue": false },
+      { "statement": "เพราะเป็นกระบวนการที่จุดเริ่มต้น (การตั้งความต้องการซื้อ) และจุดสิ้นสุด (การรับของและจ่ายเงิน) เกิดขึ้นและเสร็จสิ้นภายในขอบเขตการควบคุมขององค์กรเดียว", "istrue": true },
+      { "statement": "เพราะการจัดซื้อยุคใหม่ไม่ต้องเจรจากับภายนอก แต่ใช้ AI สั่งซื้ออัตโนมัติทั้งหมด", "istrue": false }
+    ],
+    "explanation": "Procurement, Fulfillment และ Production นับเป็น Intraorganizational เพราะว่าวงจรของกระบวนการ (Originate and conclude) จบสมบูรณ์อยู่ภายในการบริหารจัดการของบริษัทนั้นๆ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดอธิบายขอบเขตของ Interorganizational processes ได้ถูกต้องที่สุดตามหลักการบริหารระบบ ERP (ความเข้าใจ)",
+    "options": [
+      { "statement": "กระบวนการที่เกิดขึ้นและจบลงภายในแผนกเดียวกัน", "istrue": false },
+      { "statement": "กระบวนการที่มีจุดเริ่มต้นที่บริษัทหนึ่ง แต่ไปมีจุดสิ้นสุดกระบวนการอยู่ที่อีกบริษัทหนึ่ง", "istrue": true },
+      { "statement": "กระบวนการที่จำกัดอยู่เฉพาะซัพพลายเออร์ที่อยู่ในประเทศเดียวกันเท่านั้น", "istrue": false },
+      { "statement": "กระบวนการปรับโครงสร้างหนี้ระหว่างบริษัทกับธนาคาร", "istrue": false }
+    ],
+    "explanation": "Interorganizational processes คือกระบวนการข้ามองค์กร หมายถึงงานที่มีจุดเริ่มต้น (Originate) จากบริษัทหนึ่ง และไปสิ้นสุดการทำงาน (Conclude) ในอีกบริษัทหนึ่ง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากบริษัทต้องการพัฒนาระบบเทคโนโลยีสารสนเทศเพื่อจัดการ Interorganizational processes ให้ราบรื่น บริษัทควรเลือกลงทุนในระบบใดจึงจะตรงจุดที่สุด (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "ระบบบัญชีแยกประเภท (General Ledger)", "istrue": false },
+      { "statement": "ระบบจัดการคลังสินค้าอัตโนมัติภายในศูนย์กระจายสินค้า", "istrue": false },
+      { "statement": "ระบบ Supply Chain Management (SCM) และระบบ Customer Relationship Management (CRM)", "istrue": true },
+      { "statement": "ระบบจัดการทรัพยากรมนุษย์ (HRIS)", "istrue": false }
+    ],
+    "explanation": "SCM และ CRM เป็นระบบหลักที่ออกแบบมาเพื่อเชื่อมโยง ประสานงาน และจัดการข้อมูลกับภายนอกองค์กร (ซัพพลายเออร์ใน SCM และลูกค้าใน CRM) ซึ่งถือเป็น Interorganizational"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การบูรณาการระบบ ERP เข้ากับ SCM (Supply Chain Management) ก่อให้เกิดประโยชน์เชิงกลยุทธ์อย่างไรต่อกระบวนการทางธุรกิจ (การประเมินค่า)",
+    "options": [
+      { "statement": "ช่วยให้บริษัทสามารถหลีกเลี่ยงการจ่ายภาษีนำเข้าวัตถุดิบได้", "istrue": false },
+      { "statement": "เปลี่ยนให้พนักงานฝ่ายขายมาเป็นพนักงานจัดซื้อแทน", "istrue": false },
+      { "statement": "ลดต้นทุนการตลาดดิจิทัลบนโซเชียลมีเดียลง", "istrue": false },
+      { "statement": "ช่วยขยายวิสัยทัศน์ของระบบหลังบ้าน (ERP) ให้เชื่อมต่อกระแสข้อมูลกับคู่ค้าภายนอก ทำให้บริหารซัพพลายเชนตั้งแต่ต้นน้ำถึงปลายน้ำได้อย่างมีประสิทธิภาพ", "istrue": true }
+    ],
+    "explanation": "ERP ปกติเก่งเรื่องรวมศูนย์ภายในองค์กร (Intra) แต่เมื่อผนวกกับ SCM จะทำให้อำนาจของ ERP ขยายทะลุกำแพงองค์กรไปเชื่อมกับคู่ค้า เกิดกระบวนการแบบ Interorganizational ที่สมบูรณ์"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดไม่ใช่กระบวนการหลักระดับ Intraorganizational ที่ระบบ ERP โดยทั่วไปถูกนำมาใช้บริหารจัดการในระยะเริ่มต้น (ความจำ)",
+    "options": [
+      { "statement": "Production process (กระบวนการผลิต)", "istrue": false },
+      { "statement": "Procurement process (กระบวนการจัดซื้อ)", "istrue": false },
+      { "statement": "Collaborative product design with external vendors (การออกแบบผลิตภัณฑ์ร่วมกับบริษัทคู่ค้าภายนอก)", "istrue": true },
+      { "statement": "Fulfillment process (กระบวนการทำตามคำสั่งซื้อลูกค้า)", "istrue": false }
+    ],
+    "explanation": "Procurement, Fulfillment และ Production คือ 3 กระบวนการพื้นฐานของ Intraorganizational ส่วนการทำงานร่วมกับบริษัทอื่น (External vendors) เป็นเรื่องของ Interorganizational"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "บริษัท ก. ใช้ระบบรับออเดอร์ของตนเองสั่งสินค้าอัตโนมัติไปยังระบบของบริษัท ข. ทันทีที่สต็อกของบริษัท ก. ลดลงถึงจุดสั่งซื้อ กระบวนการทำงานแบบเชื่อมโยงไร้รอยต่อนี้สะท้อนถึงสิ่งใด (การวิเคราะห์)",
+    "options": [
+      { "statement": "กระบวนการ Intraorganizational แบบ Silo", "istrue": false },
+      { "statement": "ความล้มเหลวของระบบ ERP แบบดั้งเดิม", "istrue": false },
+      { "statement": "กระบวนการ Interorganizational ที่บริหารจัดการผ่านเทคโนโลยี (เช่น ERP/SCM)", "istrue": true },
+      { "statement": "การประยุกต์ใช้ CRM ในการจัดการซัพพลายเออร์", "istrue": false }
+    ],
+    "explanation": "กระบวนการที่เกิดในองค์กรหนึ่งแล้วนำไปสู่การจัดการต่อเนื่องในอีกองค์กรหนึ่งแบบนี้ คือภาพจำลองคลาสสิกของ Interorganizational process"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กระบวนการใดที่เกี่ยวข้องกับลูกค้า (Customers) แต่ถือว่าเป็นส่วนหนึ่งของ Intraorganizational process เพราะเสร็จสมบูรณ์ภายในองค์กร (ความเข้าใจ)",
+    "options": [
+      { "statement": "Customer Relationship Management (CRM) ทั่วโลก", "istrue": false },
+      { "statement": "Fulfillment process", "istrue": true },
+      { "statement": "Supply Chain Analytics", "istrue": false },
+      { "statement": "Third-party Logistics (3PL)", "istrue": false }
+    ],
+    "explanation": "Fulfillment คือกระบวนการทำตามคำสั่งซื้อของลูกค้า (ตั้งแต่รับออเดอร์ หยิบของ แพ็ก ส่ง และเก็บเงิน) กระบวนการสายนี้จบที่บริษัทเรา (ส่งของออกไป/รับเงินเข้า) จึงนับเป็น Intraorganizational"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากบริษัทมุ่งเน้นแต่พัฒนากระบวนการแบบ Intraorganizational โดยไม่สนใจ Interorganizational เลย จะเกิดความเสี่ยงในข้อใดมากที่สุด (การประเมินค่า)",
+    "options": [
+      { "statement": "พนักงานภายในจะลาออกเพราะต้องทำงานซ้ำซ้อน", "istrue": false },
+      { "statement": "สูญเสียขีดความสามารถในการแข่งขันระยะยาว เนื่องจากไม่สามารถประสานงานกับคู่ค้าในห่วงโซ่อุปทานและการจัดการลูกค้าแบบเชื่อมโยงได้", "istrue": true },
+      { "statement": "ระบบบัญชีและภาษีของบริษัทจะล่มสลายทั้งหมด", "istrue": false },
+      { "statement": "ทำให้เกิดปัญหาความปลอดภัยทางไซเบอร์จากแฮ็กเกอร์ภายใน", "istrue": false }
+    ],
+    "explanation": "การบริหารยุคใหม่ต้องแข่งขันกันด้วย Supply Chain ดังนั้นหากไม่สนใจระบบประสานงานข้ามองค์กร (Interorganizational) ย่อมเสียเปรียบในการแข่งขันกับเครือข่ายธุรกิจอื่น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อเท็จจริงเกี่ยวกับเทคโนโลยี SPARQL คือการใช้ 1 บรรทัดโค้ดในการหาข้อมูลความสัมพันธ์ที่ซับซ้อน สิ่งนี้เกี่ยวข้องกับแนวคิดการจัดเก็บข้อมูลแบบใดในยุคปัจจุบัน (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "Relational Database Management System (RDBMS) แบบตาราง", "istrue": false },
+      { "statement": "Semantic Web หรือ Knowledge Graph", "istrue": true },
+      { "statement": "Blockchain Distributed Ledger", "istrue": false },
+      { "statement": "Object-Oriented Programming (OOP)", "istrue": false }
+    ],
+    "explanation": "SPARQL เป็นภาษาสำหรับดึงข้อมูล (Query language) ของระบบฐานข้อมูลแบบกราฟ หรือ Semantic Web (Resource Description Framework - RDF) ซึ่งใช้เก็บข้อมูลที่เชื่อมโยงกันอย่างซับซ้อนโดยไม่ต้องมี Schema ตายตัว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ทำไมระบบจัดการความสัมพันธ์ลูกค้า (CRM) จึงมีความสำคัญในฐานะตัวเชื่อมแบบ Interorganizational processes ควบคู่กับระบบ ERP (การวิเคราะห์)",
+    "options": [
+      { "statement": "เพราะ CRM ใช้ในการคำนวณเงินเดือนฝ่ายขายแทน ERP", "istrue": false },
+      { "statement": "เพราะ CRM จัดการแต่ข้อมูลภายในองค์กรเท่านั้น", "istrue": false },
+      { "statement": "เพราะ CRM จะดึงข้อมูลความต้องการ การตลาด และความพึงพอใจของลูกค้าจากภายนอกเข้ามาวิเคราะห์ เชื่อมกับ ERP เพื่อให้ฝ่ายผลิตและจัดส่งตอบสนองได้ตรงจุด", "istrue": true },
+      { "statement": "เพราะ CRM เป็นซอฟต์แวร์เดียวที่ไม่สามารถแฮ็กได้", "istrue": false }
+    ],
+    "explanation": "CRM เชื่อมข้อมูลกับลูกค้าที่อยู่ภายนอก ข้อมูลพฤติกรรมและความต้องการเหล่านี้เมื่อไหลเข้าสู่ระบบ ERP (ผ่าน Interorganizational) จะทำให้บริษัทกะเกณฑ์กระบวนการผลิต (Intraorganizational) ได้แม่นยำขึ้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คำศัพท์เฉพาะ 'Online Transaction Processing (OLTP)' ในระบบ TPS มีความหมายและหลักการทำงานตรงกับข้อใดมากที่สุด",
+    "options": [
+      { "statement": "การรวบรวมข้อมูลธุรกรรมไว้เป็นก้อน (Batch) แล้วค่อยประมวลผลพร้อมกันในเวลาที่กำหนดเพื่อประหยัดทรัพยากรเซิร์ฟเวอร์", "istrue": false },
+      { "statement": "การประมวลผลข้อมูลธุรกรรมแบบทันทีทันใด (Real-time) ทันทีที่เกิดธุรกรรม ทำให้ฐานข้อมูลสะท้อนสถานะปัจจุบันที่แท้จริงเสมอ", "istrue": true },
+      { "statement": "การดึงข้อมูลจากระบบบัญชีและการตลาดมาวิเคราะห์แนวโน้มล่วงหน้าแบบออนไลน์", "istrue": false },
+      { "statement": "กระบวนการป้อนข้อมูลธุรกรรมโดยอัตโนมัติผ่านเซนเซอร์โดยไม่มีมนุษย์เกี่ยวข้อง", "istrue": false }
+    ],
+    "explanation": "OLTP คือการประมวลผลทันทีเมื่อเกิดธุรกรรม (เช่น การกด ATM เงินจะถูกหักทันที) แตกต่างจาก Batch Processing ที่ต้องรอรวบรวมข้อมูลก่อนประมวลผล"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "แนวคิด 'Source Data Automation' ในระบบจัดการธุรกรรม (TPS) มุ่งเน้นไปที่การแก้ปัญหาใดเป็นหลัก",
+    "options": [
+      { "statement": "แก้ปัญหาความล่าช้าและข้อผิดพลาดจากการป้อนข้อมูลด้วยมือ (Manual entry) โดยใช้อุปกรณ์อัตโนมัติเช่นเครื่องสแกนบาร์โค้ด", "istrue": true },
+      { "statement": "แก้ปัญหาการล่มของฐานข้อมูลโดยการสำรองข้อมูล (Backup) ไว้ในคลาวด์อัตโนมัติ", "istrue": false },
+      { "statement": "แก้ปัญหาการอนุมัติเอกสารข้ามแผนกโดยใช้ลายเซ็นอิเล็กทรอนิกส์", "istrue": false },
+      { "statement": "แก้ปัญหาข้อมูลซ้ำซ้อนโดยใช้ซอฟต์แวร์ตรวจจับคำผิดอัจฉริยะ", "istrue": false }
+    ],
+    "explanation": "Source Data Automation คือการเก็บข้อมูลเข้าสู่ระบบด้วยเครื่องมืออัตโนมัติ ณ จุดเกิดเหตุการณ์ (เช่น สแกนบาร์โค้ด, RFID) เพื่อลด Human error"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คำว่า 'Information Silos' (ไซโลข้อมูล) หมายถึงสภาพแวดล้อมแบบใดในองค์กรที่ยังไม่มีระบบ ERP",
+    "options": [
+      { "statement": "การที่ระบบฐานข้อมูลทั้งหมดถูกเก็บไว้ในเซิร์ฟเวอร์กลางที่เดียวจนเกิดปัญหาคอขวด", "istrue": false },
+      { "statement": "การที่ข้อมูลถูกป้องกันความปลอดภัยอย่างแน่นหนาจนผู้บริหารไม่สามารถเข้าถึงได้", "istrue": false },
+      { "statement": "การที่ระบบสารสนเทศของแต่ละแผนก (FAIS) ถูกพัฒนาแยกขาดจากกัน ทำให้ข้อมูลไม่เชื่อมโยงถึงกันและเกิดความซ้ำซ้อน", "istrue": true },
+      { "statement": "โครงสร้างข้อมูลแบบกระจายศูนย์ (Decentralized) ที่ใช้บล็อกเชนในการจัดเก็บ", "istrue": false }
+    ],
+    "explanation": "Information Silos เปรียบแผนกต่างๆ เหมือนไซโลเก็บเมล็ดพืชที่แยกกันอยู่ ข้อมูลไม่ไหลเวียนข้ามแผนก ทำให้ประสานงานยากและข้อมูลขัดแย้งกัน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดอธิบายขอบเขตของ 'Functional Area Information Systems (FAIS)' ได้ถูกต้องที่สุด",
+    "options": [
+      { "statement": "ระบบที่ออกแบบมาเพื่อเชื่อมโยงทุกแผนกในบริษัทและบริษัทคู่ค้าเข้าด้วยกัน", "istrue": false },
+      { "statement": "ระบบที่สนับสนุนการทำงานเจาะจงเฉพาะสายงานใดสายงานหนึ่ง เช่น ระบบบัญชี หรือระบบบริหารงานบุคคล โดยไม่ได้ออกแบบมาเพื่อเชื่อมต่อกับแผนกอื่นแต่แรก", "istrue": true },
+      { "statement": "ซอฟต์แวร์ที่ใช้สำหรับวิเคราะห์ความฉลาดทางอารมณ์ของพนักงานในทุกฟังก์ชันงาน", "istrue": false },
+      { "statement": "ระบบฐานข้อมูลบนคลาวด์ที่ประมวลผลเฉพาะธุรกรรมระดับสูงของผู้บริหาร", "istrue": false }
+    ],
+    "explanation": "FAIS คือระบบที่พัฒนาขึ้นมาเพื่อรองรับงานเฉพาะแผนก (Functional Area) ซึ่งในอดีตมักเป็นสาเหตุของการเกิด Information Silos"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Enterprise Application Integration (EAI) เป็นเทคโนโลยีที่ถูกสร้างขึ้นมาเพื่อวัตถุประสงค์ใด",
+    "options": [
+      { "statement": "ลบระบบ FAIS เก่าทั้งหมดทิ้งเพื่อเปลี่ยนไปใช้ ERP แบบ 100%", "istrue": false },
+      { "statement": "ทำหน้าที่เป็นซอฟต์แวร์ตัวกลาง (Middleware) เชื่อมต่อระบบงานเดิม (Legacy systems) ของแต่ละแผนกให้สื่อสารกันได้ โดยองค์กรไม่ต้องรื้อระบบทิ้ง", "istrue": true },
+      { "statement": "ใช้สำหรับเชื่อมต่อฐานข้อมูลของลูกค้าเข้ากับฐานข้อมูลของคู่แข่งเพื่อทำ Benchmarking", "istrue": false },
+      { "statement": "แปลงแอปพลิเคชันบนมือถือให้สามารถทำงานบนระบบปฏิบัติการวินโดวส์ได้", "istrue": false }
+    ],
+    "explanation": "EAI เป็นทางเลือกสำหรับองค์กรที่ไม่พร้อมลงทุนระบบ ERP ใหม่ โดยใช้ Middleware เป็นสะพานเชื่อม FAIS เดิมที่มีอยู่ให้แชร์ข้อมูลกันได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในสถาปัตยกรรมของระบบ ERP 'Core ERP Modules' (โมดูลหลัก) มักประกอบด้วยระบบใดบ้าง",
+    "options": [
+      { "statement": "Financial management, Human resources management, และ Manufacturing and operations", "istrue": true },
+      { "statement": "Customer relationship management (CRM) และ Supply chain management (SCM)", "istrue": false },
+      { "statement": "Business intelligence (BI) และ E-commerce", "istrue": false },
+      { "statement": "Social computing และ Knowledge management", "istrue": false }
+    ],
+    "explanation": "Core ERP Modules เน้นจัดการทรัพยากรภายในองค์กรเป็นหลัก ได้แก่ การเงิน (Financial), บุคคล (HR) และการผลิต/ปฏิบัติการ (Manufacturing)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "'Extended ERP Modules' ถูกพัฒนาขึ้นมาเพื่อขยายขีดความสามารถของ ERP แบบดั้งเดิมในด้านใดเป็นหลัก",
+    "options": [
+      { "statement": "การเพิ่มความเร็วในการพิมพ์รายงานภาษีประจำเดือน", "istrue": false },
+      { "statement": "การเชื่อมโยงกระบวนการภายในองค์กรเข้ากับสภาพแวดล้อมภายนอก เช่น ลูกค้า (CRM) และคู่ค้า (SCM)", "istrue": true },
+      { "statement": "การจัดการทรัพยากรฮาร์ดแวร์และเครือข่ายอินเทอร์เน็ตภายในสำนักงาน", "istrue": false },
+      { "statement": "การควบคุมระบบเครื่องจักรในสายพานการผลิตอัตโนมัติ (Robotics)", "istrue": false }
+    ],
+    "explanation": "Extended ERP คือการขยายแขนขาของ ERP ให้เชื่อมต่อกับโลกภายนอก (Front-office และ Supply chain) เช่น โมดูล CRM, SCM และ E-Business"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คำว่า 'ERP II Systems' (Interorganizational ERP) สะท้อนให้เห็นถึงวิวัฒนาการใดของระบบ ERP",
+    "options": [
+      { "statement": "ระบบ ERP รุ่นที่ 2 ที่เปลี่ยนจากการใช้เมาส์มาใช้ระบบสัมผัส (Touchscreen)", "istrue": false },
+      { "statement": "ระบบ ERP ที่พัฒนาขึ้นเพื่อใช้งานบนสมาร์ทโฟนโดยเฉพาะโดยไม่ต้องมีเซิร์ฟเวอร์", "istrue": false },
+      { "statement": "ระบบ ERP ที่ข้ามขีดจำกัดจากแค่ภายในองค์กร ไปสู่การเชื่อมต่อโครงข่ายผ่านเว็บไซต์ (Web-enabled) กับคู่ค้าธุรกิจใน Supply Chain", "istrue": true },
+      { "statement": "ระบบ ERP ที่ใช้ AI ในการทำงานแทนพนักงานบัญชี 100%", "istrue": false }
+    ],
+    "explanation": "ERP II คือยุคที่ ERP ใช้เทคโนโลยี Web-based เพื่อบูรณาการข้อมูลร่วมกับบริษัทภายนอก กลายเป็นระบบ Interorganizational"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กลยุทธ์การติดตั้งระบบ ERP แบบ 'Vanilla Approach' หมายถึงสิ่งใด",
+    "options": [
+      { "statement": "การเขียนโค้ดระบบ ERP ขึ้นมาใหม่ทั้งหมดด้วยตนเองเพื่อให้ตรงกับความต้องการเป๊ะๆ", "istrue": false },
+      { "statement": "การนำแพ็กเกจ ERP มาตรฐานมาติดตั้งใช้งานทันที โดยองค์กรต้องปรับกระบวนการทำงานของตนให้เข้ากับระบบ (Best practices) แทนที่จะแก้โค้ด", "istrue": true },
+      { "statement": "การเลือกซื้อโมดูลที่ดีที่สุดจากผู้ผลิตหลายๆ รายมาผสมกัน", "istrue": false },
+      { "statement": "การใช้งาน ERP เฉพาะในระดับผู้บริหารระดับสูงเท่านั้น", "istrue": false }
+    ],
+    "explanation": "Vanilla Approach คือการใช้ซอฟต์แวร์แบบดั้งเดิม (Out-of-the-box) ไม่มีการ Customize โค้ด ช่วยประหยัดเวลาและค่าใช้จ่ายในการติดตั้ง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อเสียเปรียบที่สำคัญที่สุดของกลยุทธ์ 'Custom Approach' ในการติดตั้งระบบ ERP คือข้อใด",
+    "options": [
+      { "statement": "ระบบจะมีความปลอดภัยน้อยลงเนื่องจากโค้ดถูกแก้ไขโดยบุคคลที่สาม", "istrue": false },
+      { "statement": "ใช้ต้นทุนมหาศาล เสี่ยงต่อความล้มเหลว และทำให้การอัปเกรดเวอร์ชันซอฟต์แวร์ในอนาคตทำได้ยากมาก", "istrue": true },
+      { "statement": "พนักงานจะไม่ยอมใช้งานระบบเพราะระบบไม่ได้ออกแบบมาเพื่อพวกเขา", "istrue": false },
+      { "statement": "ไม่สามารถใช้งานบนระบบคลาวด์ได้", "istrue": false }
+    ],
+    "explanation": "Custom approach นำซอฟต์แวร์มาปรับแก้โค้ดอย่างหนักให้เข้ากับองค์กร ข้อเสียคือแพงมาก และเมื่อผู้ผลิตออกเวอร์ชันใหม่ โค้ดที่แก้ไว้จะอัปเกรดไม่ได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คำว่า 'Best-of-breed Approach' ในการวางระบบ ERP มีลักษณะตรงกับข้อใด",
+    "options": [
+      { "statement": "การเลือกใช้ระบบ ERP ของบริษัทที่มีชื่อเสียงที่สุดเพียงบริษัทเดียวเพื่อควบคุมทุกแผนก", "istrue": false },
+      { "statement": "การซื้อโมดูลซอฟต์แวร์ที่เก่งเฉพาะด้านจากผู้ให้บริการหลายราย (เช่น บัญชีจาก SAP, บุคคลจาก Workday) มาเชื่อมต่อกัน", "istrue": true },
+      { "statement": "การพัฒนาระบบจากภายในองค์กรเองโดยทีมงานที่เก่งที่สุด", "istrue": false },
+      { "statement": "การจ้างผู้เชี่ยวชาญจากภายนอกมาบริหารงานแทนระบบซอฟต์แวร์", "istrue": false }
+    ],
+    "explanation": "Best-of-breed คือการผสมผสานจุดแข็ง โดยซื้อโมดูลที่ดีที่สุดของแต่ละค่ายมารวมกัน แต่จะมีความท้าทายในการทำให้ทุกระบบคุยกันรู้เรื่อง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "องค์กรที่เลือกใช้ 'SaaS ERP' (Software-as-a-Service) จะได้รับผลประโยชน์หลักด้านใด และต้องแลกมากับความเสี่ยงด้านใดตามลำดับ",
+    "options": [
+      { "statement": "ความสามารถในการปรับแต่ง (Customization) สูงสุด / แลกกับค่าใช้จ่ายฮาร์ดแวร์เริ่มต้นที่แพงมาก", "istrue": false },
+      { "statement": "ความเร็วในการติดตั้งและไม่ต้องดูแลเซิร์ฟเวอร์เอง / แลกกับความกังวลด้านความปลอดภัยของข้อมูลและการขาดการควบคุมระบบ 100%", "istrue": true },
+      { "statement": "ความเร็วในการประมวลผลที่เร็วกว่า On-premise 10 เท่า / แลกกับการที่พนักงานต้องเขียนโปรแกรมเอง", "istrue": false },
+      { "statement": "การได้เป็นเจ้าของลิขสิทธิ์ซอฟต์แวร์ถาวร / แลกกับการที่ระบบจะไม่ได้รับการอัปเดต", "istrue": false }
+    ],
+    "explanation": "SaaS (Cloud ERP) ช่วยให้องค์กรไม่ต้องลงทุนฮาร์ดแวร์ ติดตั้งไวและจ่ายตามการใช้งานจริง แต่ข้อมูลต้องถูกส่งไปเก็บที่ผู้ให้บริการ ทำให้เสี่ยงด้าน Security"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในกระบวนการจัดซื้อ (Procurement Process) เอกสาร 'Purchase Requisition' แตกต่างจาก 'Purchase Order (PO)' ในแง่ของความหมายอย่างไร",
+    "options": [
+      { "statement": "Requisition เป็นเอกสารร้องขอจากภายนอก ส่วน PO เป็นเอกสารสั่งผลิตภายใน", "istrue": false },
+      { "statement": "Requisition คือใบขออนุมัติสั่งซื้อที่ออกโดยแผนกที่ต้องการของ (ใช้ภายในบริษัท) ส่วน PO คือใบสั่งซื้ออย่างเป็นทางการที่ฝ่ายจัดซื้อส่งให้ซัพพลายเออร์ภายนอก", "istrue": true },
+      { "statement": "Requisition ใช้สำหรับการซื้อวัตถุดิบ ส่วน PO ใช้สำหรับการซื้อบริการเท่านั้น", "istrue": false },
+      { "statement": "ทั้งสองคำคือเอกสารเดียวกันที่ใช้ต่างประเทศ", "istrue": false }
+    ],
+    "explanation": "Purchase Requisition (ใบขอซื้อ) เป็นเอกสารภายในเพื่อขออนุมัติงบ เมื่ออนุมัติแล้ว ฝ่ายจัดซื้อจึงจะออก Purchase Order (PO) ส่งไปให้คู่ค้าเพื่อสั่งของ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กลไกการควบคุม 'Three-way Match' ที่ระบบ ERP นิยมนำมาใช้ในแผนกบัญชีเพื่ออนุมัติการจ่ายเงิน (Accounts Payable) จะทำการตรวจสอบเอกสารสามฉบับใดให้ตรงกัน",
+    "options": [
+      { "statement": "ใบขอซื้อ (Purchase Requisition), ใบสั่งซื้อ (Purchase Order) และ ใบเสนอราคา (Quotation)", "istrue": false },
+      { "statement": "ใบเสนอราคา (Quotation), ใบกำกับภาษี (Invoice) และ เช็คสั่งจ่าย (Check)", "istrue": false },
+      { "statement": "ใบสั่งซื้อ (Purchase Order), ใบรับของ (Receiving Report) และ ใบแจ้งหนี้ (Invoice)", "istrue": true },
+      { "statement": "ใบสั่งผลิต (Production Order), ใบส่งของ (Delivery Note) และ ใบแจ้งหนี้ (Invoice)", "istrue": false }
+    ],
+    "explanation": "Three-way Match ช่วยป้องกันการทุจริต โดยฝ่ายบัญชีจะจ่ายเงินก็ต่อเมื่อ 'ใบสั่งซื้อ (ที่ตกลงกัน)' ตรงกับ 'ใบรับของ (ของที่ได้จริง)' และ 'ใบแจ้งหนี้ (ที่ซัพพลายเออร์เรียกเก็บ)'"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เอกสาร 'Receiving Report' ถูกจัดทำขึ้นในกระบวนการทางธุรกิจใด และมีจุดประสงค์หลักเพื่ออะไร",
+    "options": [
+      { "statement": "กระบวนการ Fulfillment / เพื่อรับรองว่าลูกค้าได้รับของแล้ว", "istrue": false },
+      { "statement": "กระบวนการ Procurement / จัดทำโดยแผนกคลังสินค้าเมื่อซัพพลายเออร์นำของมาส่ง เพื่อบันทึกจำนวนและสภาพของที่ได้รับจริง", "istrue": true },
+      { "statement": "กระบวนการ Production / เพื่อยืนยันว่าได้รับวัตถุดิบเข้าสู่สายพานการผลิต", "istrue": false },
+      { "statement": "กระบวนการ CRM / เพื่อรับคำติชมจากลูกค้า", "istrue": false }
+    ],
+    "explanation": "Receiving Report (ใบรับสินค้า) จัดทำโดยฝ่ายคลังสินค้า (Warehouse) เมื่อสินค้าที่สั่งซื้อ (Procurement) เดินทางมาถึงบริษัท เพื่อบันทึกว่าได้รับของครบและสมบูรณ์หรือไม่"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ขั้นตอน 'Customer Inquiry' ถือเป็นจุดเริ่มต้นของกระบวนการใด และมีความหมายคืออะไร",
+    "options": [
+      { "statement": "Procurement Process / การที่ลูกค้าต่อรองราคาเพื่อขอส่วนลด", "istrue": false },
+      { "statement": "Fulfillment Process / การที่ลูกค้าส่งคำร้องสอบถามข้อมูล เช่น ราคา สินค้าคงคลัง และระยะเวลาจัดส่ง ก่อนตัดสินใจสั่งซื้อ", "istrue": true },
+      { "statement": "Production Process / การที่ลูกค้าเข้ามาตรวจสอบมาตรฐานการผลิต", "istrue": false },
+      { "statement": "CRM / การทำแบบสำรวจความพึงพอใจลูกค้า", "istrue": false }
+    ],
+    "explanation": "Customer Inquiry (การสอบถามข้อมูลจากลูกค้า) เป็นจุดเริ่มต้นของ Fulfillment Process ซึ่งบริษัทจะตอบกลับด้วย Quotation (ใบเสนอราคา)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กระบวนการเติมเต็มคำสั่งซื้อแบบ 'Sell-from-stock' แตกต่างจาก 'Configure-to-order' ตามข้อใด",
+    "options": [
+      { "statement": "Sell-from-stock เหมาะสำหรับสินค้าสั่งทำพิเศษ ขณะที่ Configure-to-order เหมาะสำหรับสินค้าอุปโภคบริโภคทั่วไป", "istrue": false },
+      { "statement": "Sell-from-stock คือการหยิบสินค้าที่มีพร้อมอยู่ในคลังส่งให้ลูกค้าทันที ขณะที่ Configure-to-order ต้องนำชิ้นส่วนมาประกอบตามที่ลูกค้าระบุก่อนจัดส่ง", "istrue": true },
+      { "statement": "Sell-from-stock เป็นการขายให้ร้านค้าย่อย ส่วน Configure-to-order เป็นการขายให้องค์กรขนาดใหญ่", "istrue": false },
+      { "statement": "ไม่มีข้อแตกต่าง ทั้งสองคำเป็นเพียงคำศัพท์ทางเทคนิคที่ต่างซอฟต์แวร์เรียกไม่เหมือนกัน", "istrue": false }
+    ],
+    "explanation": "Sell-from-stock (สินค้ามาตรฐาน) หยิบและแพ็กส่งได้เลย ส่วน Configure-to-order (เช่น คอมพิวเตอร์สั่งประกอบ) ต้องนำ Module มารวมกันตามใจลูกค้าก่อนส่ง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในกระบวนการผลิต (Production Process) คำศัพท์ 'Bill of Materials (BOM)' หมายถึงสิ่งใด",
+    "options": [
+      { "statement": "ใบแจ้งยอดรวมค่าใช้จ่ายประจำเดือนของโรงงานผลิต", "istrue": false },
+      { "statement": "ใบสูตรการผลิตที่ระบุรายการวัตถุดิบและชิ้นส่วนประกอบย่อยทั้งหมดพร้อมจำนวนที่ต้องใช้ เพื่อประกอบเป็นสินค้าสำเร็จรูป 1 ชิ้น", "istrue": true },
+      { "statement": "เอกสารใบเสร็จที่ซัพพลายเออร์ส่งมาเรียกเก็บเงินค่าวัสดุอุปกรณ์", "istrue": false },
+      { "statement": "รายงานสรุปของเสีย (Defects) ที่เกิดขึ้นในสายพานการผลิต", "istrue": false }
+    ],
+    "explanation": "Bill of Materials (BOM) เปรียบเสมือน 'สูตรอาหาร' ของสินค้า ที่ระบุว่าสินค้าชิ้นนี้ประกอบด้วยชิ้นส่วน A, B, C อย่างละกี่ชิ้น เพื่อให้ระบบ ERP คำนวณการเบิกวัตถุดิบได้ถูกต้อง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กระบวนการผลิตถูกแบ่งออกเป็น 2 กลยุทธ์หลัก ได้แก่ Make-to-stock และ Make-to-order จุดกระตุ้น (Trigger) ของการผลิตแบบ 'Make-to-order' คือสิ่งใด",
+    "options": [
+      { "statement": "การคาดการณ์แนวโน้มยอดขายจากฝ่ายการตลาด", "istrue": false },
+      { "statement": "การลดลงของสินค้าในคลังจนถึงจุดสั่งผลิตซ้ำ (Reorder point)", "istrue": false },
+      { "statement": "การได้รับ Customer Order (คำสั่งซื้อจริง) จากลูกค้าเข้าสู่ระบบ", "istrue": true },
+      { "statement": "นโยบายการลดภาษีนำเข้าของรัฐบาล", "istrue": false }
+    ],
+    "explanation": "Make-to-order (Pull model) จะเริ่มกระบวนการผลิตก็ต่อเมื่อมีคำสั่งซื้อจริงจากลูกค้าส่งเข้ามาเท่านั้น (Triggered by Sales order) ต่างจาก Make-to-stock (Push model) ที่ผลิตไปตุนไว้ตามการคาดการณ์"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คำว่า 'Routine Reports' ในระบบสารสนเทศขององค์กร มีความหมายตรงกับรายงานแบบใด",
+    "options": [
+      { "statement": "รายงานที่ผู้ใช้สร้างขึ้นเองแบบเฉพาะกิจเมื่อเกิดปัญหา", "istrue": false },
+      { "statement": "รายงานที่ถูกสร้างขึ้นโดยอัตโนมัติตามช่วงเวลาที่กำหนดไว้ล่วงหน้า (เช่น รายวัน รายสัปดาห์ หรือรายเดือน) อย่างสม่ำเสมอ", "istrue": true },
+      { "statement": "รายงานที่สรุปเฉพาะจุดบกพร่องที่ต้องแก้ไขทันที", "istrue": false },
+      { "statement": "รายงานประจำปีที่ส่งให้ผู้ถือหุ้นเท่านั้น", "istrue": false }
+    ],
+    "explanation": "Routine reports คือรายงานประจำที่ออกตามตารางเวลา (Scheduled interval) เช่น สรุปยอดขายสิ้นวัน หรือสรุปการขาดลามาสายรายสัปดาห์"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากผู้บริหารร้องขอให้ฝ่าย IT จัดทำรายงาน 'สรุปยอดขายเฉพาะกลุ่มลูกค้าอายุ 20-25 ปีในช่วงแคมเปญ 11.11 ที่ผ่านมา' ซึ่งไม่เคยมีรูปแบบนี้มาก่อน รายงานนี้จัดเป็นประเภทใด",
+    "options": [
+      { "statement": "Ad-hoc (On-demand) reports", "istrue": true },
+      { "statement": "Comparative reports", "istrue": false },
+      { "statement": "Routine reports", "istrue": false },
+      { "statement": "Key-indicator reports", "istrue": false }
+    ],
+    "explanation": "Ad-hoc หรือ On-demand reports คือรายงานเฉพาะกิจที่ถูกสร้างขึ้นเพื่อตอบสนองคำขอนอกตารางเวลาปกติ (Out-of-routine requests)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คำศัพท์ 'Drill-down Reports' อธิบายถึงความสามารถใดของระบบการรายงานผล (Reporting Systems)",
+    "options": [
+      { "statement": "การเจาะรหัสผ่านเพื่อเข้าถึงรายงานที่เป็นความลับ", "istrue": false },
+      { "statement": "การแสดงข้อมูลภาพรวมที่สามารถคลิกเพื่อเจาะลึกลงไปดูรายละเอียดในระดับที่ย่อยลงไปเรื่อยๆ ได้ (เช่น จากยอดขายรวมประเทศ เจาะดูรายภาค เจาะดูรายจังหวัด)", "istrue": true },
+      { "statement": "การเปรียบเทียบข้อมูลคู่แข่งกับข้อมูลองค์กรตนเอง", "istrue": false },
+      { "statement": "การสั่งพิมพ์รายงานทั้งหมดลงบนกระดาษพร้อมกัน", "istrue": false }
+    ],
+    "explanation": "Drill-down reports ให้ความสามารถในการดูข้อมูลแบบละเอียดยิบ (Greater level of detail) โดยเริ่มต้นจากภาพรวม (Summary) แล้วเจาะลึกทะลุลงไป"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ระบบแสดงผลแบบ 'Key-indicator Reports' มีประโยชน์สูงสุดสำหรับใครในองค์กร และนำเสนอข้อมูลลักษณะใด",
+    "options": [
+      { "statement": "สำหรับพนักงานระดับปฏิบัติการ นำเสนอข้อมูลการเข้าออกงานแบบละเอียด", "istrue": false },
+      { "statement": "สำหรับผู้บริหาร นำเสนอเฉพาะตัวชี้วัดประสิทธิภาพหลักที่สำคัญต่อการดำเนินงานของธุรกิจในภาพรวม (เช่น ยอดขายรวมวันนี้ อัตราสินค้าคืน)", "istrue": true },
+      { "statement": "สำหรับวิศวกรระบบ นำเสนอข้อมูลความร้อนของเซิร์ฟเวอร์", "istrue": false },
+      { "statement": "สำหรับซัพพลายเออร์ นำเสนอการคาดการณ์ยอดสั่งซื้อล่วงหน้า 5 ปี", "istrue": false }
+    ],
+    "explanation": "Key-indicator reports ออกแบบมาเพื่อสรุปตัวเลขชี้วัดหลัก (KPIs) ที่บอกถึงสภาวะ/สุขภาพโดยรวมของธุรกิจ เพื่อให้ผู้บริหารตัดสินใจได้รวดเร็ว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ผู้จัดการโรงงานได้รับอีเมลแจ้งเตือนที่มีเฉพาะรายชื่อ 'เครื่องจักรที่ทำงานผิดปกติเกิน 10 ชั่วโมงในเดือนนี้' รายงานรูปแบบนี้เรียกว่าอะไร",
+    "options": [
+      { "statement": "Drill-down reports", "istrue": false },
+      { "statement": "Comparative reports", "istrue": false },
+      { "statement": "Exception reports", "istrue": true },
+      { "statement": "Routine reports", "istrue": false }
+    ],
+    "explanation": "Exception reports คือรายงานข้อยกเว้น ที่จะแสดงเฉพาะข้อมูลที่หลุดไปจากเกณฑ์มาตรฐาน (Threshold) หรือมีความผิดปกติ เพื่อให้ผู้บริหารไม่ต้องอ่านข้อมูลปกติทั้งหมด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "รายงานประเภท 'Comparative Reports' มีจุดเด่นคืออะไร",
+    "options": [
+      { "statement": "การเปรียบเทียบผลการปฏิบัติงานของพนักงานทุกคนเพื่อจัดอันดับเงินเดือน", "istrue": false },
+      { "statement": "การนำข้อมูลหลายๆ ชุดที่เกี่ยวข้องมาเปรียบเทียบกัน เช่น เปรียบเทียบผลประกอบการของไตรมาสนี้กับไตรมาสเดียวกันของปีที่แล้ว", "istrue": true },
+      { "statement": "การเปรียบเทียบราคาสินค้าในสต็อกกับราคาตลาด", "istrue": false },
+      { "statement": "การนำรายงานที่พิมพ์ออกมาเทียบกับหน้าจอว่าตรงกันหรือไม่", "istrue": false }
+    ],
+    "explanation": "Comparative reports เน้นการเปรียบเทียบข้อมูลข้ามช่วงเวลา ข้ามหน่วยธุรกิจ หรือเทียบเป้าหมายกับผลลัพธ์จริง เพื่อดูการเติบโตหรือหดตัว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในบริบทของ Information Systems คำว่า 'Transaction' (ธุรกรรม) ให้ความหมายถึงข้อใด",
+    "options": [
+      { "statement": "การโอนเงินผ่านระบบธนาคารออนไลน์เท่านั้น", "istrue": false },
+      { "statement": "เหตุการณ์ทางธุรกิจใดๆ ก็ตามที่เกิดขึ้น และสร้างข้อมูลที่ต้องถูกบันทึกไว้ในระบบฐานข้อมูลขององค์กร (เช่น การสแกนบาร์โค้ดขายของ, การลงทะเบียนพนักงานใหม่)", "istrue": true },
+      { "statement": "กระบวนการเจรจาต่อรองระหว่างฝ่ายจัดซื้อและซัพพลายเออร์", "istrue": false },
+      { "statement": "การประมวลผลข้อความแชทบนโซเชียลมีเดีย", "istrue": false }
+    ],
+    "explanation": "Transaction ไม่ได้จำกัดแค่เรื่องเงิน แต่หมายถึงทุกๆ กิจกรรมทางธุรกิจที่ก่อให้เกิดข้อมูล (Business event that generates data) ที่คู่ควรแก่การจัดเก็บในระบบ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ระบบ TPS ที่ออกแบบมาอย่างถูกต้อง ต้องมีความสามารถที่เรียกว่า 'Audit Trail' ความสามารถนี้หมายถึงสิ่งใด",
+    "options": [
+      { "statement": "ความสามารถในการตรวจสอบเส้นทางและประวัติของการทำธุรกรรมย้อนหลังได้อย่างโปร่งใส ว่าใครทำอะไร เมื่อไร เพื่อป้องกันข้อผิดพลาดและการทุจริต", "istrue": true },
+      { "statement": "การคำนวณภาษีมูลค่าเพิ่มอัตโนมัติก่อนออกใบเสร็จ", "istrue": false },
+      { "statement": "การป้องกันไม่ให้ผู้ใช้ลบแอปพลิเคชันออกได้", "istrue": false },
+      { "statement": "ความสามารถในการแปลเอกสารบัญชีข้ามภาษาเพื่อตรวจสอบโดยองค์กรระดับโลก", "istrue": false }
+    ],
+    "explanation": "Audit Trail (ร่องรอยการตรวจสอบ) เป็นฟังก์ชันบังคับของระบบประมวลผลธุรกรรมที่ดี ทำให้สามารถแกะรอยย้อนกลับ (Trace back) กิจกรรมทุกขั้นตอนที่เกิดขึ้นกับข้อมูลได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในฐานข้อมูลของระบบ ERP ข้อมูลประเภท 'Master Data' มีลักษณะแตกต่างจาก 'Transaction Data' อย่างไร",
+    "options": [
+      { "statement": "Master Data คือข้อมูลยอดขายประจำวัน ส่วน Transaction Data คือข้อมูลที่อยู่ลูกค้า", "istrue": false },
+      { "statement": "Master Data เป็นข้อมูลหลักทางธุรกิจที่มีการเปลี่ยนแปลงไม่บ่อย (เช่น ข้อมูลลูกค้า ข้อมูลสินค้า) ขณะที่ Transaction Data เป็นข้อมูลที่เปลี่ยนแปลงไปตามแต่ละเหตุการณ์ธุรกรรม (เช่น ใบเสร็จรับเงิน)", "istrue": true },
+      { "statement": "Master Data ต้องเก็บในเซิร์ฟเวอร์หลักเท่านั้น Transaction Data เก็บในมือถือได้", "istrue": false },
+      { "statement": "Master Data ถูกดูแลโดยผู้บริหารระดับสูงเท่านั้น Transaction Data ดูแลโดยพนักงานทั่วไป", "istrue": false }
+    ],
+    "explanation": "Master Data คือแฟ้มข้อมูลหลักที่เสถียร (เช่น รหัสพนักงาน, ชื่อสินค้า, ผังบัญชี) ส่วน Transaction Data คือข้อมูลการเคลื่อนไหวที่เกิดขึ้นทุกวัน (เช่น เวลาสแกนนิ้ว, ยอดซื้อสินค้า)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คำศัพท์ 'Cross-Departmental Process' หมายถึงอะไร และระบบใดที่เกิดมาเพื่อตอบโจทย์นี้",
+    "options": [
+      { "statement": "การยุบรวมหลายแผนกเข้าด้วยกันเพื่อลดค่าใช้จ่าย / ตอบโจทย์ด้วยระบบ HR", "istrue": false },
+      { "statement": "กระบวนการทางธุรกิจที่มีจุดเริ่มต้นและจุดสิ้นสุดพาดผ่านและต้องอาศัยการประสานงานจากหลายแผนก (เช่น Procurement) / ตอบโจทย์ด้วยระบบ ERP", "istrue": true },
+      { "statement": "การให้พนักงานสลับตำแหน่งกันทำงานทุกๆ ปี / ตอบโจทย์ด้วย E-learning", "istrue": false },
+      { "statement": "การตั้งงบประมาณข้ามปีปฏิทิน / ตอบโจทย์ด้วยระบบ FAIS ทางการเงิน", "istrue": false }
+    ],
+    "explanation": "กระบวนการธุรกิจที่แท้จริงไม่เคยจบในแผนกเดียว (เช่น การสั่งซื้อของต้องผ่าน คลังสินค้า, จัดซื้อ, บัญชี) ERP จึงเกิดมาเพื่อทำลาย Information Silo และรองรับกระบวนการข้ามแผนกเหล่านี้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "องค์กรที่มีพนักงานต่อต้านระบบ ERP ใหม่ (Resistance to Change) มักเกิดจากสาเหตุทางเทคนิคใดของระบบ ERP",
+    "options": [
+      { "statement": "ERP มีหน้าตาอินเทอร์เฟซเป็นขาวดำทั้งหมด", "istrue": false },
+      { "statement": "ERP ไม่มีฟังก์ชัน Audit Trail", "istrue": false },
+      { "statement": "ERP บังคับให้พนักงานต้องเปลี่ยนแปลงกระบวนการทำงานเดิมที่คุ้นเคย ให้สอดคล้องกับมาตรฐาน (Best Practices) ที่ถูกฝังมาในซอฟต์แวร์", "istrue": true },
+      { "statement": "ERP ไม่อนุญาตให้พนักงานพิมพ์ภาษาไทย", "istrue": false }
+    ],
+    "explanation": "ระบบ ERP ระดับโลก (เช่น SAP, Oracle) ถูกออกแบบตาม Best Practices ของอุตสาหกรรม หากใช้วิธีติดตั้งแบบ Vanilla องค์กรต้องเปลี่ยนวิธีทำงานของคนให้เข้ากับระบบ ซึ่งสร้างแรงต้าน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "แนวคิดเรื่อง 'Collaborative Consumption' (หรือ Sharing Economy) ในบทที่ 9 มุ่งเน้นไปที่หลักการใดเป็นสำคัญ",
+    "options": [
+      { "statement": "การส่งเสริมให้ผู้คนเข้าถึง (Access) การใช้ประโยชน์จากสินค้าหรือบริการร่วมกัน โดยไม่จำเป็นต้องครอบครองกรรมสิทธิ์ (Ownership)", "istrue": true },
+      { "statement": "การร่วมกันซื้อสินค้าล็อตใหญ่เพื่อได้ราคาขายส่งแบบ B2B", "istrue": false },
+      { "statement": "การแชร์บัญชีโซเชียลมีเดียให้คนอื่นใช้งานเพื่อเพิ่มยอดวิว", "istrue": false },
+      { "statement": "การที่บริษัทขนาดใหญ่ควบรวมกิจการกันเพื่อผูกขาดการบริโภค", "istrue": false }
+    ],
+    "explanation": "โมเดลธุรกิจอย่าง Airbnb หรือ Grab อยู่บนหลักการ Collaborative consumption ซึ่งเปลี่ยนจากระบบการเป็นเจ้าของ (เช่น ซื้อรถ) ไปสู่การแชร์สินทรัพย์ที่มีอยู่ (Peer-to-peer sharing)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในเทคโนโลยี Web 2.0 คำศัพท์เฉพาะ 'Mashup' หมายถึงเว็บไซต์หรือแอปพลิเคชันที่มีคุณสมบัติอย่างไร",
+    "options": [
+      { "statement": "เว็บไซต์ที่รวมข้อมูลข่าวปลอม (Misinformation) ไว้ในที่เดียว", "istrue": false },
+      { "statement": "แอปพลิเคชันที่ทำลายข้อมูลเก่าทิ้งทั้งหมดเพื่อสร้างข้อมูลใหม่", "istrue": false },
+      { "statement": "เว็บไซต์ที่ดึงข้อมูล (Data) และการประมวลผลจากแหล่งอ้างอิงหลายแหล่ง (เช่น ผสม Google Maps เข้ากับข้อมูลบ้านเช่า) มารวมกันเพื่อสร้างบริการใหม่", "istrue": true },
+      { "statement": "การประยุกต์ใช้ AI สร้างภาพใบหน้าที่ไม่มีอยู่จริง (Deepfakes)", "istrue": false }
+    ],
+    "explanation": "Mashup (การผสมผสาน) คือการนำ API จากหลายๆ เว็บไซต์มาต่อเติมกันจนเกิดเป็นแอปพลิเคชันหรือบริการรูปแบบใหม่ที่มีคุณค่ามากขึ้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เทคโนโลยี 'RSS' (Really Simple Syndication) สร้างประโยชน์หลักในด้านใดแก่ผู้ใช้งาน Web 2.0",
+    "options": [
+      { "statement": "ช่วยบล็อกโฆษณาทุกชนิดบนหน้าเว็บไซต์", "istrue": false },
+      { "statement": "ช่วยให้ผู้ใช้รับข้อมูลอัปเดตจากบล็อกหรือเว็บไซต์ข่าวหลายๆ แห่งมารวมไว้ในหน้าฟีดเดียว โดยไม่ต้องเสียเวลาเข้าไปตรวจสอบทีละเว็บไซต์", "istrue": true },
+      { "statement": "ช่วยแปลภาษาเนื้อหาบนเว็บอัตโนมัติ", "istrue": false },
+      { "statement": "ช่วยสร้างรหัสผ่านที่ปลอดภัยที่สุดในการล็อกอิน", "istrue": false }
+    ],
+    "explanation": "RSS Feed คือเทคโนโลยีที่ผู้ใช้สามารถ 'สมัครรับข้อมูล (Subscribe)' จากเว็บที่ชอบ เพื่อให้ระบบดึงคอนเทนต์ใหม่ๆ มารวมให้ผู้ใช้อ่านที่ศูนย์กลางได้ง่ายๆ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความแตกต่างในเชิงความหมาย (Definition) ระหว่าง 'Misinformation' และ 'Disinformation' วัดจากสิ่งใด",
+    "options": [
+      { "statement": "ขนาดของข้อความ; Misinformation สั้นกว่า Disinformation", "istrue": false },
+      { "statement": "เจตนา (Intent); Disinformation คือการจงใจสร้างข้อมูลเท็จเพื่อหวังผลหลอกลวง ขณะที่ Misinformation เป็นการเผยแพร่ข้อมูลผิดโดยรู้เท่าไม่ถึงการณ์และไม่มีเจตนาร้าย", "istrue": true },
+      { "statement": "แพลตฟอร์ม; Misinformation เกิดบน Facebook ส่วน Disinformation เกิดบน X (Twitter)", "istrue": false },
+      { "statement": "บุคคล; รัฐบาลสร้าง Misinformation ส่วนประชาชนสร้าง Disinformation", "istrue": false }
+    ],
+    "explanation": "การแบ่งแยกข่าวปลอมขึ้นอยู่กับ 'เจตนา' (Malicious intent) หากส่งต่อเพราะเข้าใจผิดเรียก Misinformation แต่ถ้าจงใจสร้างเรื่องโกหกเพื่อโจมตีหรือหวังผลเรียก Disinformation"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คำศัพท์ 'Social Capital' (ทุนทางสังคม) ในยุค Social Computing มีความหมายตรงกับข้อใด",
+    "options": [
+      { "statement": "จำนวนเงินดิจิทัล (Cryptocurrency) ที่บริษัทโซเชียลมีเดียมอบให้ผู้ใช้", "istrue": false },
+      { "statement": "งบประมาณโฆษณาที่แบรนด์จ่ายให้กับ Facebook", "istrue": false },
+      { "statement": "มูลค่าที่เกิดจากจำนวนความสัมพันธ์ คอนเนคชัน หรือความไว้วางใจที่บุคคลหรือธุรกิจสั่งสมไว้บนเครือข่ายสังคม (เช่น คนติดตามเยอะ ลูกค้าเชื่อใจ)", "istrue": true },
+      { "statement": "ภาษีที่รัฐบาลเรียกเก็บจากการค้าขายออนไลน์", "istrue": false }
+    ],
+    "explanation": "Social Capital ไม่ใช่เงินตรา แต่คือ 'เครือข่ายความสัมพันธ์' และ 'ชื่อเสียง' ในคอมมูนิตี้ ซึ่งมีมูลค่ามหาศาลและสามารถแปลงไปสู่โอกาสทางธุรกิจได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "แนวคิด 'Social Commerce' คือการผนวกเอาสิ่งใดเข้าด้วยกัน",
+    "options": [
+      { "statement": "ระบบจัดการหลังบ้าน (ERP) ผสมกับทรัพยากรมนุษย์ (HR)", "istrue": false },
+      { "statement": "การพาณิชย์อิเล็กทรอนิกส์ (E-commerce) ผสมผสานกับการปฏิสัมพันธ์ทางสังคม (Social media) เช่น การใช้รีวิว ให้คะแนน กดแชร์ เพื่อสนับสนุนการตัดสินใจซื้อ", "istrue": true },
+      { "statement": "การซื้อขายหุ้นกู้เพื่อระดมทุนไปทำการกุศลเพื่อสังคม", "istrue": false },
+      { "statement": "การทำระบบสวัสดิการของรัฐร่วมกับแอปพลิเคชันจ่ายเงิน", "istrue": false }
+    ],
+    "explanation": "Social Commerce (s-commerce) คือการใช้เครื่องมือทาง Social Network เข้ามามีส่วนร่วมและผลักดันยอดขายในกระบวนการซื้อขายสินค้าออนไลน์"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ระบบ Operational CRM มีองค์ประกอบย่อยที่สำคัญคือ 'Sales Force Automation (SFA)' ซึ่งมีหน้าที่หลักในการทำอะไร",
+    "options": [
+      { "statement": "ใช้หุ่นยนต์อัตโนมัติในการแพ็กสินค้าส่งลูกค้า", "istrue": false },
+      { "statement": "บันทึกและติดตามข้อมูลทุกกระบวนการของการขายแบบอัตโนมัติ (เช่น ประวัติการติดต่อลูกค้า, การจัดการไปป์ไลน์) เพื่อสนับสนุนการทำงานของพนักงานขาย", "istrue": true },
+      { "statement": "คำนวณอัตราดอกเบี้ยและอนุมัติวงเงินบัตรเครดิตให้ลูกค้า", "istrue": false },
+      { "statement": "ควบคุมสายพานการผลิตอัตโนมัติในโรงงาน", "istrue": false }
+    ],
+    "explanation": "SFA (การขายอัตโนมัติ) เป็นส่วนหน้าบ้านของ CRM ที่พนักงานขาย (Sales) ใช้เพื่อจดบันทึก ติดตามสถานะ Lead ยอดขาย และกิจกรรมต่างๆ ที่ทำกับลูกค้า"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "คำว่า 'Customer Churn' เป็นตัวชี้วัดที่ระบบ Analytical CRM พยายามนำมาวิเคราะห์และพยากรณ์ล่วงหน้า คำนี้หมายถึงอะไร",
+    "options": [
+      { "statement": "อัตราการสูญเสียลูกค้า (การที่ลูกค้าเลิกใช้บริการ หรือเปลี่ยนไปใช้แบรนด์ของคู่แข่ง)", "istrue": true },
+      { "statement": "อัตราส่วนของลูกค้าใหม่ที่เพิ่งสมัครใช้งานในเดือนแรก", "istrue": false },
+      { "statement": "การที่ลูกค้าซื้อสินค้าในปริมาณที่มากกว่าปกติสองเท่า", "istrue": false },
+      { "statement": "ระบบที่ดึงดูดให้ลูกค้าฝากเงินเข้าบัญชีอย่างต่อเนื่อง", "istrue": false }
+    ],
+    "explanation": "Customer Churn rate คือเปอร์เซ็นต์ที่ลูกค้าตีจากองค์กรไป ระบบ CRM เชิงวิเคราะห์ (Analytical) มุ่งหวังที่จะวิเคราะห์พฤติกรรมลูกค้าที่เสี่ยงจะ Churn เพื่อหาทางรักษาไว้ (Retention)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในเทคโนโลยี SPARQL ฐานข้อมูลไม่ได้ถูกจัดเก็บแบบตารางและแถว (No Fixed Schema) แต่ถูกจัดเก็บแบบ 'Triple' โครงสร้างนี้มีลักษณะเฉพาะอย่างไร",
+    "options": [
+      { "statement": "ข้อมูลถูกเข้ารหัส 3 ชั้นเพื่อความปลอดภัย", "istrue": false },
+      { "statement": "เก็บข้อมูลแบบ 3 มิติ (ความกว้าง, ความยาว, ความลึก) เพื่อประมวลผลกราฟิก", "istrue": false },
+      { "statement": "อธิบายข้อมูลในรูปแบบ 3 ส่วน คือ Subject (ประธาน), Predicate (กริยา/ความสัมพันธ์), และ Object (กรรม) เช่น 'สมชาย' - 'ทำงานที่' - 'บริษัท A'", "istrue": true },
+      { "statement": "ผู้ใช้ต้องใส่รหัสผ่าน 3 ครั้งจึงจะสืบค้นข้อมูลได้", "istrue": false }
+    ],
+    "explanation": "ฐานข้อมูลเชิงความหมาย (Semantic / RDF) เก็บข้อมูลในรูปแบบ Triple (S-P-O) ซึ่งเป็นรูปแบบกราฟความสัมพันธ์ (Graph network) ทำให้ค้นหาและเชื่อมโยงข้อมูลซับซ้อนได้อย่างอิสระ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดอธิบายหลักการทำงานของเทคโนโลยี 'Federated Queries' ในการจัดการฐานข้อมูลด้วย SPARQL",
+    "options": [
+      { "statement": "การสั่งทำลายข้อมูลในเซิร์ฟเวอร์สำรองทั่วโลกพร้อมกันในคำสั่งเดียว", "istrue": false },
+      { "statement": "ความสามารถในการส่งคำสั่งสอบถาม (Query) เพียงครั้งเดียว แล้วให้ระบบวิ่งไปดึงข้อมูลจากจุดปลายทาง (Endpoints) หลายๆ แห่งที่กระจายอยู่บนอินเทอร์เน็ตมารวมกันให้", "istrue": true },
+      { "statement": "การสืบค้นข้อมูลที่ถูกจัดเก็บแบบปิด (Silos) โดยไม่ต้องผ่านระบบเครือข่าย", "istrue": false },
+      { "statement": "การประมวลผลข้อมูลเสียงพูดให้เป็นข้อความ (Speech-to-text) อย่างรวดเร็ว", "istrue": false }
+    ],
+    "explanation": "Federated Query คือฟีเจอร์เด็ดของ SPARQL ที่อนุญาตให้การค้นหาทะลวงผ่านฐานข้อมูลหลายเซิร์ฟเวอร์ทั่วโลก (ที่มี RDF) แล้วนำผลลัพธ์มาผสานกันให้ในคำสั่งเดียว"
+  }
+]

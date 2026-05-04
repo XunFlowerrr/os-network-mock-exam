@@ -1,0 +1,332 @@
+[
+  {
+    "type": "multiple-choice",
+    "question": "ความแตกต่างในเชิงกลยุทธ์ระหว่าง Business Intelligence (BI) และ Business Analytics (BA) คืออะไร (การวิเคราะห์)",
+    "options": [
+      { "statement": "BI มุ่งเน้นไปที่การใช้ AI ขั้นสูงเพื่อทำนายอนาคต ขณะที่ BA ใช้เพียงเครื่องมือสถิติพื้นฐาน", "istrue": false },
+      { "statement": "BI เป็นกระบวนการและเทคโนโลยีในการรวบรวม จัดเก็บ และสะท้อนข้อมูลในอดีต (What happened) ส่วน BA นำข้อมูลเชิงลึกเหล่านั้นมาต่อยอดเพื่อสร้างการตัดสินใจและข้อเสนอแนะที่นำไปปฏิบัติได้จริง (Actionable decisions)", "istrue": true },
+      { "statement": "BI ใช้สำหรับข้อมูลที่ไม่มีโครงสร้าง (Unstructured data) เท่านั้น ส่วน BA ใช้สำหรับข้อมูลแบบตาราง (Structured data)", "istrue": false },
+      { "statement": "ไม่มีความแตกต่างกัน ทั้งสองเป็นเพียงคำศัพท์ทางการตลาดที่ใช้เรียกแทนกันได้", "istrue": false }
+    ],
+    "explanation": "BI เน้นที่ระบบโครงสร้างพื้นฐานในการรวบรวมและเข้าถึงข้อมูลเพื่อสร้างความเข้าใจ (Gathering, storing, accessing) ส่วน BA (Business Analytics) คือการนำ Insight นั้นมาพัฒนาเป็นกลยุทธ์และการตัดสินใจ (Actionable decisions)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากบริษัทแห่งหนึ่งลงทุนซื้อซอฟต์แวร์ใหม่ (เพิ่ม Input ด้านเงินทุน) แต่ส่งผลให้พนักงานทำงานได้น้อยลงเนื่องจากซอฟต์แวร์ใช้งานยาก (ลด Output) เหตุการณ์นี้ส่งผลโดยตรงต่อตัวชี้วัดใดตามหลักการจัดการ (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "Efficiency (ประสิทธิภาพ)", "istrue": false },
+      { "statement": "Effectiveness (ประสิทธิผล)", "istrue": false },
+      { "statement": "Productivity (ผลิตภาพ)", "istrue": true },
+      { "statement": "Agility (ความคล่องตัว)", "istrue": false }
+    ],
+    "explanation": "Productivity คืออัตราส่วนระหว่างปัจจัยนำเข้า (Inputs) กับผลผลิตที่ได้ (Outputs) เมื่อ Input สูงขึ้นแต่ Output ลดลง ย่อมส่งผลให้ Productivity ขององค์กรตกต่ำลงอย่างชัดเจน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "แดชบอร์ดที่แสดง 'Year-over-year change in sales' (การเปลี่ยนแปลงยอดขายเทียบปีต่อปี) จัดอยู่ใน Business Analytics ประเภทใด และมีจุดประสงค์เพื่ออะไร (ความเข้าใจ)",
+    "options": [
+      { "statement": "Descriptive Analytics; เพื่อรายงานข้อมูลเชิงประวัติศาสตร์และทำความเข้าใจสิ่งที่เกิดขึ้นแล้ว", "istrue": true },
+      { "statement": "Predictive Analytics; เพื่อคาดการณ์ยอดขายในปีถัดไป", "istrue": false },
+      { "statement": "Prescriptive Analytics; เพื่อแนะนำว่าควรจัดโปรโมชันอะไรในปีนี้", "istrue": false },
+      { "statement": "Cognitive Analytics; เพื่อจำลองความคิดของลูกค้าที่ซื้อสินค้า", "istrue": false }
+    ],
+    "explanation": "Descriptive Analytics (การวิเคราะห์เชิงพรรณนา) สรุปข้อมูลในอดีต เช่น ยอดขายรวม ยอดใช้จ่ายเฉลี่ย หรืออัตราการเปลี่ยนแปลงปีต่อปี เพื่อให้เห็นภาพสิ่งที่ผ่านมาแล้ว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ใน Google Analytics หากเว็บไซต์ร้านค้าอีคอมเมิร์ซมีผู้เข้าชมหลักแสนคนต่อวัน แต่มีค่า 'Bounce Rate' สูงถึง 95% ผู้บริหารควรประเมินสถานการณ์นี้อย่างไร (การประเมินค่า)",
+    "options": [
+      { "statement": "เว็บไซต์ประสบความสำเร็จอย่างมากในการสร้าง Brand Awareness เพราะคนเข้าดูเยอะ", "istrue": false },
+      { "statement": "ควรเพิ่มงบประมาณโฆษณา (Ad budget) เพราะการจราจรบนเว็บ (Traffic) กำลังเติบโต", "istrue": false },
+      { "statement": "เว็บไซต์มีปัญหาอย่างหนัก เพราะผู้คน 95% เข้ามาดูแค่หน้าเดียวแล้วกดปิดทิ้งทันทีโดยไม่ดูหน้าอื่นต่อ ควรเร่งปรับปรุง UX/UI หรือเนื้อหาหน้าแรก", "istrue": true },
+      { "statement": "เซิร์ฟเวอร์มีปัญหาและกำลังจะล่มเนื่องจากรับโหลดไม่ไหว", "istrue": false }
+    ],
+    "explanation": "Bounce Rate คือเปอร์เซ็นต์คนที่เข้ามาหน้าแรกหน้าเดียวแล้วเด้งออกทันที (Leave after visiting only one page) ค่าที่สูงมากแปลว่าหน้าเว็บไม่ดึงดูดใจ ไม่เกี่ยวข้องกับสิ่งที่คนค้นหา หรือโหลดช้า"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ตัวชี้วัด 'Conversion Rate' ให้ข้อมูลเชิงลึก (Insight) ที่สำคัญที่สุดในด้านใดในการจัดการงบประมาณการตลาดดิจิทัล (การวิเคราะห์)",
+    "options": [
+      { "statement": "ช่วยบอกว่าแพลตฟอร์มโซเชียลมีเดียใด (เช่น FB, TikTok) ที่ดึงดูดลูกค้าให้เข้ามา 'ทำตามเป้าหมายที่ตั้งไว้' (เช่น ซื้อของ, สมัครสมาชิก) ได้คุ้มค่าที่สุด เพื่อโยกงบไปลงที่นั่น", "istrue": true },
+      { "statement": "ช่วยบอกว่าเซิร์ฟเวอร์สามารถรองรับการแปลงไฟล์ภาพ (Conversion) ของลูกค้าได้กี่ไฟล์ต่อวินาที", "istrue": false },
+      { "statement": "ช่วยบอกเปอร์เซ็นต์ของลูกค้าที่กดออกเว็บไซต์โดยไม่ซื้ออะไรเลย", "istrue": false },
+      { "statement": "ช่วยคำนวณภาษีอัตราแลกเปลี่ยนเงินตราต่างประเทศในการขายของข้ามชาติ", "istrue": false }
+    ],
+    "explanation": "Conversion rate คือเปอร์เซ็นต์คนที่ทำ Action ที่เราต้องการ (เช่น ซื้อของ) ข้อมูลนี้ช่วยให้องค์กร Allocate advertising budget ไปยังช่องทางที่สร้าง Conversion ได้สูงสุด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ทำไม Predictive Analytics จึงไม่สามารถรับประกันความถูกต้องแม่นยำได้ 100% (การวิเคราะห์)",
+    "options": [
+      { "statement": "เพราะฐานข้อมูลในอดีตมักจะถูกแฮ็กเกอร์แก้ไขเสมอ", "istrue": false },
+      { "statement": "เพราะซอฟต์แวร์ยังไม่ได้รับการพัฒนาด้วยเทคโนโลยีควอนตัม", "istrue": false },
+      { "statement": "เพราะหลักการทำงานคือการตรวจจับรูปแบบ (Patterns) ในอดีต และทำนายสิ่งที่จะเกิดในอนาคตบนพื้นฐานของ 'ความน่าจะเป็น (Probabilities)' ไม่ใช่กฎเกณฑ์ตายตัว", "istrue": true },
+      { "statement": "เพราะข้อมูลการเงินขององค์กรมีความลับมากเกินไปจนซอฟต์แวร์เข้าไม่ถึง", "istrue": false }
+    ],
+    "explanation": "Predictive analytics does not tell decision makers exactly what will happen. It can only forecast based on 'probabilities' (ความน่าจะเป็น) จากแพทเทิร์นในข้อมูลอดีต"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดอธิบายขอบเขตความสามารถของเทคโนโลยี Artificial Intelligence (AI) ในยุคปัจจุบันได้อย่างถูกต้องที่สุด (ความเข้าใจ)",
+    "options": [
+      { "statement": "สามารถคิดค้นเป้าหมายและเจตจำนงในการดำรงชีวิตได้ด้วยตนเอง (Consciousness)", "istrue": false },
+      { "statement": "สามารถทำงานเฉพาะเจาะจง (Specific function) ที่เคยต้องใช้สติปัญญามนุษย์ และทำได้ในระดับที่เทียบเท่าหรือเหนือกว่ามนุษย์ในงานนั้นๆ", "istrue": true },
+      { "statement": "สามารถซ่อมแซมฮาร์ดแวร์คอมพิวเตอร์ที่พังได้อัตโนมัติด้วยตนเอง", "istrue": false },
+      { "statement": "สามารถทำความเข้าใจอารมณ์ความรู้สึกเชิงลึกของมนุษย์ได้เทียบเท่านักจิตวิทยาคลินิก 100%", "istrue": false }
+    ],
+    "explanation": "นิยามของ AI ในปัจจุบัน (Narrow AI) คือเทคโนโลยีที่ถูกสร้างมาเพื่อทำงาน 'เฉพาะเจาะจง (Specific function)' ได้ดีเท่าหรือดีกว่ามนุษย์ เช่น รู้จำใบหน้า อ่านตัวอักษร แต่มันยังไม่มีจิตสำนึก"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Machine Learning (ML) มีจุดเด่นที่เป็นเอกลักษณ์และแตกต่างจากซอฟต์แวร์คอมพิวเตอร์แบบดั้งเดิม (Traditional Programming) อย่างไร (การวิเคราะห์)",
+    "options": [
+      { "statement": "ML ต้องการให้โปรแกรมเมอร์เขียนกฎ (If-Then-Else) ควบคุมการทำงานในทุกๆ กรณีที่เป็นไปได้", "istrue": false },
+      { "statement": "ML สามารถเรียนรู้และพัฒนาความแม่นยำขึ้นได้เองจาก 'ประสบการณ์' (ข้อมูลที่ป้อนเข้า) โดยที่โปรแกรมเมอร์ไม่ต้องเขียนโค้ดคำสั่งกำกับอย่างชัดเจน (Without being explicitly programmed)", "istrue": true },
+      { "statement": "ML ประมวลผลได้โดยไม่ต้องพึ่งพาหน่วยประมวลผล (CPU) หรือฐานข้อมูล", "istrue": false },
+      { "statement": "ML ไม่สามารถทำงานผิดพลาดได้เลยแม้แต่ครั้งเดียว", "istrue": false }
+    ],
+    "explanation": "หัวใจหลักของ ML คือ 'Ability to automatically learn and improve from experience without being explicitly programmed' โมเดลหาความสัมพันธ์เอาเองจาก Data โดยไม่ต้องรอมนุษย์เขียนโค้ดสอนทุกขั้นตอน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กระบวนการ Train โมเดลในรูปแบบ 'Supervised Learning' จำเป็นต้องอาศัยสิ่งใดเป็นหัวใจสำคัญ เพื่อให้ระบบสามารถเรียนรู้ได้ (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "ชุดข้อมูลดิบที่ไม่มีการจัดกลุ่มหรือจัดหมวดหมู่ใดๆ เลย", "istrue": false },
+      { "statement": "ชุดข้อมูลมหาศาลที่มีการ 'ติดป้ายกำกับ (Labelled data)' และมี 'ผลลัพธ์ที่ถูกต้อง (Expected output)' ระบุไว้ล่วงหน้าอย่างชัดเจน", "istrue": true },
+      { "statement": "กลไกการให้รางวัล (Reward) และการลงโทษ (Punishment) เมื่อ AI กระทำพฤติกรรมในสภาพแวดล้อมจำลอง", "istrue": false },
+      { "statement": "อัลกอริทึมในการสุ่มเดาคำตอบ (Random guess algorithm)", "istrue": false }
+    ],
+    "explanation": "Supervised Learning เปรียบเหมือนการสอนเด็กโดยมีเฉลยให้ โดย Developer ต้องป้อน Labelled input data และ Expected output results ให้โมเดลเรียนรู้ความสัมพันธ์ระหว่าง Input กับ Output"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากธนาคารต้องการสร้างระบบ AI เพื่อค้นหา 'กลุ่มลูกค้าที่มีพฤติกรรมคล้ายคลึงกัน (Customer segments)' เพื่อเสนอโปรโมชันบัตรเครดิต โดยที่ธนาคารยังไม่รู้เลยว่ามีกลุ่มอะไรบ้าง ควรใช้วิธีการเรียนรู้แบบใด (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "Supervised Learning", "istrue": false },
+      { "statement": "Unsupervised Learning (Clustering)", "istrue": true },
+      { "statement": "Reinforcement Learning", "istrue": false },
+      { "statement": "Generative Adversarial Network", "istrue": false }
+    ],
+    "explanation": "การหา Customer segments จากข้อมูลที่ไม่มี Label มาก่อน เป็นงานจัดกลุ่ม (Clustering) ซึ่งอยู่ในโดเมนของ Unsupervised Learning โดยอัลกอริทึมจะหาความสัมพันธ์และแบ่งกลุ่มให้เอง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "สถาปัตยกรรมของ Convolutional Neural Network (CNN) ถูกออกแบบมาเป็นพิเศษเพื่อให้มีความโดดเด่นในการจัดการกับงานประเภทใด (ความเข้าใจ)",
+    "options": [
+      { "statement": "การแปลภาษาแบบ Real-time และประมวลผลข้อความต่อเนื่อง", "istrue": false },
+      { "statement": "การคาดการณ์ราคาหุ้นในอนาคต (Time series forecasting)", "istrue": false },
+      { "statement": "การแยกแยะข้อมูลเชิงพื้นที่ของ 'ภาพ' โดยสกัดฟีเจอร์พื้นฐาน เช่น ขอบ (Edges), ส่วนโค้ง (Curves), และความหนาแน่นของสี (Colour density)", "istrue": true },
+      { "statement": "การแต่งเพลงและสร้างบทความอัตโนมัติ", "istrue": false }
+    ],
+    "explanation": "CNN เก่งที่สุดเรื่อง Image and Pattern recognition เพราะมันถูกออกแบบมาให้สแกนภาพ (Extracting features) เพื่อหาขอบ ส่วนโค้ง และรูปร่าง เพื่อจำแนกว่าภาพนั้นคืออะไร"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "จากตัวเลือกด้านล่าง แอปพลิเคชันใดต่อไปนี้ที่อาศัยเทคโนโลยี Convolutional Neural Network (CNN) เป็นกลไกหลักเบื้องหลัง (การวิเคราะห์)",
+    "options": [
+      { "statement": "Siri หรือ Google Assistant ที่ทำหน้าที่จำแนกเสียงพูด", "istrue": false },
+      { "statement": "ระบบตรวจจับเนื้องอกอัตโนมัติจากแผ่นฟิล์มเอกซเรย์ และระบบสแกนใบหน้าปลดล็อกหน้าจอ (Facial recognition)", "istrue": true },
+      { "statement": "ChatGPT ที่ทำหน้าที่เขียนเรียงความอัตโนมัติ", "istrue": false },
+      { "statement": "ระบบแนะนำสินค้า (Recommendation engine) บน Netflix", "istrue": false }
+    ],
+    "explanation": "แอปพลิเคชันหลักของ CNN คือการประมวลผลภาพ (Image and pattern recognition, Video analysis, Facial recognition) ดังนั้นการดูฟิล์มเอกซเรย์และสแกนหน้าจึงต้องใช้ CNN"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "อัลกอริทึม Recurrent Neural Network (RNN) มีความสามารถพิเศษที่ CNN ไม่มี ซึ่งทำให้มันเหมาะสมกับการวิเคราะห์ประโยคคำพูดและการแต่งเพลง ความสามารถนั้นคืออะไร (การวิเคราะห์)",
+    "options": [
+      { "statement": "ความสามารถในการจำแนกเม็ดสีระดับพิกเซล", "istrue": false },
+      { "statement": "ความสามารถในการจัดการกับ 'ข้อมูลที่ต่อเนื่องเป็นลำดับ (Sequential data / Time series)' โดยตัดสินใจบนพื้นฐานของข้อมูลเอาต์พุตที่เกิดขึ้นก่อนหน้า (Memory)", "istrue": true },
+      { "statement": "ความสามารถในการสร้างใบหน้าคนปลอมขึ้นมาแข่งกับ Discriminator", "istrue": false },
+      { "statement": "ความสามารถในการทำงานโดยไม่ต้องใช้ข้อมูลใดๆ ฝึกสอนเลย", "istrue": false }
+    ],
+    "explanation": "RNN ออกแบบมาเพื่อรับมือกับ Sequential data โดยมันมีกลไกจำข้อมูลก่อนหน้า (Previous output) เข้ามาประกอบการตัดสินใจ จึงเหมาะมากกับการอ่านประโยค (คำต่อคำ) หรือฟังเพลง (โน้ตต่อโน้ต)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Generative Adversarial Network (GAN) ขับเคลื่อนด้วยโครงข่ายประสาทเทียม 2 เครือข่ายที่ต่อสู้กันเอง เครือข่ายทั้งสองนี้มีชื่อเรียกว่าอะไรและทำหน้าที่อะไร (ความจำ/ความเข้าใจ)",
+    "options": [
+      { "statement": "Encoder ทำหน้าที่เข้ารหัสข้อมูล; Decoder ทำหน้าที่ถอดรหัสข้อมูล", "istrue": false },
+      { "statement": "Generator ทำหน้าที่สร้างข้อมูลจำลอง (Fake data); Discriminator ทำหน้าที่จับผิดและแยกแยะว่าข้อมูลนั้นเป็นของจริงหรือของปลอม", "istrue": true },
+      { "statement": "Predictor ทำหน้าที่ทำนายอนาคต; Corrector ทำหน้าที่แก้ไขความผิดพลาด", "istrue": false },
+      { "statement": "Supervisor ทำหน้าที่สั่งงาน; Worker ทำหน้าที่เรียนรู้พฤติกรรม", "istrue": false }
+    ],
+    "explanation": "GAN ประกอบด้วย 2 ส่วนคือ (a) Generator ที่พยายามสร้างข้อมูลปลอมให้เนียนที่สุด และ (b) Discriminator ที่พยายามแยกแยะว่าภาพนี้มาจากชุดข้อมูลจริงหรือถูกสร้างปลอมขึ้นมา การแข่งกันทำให้ AI สร้างผลลัพธ์ที่สมจริงมาก"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เทคนิค 'Inpainting' ในวงการศิลปะและการอนุรักษ์ภาพถ่ายเก่า ได้รับประโยชน์มหาศาลจากเทคโนโลยี AI ใด (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "Convolutional Neural Network (CNN) ธรรมดา", "istrue": false },
+      { "statement": "Generative Adversarial Network (GAN)", "istrue": true },
+      { "statement": "Recurrent Neural Network (RNN)", "istrue": false },
+      { "statement": "Unsupervised Clustering", "istrue": false }
+    ],
+    "explanation": "Inpainting คือการเติมเต็มส่วนที่ฉีกขาดหรือหายไปของภาพให้สมบูรณ์ ซึ่ง GANs ถูกนำมาใช้อย่างแพร่หลายในการเสกหรือคาดเดาข้อมูลดิจิทัลที่หายไปให้กลับมาดูแนบเนียนเหมือนต้นฉบับ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความน่ากลัวของเทคโนโลยี Deepfakes ไม่ว่าจะเป็นการตัดต่อใบหน้านักการเมือง หรือการหลอกลวงด้วยวิดีโอ มีจุดกำเนิดมาจากเทคโนโลยี AI สายใดเป็นหลัก (การวิเคราะห์)",
+    "options": [
+      { "statement": "Generative Adversarial Network (GAN)", "istrue": true },
+      { "statement": "Predictive Analytics", "istrue": false },
+      { "statement": "Descriptive Analytics", "istrue": false },
+      { "statement": "Association Rules", "istrue": false }
+    ],
+    "explanation": "GANs เป็นสถาปัตยกรรมหลักเบื้องหลังเทคโนโลยี Deepfakes เพราะความสามารถของ Generator ที่สร้างภาพหรือวิดีโอจำลองได้แนบเนียนจนหลอกตาคนและ Discriminator ได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในขั้นตอนกระบวนการของ Business Analytics (The Business Analytics Process) หากเรากำลังตั้งคำถามว่า 'เราควรจะลดราคาสินค้า 10% หรือทำโปรโมชันซื้อ 1 แถม 1 เพื่อกำจัดสต็อก?' คำถามนี้อยู่ภายใต้การวิเคราะห์ประเภทใด (การประเมินค่า)",
+    "options": [
+      { "statement": "Descriptive Analytics", "istrue": false },
+      { "statement": "Predictive Analytics", "istrue": false },
+      { "statement": "Prescriptive Analytics", "istrue": true },
+      { "statement": "Diagnostic Analytics", "istrue": false }
+    ],
+    "explanation": "Prescriptive Analytics คือระดับสูงสุดของการวิเคราะห์ ที่ไม่เพียงแต่ทำนายอนาคต แต่ยัง 'แนะนำแนวทางปฏิบัติที่ดีที่สุด (Recommend actions/Decisions)' เพื่อให้บรรลุเป้าหมายทางธุรกิจ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ระบบ Prescriptive Analytics จะทำงานได้อย่างสมบูรณ์และมีความน่าเชื่อถือได้นั้น จำเป็นต้องมีรากฐานมาจากสิ่งใดก่อน (การวิเคราะห์)",
+    "options": [
+      { "statement": "งบประมาณทางการตลาดที่ไม่มีขีดจำกัด", "istrue": false },
+      { "statement": "ข้อมูลพื้นฐานและผลลัพธ์ที่ได้มาจาก Descriptive Analytics (เข้าใจอดีต) และ Predictive Analytics (ทำนายอนาคต)", "istrue": true },
+      { "statement": "เทคโนโลยี Blockchain เพื่อป้องกันการแก้ไขข้อมูล", "istrue": false },
+      { "statement": "การตัดสินใจด้วยสัญชาตญาณ (Intuition) ของผู้บริหารสูงสุด", "istrue": false }
+    ],
+    "explanation": "Prescriptive Analytics ไม่สามารถยืนอยู่โดดๆ ได้ มันต้องอาศัยข้อมูลเชิงลึกจาก Descriptive เพื่อรู้ว่าเราอยู่จุดไหน และ Predictive เพื่อรู้ว่าทางเลือกแต่ละทางจะนำไปสู่อะไร ก่อนที่จะแนะนำวิธีแก้ปัญหา"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดคือเป้าหมายหลักของการนำ Presentation Tools เช่น Dashboards มาใช้ในระดับผู้บริหาร (ความเข้าใจ)",
+    "options": [
+      { "statement": "เพื่อบีบอัดฐานข้อมูลขนาดใหญ่ให้เล็กลงประหยัดพื้นที่ฮาร์ดดิสก์", "istrue": false },
+      { "statement": "เพื่อให้โปรแกรมเมอร์แก้ไขโค้ดโปรแกรมได้ง่ายขึ้น", "istrue": false },
+      { "statement": "เพื่อนำเสนอผลลัพธ์ที่ซับซ้อนจากการวิเคราะห์ ให้อยู่ในรูปแบบของภาพ (Data Visualization) ที่เข้าใจง่ายและช่วยในการตัดสินใจได้อย่างรวดเร็ว", "istrue": true },
+      { "statement": "เพื่อใช้เป็นช่องทางในการแชทสื่อสารระหว่างแผนกภายในองค์กร", "istrue": false }
+    ],
+    "explanation": "Presentation Tools มีหน้าที่แปรสภาพ Data หรือ Analytics ที่เป็นตัวเลขซับซ้อน ให้ออกมาเป็นกราฟหรือหน้าปัด (Visual representation) เพื่อย่อยข้อมูลให้ผู้ใช้งานดูแล้วเข้าใจทันที"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "บริษัทประกันภัยต้องการใช้ AI เพื่อตรวจสอบภาพถ่ายอุบัติเหตุรถยนต์ที่ลูกค้าส่งมาเคลมประกัน ว่าเป็นภาพที่แต่งขึ้นหรือถูกตัดต่อมาเพื่อฉ้อโกง (Anomaly detection in images) หรือไม่ บริษัทควรใช้อัลกอริทึมใด (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "Recurrent Neural Network (RNN)", "istrue": false },
+      { "statement": "Convolutional Neural Network (CNN)", "istrue": true },
+      { "statement": "Natural Language Processing (NLP)", "istrue": false },
+      { "statement": "Decision Tree Regression", "istrue": false }
+    ],
+    "explanation": "CNN ถูกออกแบบมาเพื่อตรวจสอบความผิดปกติและจดจำรูปแบบของรูปภาพ (Anomaly detection in images) การหาร่องรอยตัดต่อในภาพถ่ายจึงเป็นหน้าที่หลักของ CNN"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "แอปพลิเคชันใดที่เป็นการผสมผสานการใช้ทั้ง CNN และ RNN เข้าด้วยกันอย่างชัดเจนที่สุด (การวิเคราะห์ระดับสูง)",
+    "options": [
+      { "statement": "ระบบบัญชีอัตโนมัติที่รวมตัวเลขจากทุกสาขา", "istrue": false },
+      { "statement": "ระบบรถยนต์ขับเคลื่อนอัตโนมัติที่ต้องมองเห็นภาพถนน (CNN) และนำข้อมูลเฟรมภาพที่ต่อเนื่องตามเวลามาวิเคราะห์การเคลื่อนไหวเพื่อตัดสินใจหักเลี้ยวพวงมาลัย (RNN/Time series)", "istrue": true },
+      { "statement": "ระบบแปลภาษาจากข้อความภาษาไทยเป็นอังกฤษแบบบรรทัดต่อบรรทัด", "istrue": false },
+      { "statement": "ซอฟต์แวร์ตรวจจับอีเมลสแปมจากคำสำคัญ (Keywords)", "istrue": false }
+    ],
+    "explanation": "รถไร้คนขับต้องใช้ CNN สกัดภาพจากกล้องหน้ารถ (แยกแยะป้าย คน ถนน) และต้องใช้ RNN/LSTM เข้ามาจำลำดับเหตุการณ์ต่อเนื่องของเฟรมวิดีโอ (Sequential data) เพื่อเดาว่าคนเดินถนนกำลังจะเดินไปทางไหน"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เมื่อเราพูดถึงการพัฒนาปัญญาประดิษฐ์ให้ก้าวข้ามจาก 'Narrow AI' ไปสู่ 'Artificial General Intelligence (AGI)' ความท้าทายหลักคืออะไร (การประเมินค่า)",
+    "options": [
+      { "statement": "การทำให้ AI สามารถเล่นหมากรุกได้เก่งกว่าแชมป์โลก", "istrue": false },
+      { "statement": "การทำให้ AI มีความสามารถทางสติปัญญาทุกด้านเทียบเท่าหรือเหนือกว่ามนุษย์ ครอบคลุมการใช้เหตุผล การวางแผน การเรียนรู้เรื่องใหม่ที่ไม่เคยถูกสอน และการรับรู้ทางอารมณ์ ซึ่งยังไม่มีเทคโนโลยีใดในปัจจุบันทำได้", "istrue": true },
+      { "statement": "การเขียนโปรแกรมด้วยภาษา Python ให้ยาวขึ้น", "istrue": false },
+      { "statement": "การเพิ่มขนาดของเซิร์ฟเวอร์บนระบบคลาวด์ให้ใหญ่เป็นสองเท่า", "istrue": false }
+    ],
+    "explanation": "AGI คือจุดสูงสุดที่ AI จะเก่งรอบด้านเหมือนมนุษย์ (General purpose) ไม่ใช่แค่เก่งเฉพาะงานใดงานหนึ่ง (Specific function) ซึ่งปัจจุบันเทคโนโลยียังไปไม่ถึงจุดนั้น"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Google Analytics เปิดให้บริการข้อมูล Analytics ฟรีแก่เจ้าของเว็บไซต์ ข้อมูลประเภทใดที่ไม่นับว่าเป็น Descriptive Analytics (ความเข้าใจ)",
+    "options": [
+      { "statement": "จำนวนผู้เข้าชมเว็บไซต์แบบเรียลไทม์", "istrue": false },
+      { "statement": "ข้อมูลหน้าเว็บที่มี Bounce Rate สูงสุดในเดือนที่ผ่านมา", "istrue": false },
+      { "statement": "การวิเคราะห์เปอร์เซ็นต์ของผู้ใช้งานที่ทำ Conversion สำเร็จ", "istrue": false },
+      { "statement": "การแจ้งเตือนยอดขายที่น่าจะเกิดขึ้นในไตรมาสหน้าโดยอัตโนมัติ", "istrue": true }
+    ],
+    "explanation": "Descriptive analytics รายงานสิ่งที่เกิดขึ้นไปแล้ว (อดีต/ปัจจุบัน) แต่ 'การคาดการณ์ยอดขายไตรมาสหน้า' คือ Predictive Analytics ไม่ใช่ Descriptive"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดแสดงให้เห็นถึงประโยชน์สูงสุดของการใช้งาน Predictive Analytics ในระบบ Supply Chain (SCM) (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "เพื่อให้ฝ่ายบัญชีพิมพ์ใบแจ้งหนี้ (Invoice) ได้สวยงามขึ้น", "istrue": false },
+      { "statement": "ใช้ข้อมูลประวัติการขาย สภาพอากาศ และเทรนด์ในโซเชียลมีเดีย มาพยากรณ์ความต้องการสินค้า (Forecast demand) ล่วงหน้า เพื่อป้องกันปัญหาสินค้าขาดตลาดและลดภาระการสต็อกของ", "istrue": true },
+      { "statement": "ใช้ติดตามการส่งของของรถบรรทุกผ่าน GPS เรียลไทม์", "istrue": false },
+      { "statement": "ใช้เปรียบเทียบราคาสินค้าของคู่แข่งในตลาด", "istrue": false }
+    ],
+    "explanation": "การคาดการณ์ Demand ของลูกค้าจากตัวแปรต่างๆ (Forecast demand for inputs) คือหัวใจของการนำ Predictive Analytics มาใช้ลดต้นทุน Inventory ใน SCM"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Machine Learning โมเดลหนึ่งได้รับการสอนให้ประเมินราคาบ้าน โดยผู้สอนป้อนข้อมูล 10,000 รายการ ประกอบด้วย ขนาดบ้าน, จำนวนห้องน้ำ, และ 'ราคาขายจริง' เพื่อให้โมเดลหาแพทเทิร์น การป้อน 'ราคาขายจริง' ถือเป็นองค์ประกอบใด (การวิเคราะห์)",
+    "options": [
+      { "statement": "Expected Output / Label ใน Supervised Learning", "istrue": true },
+      { "statement": "Unlabelled Data ใน Unsupervised Learning", "istrue": false },
+      { "statement": "Reward ใน Reinforcement Learning", "istrue": false },
+      { "statement": "Feature Extraction ใน CNN", "istrue": false }
+    ],
+    "explanation": "การให้เฉลย (ราคาขายจริงของบ้าน) เพื่อให้คอมพิวเตอร์เรียนรู้ว่าบ้านสเปคนี้ราคาเท่าไร เป็นลักษณะคลาสสิกของ Labelled data ใน Supervised Learning"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ขั้นตอนใดของ Decision-Making Process ตามกรอบทฤษฎี (Decision-support framework) ที่ระบบ BI/BA จะเข้าไปมีบทบาทช่วยเหลือมากที่สุดในการสืบค้นต้นตอของปัญหา (ความเข้าใจ)",
+    "options": [
+      { "statement": "Intelligence Phase (ช่วงการรวบรวมข้อมูลเพื่อค้นหาและระบุปัญหา)", "istrue": true },
+      { "statement": "Design Phase (ช่วงออกแบบทางเลือก)", "istrue": false },
+      { "statement": "Choice Phase (ช่วงเลือกทางเลือกที่ดีที่สุด)", "istrue": false },
+      { "statement": "Implementation Phase (ช่วงนำไปปฏิบัติ)", "istrue": false }
+    ],
+    "explanation": "ในระยะแรก (Intelligence phase) ผู้บริหารต้องตอบคำถามว่า 'What is the problem?' ซึ่ง Dashboard และ Descriptive Analytics จะช่วยเปิดเผยปัญหา (เช่น ยอดตกที่ภาคเหนือ) ให้เห็นชัดเจนที่สุด"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Deep Learning แตกต่างจาก Machine Learning ทั่วไป (Traditional ML) ในมิติของโครงสร้างอย่างไร (การวิเคราะห์)",
+    "options": [
+      { "statement": "Deep Learning ไม่ต้องใช้คอมพิวเตอร์ในการประมวลผล", "istrue": false },
+      { "statement": "Deep Learning ใช้โครงข่ายประสาทเทียม (Neural Networks) ที่มีความซับซ้อนและมีชั้นซ่อนเร้น (Hidden layers) จำนวนมาก เพื่อสกัดฟีเจอร์จากข้อมูลดิบได้เองโดยที่มนุษย์ไม่ต้องคอยป้อนฟีเจอร์ให้", "istrue": true },
+      { "statement": "Deep Learning ใช้ข้อมูลที่มีโครงสร้างตาราง (Excel) เป็นหลักเท่านั้น", "istrue": false },
+      { "statement": "Machine Learning ล้าสมัยและไม่มีใครใช้แล้วในปัจจุบัน", "istrue": false }
+    ],
+    "explanation": "Deep Learning คือสับเซตของ ML ที่ใช้ Neural Networks ซ้อนทับกันหลายๆ ชั้น (Deep layers) ทำให้มันสามารถเรียนรู้ความซับซ้อน (เช่น ภาพ/เสียง) ได้ด้วยตนเองโดยอัตโนมัติ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ความเสี่ยงทางจริยธรรมที่ใหญ่ที่สุดประการหนึ่งในการสร้างโมเดล Machine Learning เพื่อคัดกรองเรซูเม่ผู้สมัครงาน คืออะไร (การประเมินค่า)",
+    "options": [
+      { "statement": "AI อาจทำงานเร็วกว่าพนักงาน HR ทำให้ HR ว่างงาน", "istrue": false },
+      { "statement": "หากข้อมูลที่ใช้ Train ในอดีตแฝงไปด้วยอคติ (Bias) เช่น การรับแต่เพศชายเข้าทำงาน โมเดล AI จะเรียนรู้และสืบทอดอคตินั้นมาใช้คัดกรองคนโดยอัตโนมัติจนเกิดการเลือกปฏิบัติ", "istrue": true },
+      { "statement": "เรซูเม่ที่เป็นกระดาษไม่สามารถสแกนเข้าสู่ระบบ Deep Learning ได้", "istrue": false },
+      { "statement": "AI ไม่สามารถอ่านไฟล์ PDF ได้", "istrue": false }
+    ],
+    "explanation": "Machine Learning เรียนรู้จาก 'ประสบการณ์' (Historical Data) หากข้อมูลในอดีตมีการเหยียดเพศหรือเชื้อชาติ (Algorithmic Bias) AI ก็จะมองว่านั่นคือแพทเทิร์นที่ถูกต้องและปฏิบัติตาม"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ใน Neural Network ชั้นใด (Layer) ที่ทำหน้าที่ในการประมวลผลข้อมูล สกัดลักษณะสำคัญ และคำนวณน้ำหนัก (Weights) ที่ซับซ้อนที่สุดก่อนส่งผลลัพธ์ออกไป (ความจำ)",
+    "options": [
+      { "statement": "Input Layer", "istrue": false },
+      { "statement": "Hidden Layers", "istrue": true },
+      { "statement": "Output Layer", "istrue": false },
+      { "statement": "Transport Layer", "istrue": false }
+    ],
+    "explanation": "โครงข่ายประสาทเทียมประกอบด้วย Input layer (รับข้อมูล), Hidden layers (ชั้นที่ซ่อนอยู่ซึ่งทำหน้าที่ประมวลผลและสกัด Feature อย่างหนัก), และ Output layer (แสดงผลคำทำนาย)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "องค์กรระดับชาติแห่งหนึ่งต้องการทำวิจัยเพื่อค้นพบยาชนิดใหม่ (Drug discovery) จากการประมวลผลรูปแบบโครงสร้างโมเลกุลทางเคมีหลายล้านแบบ อัลกอริทึมใดที่ได้รับการยอมรับและระบุว่าเหมาะสมกับงานแยกแยะแพทเทิร์นประเภทนี้มาก (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "Convolutional Neural Network (CNN)", "istrue": true },
+      { "statement": "Linear Regression", "istrue": false },
+      { "statement": "K-Means Clustering", "istrue": false },
+      { "statement": "Google Analytics", "istrue": false }
+    ],
+    "explanation": "จากเอกสารบทที่ 14 CNN ถูกประยุกต์ใช้อย่างกว้างขวางใน Image and pattern recognition applications ซึ่งรวมถึงวงการวิทยาศาสตร์เช่น Drug discovery (ค้นหาโครงสร้างยา) นอกเหนือจากการสแกนใบหน้า"
+  }
+]

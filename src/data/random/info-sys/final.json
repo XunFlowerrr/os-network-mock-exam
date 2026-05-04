@@ -1,0 +1,332 @@
+[
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดอธิบายแนวคิดเรื่อง Dematerialization ในบริบทของเทคโนโลยีไร้สายได้ถูกต้องที่สุด (ความเข้าใจ)",
+    "options": [
+      { "statement": "การลดขนาดของอุปกรณ์ฮาร์ดแวร์ให้เล็กลงจนสามารถฝังตัวในร่างกายมนุษย์ได้", "istrue": false },
+      { "statement": "ปรากฏการณ์ที่ฟังก์ชันของอุปกรณ์หลายๆ อย่าง ถูกจับมารวมไว้ในอุปกรณ์เพียงชิ้นเดียว เช่น สมาร์ทโฟน", "istrue": true },
+      { "statement": "การเปลี่ยนรูปแบบการส่งข้อมูลจากสัญญาณแอนะล็อกเป็นดิจิทัลทั้งหมด", "istrue": false },
+      { "statement": "การใช้อุปกรณ์เชื่อมต่อระยะไกลผ่านเครือข่าย 5G โดยไม่ต้องมีเซิร์ฟเวอร์กลาง", "istrue": false }
+    ],
+    "explanation": "Dematerialization (การยุบรวมอุปกรณ์) คือปรากฏการณ์ที่รวมการทำงานของหลายอุปกรณ์ (เช่น กล้อง, เครื่องคิดเลข, GPS) มาไว้ในอุปกรณ์เดียว (สมาร์ทโฟน)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากบริษัทต้องการนำเทคโนโลยีเครือข่ายไร้สายมาใช้ในคลังสินค้าเพื่อให้สแกนเนอร์ส่งข้อมูลได้ในระยะรัศมีไม่เกิน 10-20 เมตรด้วยความเร็วสูง ควรเลือกเทคโนโลยีใด (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "5G Cellular Network", "istrue": false },
+      { "statement": "UWB (Ultra-Wideband) หรือ Bluetooth", "istrue": true },
+      { "statement": "Wi-Fi 7", "istrue": false },
+      { "statement": "NFC (Near Field Communication)", "istrue": false }
+    ],
+    "explanation": "UWB และ Bluetooth เป็นเทคโนโลยีเครือข่ายไร้สายระยะใกล้ (Short-Range) ที่เหมาะกับการเชื่อมต่อในรัศมีใกล้ๆ ที่ต้องการส่งข้อมูลรวดเร็ว"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การทำงานของเทคโนโลยี Deepfake แตกต่างจาก Shallowfakes อย่างไรในการสร้างข่าวปลอม (การวิเคราะห์)",
+    "options": [
+      { "statement": "Deepfake ใช้ AI ชั้นสูงในการสังเคราะห์ภาพหรือวิดีโอที่ไม่ได้เกิดขึ้นจริง ขณะที่ Shallowfakes ใช้เทคนิคพื้นฐานเช่นการตัดต่อหรือปรับความเร็ววิดีโอ", "istrue": true },
+      { "statement": "Deepfake เป็นการสร้างข้อความข่าวปลอมผ่านแชทบอท ส่วน Shallowfakes คือการตัดต่อเสียงเท่านั้น", "istrue": false },
+      { "statement": "Deepfake อาศัยการแชร์ข่าวเก่าซ้ำๆ เพื่อสร้างความตื่นตระหนก ส่วน Shallowfakes คือการตัดต่อภาพนิ่ง", "istrue": false },
+      { "statement": "ทั้งสองเทคโนโลยีใช้ AI แบบเดียวกัน แต่ Deepfake ใช้สำหรับวิดีโอ ส่วน Shallowfakes ใช้สำหรับข้อความ", "istrue": false }
+    ],
+    "explanation": "Deepfakes ถูกสร้างโดย AI (เช่น GANs) เพื่อจำลองเหตุการณ์ที่ไม่ได้เกิดจริง ส่วน Shallowfakes (หรือ cheapfakes) ใช้เทคนิคพื้นฐานตัดต่อ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "พฤติกรรม Doomscrolling มีความเชื่อมโยงกับกลไกทางจิตวิทยาที่เรียกว่า Randomly scheduled rewards อย่างไร (การวิเคราะห์)",
+    "options": [
+      { "statement": "ผู้ใช้จะได้รับแจ้งเตือนเฉพาะข่าวดี ทำให้สมองหลั่งสารโดพามีนเป็นเวลา", "istrue": false },
+      { "statement": "แพลตฟอร์มให้รางวัลผู้ใช้ด้วยข่าวสารที่คาดเดาไม่ได้ ทำให้สมองหลั่งสารโดพามีนและกระตุ้นให้เลื่อนดูคอนเทนต์เชิงลบอย่างต่อเนื่อง", "istrue": true },
+      { "statement": "ระบบจะจำกัดเวลาในการใช้งาน ทำให้ผู้ใช้ต้องรีบเลื่อนฟีดเพื่อหาข้อมูลก่อนหมดเวลา", "istrue": false },
+      { "statement": "แอปพลิเคชันจะจ่ายเงินรางวัลให้ผู้ใช้เมื่ออ่านข่าวครบจำนวนที่กำหนด", "istrue": false }
+    ],
+    "explanation": "Randomly scheduled rewards ให้ผลลัพธ์ที่ไม่แน่นอน กระตุ้นโดพามีน ทำให้ผู้ใช้เสพติดการเลื่อนฟีด (Infinite scroll) แม้จะเป็นข่าวลบ (Doomscrolling)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากบริษัทของคุณต้องการรู้ว่า ทำไมยอดขายในไตรมาสที่ผ่านมาจึงตกลง ระบบ Business Analytics ประเภทใดเหมาะสมที่สุด (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "Descriptive Analytics", "istrue": true },
+      { "statement": "Predictive Analytics", "istrue": false },
+      { "statement": "Prescriptive Analytics", "istrue": false },
+      { "statement": "Cognitive Analytics", "istrue": false }
+    ],
+    "explanation": "Descriptive Analytics ใช้เพื่อวิเคราะห์ข้อมูลในอดีตและทำความเข้าใจสิ่งที่เกิดขึ้นแล้ว (เช่น ยอดขายตกเพราะอะไร อัตรา Bounce rate เท่าไร)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "รายงานจาก Google Analytics ระบุว่าหน้าเว็บไซต์มีค่า Bounce rate สูงมาก ผู้จัดการควรตีความและจัดการอย่างไรจึงจะเหมาะสมที่สุด (การประเมินค่า)",
+    "options": [
+      { "statement": "ผู้ใช้สนใจเว็บไซต์มากจนใช้เวลานาน จึงควรเพิ่มเนื้อหาให้ยาวขึ้น", "istrue": false },
+      { "statement": "ผู้ใช้ปิดเว็บไซต์หลังจากเข้ามาแค่หน้าเดียว ควรปรับปรุงเนื้อหาหรือความเร็วในการโหลดให้ดึงดูดความสนใจทันที", "istrue": true },
+      { "statement": "ผู้ใช้ทำการซื้อสินค้าสำเร็จ (Conversion) ควรเพิ่มงบโฆษณาในหน้านี้", "istrue": false },
+      { "statement": "เซิร์ฟเวอร์มีปัญหาทำให้เว็บไซต์ล่ม ควรเปลี่ยนผู้ให้บริการโฮสติ้ง", "istrue": false }
+    ],
+    "explanation": "Bounce rate คือเปอร์เซ็นต์ของผู้ใช้ที่ออกจากเว็บหลังดูเพียงหน้าเดียว การประเมินค่าคือต้องเห็นจุดอ่อนและตัดสินใจปรับปรุง UX/UI หรือคอนเทนต์หน้าแรก"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Predictive Analytics ไม่สามารถบอกได้อย่างแน่นอนว่าอนาคตจะเกิดอะไรขึ้น แต่ทำงานบนพื้นฐานของสิ่งใด (ความจำ)",
+    "options": [
+      { "statement": "กฎหมายและข้อบังคับทางธุรกิจ", "istrue": false },
+      { "statement": "Probabilities (ความน่าจะเป็น) จากการตรวจจับรูปแบบข้อมูลในอดีต", "istrue": true },
+      { "statement": "การตัดสินใจแบบ Intuition ของผู้บริหารระดับสูง", "istrue": false },
+      { "statement": "งบประมาณประจำปีขององค์กร", "istrue": false }
+    ],
+    "explanation": "Predictive Analytics ตรวจสอบข้อมูลอดีตเพื่อหารูปแบบและคาดการณ์อนาคตโดยใช้หลักการของความน่าจะเป็น (Probabilities)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดไม่ใช่ขั้นตอนใน Systems Development Life Cycle (SDLC) (ความจำ)",
+    "options": [
+      { "statement": "Systems analysis", "istrue": false },
+      { "statement": "Systems design", "istrue": false },
+      { "statement": "Systems promotion", "istrue": true },
+      { "statement": "Systems Conversion", "istrue": false }
+    ],
+    "explanation": "วงจร SDLC ประกอบด้วย Analysis, Design, Programming, Testing, และ Conversion (Implementation) ไม่มีขั้นตอน Systems promotion"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "โปรแกรมเมอร์ได้แก้ไขบั๊กในระบบบัญชี แต่ทำให้เกิดข้อผิดพลาดใหม่ในระบบจัดการสินค้าคงคลัง การทดสอบประเภทใดที่ช่วยตรวจจับปัญหานี้ได้ก่อนนำไปใช้งานจริง (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "Unit testing", "istrue": false },
+      { "statement": "Acceptance testing", "istrue": false },
+      { "statement": "Regression testing", "istrue": true },
+      { "statement": "Performance testing", "istrue": false }
+    ],
+    "explanation": "Regression testing เป็นการทดสอบเมื่อมีการปรับปรุงหรือแก้ไขโปรแกรม เพื่อให้แน่ใจว่าการแก้ไขนั้นไม่ได้ทำให้เกิดข้อผิดพลาดใหม่กับส่วนอื่นที่เคยทำงานได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ธนาคารต้องการเปลี่ยนระบบ Core Banking ใหม่ โดยเลือกปิดระบบเดิมในวันศุกร์ และเปิดใช้ระบบใหม่ทั้งหมดทันทีในวันจันทร์ กลยุทธ์การเปลี่ยนระบบ (Conversion) นี้เรียกว่าอะไร และมีความเสี่ยงอย่างไร (การประเมินค่า)",
+    "options": [
+      { "statement": "Parallel strategy; เสี่ยงน้อยที่สุดเพราะมีระบบเดิมทำงานควบคู่กัน", "istrue": false },
+      { "statement": "Direct cutover; เสี่ยงสูงมากเพราะหากระบบใหม่ล่มจะไม่มีระบบสำรอง", "istrue": true },
+      { "statement": "Phased approach; เสี่ยงปานกลางเพราะค่อยๆ เปลี่ยนทีละส่วน", "istrue": false },
+      { "statement": "Pilot study; เสี่ยงเฉพาะสาขาที่ทดลองใช้", "istrue": false }
+    ],
+    "explanation": "Direct cutover คือการหยุดระบบเก่าและใช้ระบบใหม่ทันที มีความเสี่ยงสูงสุดหากระบบใหม่มีปัญหาเพราะไม่มีระบบเก่าให้กลับไปใช้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ในการบริหารโครงการ (Project Management) WBS (Work Breakdown Structure) มีวัตถุประสงค์หลักเพื่ออะไร (ความเข้าใจ)",
+    "options": [
+      { "statement": "แตกงานโครงการหรือชิ้นงานให้เป็นส่วนประกอบย่อยๆ (Tasks) เพื่อให้ผู้จัดการโครงการกะประมาณทรัพยากรได้", "istrue": true },
+      { "statement": "คำนวณงบประมาณรวมของโครงการทั้งหมดรวดเดียว", "istrue": false },
+      { "statement": "ควบคุมคุณภาพซอฟต์แวร์หลังจากการส่งมอบ", "istrue": false },
+      { "statement": "ใช้เป็นเครื่องมือสำหรับติดตามผลกำไรขาดทุนของบริษัท", "istrue": false }
+    ],
+    "explanation": "Work breakdown structure (WBS) คือการแบ่งย่อยโครงการออกเป็นงานย่อยๆ (Tasks) เพื่อให้สามารถประมาณการ (Estimation) ทรัพยากรและเวลาได้แม่นยำ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กระบวนการกำหนดตารางเวลาแบบ Backward pass พิจารณาตัวแปรคู่ใดเป็นหลัก (ความจำ)",
+    "options": [
+      { "statement": "Earliest start (ES) และ Earliest finish (EF)", "istrue": false },
+      { "statement": "Latest start (LS) และ Latest finish (LF)", "istrue": true },
+      { "statement": "Earliest start (ES) และ Latest finish (LF)", "istrue": false },
+      { "statement": "Latest start (LS) และ Earliest finish (EF)", "istrue": false }
+    ],
+    "explanation": "การกำหนดเวลาย้อนกลับ (Backward pass) จะคำนวณเพื่อหาเวลาเริ่มต้นช้าที่สุด (Latest start: LS) และเวลาสิ้นสุดช้าที่สุด (Latest finish: LF)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Monitoring and control ในการบริหารโครงการแตกต่างกันอย่างไร (การวิเคราะห์)",
+    "options": [
+      { "statement": "Monitoring คือการสร้างแผนงาน ส่วน Control คือการทำลายแผนงานเดิม", "istrue": false },
+      { "statement": "Monitoring คือการเฝ้าดูความคืบหน้าให้ตรงตามแผน ส่วน Control คือการแก้ไข (Corrective action) เมื่อโครงการเบี่ยงเบนไปจากแผน", "istrue": true },
+      { "statement": "Monitoring คือการประเมินงบประมาณ ส่วน Control คือการจัดการทรัพยากรบุคคล", "istrue": false },
+      { "statement": "ทั้งสองคำมีความหมายเหมือนกันทุกประการ", "istrue": false }
+    ],
+    "explanation": "Monitoring คือการเฝ้าสังเกต (Ensuring project is working to plan) ขณะที่ Control คือการเข้าควบคุม/แก้ไขเมื่อมีข้อผิดพลาด (Taking corrective action)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การเรียนรู้ของ Machine Learning ที่ผู้พัฒนาป้อนข้อมูลชุดใหญ่ที่มี 'ป้ายกำกับ (Labelled input data)' และ 'ผลลัพธ์ที่คาดหวัง' ให้กับระบบ เรียกว่ารูปแบบใด (ความจำ)",
+    "options": [
+      { "statement": "Unsupervised Learning", "istrue": false },
+      { "statement": "Supervised Learning", "istrue": true },
+      { "statement": "Semi-supervised Learning", "istrue": false },
+      { "statement": "Reinforcement Learning", "istrue": false }
+    ],
+    "explanation": "Supervised learning เป็นรูปแบบที่ระบบเรียนรู้จากข้อมูลที่มีการเฉลยไว้แล้ว (Labelled data และ expected output results)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "อัลกอริทึมใดของ AI ที่มักนำมาใช้ค้นหาการแบ่งกลุ่ม (Cluster) ของลูกค้าในข้อมูลด้านการตลาดโดยพิจารณาจากเพศ ที่อยู่ และรายได้ โดยที่ข้อมูลไม่มีการติดป้ายกำกับไว้ก่อน (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "Supervised Learning", "istrue": false },
+      { "statement": "Unsupervised Learning (Clustering)", "istrue": true },
+      { "statement": "Convolutional Neural Network", "istrue": false },
+      { "statement": "Reinforcement Learning", "istrue": false }
+    ],
+    "explanation": "Clustering เป็นเทคนิคภายใต้ Unsupervised learning ซึ่งหาความสัมพันธ์หรือกลุ่ม (Segments) ในข้อมูลที่ไม่มี Label"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "โครงข่ายประสาทเทียมแบบใดที่ออกแบบมาเฉพาะเพื่อแยกแยะพื้นที่ของภาพ ตรวจจับขอบ ส่วนโค้ง และความหนาแน่นของสี เพื่อใช้ในระบบรู้จำใบหน้า (Facial recognition) (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "Recurrent Neural Network (RNN)", "istrue": false },
+      { "statement": "Convolutional Neural Network (CNN)", "istrue": true },
+      { "statement": "Generative Adversarial Network (GAN)", "istrue": false },
+      { "statement": "Artificial General Intelligence (AGI)", "istrue": false }
+    ],
+    "explanation": "CNN (Convolutional neural network) ถูกนำมาใช้เป็นหลักในการประมวลผลข้อมูลภาพ (Image and pattern recognition) แยกแยะ feature ของภาพ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Generative Adversarial Network (GAN) ประกอบด้วยสองส่วนหลักคือ Generator และ Discriminator การทำงานร่วมกันของสองส่วนนี้ทำให้เกิดผลลัพธ์ใดที่มีประโยชน์ต่อวงการถ่ายภาพอวกาศและศิลปะ (การวิเคราะห์)",
+    "options": [
+      { "statement": "Generator ทำลายภาพเก่า ส่วน Discriminator ซื้อภาพใหม่", "istrue": false },
+      { "statement": "Generator สร้างข้อมูลจำลอง และ Discriminator แยกแยะข้อมูลจริง-ปลอม นำไปสู่การเติมเต็มภาพที่ขาดหาย (Inpainting)", "istrue": true },
+      { "statement": "Generator ประมวลผลข้อความ ส่วน Discriminator ค้นหารูปภาพที่ตรงกัน", "istrue": false },
+      { "statement": "ช่วยเข้ารหัสภาพอวกาศเพื่อไม่ให้ถูกแฮ็กโดยระบบอื่น", "istrue": false }
+    ],
+    "explanation": "GAN มี Generator สร้างภาพขึ้นมาแข่งกับ Discriminator ที่คอยจับผิด ทำให้ AI สร้างภาพได้สมจริงมากจนสามารถซ่อมแซมภาพที่เสียหาย (Inpainting) ได้"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดเป็นข้อดี 3 ประการหลักของอุปกรณ์ไร้สายในปัจจุบัน (ความจำ)",
+    "options": [
+      { "statement": "1. พกพาสะดวก 2. ทรงพลัง 3. เชื่อมต่ออิสระ", "istrue": true },
+      { "statement": "1. ราคาถูก 2. ปลอดภัยสูงสุดจากการแฮ็ก 3. แบตเตอรี่อยู่ได้ 1 ปี", "istrue": false },
+      { "statement": "1. ซ่อมแซมง่าย 2. ใช้สัญญาณแอนะล็อก 3. ไม่ต้องใช้คลื่นความถี่", "istrue": false },
+      { "statement": "1. กันน้ำ 2. จอสัมผัสขนาดใหญ่ 3. ไม่ต้องพึ่งพาซอฟต์แวร์", "istrue": false }
+    ],
+    "explanation": "คุณสมบัติหลักของอุปกรณ์ไร้สายคือ Small enough to carry (พกพาสะดวก), Sufficient computing power (ทรงพลัง), และ Communicate wirelessly (เชื่อมต่ออิสระ)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "กระบวนการปรับปรุงระบบ (Systems Maintenance) แบบใดที่มีจุดประสงค์เพื่อป้องกันปัญหาและลดโอกาสเกิดระบบขัดข้องในอนาคต (ความจำ)",
+    "options": [
+      { "statement": "Corrective Maintenance", "istrue": false },
+      { "statement": "Adaptive Maintenance", "istrue": false },
+      { "statement": "Preventive Maintenance", "istrue": true },
+      { "statement": "Perfective Maintenance", "istrue": false }
+    ],
+    "explanation": "Preventive Maintenance เป็นการบำรุงรักษาเพื่อป้องกันไม่ให้ระบบเกิดปัญหาขัดข้อง (Preventive = ป้องกัน)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "บริษัทแห่งหนึ่งใช้ AI อ่านข้อมูลจากเซนเซอร์บนเครื่องจักรที่บันทึกค่าอย่างต่อเนื่องทุกๆ วินาที (Time series data) เพื่อทำนายว่าเครื่องจักรจะเสียเมื่อใด ควรเลือกใช้อัลกอริทึมประเภทใด (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "Convolutional Neural Network (CNN)", "istrue": false },
+      { "statement": "Recurrent Neural Network (RNN)", "istrue": true },
+      { "statement": "Generative Adversarial Network (GAN)", "istrue": false },
+      { "statement": "Decision Tree (แบบสุ่ม)", "istrue": false }
+    ],
+    "explanation": "RNN ออกแบบมาเพื่อรับมือกับข้อมูลแบบลื่นไหลหรือ Sequential data / Time series data (เช่น การทำนายค่าจากเซนเซอร์ตามเวลา การอ่านประโยค)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "หากต้องการสอบถามข้อมูลพนักงานเพื่อหาระบบใหม่ โดยต้องการให้พนักงานตอบแบบวัดระดับความเห็นด้วย (Strongly agree - Strongly disagree) ควรใช้เทคนิคการสัมภาษณ์แบบใดในการวิเคราะห์ (Analysis) (การวิเคราะห์)",
+    "options": [
+      { "statement": "Open questions", "istrue": false },
+      { "statement": "Context diagrams", "istrue": false },
+      { "statement": "Closed questions", "istrue": true },
+      { "statement": "Work breakdown structure", "istrue": false }
+    ],
+    "explanation": "Closed questions จะมีทางเลือกที่จำกัด เช่น Yes/No หรือระดับความคิดเห็น (Lickert scale) มีประโยชน์ในการวิเคราะห์เชิงปริมาณ (Quantitative analysis)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "แนวคิดเรื่อง Context Diagrams ในขั้นตอนการออกแบบและวิเคราะห์ระบบ มีส่วนช่วยสำคัญที่สุดในด้านใด (การประเมินค่า)",
+    "options": [
+      { "statement": "การกำหนดขอบเขตและองค์ประกอบหลักๆ (Boundaries and scope) ของระบบอย่างง่าย", "istrue": true },
+      { "statement": "การเขียนโค้ดและการออกแบบฐานข้อมูลอย่างละเอียด", "istrue": false },
+      { "statement": "การจัดกำหนดการเวลาของโปรเจคต์", "istrue": false },
+      { "statement": "การคำนวณอัตราความเร็วของเครือข่าย Wi-Fi", "istrue": false }
+    ],
+    "explanation": "Context diagrams ใช้สำหรับการวาดกรอบระบบที่ถูกทำให้เรียบง่าย มีประโยชน์มากในการกำหนดขอบเขต (scope) และระบบนิเวศรวมของตัวระบบ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดสะท้อนให้เห็นถึงภัยคุกคามจากการใช้สมาร์ทโฟนของพนักงานต่อองค์กร (ความเข้าใจ)",
+    "options": [
+      { "statement": "พนักงานใช้ฟังก์ชันเครื่องคิดเลขคำนวณส่วนลดผิดพลาด", "istrue": false },
+      { "statement": "ข้อมูลความลับองค์กรรั่วไหลจากการแอบถ่ายรูปหรือบันทึกเสียงคู่แข่งหรือภายในบริษัท", "istrue": true },
+      { "statement": "การเชื่อมต่อ 5G ทำให้อินเทอร์เน็ตบริษัทล่ม", "istrue": false },
+      { "statement": "องค์กรต้องเสียค่าใช้จ่ายให้พนักงานเปลี่ยนมือถือใหม่ทุกเดือน", "istrue": false }
+    ],
+    "explanation": "จากเอกสารหัวข้อภัยคุกคาม ข้อเสียคือพนักงานอาจใช้สมาร์ทโฟนแอบถ่ายรูป บันทึกเสียง ซึ่งอาจทำให้ความลับรั่วไหล (Dematerialization นำมาซึ่งความเสี่ยง)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การจัดการ (Management) หมายถึงกระบวนการที่องค์กรบรรลุเป้าหมายผ่านการใช้ทรัพยากรใดบ้างเป็นหลัก (ความจำ)",
+    "options": [
+      { "statement": "คอมพิวเตอร์ อินเทอร์เน็ต ซอฟต์แวร์ และคลาวด์", "istrue": false },
+      { "statement": "ข้อมูลข่าวสาร (Information) อย่างเดียวเท่านั้น", "istrue": false },
+      { "statement": "ผู้คน เงิน วัสดุอุปกรณ์ และสารสนเทศ (People, money, materials, and information)", "istrue": true },
+      { "statement": "กลยุทธ์ การตลาด และการขาย", "istrue": false }
+    ],
+    "explanation": "ผู้บริหารจัดการและบรรลุเป้าหมายโดยการใช้ทรัพยากรหลักหรือ Input คือ ผู้คน, เงินทุน, วัสดุ, และสารสนเทศ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ข้อใดไม่ใช่ลักษณะสำคัญที่จะต้องพิจารณาเมื่อได้รับข้อมูลข่าวสารในช่วงวิกฤต (การประเมินค่า / ตรวจสอบ Misinformation)",
+    "options": [
+      { "statement": "Check Date (ตรวจสอบวันที่ของข่าว)", "istrue": false },
+      { "statement": "Look for Evidence (ค้นหาหลักฐานและข้อเท็จจริง)", "istrue": false },
+      { "statement": "Check the Emotional Headlines (ตรวจสอบพาดหัวข่าวว่าจงใจสร้างอารมณ์มากไปหรือไม่)", "istrue": false },
+      { "statement": "Forward to all contacts immediately (รีบส่งต่อให้คนรู้จักทันทีเพื่อแจ้งเตือน)", "istrue": true }
+    ],
+    "explanation": "แนวทางการรับมือกับ Misinformation คือ Check Date, Look for Evidence, ตรวจสอบที่มา ไม่ควรส่งต่อทันทีโดยที่ยังไม่ได้ตรวจสอบ"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ผู้จัดการโครงการที่พบว่าโครงการมีระยะเวลาที่จำกัดมากจนไม่สามารถเลื่อนเส้นตายได้ โครงการนี้ถูกพิจารณาว่ามีข้อจำกัดแบบใด (การวิเคราะห์)",
+    "options": [
+      { "statement": "Resource-constrained", "istrue": false },
+      { "statement": "Time-constrained", "istrue": true },
+      { "statement": "Scope-constrained", "istrue": false },
+      { "statement": "Quality-constrained", "istrue": false }
+    ],
+    "explanation": "Project constraints ที่ถูกจำกัดโดยเส้นตายหรือระยะเวลาอย่างเด็ดขาด เรียกว่า Time-constrained"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "การใช้งาน AI ขั้นสูงเช่น ระบบรู้จำเสียงอัตโนมัติ (Speech recognition) และการแนะนำการลงทุนอัตโนมัติ (Automated investing) สะท้อนถึงประโยชน์หลักข้อใด (การวิเคราะห์)",
+    "options": [
+      { "statement": "ทำงานเจาะจงที่เคยต้องใช้ปัญญาของมนุษย์ และทำได้ระดับเท่าเทียมหรือดีกว่ามนุษย์", "istrue": true },
+      { "statement": "สร้างจิตสำนึกและอารมณ์ได้เหมือนมนุษย์ทุกประการ", "istrue": false },
+      { "statement": "แทนที่การตัดสินใจทางจริยธรรมของฝ่ายบุคคลในองค์กรได้สมบูรณ์", "istrue": false },
+      { "statement": "หยุดการทำงานทันทีหากพบความเสี่ยงทางการเงินโดยไม่ต้องเรียนรู้", "istrue": false }
+    ],
+    "explanation": "AI เป็นเทคโนโลยีที่ทำงานเจาะจงแบบเฉพาะหน้าที่ (Specific function) ที่เดิมมนุษย์ต้องทำ แต่ AI สามารถทำได้เร็วกว่า ในระดับที่ดีหรือเหนือกว่า"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "เทคโนโลยี Wi-Fi 6 ถูกพัฒนามาเพื่อปรับปรุงเรื่องใดเป็นหลักหากเทียบกับระบบเครือข่ายก่อนหน้า (ความเข้าใจ)",
+    "options": [
+      { "statement": "การทะลุทะลวงสิ่งกีดขวางได้ดีกว่าคลื่น 5G", "istrue": false },
+      { "statement": "ช่วยลดความหน่วง (Latency) ทำให้ตอบสนองได้เร็วขึ้นในเครือข่ายที่มีผู้ใช้หนาแน่น", "istrue": true },
+      { "statement": "รองรับการส่งผ่านข้อมูลที่ระดับ 46 Gbps เท่ากับ Wi-Fi 7", "istrue": false },
+      { "statement": "ใช้ในระยะไกลข้ามเมืองได้ (Long-Range)", "istrue": false }
+    ],
+    "explanation": "Wi-Fi 6 พัฒนาขึ้นมาเพื่อแก้ไขปัญหาความหน่วงหรือลด Latency ในการรับส่งข้อมูล (ส่วน Wi-Fi 7 ทำความเร็วได้ 46 Gbps)"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ขั้นตอนใดของการพัฒนาระบบที่มีการเขียนเอกสาร ปรับปรุงประสิทธิภาพของโค้ด และเพิ่มความสามารถของระบบให้ตอบโจทย์ผู้ใช้ ซึ่งคิดเป็น 60% ของภาระงานหลังนำระบบขึ้น (การประยุกต์ใช้)",
+    "options": [
+      { "statement": "Systems Design", "istrue": false },
+      { "statement": "Programming", "istrue": false },
+      { "statement": "Systems Conversion", "istrue": false },
+      { "statement": "Maintenance (Enhancements & documentation)", "istrue": true }
+    ],
+    "explanation": "งานดูแลรักษาระบบ (Maintenance) กินภาระงานมากที่สุดหลังระบบเริ่มใช้งาน โดยมีการแก้ไขปรับปรุงโค้ดและเพิ่มศักยภาพระบบอย่างต่อเนื่อง"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "ทำไมเทคนิค Multi-label classification จึงมีความจำเป็นในการแก้ปัญหาซับซ้อนในปัจจุบัน (การประเมินค่า)",
+    "options": [
+      { "statement": "เพื่อหาคำตอบเดียวที่ถูกต้องที่สุดเพียงข้อเดียวเสมอ", "istrue": false },
+      { "statement": "เพื่อการจัดกลุ่มข้อมูลที่ยังไม่ได้มีการตั้งป้ายกำกับเลย", "istrue": false },
+      { "statement": "เพื่อจัดการกับข้อมูล 1 ตัวอย่างที่สามารถครอบครองหลายสถานะหรือผลลัพธ์ได้ในเวลาเดียวกัน (เช่น รูปที่มีทั้งสุนัข แมว และนก)", "istrue": true },
+      { "statement": "เพื่อลบข้อมูลที่กำกวมออกจากระบบโมเดล", "istrue": false }
+    ],
+    "explanation": "Multi-label classification นำมาใช้คาดคะเนป้ายกำกับหลายๆ ป้ายพร้อมกัน (2 or more class labels can be predicted for each example) ตอบโจทย์ระบบที่ซับซ้อน"
+  }
+]

@@ -1,56 +1,59 @@
 import { NextResponse } from "next/server";
+import { unstable_cache } from "next/cache";
 import fs from "fs";
 import path from "path";
 
-export async function GET() {
-  try {
-    const dataPath = path.join(process.cwd(), "src", "data");
-
-    // Recursive function to scan directories
-    const scanDirectory = (dirPath: string, relativePath: string = ""): any => {
+const scanDirectory = (dirPath: string, relativePath: string = ""): any => {
       const items = fs.readdirSync(dirPath, { withFileTypes: true });
       const result: any = {
         name: path.basename(dirPath),
         path: relativePath,
         type: "folder",
         children: [],
-        files: []
+        files: [],
       };
-
       for (const item of items) {
         const itemPath = path.join(dirPath, item.name);
-        const itemRelativePath = relativePath ? `${relativePath}/${item.name}` : item.name;
-
+        const itemRelativePath = relativePath
+          ? `${relativePath}/${item.name}`
+          : item.name;
         if (item.isDirectory()) {
-          // Recursively scan subdirectory
-          const subDir = scanDirectory(itemPath, itemRelativePath);
-          result.children.push(subDir);
-        } else if (item.name.endsWith('.json')) {
-          // Add JSON file
+          result.children.push(scanDirectory(itemPath, itemRelativePath));
+        } else if (item.name.endsWith(".json")) {
           result.files.push({
-            name: item.name.replace('.json', ''),
-            path: itemRelativePath.replace('.json', ''),
-            fullPath: itemRelativePath
+            name: item.name.replace(".json", ""),
+            path: itemRelativePath.replace(".json", ""),
+            fullPath: itemRelativePath,
           });
         }
       }
-
       return result;
     };
 
-    // Scan the data directory
+const getFolders = unstable_cache(
+  async () => {
+    const dataPath = path.join(process.cwd(), "src", "data");
     const rootItems = fs.readdirSync(dataPath, { withFileTypes: true });
     const folders = [];
-
     for (const item of rootItems) {
       if (item.isDirectory()) {
         const folderPath = path.join(dataPath, item.name);
-        const folder = scanDirectory(folderPath, item.name);
-        folders.push(folder);
+        folders.push(scanDirectory(folderPath, item.name));
       }
     }
+    return folders;
+  },
+  ["folders"],
+  { revalidate: 60 }
+);
 
-    return NextResponse.json({ folders });
+export async function GET() {
+  try {
+    const folders = await getFolders();
+    return NextResponse.json(
+      { folders },
+      { headers: { "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300" } }
+    );
   } catch (error) {
     console.error("Error reading folders:", error);
     return NextResponse.json(

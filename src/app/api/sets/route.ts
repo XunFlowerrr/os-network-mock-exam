@@ -1,66 +1,62 @@
 import { NextResponse } from "next/server";
+import { unstable_cache } from "next/cache";
 import fs from "fs";
 import path from "path";
 
-export async function GET() {
-  try {
+const scanDirectory = (dirPath: string, relativePath: string = ""): any[] => {
+  const items = fs.readdirSync(dirPath, { withFileTypes: true });
+  let files: any[] = [];
+  for (const item of items) {
+    const itemPath = path.join(dirPath, item.name);
+    const itemRelativePath = relativePath
+      ? `${relativePath}/${item.name}`
+      : item.name;
+    if (item.isDirectory()) {
+      files = files.concat(scanDirectory(itemPath, itemRelativePath));
+    } else if (item.name.endsWith(".json")) {
+      files.push({
+        name: item.name.replace(".json", ""),
+        path: itemRelativePath.replace(".json", ""),
+        folder: relativePath.split("/")[0] || relativePath,
+        fullPath: itemRelativePath,
+      });
+    }
+  }
+  return files;
+};
+
+const getSets = unstable_cache(
+  async () => {
     const dataPath = path.join(process.cwd(), "src", "data");
-
-    // Recursive function to scan directories and collect all files
-    const scanDirectory = (dirPath: string, relativePath: string = ""): any[] => {
-      const items = fs.readdirSync(dirPath, { withFileTypes: true });
-      let files: any[] = [];
-
-      for (const item of items) {
-        const itemPath = path.join(dirPath, item.name);
-        const itemRelativePath = relativePath ? `${relativePath}/${item.name}` : item.name;
-
-        if (item.isDirectory()) {
-          // Recursively scan subdirectory
-          const subFiles = scanDirectory(itemPath, itemRelativePath);
-          files = files.concat(subFiles);
-        } else if (item.name.endsWith('.json')) {
-          // Add JSON file with its full path
-          files.push({
-            name: item.name.replace('.json', ''),
-            path: itemRelativePath.replace('.json', ''),
-            folder: relativePath.split('/')[0] || relativePath, // Get root folder
-            fullPath: itemRelativePath
-          });
-        }
-      }
-
-      return files;
-    };
-
-    // Scan all folders and collect files
     const rootItems = fs.readdirSync(dataPath, { withFileTypes: true });
     const allFiles: any[] = [];
-
     for (const item of rootItems) {
       if (item.isDirectory()) {
         const folderPath = path.join(dataPath, item.name);
-        const files = scanDirectory(folderPath, item.name);
-        allFiles.push(...files);
+        allFiles.push(...scanDirectory(folderPath, item.name));
       }
     }
-
-    // Group files by their root folder
-    const foldersMap = new Map();
+    const foldersMap = new Map<string, any[]>();
     for (const file of allFiles) {
-      const rootFolder = file.folder;
-      if (!foldersMap.has(rootFolder)) {
-        foldersMap.set(rootFolder, []);
-      }
-      foldersMap.get(rootFolder).push(file);
+      if (!foldersMap.has(file.folder)) foldersMap.set(file.folder, []);
+      foldersMap.get(file.folder)!.push(file);
     }
-
-    const folders = Array.from(foldersMap.entries()).map(([name, files]) => ({
+    return Array.from(foldersMap.entries()).map(([name, files]) => ({
       name,
-      files: files.map((f: any) => f.name)
+      files: files.map((f: any) => f.name),
     }));
+  },
+  ["sets"],
+  { revalidate: 60 }
+);
 
-    return NextResponse.json({ folders });
+export async function GET() {
+  try {
+    const folders = await getSets();
+    return NextResponse.json(
+      { folders },
+      { headers: { "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300" } }
+    );
   } catch (error) {
     console.error("Error reading sets:", error);
     return NextResponse.json(
